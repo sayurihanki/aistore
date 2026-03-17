@@ -1,0 +1,12 @@
+ez-rack-builder |
+sku | USMC-EZ-RACK
+schema-url | /data/configurators/ez-rack-builder-usmc.json
+eyebrow-text | Marine Corps Awards Division
+title | Luxury EZ Rack Builder
+subtitle | Assemble your regulation-aware ribbon rack in a ceremonial configuration studio.
+primary-cta-label | Add configured rack to cart
+secondary-cta-label | Talk to a specialist
+secondary-cta-href | /contact
+theme | scarlet-gold
+presentation | rack-immersive
+dd214-mode | smart-stub

@@ -1,0 +1,522 @@
+/* ===== Form-2 — Dark / Gold Luxury Theme ===== */
+
+.form-2 {
+  --f2-bg: #0f0e0c;
+  --f2-surface: #1a1815;
+  --f2-border: #2e2b26;
+  --f2-border-focus: #c9a96e;
+  --f2-border-success: #5a9e72;
+  --f2-border-error: #c05050;
+  --f2-text: #e8e2d6;
+  --f2-text-muted: #7a7060;
+  --f2-text-label: #a09080;
+  --f2-gold: #c9a96e;
+  --f2-gold-light: #e8d5a8;
+  --f2-radius: 4px;
+  --f2-radius-lg: 8px;
+  --f2-transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --f2-shadow-focus: 0 0 0 3px rgb(201 169 110 / 20%);
+
+  background: var(--f2-bg);
+  padding: 0;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  border-radius: var(--f2-radius-lg);
+  overflow: hidden;
+  box-shadow:
+    0 2px 4px rgb(0 0 0 / 40%),
+    0 20px 60px rgb(0 0 0 / 50%),
+    inset 0 1px 0 rgb(201 169 110 / 8%);
+}
+
+/* --- Form element --- */
+
+.form-2 .f2-element {
+  padding: 3rem 3.5rem 3.5rem;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* --- Header --- */
+
+.form-2 .f2-header {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--f2-border);
+  position: relative;
+}
+
+.form-2 .f2-header::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 3rem;
+  height: 1px;
+  background: var(--f2-gold);
+}
+
+.form-2 .f2-title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 600;
+  color: var(--f2-text);
+  line-height: 1.1;
+  margin: 0 0 0.625rem;
+  letter-spacing: -0.02em;
+}
+
+.form-2 .f2-subtitle {
+  font-size: 0.9375rem;
+  color: var(--f2-text-muted);
+  margin: 0;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* --- Fields grid --- */
+
+.form-2 .f2-fields {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.form-2 .f2-fields--two-col {
+  grid-template-columns: 1fr 1fr;
+}
+
+.form-2 .f2-span-2 {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 540px) {
+  .form-2 .f2-fields--two-col {
+    grid-template-columns: 1fr;
+  }
+
+  .form-2 .f2-element {
+    padding: 2rem 1.5rem 2.5rem;
+  }
+}
+
+/* --- Field group --- */
+
+.form-2 .f2-group {
+  position: relative;
+}
+
+/* --- Labels (base) --- */
+
+.form-2 .f2-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--f2-text-label);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+  transition: color var(--f2-transition);
+}
+
+.form-2 .f2-req {
+  color: var(--f2-gold);
+}
+
+/* --- Validation messages --- */
+
+.form-2 .f2-msg {
+  display: block;
+  font-size: 0.75rem;
+  margin-top: 0.375rem;
+  min-height: 1em;
+  color: var(--f2-border-error);
+}
+
+/* --- Input wrapper --- */
+
+.form-2 .f2-input-wrap {
+  position: relative;
+}
+
+/* --- Inputs (base) --- */
+
+.form-2 .f2-input {
+  width: 100%;
+  background: var(--f2-surface);
+  border: 1px solid var(--f2-border);
+  border-radius: var(--f2-radius);
+  color: var(--f2-text);
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  padding: 0.875rem 1.125rem;
+  outline: none;
+  transition:
+    border-color var(--f2-transition),
+    box-shadow var(--f2-transition),
+    background var(--f2-transition);
+  box-sizing: border-box;
+  appearance: none;
+  caret-color: var(--f2-gold);
+}
+
+.form-2 .f2-input::placeholder {
+  color: var(--f2-text-muted);
+  opacity: 0.6;
+}
+
+.form-2 .f2-input:hover {
+  border-color: #3e3a34;
+  background: #1e1c19;
+}
+
+.form-2 .f2-input:focus {
+  border-color: var(--f2-border-focus);
+  box-shadow: var(--f2-shadow-focus);
+  background: #1e1c19;
+}
+
+/* --- Floating label --- */
+
+.form-2 .f2-group--float .f2-label {
+  position: absolute;
+  top: 0.9375rem;
+  left: 1.125rem;
+  font-size: 0.9375rem;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 400;
+  color: var(--f2-text-muted);
+  pointer-events: none;
+  transition:
+    top 0.2s ease,
+    font-size 0.2s ease,
+    color 0.2s ease,
+    letter-spacing 0.2s ease;
+  z-index: 1;
+  margin-bottom: 0;
+}
+
+.form-2 .f2-group--float .f2-input {
+  padding-top: 1.375rem;
+  padding-bottom: 0.375rem;
+}
+
+.form-2 .f2-group--float.f2-group--filled .f2-label,
+.form-2 .f2-group--float:focus-within .f2-label {
+  top: 0.3125rem;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--f2-gold);
+}
+
+/* --- Textarea --- */
+
+.form-2 .f2-textarea {
+  resize: vertical;
+  min-height: 8rem;
+  line-height: 1.6;
+}
+
+/* --- Select --- */
+
+.form-2 .f2-input-wrap select.f2-input {
+  padding-right: 3rem;
+  cursor: pointer;
+}
+
+.form-2 .f2-select-chevron {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--f2-text-muted);
+  display: flex;
+  align-items: center;
+}
+
+.form-2 .f2-select-chevron svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* --- Legend (for radio/checkbox groups) --- */
+
+.form-2 .f2-legend {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--f2-text-label);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+}
+
+/* --- Choices (radio / checkbox pills) --- */
+
+.form-2 .f2-choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.form-2 .f2-choice {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  color: var(--f2-text);
+  font-size: 0.9375rem;
+  background: var(--f2-surface);
+  border: 1px solid var(--f2-border);
+  border-radius: var(--f2-radius);
+  transition: border-color var(--f2-transition);
+}
+
+.form-2 .f2-choice:hover {
+  border-color: #3e3a34;
+}
+
+.form-2 .f2-choice input[type='checkbox'],
+.form-2 .f2-choice input[type='radio'] {
+  width: 1rem;
+  height: 1rem;
+  min-width: 1rem;
+  background: transparent;
+  border: 1.5px solid var(--f2-border);
+  border-radius: 2px;
+  appearance: none;
+  cursor: pointer;
+  transition: all var(--f2-transition);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.form-2 .f2-choice input[type='radio'] {
+  border-radius: 50%;
+}
+
+.form-2 .f2-choice input:checked {
+  background: var(--f2-gold);
+  border-color: var(--f2-gold);
+}
+
+.form-2 .f2-choice:has(input:checked) {
+  border-color: rgb(201 169 110 / 40%);
+}
+
+.form-2 .f2-choice input[type='checkbox']:checked::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230f0e0c' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80%;
+}
+
+.form-2 .f2-choice input[type='radio']:checked::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  background: #0f0e0c;
+  border-radius: 50%;
+}
+
+/* --- Link inside choices --- */
+
+.form-2 .f2-link {
+  color: var(--f2-gold);
+  text-decoration: none;
+}
+
+.form-2 .f2-link:hover {
+  text-decoration: underline;
+}
+
+/* --- Success screen --- */
+
+.form-2 .f2-success {
+  padding: 4rem 3.5rem;
+  text-align: center;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.4s ease 0.1s, transform 0.4s ease 0.1s;
+}
+
+.form-2 .f2-success--visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.form-2 .f2-success-icon {
+  width: 4rem;
+  height: 4rem;
+  margin: 0 auto 1.5rem;
+  background: rgb(90 158 114 / 10%);
+  border: 1px solid rgb(90 158 114 / 30%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-2 .f2-success-icon svg {
+  width: 1.75rem;
+  height: 1.75rem;
+  stroke: var(--f2-border-success);
+}
+
+.form-2 .f2-success h3 {
+  font-size: 1.75rem;
+  color: var(--f2-text);
+  margin: 0 0 0.625rem;
+}
+
+.form-2 .f2-success p {
+  color: var(--f2-text-muted);
+  font-size: 0.9375rem;
+  margin: 0;
+}
+
+/* --- Submit button --- */
+
+.form-2 .f2-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  width: 100%;
+  padding: 1rem 2rem;
+  margin-top: 0.75rem;
+  background: var(--f2-gold);
+  color: #0f0e0c;
+  border: none;
+  border-radius: var(--f2-radius);
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background var(--f2-transition),
+    transform 0.15s ease,
+    box-shadow var(--f2-transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.form-2 .f2-submit::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    transparent 50%,
+    rgb(255 255 255 / 12%) 100%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.4s ease;
+}
+
+.form-2 .f2-submit:hover::before {
+  transform: translateX(0);
+}
+
+.form-2 .f2-submit:hover {
+  background: var(--f2-gold-light);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgb(201 169 110 / 25%);
+}
+
+.form-2 .f2-submit:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.form-2 .f2-submit:focus-visible {
+  outline: 2px solid var(--f2-gold);
+  outline-offset: 2px;
+}
+
+.form-2 .f2-submit-icon {
+  display: flex;
+  align-items: center;
+}
+
+.form-2 .f2-submit-icon svg {
+  width: 1rem;
+  height: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.form-2 .f2-submit:hover .f2-submit-icon svg {
+  transform: translateX(3px);
+}
+
+/* --- Loading state --- */
+
+.form-2 .f2-submit.f2-submit--loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.form-2 .f2-submit.f2-submit--loading .f2-submit-icon svg {
+  animation: f2-spin 0.8s linear infinite;
+}
+
+@keyframes f2-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* --- Validation states (last — highest specificity overrides) --- */
+
+.form-2 .f2-group.f2-group--success .f2-label {
+  color: var(--f2-border-success);
+}
+
+.form-2 .f2-group.f2-group--error .f2-label {
+  color: var(--f2-border-error);
+}
+
+.form-2 .f2-group.f2-group--success .f2-input {
+  border-color: var(--f2-border-success);
+}
+
+.form-2 .f2-group.f2-group--error .f2-input {
+  border-color: var(--f2-border-error);
+}
+
+.form-2 .f2-group.f2-group--success .f2-input:focus {
+  box-shadow: 0 0 0 3px rgb(90 158 114 / 20%);
+}
+
+.form-2 .f2-group.f2-group--error .f2-input:focus {
+  box-shadow: 0 0 0 3px rgb(192 80 80 / 20%);
+}
+
+/* --- Responsive success --- */
+
+@media (max-width: 540px) {
+  .form-2 .f2-success {
+    padding: 3rem 1.5rem;
+  }
+}
+
+/* --- Reduced motion --- */
+
+@media (prefers-reduced-motion: reduce) {
+  .form-2 .f2-submit,
+  .form-2 .f2-submit::before,
+  .form-2 .f2-input,
+  .form-2 .f2-choice,
+  .form-2 .f2-choice input,
+  .form-2 .f2-success {
+    transition: none;
+  }
+}

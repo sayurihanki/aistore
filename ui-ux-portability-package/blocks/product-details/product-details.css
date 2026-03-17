@@ -1,0 +1,249 @@
+.product-details__wrapper {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-1-columns), 1fr);
+  column-gap: var(--grid-1-gutters);
+  margin-top: var(--spacing-medium);
+}
+
+.product-details__left-column {
+  display: none;
+}
+
+.product-details__right-column {
+  grid-column: 1 / span 4;
+  color: var(--color-neutral-800);
+}
+
+.product-details__alert {
+  margin-top: var(--spacing-small);
+  margin-bottom: var(--spacing-small);
+}
+
+.product-details__alert:empty {
+  display: none;
+}
+
+.product-details__header {
+  margin-bottom: var(--spacing-medium);
+}
+
+.product-details__price {
+  margin-top: var(--spacing-medium);
+}
+
+.product-details__price .pdp-price,
+.product-details__price .pdp-price__amount,
+.product-details__price .pdp-price__amount-special,
+.product-details__price .pdp-price-range,
+.product-details__price .pdp-price-range .dropin-price {
+  font-family: var(--type-price-font-family);
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: "lnum" 1, "tnum" 1;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+.product-details__price .pdp-price__amount,
+.product-details__price .pdp-price__amount-special,
+.product-details__price .pdp-price-range .dropin-price {
+  font: var(--type-price-strong-font);
+  letter-spacing: var(--type-price-letter-spacing);
+  line-height: 1;
+}
+
+.product-details__price .pdp-price__amount--grey {
+  font: var(--type-price-default-font);
+  letter-spacing: var(--type-price-letter-spacing);
+  text-decoration-thickness: 1.5px;
+  text-decoration-skip-ink: none;
+}
+
+.product-details__gallery .pdp-carousel {
+  max-height: 60vh;
+}
+
+.product-details__gallery .pdp-carousel--thumbnailsRow {
+  max-height: 80vh;
+}
+
+.product-details__gallery .pdp-overlay__content .pdp-carousel,
+.product-details__gallery .pdp-overlay__content .pdp-carousel--thumbnailsRow
+{
+  max-height: unset;;
+}
+
+
+.product-details__configuration {
+  grid-column: 1 / span 4;
+  display: grid;
+  grid-auto-flow: row;
+  gap: var(--grid-1-gutters);
+  grid-auto-rows: max-content;
+  margin-bottom: var(--spacing-xxbig);
+  margin-top: var(--spacing-big);
+}
+
+.product-details.product-details--configurator-active .product-details__configuration {
+  display: none;
+}
+
+.product-details__configurator-fallback:empty {
+  display: none;
+}
+
+.product-details.product-details--configurator-active .product-details__configurator-fallback {
+  margin-top: var(--spacing-big);
+  margin-bottom: var(--spacing-xxbig);
+}
+
+.product-details__buttons {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: var(--grid-1-gutters);
+  grid-auto-rows: max-content;
+}
+
+.product-details__buttons > div {
+  display: contents;
+}
+
+.product-details__attributes {
+  margin-top: var(--spacing-xsmall);
+}
+
+.product-details.product-details--immersive-active .product-details__description,
+.product-details.product-details--immersive-active .product-details__attributes {
+  display: none;
+}
+
+.product-details.product-details--configurator-active.product-details--configurator-immersive .product-details__right-column {
+  display: grid;
+  gap: var(--spacing-medium);
+}
+
+.product-details.product-details--configurator-active.product-details--configurator-immersive .product-details__header,
+.product-details.product-details--configurator-active.product-details--configurator-immersive .product-details__price,
+.product-details.product-details--configurator-active.product-details--configurator-immersive .product-details__short-description,
+.product-details.product-details--configurator-active.product-details--configurator-immersive .product-details__configurator-fallback,
+.product-details.product-details--configurator-active.product-details--configurator-immersive .product-details__right-column > .product-details__gallery,
+.product-details.product-details--configurator-active.product-details--configurator-immersive .product-details__description,
+.product-details.product-details--configurator-active.product-details--configurator-immersive .product-details__attributes {
+  grid-column: 1;
+}
+
+.product-details.product-details--configurator-active.product-details--configurator-immersive .product-details__header,
+.product-details.product-details--configurator-active.product-details--configurator-immersive .product-details__price,
+.product-details.product-details--configurator-active.product-details--configurator-immersive .product-details__short-description,
+.product-details.product-details--configurator-active.product-details--configurator-immersive .product-details__attributes {
+  margin: 0;
+}
+
+.product-details.product-details--configurator-active.product-details--configurator-immersive .product-details__header {
+  grid-row: 1;
+}
+
+.product-details.product-details--configurator-active.product-details--configurator-immersive .product-details__price {
+  grid-row: 2;
+}
+
+.product-details.product-details--configurator-active.product-details--configurator-immersive .product-details__short-description {
+  grid-row: 3;
+}
+
+.product-details.product-details--configurator-active.product-details--configurator-immersive .product-details__configurator-fallback {
+  grid-row: 4;
+  margin-top: var(--spacing-large);
+}
+
+.product-details.product-details--configurator-active.product-details--configurator-immersive .product-details__right-column > .product-details__gallery {
+  grid-row: 5;
+  width: 100%;
+  margin-top: var(--spacing-medium);
+}
+
+.product-details.product-details--configurator-active.product-details--configurator-immersive .product-details__description {
+  grid-row: 6;
+}
+
+.product-details.product-details--configurator-active.product-details--configurator-immersive .product-details__attributes {
+  grid-row: 7;
+}
+
+@media (min-width: 900px) {
+  .product-details__wrapper {
+    grid-template-columns: repeat(var(--grid-3-columns), 1fr);
+    column-gap: var(--grid-3-gutters);
+    position: relative;
+  }
+
+  .product-details__alert {
+    grid-column: 1 / span 12;
+    margin-bottom: var(--spacing-medium);
+  }
+
+  .product-details__left-column {
+    display: block;
+    grid-column: 1 / span 6;
+  }
+  
+  .product-details__right-column {
+    grid-column: 7 / span 5;
+    padding-top: var(--spacing-medium);
+  }
+
+  .product-details__right-column .product-details__gallery {
+    display: none;
+  }
+
+  .product-details__configuration {
+    grid-template-columns: repeat(var(--grid-1-columns), 1fr);
+    gap: var(--grid-1-gutters);
+    margin-top: var(--spacing-xxbig);
+  }
+
+  .product-details__options {
+    grid-column: 1 / span 4;
+  }
+
+  .product-details__input-options {
+    grid-column: 1 / span 4;
+  }
+
+  .product-details__buttons {
+    grid-column: 1 / span 4;
+  }
+
+  .product-details__quantity {
+    grid-column: 1 / span 2;
+  }
+
+  .product-details.product-details--configurator-active.product-details--configurator-immersive .product-details__left-column {
+    display: none;
+  }
+
+  .product-details.product-details--configurator-active.product-details--configurator-immersive .product-details__right-column {
+    grid-column: 1 / span 12;
+    grid-template-columns: repeat(var(--grid-3-columns), minmax(0, 1fr));
+    gap: var(--spacing-medium) var(--grid-3-gutters);
+    padding-top: var(--spacing-medium);
+  }
+
+  .product-details.product-details--configurator-active.product-details--configurator-immersive .product-details__header,
+  .product-details.product-details--configurator-active.product-details--configurator-immersive .product-details__price,
+  .product-details.product-details--configurator-active.product-details--configurator-immersive .product-details__short-description {
+    grid-column: 1 / span 5;
+  }
+
+  .product-details.product-details--configurator-active.product-details--configurator-immersive .product-details__configurator-fallback,
+  .product-details.product-details--configurator-active.product-details--configurator-immersive .product-details__right-column > .product-details__gallery,
+  .product-details.product-details--configurator-active.product-details--configurator-immersive .product-details__description,
+  .product-details.product-details--configurator-active.product-details--configurator-immersive .product-details__attributes {
+    grid-column: 1 / span 12;
+  }
+
+  .product-details.product-details--configurator-active.product-details--configurator-immersive .product-details__right-column > .product-details__gallery {
+    display: block;
+    width: min(100%, 52rem);
+    justify-self: start;
+  }
+}

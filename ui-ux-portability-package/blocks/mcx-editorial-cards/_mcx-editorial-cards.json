@@ -1,0 +1,22 @@
+{
+  "definitions": [
+    {
+      "title": "MCX Editorial Cards",
+      "id": "mcx-editorial-cards",
+      "plugins": {
+        "da": {
+          "name": "mcx-editorial-cards",
+          "rows": 3,
+          "columns": 4
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "mcx-editorial-cards",
+      "fields": []
+    }
+  ],
+  "filters": []
+}

@@ -1,0 +1,46 @@
+{
+  "definitions": [
+    {
+      "title": "Product Details",
+      "id": "product-details",
+      "model": "product-details",
+      "plugins": {
+        "da": {
+          "type": "key-value-block"
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "product-details",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "defaultsku",
+          "label": "Default SKU",
+          "value": ""
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "presentation",
+          "label": "Presentation",
+          "value": "default",
+          "options": [
+            {
+              "name": "Default",
+              "value": "default"
+            },
+            {
+              "name": "Auto Immersive",
+              "value": "auto-immersive"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

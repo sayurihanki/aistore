@@ -1,0 +1,19 @@
+mcx-hero
+eyebrow | Spring Collection - 2026 - Tax-Free
+heading-line-1 | OUTFITTED
+heading-line-2 | FOR THE
+heading-line-3 | mission & beyond
+description | Serving Marines and their families since 1897. Premium brands, exclusive savings, and tax-free shopping - exclusively for those who serve.
+image | ![Marine Corps collection hero](https://images.unsplash.com/photo-1519415943484-9fa1873496d4?w=1200&q=80)
+image-2 | ![Tactical collection apparel](https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1200&q=80)
+image-3 | ![Performance training essentials](https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&q=80)
+primary-cta | [Shop Now](#products)
+secondary-cta | [View Deals](#deals)
+stat-1-value | 20%+
+stat-1-label | Average Savings
+stat-2-value | 33M+
+stat-2-label | Yearly Transactions
+stat-3-value | Tax Free
+stat-3-label | Exclusive Benefit
+stat-4-value | 127+
+stat-4-label | Store Locations

@@ -1,0 +1,106 @@
+{
+  "definitions": [
+    {
+      "title": "Product Configurator Luxe",
+      "id": "product-configurator-luxe",
+      "model": "product-configurator-luxe",
+      "plugins": {
+        "da": {
+          "type": "key-value-block"
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "product-configurator-luxe",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "schema-url",
+          "label": "Schema URL",
+          "required": true,
+          "value": "/data/configurators/bodea-network-enclosure-luxe.json"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "eyebrow-text",
+          "label": "Eyebrow Text",
+          "value": "Bodea Configurator"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "title",
+          "label": "Title",
+          "value": "Build your enclosure in guided steps."
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "subtitle",
+          "label": "Subtitle",
+          "value": "Select footprint, access, airflow, and operations choices with a real-time Bodea luxury summary."
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "primary-cta-label",
+          "label": "Primary CTA Label",
+          "value": "Add configured build"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "secondary-cta-label",
+          "label": "Secondary CTA Label",
+          "value": "Talk to a Bodea specialist"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "secondary-cta-href",
+          "label": "Secondary CTA Href",
+          "value": "/contact"
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "theme",
+          "label": "Theme",
+          "value": "emerald",
+          "options": [
+            {
+              "name": "Emerald",
+              "value": "emerald"
+            },
+            {
+              "name": "Gold",
+              "value": "gold"
+            }
+          ]
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "presentation",
+          "label": "Presentation",
+          "value": "default",
+          "options": [
+            {
+              "name": "Default",
+              "value": "default"
+            },
+            {
+              "name": "Rack Immersive",
+              "value": "rack-immersive"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

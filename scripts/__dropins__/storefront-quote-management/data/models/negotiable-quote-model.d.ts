@@ -125,10 +125,6 @@ export interface CartItemModel {
         amountOff: number;
         percentOff: number;
     };
-    rowCatalogDiscount: {
-        amountOff: number;
-        percentOff: number;
-    };
     discounts: {
         label: string;
         value: string;

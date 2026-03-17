@@ -1,0 +1,1323 @@
+/* ===== Form-4 — Light Glassmorphic Multi-step ===== */
+
+.form-4 {
+  --f4-bg: #f7f6f4;
+  --f4-surface: rgb(255 255 255 / 60%);
+  --f4-glass: rgb(255 255 255 / 52%);
+  --f4-glass-h: rgb(255 255 255 / 68%);
+  --f4-gb: rgb(0 0 0 / 8%);
+  --f4-gb-f: rgb(46 190 122 / 40%);
+  --f4-text: var(--color-neutral-900, #292929);
+  --f4-dim: var(--color-neutral-600, #8f8f8f);
+  --f4-lbl: var(--color-neutral-700, #666);
+  --f4-a: var(--main-color-accent, #26a067);
+  --f4-a2: #1f7a4d;
+  --f4-a3: #059669;
+  --f4-err: var(--color-alert-800, #c35050);
+  --f4-ok: var(--color-positive-800, #53824c);
+  --f4-gold: var(--color-warning-800, #cc7a2e);
+  --f4-blur: 24px;
+  --f4-r: var(--shape-border-radius-3, 24px);
+  --f4-rs: var(--shape-border-radius-2, 8px);
+  --f4-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --f4-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  position: relative;
+  background: var(--f4-bg);
+  display: grid;
+  place-items: center;
+  padding: 4.8rem 1.6rem 6.4rem;
+  overflow: hidden;
+font: var(--type-body-1-default-font, 300 1.6rem/2.4rem var(--type-base-font-family, "Barlow", system-ui, sans-serif));
+  color: var(--f4-text);
+}
+
+/* ── BG layers ──────────────────────────────── */
+
+.form-4 .f4-pcanvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+}
+
+.form-4 .f4-bg-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.form-4 .f4-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.18;
+  animation: f4-drift var(--d, 20s) ease-in-out infinite alternate;
+}
+
+.form-4 .f4-orb:nth-child(1) {
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(#a8edcc, transparent 70%);
+  top: -150px;
+  left: -200px;
+
+  --d: 22s;
+}
+
+.form-4 .f4-orb:nth-child(2) {
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(#5fd49f, transparent 70%);
+  top: 35%;
+  right: -120px;
+
+  --d: 28s;
+
+  animation-delay: -9s;
+}
+
+.form-4 .f4-orb:nth-child(3) {
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(#6ee7b7, transparent 70%);
+  bottom: -80px;
+  left: 25%;
+
+  --d: 25s;
+
+  animation-delay: -5s;
+}
+
+.form-4 .f4-orb:nth-child(4) {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(#fde68a, transparent 70%);
+  top: 5%;
+  right: 20%;
+
+  --d: 32s;
+
+  animation-delay: -13s;
+  opacity: 0.12;
+}
+
+@keyframes f4-drift {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(50px, -70px) scale(1.1); }
+  66% { transform: translate(-40px, 50px) scale(0.95); }
+  100% { transform: translate(25px, -30px) scale(1.05); }
+}
+
+.form-4 .f4-bg-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgb(46 190 122 / 3%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(46 190 122 / 3%) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+.form-4 .f4-bg-noise {
+  position: absolute;
+  inset: -50%;
+  z-index: 0;
+  pointer-events: none;
+  width: 200%;
+  height: 200%;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: f4-grain 0.5s steps(2) infinite;
+}
+
+@keyframes f4-grain {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-2%, -1%); }
+  50% { transform: translate(1%, 2%); }
+  75% { transform: translate(-1%, 1%); }
+  100% { transform: translate(2%, -2%); }
+}
+
+/* ── Outer ──────────────────────────────────── */
+
+.form-4 .f4-outer {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 880px;
+}
+
+.form-4 .f4-badge {
+  text-align: center;
+  margin-bottom: 2.4rem;
+}
+
+.form-4 .f4-badge > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+font: var(--type-details-overline-font, 600 1.2rem/1.6rem var(--type-base-font-family, "Barlow", system-ui, sans-serif));
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--f4-a);
+  background: rgb(46 190 122 / 6%);
+  border: 1px solid rgb(46 190 122 / 14%);
+  padding: 0.6rem 1.6rem;
+  border-radius: 3.2rem;
+}
+
+.form-4 .f4-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--f4-a3);
+  animation: f4-pulse 2s ease-in-out infinite;
+}
+
+@keyframes f4-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.4;
+    transform: scale(0.7);
+  }
+}
+
+/* ── Card ───────────────────────────────────── */
+
+.form-4 .f4-card {
+  background: rgb(255 255 255 / 55%);
+  backdrop-filter: blur(var(--f4-blur)) saturate(160%);
+  border: 1px solid rgb(255 255 255 / 70%);
+  border-radius: 2.8rem;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgb(255 255 255 / 50%) inset,
+    0 4px 6px rgb(0 0 0 / 3%),
+    0 24px 80px rgb(46 190 122 / 6%),
+    0 48px 120px rgb(0 0 0 / 6%);
+  position: relative;
+}
+
+.form-4 .f4-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(46 190 122 / 20%) 30%,
+    rgb(31 122 77 / 25%) 50%,
+    rgb(5 150 105 / 15%) 70%,
+    transparent
+  );
+  z-index: 1;
+}
+
+/* ── Hero ───────────────────────────────────── */
+
+.form-4 .f4-hero {
+  padding: 4rem 4.8rem 3.2rem;
+  position: relative;
+  border-bottom: 1px solid rgb(0 0 0 / 5%);
+}
+
+.form-4 .f4-eyebrow {
+  font: var(--type-details-overline-font, 600 1.2rem/1.6rem var(--type-base-font-family, "Barlow", system-ui, sans-serif));
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--f4-a2);
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.form-4 .f4-eyebrow::before {
+  content: '';
+  display: block;
+  width: 2.4rem;
+  height: 1px;
+  background: var(--f4-a2);
+}
+
+.form-4 .f4-h1 {
+font: var(--type-display-2-font, 300 4.8rem/5.6rem var(--type-base-font-family, "Barlow", system-ui, sans-serif));
+  letter-spacing: -0.03em;
+  color: var(--f4-text);
+  margin-bottom: 1.6rem;
+}
+
+.form-4 .f4-h1 em {
+  font-style: normal;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--f4-a) 0%, var(--f4-a2) 50%, var(--f4-a3) 100%);
+  background-clip: text;
+  color: transparent;
+}
+
+.form-4 .f4-hero-p {
+  font: var(--type-body-1-default-font, 300 1.6rem/2.4rem var(--type-base-font-family, "Barlow", system-ui, sans-serif));
+  color: var(--f4-dim);
+  max-width: 52rem;
+}
+
+/* ── Progress ───────────────────────────────── */
+
+.form-4 .f4-progress {
+  margin-top: 3.2rem;
+  display: flex;
+  align-items: center;
+}
+
+.form-4 .f4-si {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.form-4 .f4-sw {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-4 .f4-sb {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: var(--type-body-2-strong-font, 700 1.4rem/2rem var(--type-base-font-family, "Barlow", system-ui, sans-serif));
+  border: 2px solid rgb(0 0 0 / 8%);
+  background: rgb(255 255 255 / 70%);
+  color: var(--f4-dim);
+  transition: all 0.4s var(--f4-spring);
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.form-4 .f4-sb-check {
+  width: 1.6rem;
+  height: 1.6rem;
+  display: none;
+}
+
+.form-4 .f4-sb--active {
+  background: var(--f4-a);
+  border-color: var(--f4-a);
+  color: #fff;
+  box-shadow: 0 4px 20px rgb(46 190 122 / 30%);
+}
+
+.form-4 .f4-sb--done {
+  background: var(--f4-ok);
+  border-color: var(--f4-ok);
+  color: #fff;
+  box-shadow: 0 4px 16px rgb(83 130 76 / 25%);
+}
+
+.form-4 .f4-sb--done .f4-sn {
+  display: none;
+}
+
+.form-4 .f4-sb--done .f4-sb-check {
+  display: block;
+}
+
+.form-4 .f4-sl {
+  flex: 1;
+  height: 2px;
+  background: rgb(0 0 0 / 6%);
+  position: relative;
+  overflow: hidden;
+}
+
+.form-4 .f4-slf {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--f4-ok), var(--f4-a));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s var(--f4-out);
+}
+
+.form-4 .f4-slbl {
+  font: var(--type-details-caption-2-font, 400 1.2rem/1.6rem var(--type-base-font-family, "Barlow", system-ui, sans-serif));
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--f4-dim);
+  margin-top: 0.8rem;
+  text-align: center;
+}
+
+.form-4 .f4-si--active .f4-slbl {
+  color: var(--f4-a);
+  font-weight: 600;
+}
+
+.form-4 .f4-si--done .f4-slbl {
+  color: var(--f4-ok);
+}
+
+/* ── Body ───────────────────────────────────── */
+
+.form-4 .f4-fbody {
+  padding: 3.2rem 4.8rem 4rem;
+}
+
+.form-4 .f4-fstep {
+  display: none;
+  animation: f4-s-in 0.5s var(--f4-out) both;
+}
+
+.form-4 .f4-fstep--active {
+  display: block;
+}
+
+@keyframes f4-s-in {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes f4-s-out {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+}
+
+.form-4 .f4-stitle {
+  font: var(--type-headline-2-strong-font, 700 2rem/2.4rem var(--type-base-font-family, "Barlow", system-ui, sans-serif));
+  color: var(--f4-text);
+  margin-bottom: 0.4rem;
+  letter-spacing: -0.01em;
+}
+
+.form-4 .f4-ssub {
+  font: var(--type-body-2-default-font, 300 1.4rem/2rem var(--type-base-font-family, "Barlow", system-ui, sans-serif));
+  color: var(--f4-dim);
+  margin-bottom: 3.2rem;
+  line-height: 1.7;
+}
+
+/* ── Grid ───────────────────────────────────── */
+
+.form-4 .f4-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.form-4 .f4-span2 {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 600px) {
+  .form-4 .f4-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-4 .f4-span2 {
+    grid-column: 1;
+  }
+}
+
+/* ── Field ──────────────────────────────────── */
+
+.form-4 .f4-field {
+  position: relative;
+  transition: transform 0.2s var(--f4-spring);
+}
+
+.form-4 .f4-field:focus-within {
+  transform: translateY(-1px);
+}
+
+.form-4 .f4-flbl {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font: var(--type-details-caption-1-font, 500 1.2rem/1.6rem var(--type-base-font-family, "Barlow", system-ui, sans-serif));
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--f4-lbl);
+  margin-bottom: 0.8rem;
+  transition: color 0.2s;
+}
+
+.form-4 .f4-field--err .f4-flbl {
+  color: var(--f4-err);
+}
+
+.form-4 .f4-field--ok .f4-flbl {
+  color: var(--f4-ok);
+}
+
+.form-4 .f4-field:focus-within .f4-flbl {
+  color: var(--f4-a);
+}
+
+.form-4 .f4-flbl-opt {
+  color: var(--f4-dim);
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 300;
+}
+
+.form-4 .f4-freq {
+  color: var(--f4-a);
+}
+
+.form-4 .f4-fico {
+  width: 1.6rem;
+  height: 1.6rem;
+  opacity: 0.5;
+}
+
+.form-4 .f4-fwrap {
+  position: relative;
+}
+
+.form-4 .f4-fi {
+  width: 100%;
+  background: var(--f4-glass);
+  border: 1px solid var(--f4-gb);
+  border-radius: var(--f4-rs);
+  color: var(--f4-text);
+  font: var(--type-body-1-default-font, 300 1.6rem/2.4rem var(--type-base-font-family, "Barlow", system-ui, sans-serif));
+  padding: 1.2rem 1.6rem;
+  outline: none;
+  transition: all 0.25s ease;
+  box-sizing: border-box;
+  appearance: none;
+  caret-color: var(--f4-a);
+  backdrop-filter: blur(12px);
+}
+
+.form-4 .f4-fi::placeholder {
+  color: var(--color-neutral-500, #b8b8b8);
+}
+
+.form-4 .f4-fi:hover {
+  background: var(--f4-glass-h);
+  border-color: rgb(0 0 0 / 12%);
+}
+
+.form-4 .f4-fi:focus {
+  background: rgb(255 255 255 / 80%);
+  border-color: var(--f4-gb-f);
+  box-shadow:
+    0 0 0 3px rgb(46 190 122 / 10%),
+    0 0 24px rgb(46 190 122 / 5%) inset;
+}
+
+.form-4 .f4-field--err .f4-fi {
+  border-color: rgb(195 80 80 / 50%);
+  box-shadow: 0 0 0 3px rgb(195 80 80 / 8%);
+}
+
+.form-4 .f4-field--ok .f4-fi {
+  border-color: rgb(83 130 76 / 40%);
+  box-shadow: 0 0 0 3px rgb(83 130 76 / 6%);
+}
+
+.form-4 .f4-ftrail {
+  position: absolute;
+  right: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.8rem;
+  height: 1.8rem;
+  color: var(--f4-dim);
+  pointer-events: none;
+  transition: color 0.2s;
+}
+
+.form-4 .f4-field--err .f4-ftrail {
+  color: var(--f4-err);
+}
+
+.form-4 .f4-field--ok .f4-ftrail {
+  color: var(--f4-ok);
+}
+
+.form-4 .f4-fi--trail {
+  padding-right: 4rem;
+}
+
+.form-4 textarea.f4-fi {
+  resize: vertical;
+  min-height: 14rem;
+  line-height: 1.7;
+}
+
+.form-4 select.f4-fi {
+  cursor: pointer;
+  padding-right: 4rem;
+}
+
+.form-4 .f4-fchev {
+  position: absolute;
+  right: 1.4rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--f4-dim);
+}
+
+.form-4 .f4-fchev svg {
+  width: 1.6rem;
+  height: 1.6rem;
+  display: block;
+}
+
+.form-4 .f4-fmsg {
+  font: var(--type-details-caption-2-font, 400 1.2rem/1.6rem var(--type-base-font-family, "Barlow", system-ui, sans-serif));
+  margin-top: 0.6rem;
+  min-height: 1.4em;
+  color: var(--f4-err);
+  transition: all 0.2s;
+  display: block;
+}
+
+/* ── Pills ──────────────────────────────────── */
+
+.form-4 .f4-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.form-4 .f4-pc {
+  position: relative;
+}
+
+.form-4 .f4-pc input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.form-4 .f4-pc label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: 3.2rem;
+  border: 1px solid var(--f4-gb);
+  background: var(--f4-glass);
+  color: var(--f4-dim);
+  font: var(--type-body-2-default-font, 300 1.4rem/2rem var(--type-base-font-family, "Barlow", system-ui, sans-serif));
+  cursor: pointer;
+  transition: all 0.2s;
+  user-select: none;
+  backdrop-filter: blur(8px);
+}
+
+.form-4 .f4-pc label:hover {
+  border-color: rgb(46 190 122 / 25%);
+  color: var(--f4-text);
+  background: rgb(46 190 122 / 5%);
+}
+
+.form-4 .f4-pc input:checked + label {
+  background: rgb(46 190 122 / 10%);
+  border-color: rgb(46 190 122 / 40%);
+  color: var(--f4-a);
+  font-weight: 500;
+  box-shadow: 0 2px 12px rgb(46 190 122 / 10%);
+}
+
+.form-4 .f4-pc--wide {
+  width: 100%;
+}
+
+.form-4 .f4-consent-label {
+  border-radius: var(--f4-rs);
+  width: 100%;
+  justify-content: flex-start;
+}
+
+/* ── Slider ─────────────────────────────────── */
+
+.form-4 .f4-fslider {
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  background: rgb(0 0 0 / 8%);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+.form-4 .f4-fslider::-webkit-slider-thumb {
+  appearance: none;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  background: var(--f4-a);
+  border: 3px solid #fff;
+  box-shadow: 0 2px 12px rgb(46 190 122 / 35%);
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+
+.form-4 .f4-fslider::-webkit-slider-thumb:hover {
+  box-shadow: 0 4px 20px rgb(46 190 122 / 50%);
+}
+
+.form-4 .f4-fslider::-moz-range-thumb {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  background: var(--f4-a);
+  border: 3px solid #fff;
+  box-shadow: 0 2px 12px rgb(46 190 122 / 35%);
+  cursor: pointer;
+}
+
+.form-4 .f4-slabels {
+  display: flex;
+  justify-content: space-between;
+  font: var(--type-details-caption-2-font, 400 1.2rem/1.6rem var(--type-base-font-family, "Barlow", system-ui, sans-serif));
+  color: var(--f4-dim);
+  margin-top: 0.8rem;
+}
+
+.form-4 .f4-sval {
+  text-align: center;
+  font: var(--type-headline-2-strong-font, 700 2rem/2.4rem var(--type-base-font-family, "Barlow", system-ui, sans-serif));
+  color: var(--f4-a);
+  margin-top: 1.2rem;
+  letter-spacing: -0.02em;
+}
+
+/* ── Toggle ─────────────────────────────────── */
+
+.form-4 .f4-toggles {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-4 .f4-trow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.4rem 1.6rem;
+  background: var(--f4-glass);
+  border: 1px solid var(--f4-gb);
+  border-radius: var(--f4-rs);
+  backdrop-filter: blur(12px);
+  transition: border-color 0.2s;
+}
+
+.form-4 .f4-trow:hover {
+  border-color: rgb(0 0 0 / 12%);
+}
+
+.form-4 .f4-ttxt {
+  flex: 1;
+}
+
+.form-4 .f4-ttitle {
+  font: var(--type-body-2-default-font, 300 1.4rem/2rem var(--type-base-font-family, "Barlow", system-ui, sans-serif));
+  font-weight: 400;
+  color: var(--f4-text);
+}
+
+.form-4 .f4-tsub {
+  font: var(--type-details-caption-2-font, 400 1.2rem/1.6rem var(--type-base-font-family, "Barlow", system-ui, sans-serif));
+  color: var(--f4-dim);
+  margin-top: 0.2rem;
+}
+
+.form-4 .f4-tswitch {
+  position: relative;
+  width: 4.8rem;
+  height: 2.8rem;
+  flex-shrink: 0;
+  margin-left: 1.6rem;
+}
+
+.form-4 .f4-tswitch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.form-4 .f4-ttrack {
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+  background: rgb(0 0 0 / 8%);
+  border-radius: 1.4rem;
+  transition: background 0.3s;
+  border: 1px solid rgb(0 0 0 / 6%);
+}
+
+.form-4 .f4-ttrack::after {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 15%);
+  transition:
+    transform 0.3s var(--f4-spring),
+    background 0.3s;
+}
+
+.form-4 .f4-tswitch input:checked + .f4-ttrack {
+  background: var(--f4-a);
+  border-color: var(--f4-a);
+}
+
+.form-4 .f4-tswitch input:checked + .f4-ttrack::after {
+  transform: translateX(2rem);
+  background: #fff;
+  box-shadow: 0 2px 8px rgb(46 190 122 / 30%);
+}
+
+/* ── Dropzone ───────────────────────────────── */
+
+.form-4 .f4-dropzone {
+  border: 2px dashed rgb(0 0 0 / 10%);
+  border-radius: var(--f4-rs);
+  padding: 3.2rem 2.4rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  background: var(--f4-glass);
+  backdrop-filter: blur(12px);
+  position: relative;
+  overflow: hidden;
+}
+
+.form-4 .f4-dropzone:hover,
+.form-4 .f4-dropzone--over {
+  border-color: rgb(46 190 122 / 30%);
+  background: rgb(46 190 122 / 4%);
+}
+
+.form-4 .f4-dropzone input[type='file'] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.form-4 .f4-dzico {
+  font-size: 3.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.form-4 .f4-dztitle {
+  font: var(--type-body-2-default-font, 300 1.4rem/2rem var(--type-base-font-family, "Barlow", system-ui, sans-serif));
+  color: var(--f4-dim);
+}
+
+.form-4 .f4-dztitle strong {
+  color: var(--f4-a);
+  font-weight: 500;
+}
+
+.form-4 .f4-dzsub {
+  font: var(--type-details-caption-2-font, 400 1.2rem/1.6rem var(--type-base-font-family, "Barlow", system-ui, sans-serif));
+  color: var(--f4-dim);
+  margin-top: 0.4rem;
+  opacity: 0.6;
+}
+
+.form-4 .f4-dzfiles {
+  margin-top: 1.2rem;
+}
+
+.form-4 .f4-dzpill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 1rem;
+  background: rgb(83 130 76 / 8%);
+  border: 1px solid rgb(83 130 76 / 15%);
+  border-radius: 3.2rem;
+  font: var(--type-details-caption-2-font, 400 1.2rem/1.6rem var(--type-base-font-family, "Barlow", system-ui, sans-serif));
+  color: var(--f4-ok);
+  margin: 0.4rem;
+}
+
+/* ── Counter ────────────────────────────────── */
+
+.form-4 .f4-counter {
+  position: absolute;
+  bottom: 1rem;
+  right: 1.2rem;
+  font: var(--type-details-caption-2-font, 400 1.2rem/1.6rem var(--type-base-font-family, "Barlow", system-ui, sans-serif));
+  color: var(--f4-dim);
+  pointer-events: none;
+  transition: color 0.2s;
+}
+
+.form-4 .f4-counter--warn {
+  color: var(--f4-gold);
+}
+
+.form-4 .f4-counter--over {
+  color: var(--f4-err);
+}
+
+/* ── Date ───────────────────────────────────── */
+
+.form-4 input[type='date'].f4-fi::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.form-4 input[type='date'].f4-fi::-webkit-calendar-picker-indicator:hover {
+  opacity: 0.8;
+}
+
+/* ── Color picker ───────────────────────────── */
+
+.form-4 .f4-colorpicks {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.form-4 .f4-cpick {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 3px solid transparent;
+  transition: all 0.2s var(--f4-spring);
+  position: relative;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 12%);
+}
+
+.form-4 .f4-cpick--sel {
+  transform: scale(1.15);
+  border-color: var(--f4-text);
+  box-shadow: 0 4px 16px rgb(0 0 0 / 20%);
+}
+
+.form-4 .f4-cpick--sel::after {
+  content: '\2713';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: #fff;
+  font-weight: 700;
+  text-shadow: 0 1px 3px rgb(0 0 0 / 40%);
+}
+
+.form-4 .f4-cpick-label {
+  font: var(--type-body-2-default-font, 300 1.4rem/2rem var(--type-base-font-family, "Barlow", system-ui, sans-serif));
+  color: var(--f4-dim);
+  margin-left: 0.4rem;
+}
+
+/* ── Stars ──────────────────────────────────── */
+
+.form-4 .f4-stars {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.form-4 .f4-sbtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 2.8rem;
+  padding: 0.4rem;
+  line-height: 1;
+  color: rgb(0 0 0 / 10%);
+  transition: color 0.15s, transform 0.2s;
+}
+
+/* ── Nav ────────────────────────────────────── */
+
+.form-4 .f4-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4rem;
+  gap: 1.6rem;
+}
+
+.form-4 .f4-bbk {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: none;
+  border: 1px solid rgb(0 0 0 / 10%);
+  color: var(--f4-dim);
+  border-radius: var(--f4-rs);
+  font: var(--type-body-2-default-font, 300 1.4rem/2rem var(--type-base-font-family, "Barlow", system-ui, sans-serif));
+  font-weight: 400;
+  padding: 1.2rem 2rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.form-4 .f4-bbk:hover {
+  border-color: rgb(0 0 0 / 18%);
+  color: var(--f4-text);
+  background: rgb(0 0 0 / 3%);
+}
+
+.form-4 .f4-bbk svg {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.form-4 .f4-bnx {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex: 1;
+  max-width: 28rem;
+  margin-left: auto;
+  padding: 1.4rem 3.2rem;
+  background: linear-gradient(135deg, var(--f4-a), var(--f4-a2));
+  color: #fff;
+  border: none;
+  border-radius: var(--f4-rs);
+  font: var(--type-button-2-font, 400 1.6rem/2.4rem var(--type-base-font-family, "Barlow", system-ui, sans-serif));
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s;
+  box-shadow: 0 4px 24px rgb(46 190 122 / 25%);
+}
+
+.form-4 .f4-bnx::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 40%, rgb(255 255 255 / 15%) 100%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.form-4 .f4-bnx:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgb(46 190 122 / 35%);
+}
+
+.form-4 .f4-bnx:hover::before {
+  opacity: 1;
+}
+
+.form-4 .f4-bnx:active {
+  transform: translateY(0);
+}
+
+.form-4 .f4-bnx svg {
+  width: 1.6rem;
+  height: 1.6rem;
+  transition: transform 0.2s;
+}
+
+.form-4 .f4-bnx--ld {
+  pointer-events: none;
+}
+
+.form-4 .f4-bnx--ld svg {
+  animation: f4-spin 0.8s linear infinite;
+}
+
+@keyframes f4-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.form-4 .f4-bnx:hover svg {
+  transform: translateX(3px);
+}
+
+.form-4 .f4-bsub {
+  background: linear-gradient(135deg, var(--f4-a), var(--f4-a2));
+  box-shadow: 0 4px 24px rgb(46 190 122 / 25%);
+}
+
+.form-4 .f4-bsub:hover {
+  box-shadow: 0 8px 32px rgb(46 190 122 / 35%);
+}
+
+/* ── Link ───────────────────────────────────── */
+
+.form-4 .f4-link {
+  color: var(--f4-a);
+  text-decoration: none;
+}
+
+.form-4 .f4-link:hover {
+  text-decoration: underline;
+}
+
+/* ── Success ────────────────────────────────── */
+
+.form-4 .f4-success-wrap {
+  display: contents;
+}
+
+.form-4 .f4-success {
+  padding: 6.4rem 4.8rem;
+  text-align: center;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.6s var(--f4-out), transform 0.6s var(--f4-out);
+}
+
+.form-4 .f4-success--visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.form-4 .f4-sburst {
+  position: relative;
+  width: 12rem;
+  height: 12rem;
+  margin: 0 auto 3.2rem;
+}
+
+.form-4 .f4-sbring {
+  position: absolute;
+  inset: 0;
+  border: 2px solid rgb(83 130 76 / 25%);
+  border-radius: 50%;
+  animation: f4-burst 1.8s var(--f4-out) forwards;
+}
+
+.form-4 .f4-sbring:nth-child(2) {
+  animation-delay: 0.18s;
+}
+
+.form-4 .f4-sbring:nth-child(3) {
+  animation-delay: 0.36s;
+}
+
+@keyframes f4-burst {
+  from {
+    transform: scale(0.3);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(2.8);
+    opacity: 0;
+  }
+}
+
+.form-4 .f4-sico {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(83 130 76 / 8%);
+  border: 2px solid rgb(83 130 76 / 20%);
+  border-radius: 50%;
+}
+
+.form-4 .f4-sico-svg {
+  width: 4rem;
+  height: 4rem;
+  stroke: var(--f4-ok);
+}
+
+.form-4 .f4-sh {
+  font: var(--type-display-3-font, 300 3.4rem/4rem var(--type-base-font-family, "Barlow", system-ui, sans-serif));
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--f4-text);
+  margin-bottom: 0.8rem;
+}
+
+.form-4 .f4-ssb {
+  font: var(--type-body-1-default-font, 300 1.6rem/2.4rem var(--type-base-font-family, "Barlow", system-ui, sans-serif));
+  color: var(--f4-dim);
+  line-height: 1.7;
+  max-width: 42rem;
+  margin: 0 auto 4rem;
+}
+
+.form-4 .f4-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 4rem;
+}
+
+.form-4 .f4-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 1.4rem;
+  background: rgb(46 190 122 / 5%);
+  border: 1px solid rgb(46 190 122 / 12%);
+  border-radius: 3.2rem;
+  font: var(--type-body-2-default-font, 300 1.4rem/2rem var(--type-base-font-family, "Barlow", system-ui, sans-serif));
+  color: var(--f4-text);
+}
+
+.form-4 .f4-chip-svg {
+  width: 1.4rem;
+  height: 1.4rem;
+  stroke: var(--f4-a);
+}
+
+.form-4 .f4-scount {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.form-4 .f4-cring {
+  position: relative;
+  width: 8.8rem;
+  height: 8.8rem;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.form-4 .f4-cring svg {
+  transform: rotate(-90deg);
+  width: 100%;
+  height: 100%;
+}
+
+.form-4 .f4-cring circle {
+  fill: none;
+  stroke-width: 2;
+}
+
+.form-4 .f4-rbg {
+  stroke: rgb(0 0 0 / 5%);
+}
+
+.form-4 .f4-rfg {
+  stroke: var(--f4-a);
+  stroke-linecap: round;
+}
+
+.form-4 .f4-cnum {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: var(--type-headline-1-font, 400 2.4rem/3.2rem var(--type-base-font-family, "Barlow", system-ui, sans-serif));
+  font-weight: 700;
+  color: var(--f4-a);
+}
+
+.form-4 .f4-clbl {
+  font: var(--type-details-caption-1-font, 500 1.2rem/1.6rem var(--type-base-font-family, "Barlow", system-ui, sans-serif));
+  color: var(--f4-dim);
+  letter-spacing: 0.04em;
+}
+
+.form-4 .f4-bgn {
+  background: none;
+  border: 1px solid rgb(46 190 122 / 25%);
+  color: var(--f4-a);
+  border-radius: 3.2rem;
+  font: var(--type-body-2-default-font, 300 1.4rem/2rem var(--type-base-font-family, "Barlow", system-ui, sans-serif));
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 0.8rem 2.4rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.form-4 .f4-bgn:hover {
+  background: rgb(46 190 122 / 5%);
+  border-color: rgb(46 190 122 / 45%);
+}
+
+/* ── Responsive ─────────────────────────────── */
+
+@media (max-width: 640px) {
+  .form-4 .f4-hero,
+  .form-4 .f4-fbody,
+  .form-4 .f4-success {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .form-4 .f4-progress {
+    display: none;
+  }
+
+  .form-4 .f4-h1 {
+    font-size: 3.2rem;
+    line-height: 1.1;
+  }
+}
+
+/* ── Reduced motion ─────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .form-4 .f4-orb,
+  .form-4 .f4-bg-noise,
+  .form-4 .f4-dot,
+  .form-4 .f4-fstep,
+  .form-4 .f4-sbring,
+  .form-4 .f4-bnx,
+  .form-4 .f4-bnx::before,
+  .form-4 .f4-fi,
+  .form-4 .f4-pc label,
+  .form-4 .f4-pc input,
+  .form-4 .f4-success,
+  .form-4 .f4-ttrack,
+  .form-4 .f4-ttrack::after {
+    animation: none;
+    transition: none;
+  }
+}

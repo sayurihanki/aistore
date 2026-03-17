@@ -1,0 +1,874 @@
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer-container .section,
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer {
+  overflow: hidden;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .hero {
+  min-height: 720px;
+  overflow: hidden;
+  position: relative;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .hero-canvas {
+  background:
+    radial-gradient(ellipse 70% 80% at 75% 35%, rgb(193 18 31 / 10%) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 50% at 85% 80%, rgb(0 0 0 / 55%) 0%, transparent 50%),
+    radial-gradient(ellipse 35% 35% at 8% 85%, rgb(201 162 39 / 5%) 0%, transparent 50%),
+    linear-gradient(160deg, var(--void) 0%, var(--surface-1) 35%, #081526 100%);
+  inset: 0;
+  position: absolute;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .hero-grid {
+  background-image:
+    linear-gradient(var(--rim) 1px, transparent 1px),
+    linear-gradient(90deg, var(--rim) 1px, transparent 1px);
+  background-size: 80px 80px;
+  inset: 0;
+  mask-image: linear-gradient(to right, transparent 0%, #000 20%, #000 60%, transparent 100%);
+  opacity: 0.3;
+  position: absolute;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .hero-scan {
+  animation: mcx-hero-newcomer-scan 6s linear infinite;
+  background: linear-gradient(90deg, transparent, rgb(193 18 31 / 35%), transparent);
+  height: 1px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .hero-vline {
+  background: linear-gradient(180deg, transparent 5%, rgb(193 18 31 / 18%) 20%, rgb(193 18 31 / 18%) 80%, transparent 95%);
+  bottom: 0;
+  left: 44px;
+  position: absolute;
+  top: 0;
+  width: 1px;
+  z-index: 2;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .hero-vline::after {
+  animation: mcx-hero-newcomer-vdot 4s ease-in-out infinite;
+  background: var(--scarlet);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--scarlet);
+  content: '';
+  height: 7px;
+  left: -3px;
+  position: absolute;
+  top: 18%;
+  width: 7px;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .particles {
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .particle {
+  animation: mcx-hero-newcomer-pfloat var(--dur, 12s) linear infinite;
+  animation-delay: var(--delay, 0s);
+  border-radius: 50%;
+  opacity: 0;
+  position: absolute;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .glow-ring {
+  border-radius: 50%;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .glow-ring-1 {
+  animation: mcx-hero-newcomer-rpulse 8s ease-in-out infinite;
+  border: 1px solid rgb(193 18 31 / 6%);
+  box-shadow: inset 0 0 100px rgb(193 18 31 / 3%);
+  height: 560px;
+  right: -120px;
+  transform: translateY(-50%);
+  width: 560px;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .glow-ring-2 {
+  animation: mcx-hero-newcomer-rpulse 8s ease-in-out 2s infinite;
+  border: 1px solid rgb(201 162 39 / 3%);
+  height: 760px;
+  right: -220px;
+  transform: translateY(-50%);
+  width: 760px;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .glow-ring-3 {
+  animation: mcx-hero-newcomer-rpulse 8s ease-in-out 4s infinite;
+  border: 1px solid rgb(255 255 255 / 2%);
+  height: 1000px;
+  right: -340px;
+  transform: translateY(-50%);
+  width: 1000px;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .corner {
+  animation: mcx-hero-newcomer-corner-in 0.6s var(--ease) forwards;
+  animation-delay: var(--d, 0.3s);
+  height: 44px;
+  opacity: 0;
+  position: absolute;
+  width: 44px;
+  z-index: 5;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .corner::before,
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .corner::after {
+  background: var(--scarlet);
+  content: '';
+  position: absolute;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .corner::before {
+  height: 1px;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .corner::after {
+  width: 1px;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .c-tl {
+  left: 20px;
+  top: 20px;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .c-tl::before {
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .c-tl::after {
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .c-tr {
+  right: 20px;
+  top: 20px;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .c-tr::before {
+  right: 0;
+  top: 0;
+  width: 100%;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .c-tr::after {
+  height: 100%;
+  right: 0;
+  top: 0;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .c-bl {
+  bottom: 20px;
+  left: 20px;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .c-bl::before {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .c-bl::after {
+  bottom: 0;
+  height: 100%;
+  left: 0;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .c-br {
+  bottom: 20px;
+  right: 20px;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .c-br::before {
+  bottom: 0;
+  right: 0;
+  width: 100%;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .c-br::after {
+  bottom: 0;
+  height: 100%;
+  right: 0;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .hero-rank {
+  align-items: flex-start;
+  animation: mcx-hero-newcomer-fade-down 0.7s var(--ease) 0.25s forwards;
+  color: rgb(255 255 255 / 18%);
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  gap: 4px;
+  letter-spacing: 0.2em;
+  opacity: 0;
+  position: absolute;
+  right: clamp(72px, 8vw, 132px);
+  top: 44px;
+  z-index: 5;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .hero-rank span {
+  border: 1px solid rgb(255 255 255 / 6%);
+  border-radius: 3px;
+  display: block;
+  min-width: 184px;
+  padding: 3px 10px;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .intel {
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  padding: 120px 0 80px;
+  pointer-events: none;
+  position: absolute;
+  right: clamp(44px, 6vw, 96px);
+  top: 0;
+  width: 340px;
+  z-index: 3;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .ip {
+  animation: mcx-hero-newcomer-panel-in 0.8s var(--ease) forwards;
+  animation-delay: var(--d, 0.45s);
+  backdrop-filter: blur(14px);
+  background: rgb(13 21 32 / 60%);
+  border: 1px solid var(--rim);
+  border-radius: var(--r-md);
+  opacity: 0;
+  padding: 16px 20px;
+  pointer-events: auto;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .ip-tag {
+  align-items: center;
+  color: var(--scarlet);
+  display: flex;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  gap: 6px;
+  letter-spacing: 0.28em;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .ip-dot {
+  animation: mcx-hero-newcomer-blink 2s ease-in-out infinite;
+  background: var(--scarlet);
+  border-radius: 50%;
+  height: 4px;
+  width: 4px;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .ip-val {
+  color: var(--text-bright);
+  font-family: var(--font-hero);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .ip-sub {
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  margin-top: 4px;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .ip-bar {
+  background: var(--surface-4);
+  border-radius: 1px;
+  height: 2px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .ip-bar-fill {
+  background: linear-gradient(90deg, var(--scarlet), var(--gold));
+  border-radius: 1px;
+  height: 100%;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .hero-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 1500px;
+  padding: 80px 48px 48px 80px;
+  position: relative;
+  width: 100%;
+  z-index: 4;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .hero-eyebrow,
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .hero-desc,
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .quick-links,
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .hero-ctas,
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .stats-row {
+  animation: mcx-hero-newcomer-fade-up 0.7s var(--ease) forwards;
+  opacity: 0;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .hero-eyebrow {
+  align-items: center;
+  animation-delay: 0.3s;
+  display: inline-flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .eyebrow-pip {
+  display: flex;
+  gap: 4px;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .eyebrow-pip span {
+  background: var(--scarlet);
+  box-shadow: 0 0 8px var(--scarlet);
+  display: block;
+  height: 2px;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .eyebrow-pip span:nth-child(1) {
+  width: 18px;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .eyebrow-pip span:nth-child(2) {
+  opacity: 0.5;
+  width: 8px;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .eyebrow-pip span:nth-child(3) {
+  opacity: 0.25;
+  width: 4px;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .hero-eyebrow-txt {
+  color: var(--scarlet);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .hero-h1 {
+  color: var(--text-bright);
+  font-family: var(--font-hero);
+  font-size: clamp(68px, 9.5vw, 136px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 0.84;
+  margin-bottom: 12px;
+  max-width: 720px;
+  overflow: hidden;
+  text-transform: uppercase;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .hero-h1 .l1,
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .hero-h1 .l2,
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .hero-h1 .l3 {
+  animation: mcx-hero-newcomer-title-reveal 0.8s var(--ease) forwards;
+  display: block;
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .hero-h1 .l1 {
+  animation-delay: 0.35s;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .hero-h1 .l2 {
+  animation-delay: 0.5s;
+  color: var(--gold);
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .hero-h1 .l3 {
+  animation-delay: 0.65s;
+  color: rgb(240 234 224 / 55%);
+  font-size: 0.52em;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .hero-desc {
+  animation-delay: 0.8s;
+  color: var(--text-body);
+  font-size: 15px;
+  line-height: 1.85;
+  margin-bottom: 36px;
+  max-width: 440px;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .quick-links {
+  animation-delay: 0.9s;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 36px;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .ql {
+  align-items: center;
+  backdrop-filter: blur(10px);
+  background: rgb(13 21 32 / 65%);
+  border: 1px solid var(--rim);
+  border-radius: var(--r-md);
+  display: inline-flex;
+  gap: 8px;
+  padding: 10px 18px;
+  text-decoration: none;
+  transition:
+    border-color var(--t-mid) var(--ease),
+    background var(--t-mid) var(--ease),
+    transform var(--t-mid) var(--ease);
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .ql:hover,
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .ql:focus-visible {
+  background: rgb(201 162 39 / 6%);
+  border-color: var(--rim-gold);
+  transform: translateY(-1px);
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .ql-icon {
+  align-items: center;
+  border-radius: 6px;
+  display: flex;
+  flex-shrink: 0;
+  height: 28px;
+  justify-content: center;
+  width: 28px;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .ql-icon svg,
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .ql-arrow svg,
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .btn-arrow svg {
+  height: 14px;
+  width: 14px;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .ql-icon.red {
+  background: rgb(193 18 31 / 14%);
+  color: var(--scarlet);
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .ql-icon.gold {
+  background: var(--gold-dim);
+  color: var(--gold);
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .ql-icon.teal {
+  background: rgb(52 198 120 / 10%);
+  color: #34c678;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .ql-label {
+  color: var(--text-body);
+  font-family: var(--font-ui);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color var(--t-mid) var(--ease);
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .ql-arrow,
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .btn-arrow {
+  color: var(--text-dim);
+  display: inline-flex;
+  flex-shrink: 0;
+  transition:
+    color var(--t-mid) var(--ease),
+    transform var(--t-mid) var(--ease);
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .ql:hover .ql-label,
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .ql:focus-visible .ql-label {
+  color: var(--gold-lt);
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .ql:hover .ql-arrow,
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .ql:focus-visible .ql-arrow {
+  color: var(--gold);
+  transform: translateX(3px);
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .hero-ctas {
+  align-items: center;
+  animation-delay: 1s;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 52px;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .btn {
+  align-items: center;
+  border: 0;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 700;
+  gap: 10px;
+  letter-spacing: 0.18em;
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    background var(--t-mid) var(--ease),
+    border-color var(--t-mid) var(--ease),
+    box-shadow var(--t-mid) var(--ease),
+    color var(--t-mid) var(--ease),
+    transform var(--t-mid) var(--ease);
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .btn-p {
+  background: var(--scarlet);
+  border-radius: var(--r-sm);
+  box-shadow: var(--shadow-red);
+  clip-path: polygon(0 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+  color: #fff;
+  padding: 15px 38px;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .btn-p:hover,
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .btn-p:focus-visible {
+  background: var(--scarlet-bright);
+  box-shadow: 0 0 44px rgb(193 18 31 / 40%);
+  transform: translateY(-2px);
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .btn-p .btn-shine {
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 15%), transparent);
+  height: 100%;
+  left: -100%;
+  position: absolute;
+  top: 0;
+  width: 60%;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .btn-p:hover .btn-shine,
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .btn-p:focus-visible .btn-shine {
+  left: 130%;
+  transition: left 0.6s var(--ease);
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .btn-s {
+  background: transparent;
+  border: 1px solid var(--rim);
+  border-radius: var(--r-sm);
+  color: var(--text-body);
+  padding: 14px 28px;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .btn-s:hover,
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .btn-s:focus-visible {
+  background: var(--gold-dim);
+  border-color: var(--gold-border);
+  color: var(--gold);
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .btn:hover .btn-arrow,
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .btn:focus-visible .btn-arrow {
+  color: currentcolor;
+  transform: translateX(3px);
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .stats-row {
+  align-items: center;
+  animation-delay: 1.1s;
+  display: flex;
+  gap: 0;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .stat {
+  border-right: 1px solid var(--rim);
+  padding: 0 32px;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .stat:first-child {
+  padding-left: 0;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .stat:last-child {
+  border-right: 0;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .stat-val {
+  color: var(--text-bright);
+  font-family: var(--font-hero);
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .stat-lbl {
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.22em;
+  margin-top: 5px;
+  text-transform: uppercase;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .parallax-layer {
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  transition: transform 0.15s ease-out;
+}
+
+@keyframes mcx-hero-newcomer-scan {
+  0% {
+    opacity: 0;
+    top: -2px;
+  }
+
+  5% {
+    opacity: 1;
+  }
+
+  95% {
+    opacity: 0.2;
+  }
+
+  100% {
+    opacity: 0;
+    top: 100%;
+  }
+}
+
+@keyframes mcx-hero-newcomer-vdot {
+  0%,
+  100% {
+    opacity: 1;
+    top: 18%;
+  }
+
+  50% {
+    opacity: 0.4;
+    top: 78%;
+  }
+}
+
+@keyframes mcx-hero-newcomer-pfloat {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0);
+  }
+
+  10% {
+    opacity: var(--peak, 0.35);
+    transform: translateY(0) scale(1);
+  }
+
+  90% {
+    opacity: var(--peak, 0.35);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(calc(-1 * var(--travel, 300px))) scale(0);
+  }
+}
+
+@keyframes mcx-hero-newcomer-rpulse {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: translateY(-50%) scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.02);
+  }
+}
+
+@keyframes mcx-hero-newcomer-corner-in {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+
+  to {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+}
+
+@keyframes mcx-hero-newcomer-fade-down {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes mcx-hero-newcomer-panel-in {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+
+  to {
+    opacity: 0.75;
+    transform: translateX(0);
+  }
+}
+
+@keyframes mcx-hero-newcomer-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes mcx-hero-newcomer-title-reveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes mcx-hero-newcomer-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+}
+
+@media (max-width: 1100px) {
+  body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .intel {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .hero {
+    min-height: 640px;
+  }
+
+  body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .hero-content {
+    padding: 70px 32px 40px 48px;
+  }
+
+  body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .hero-rank,
+  body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .glow-ring {
+    display: none;
+  }
+
+  body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .hero-vline {
+    left: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .hero {
+    min-height: auto;
+  }
+
+  body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .hero-content {
+    padding: 60px 20px 30px;
+  }
+
+  body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .hero-vline,
+  body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .corner {
+    display: none;
+  }
+
+  body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .hero-h1 {
+    font-size: 64px;
+  }
+
+  body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .quick-links {
+    gap: 8px;
+  }
+
+  body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .ql {
+    padding: 8px 14px;
+  }
+
+  body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .stats-row {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .stat {
+    border-right: 0;
+    padding: 0;
+    width: calc(50% - 8px);
+  }
+
+  body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .stat-val {
+    font-size: 30px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer *,
+  body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer *::before,
+  body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .hero-h1 span,
+  body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .hero-eyebrow,
+  body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .hero-desc,
+  body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .quick-links,
+  body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .hero-ctas,
+  body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .stats-row,
+  body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .ip,
+  body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .corner,
+  body:is(.mcx, .mcx-preview) main .mcx-hero-newcomer .hero-rank {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

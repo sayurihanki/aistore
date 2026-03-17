@@ -1,0 +1,44 @@
+mcx-nav-data
+config |  | search-placeholder | Search products, brands, gear...
+config |  | sign-in-label | Sign In
+config |  | sign-in-url | /account
+hot |  | Deals & Offers | /deals
+item |  | Shop All | /shop
+item |  | Apparel & Footwear | /apparel-footwear
+group | Apparel & Footwear | Men's |
+group | Apparel & Footwear | Women's |
+group | Apparel & Footwear | Footwear |
+link | Apparel & Footwear > Men's | Uniforms & Cammies | /mens/uniforms
+link | Apparel & Footwear > Men's | T-Shirts & Polos | /mens/tops
+link | Apparel & Footwear > Men's | Athletic Wear | /mens/athletics
+link | Apparel & Footwear > Women's | Uniforms | /womens/uniforms
+link | Apparel & Footwear > Women's | Activewear | /womens/activewear
+link | Apparel & Footwear > Women's | Accessories | /womens/accessories
+link | Apparel & Footwear > Footwear | Tactical Boots | /footwear/boots
+link | Apparel & Footwear > Footwear | Athletic Shoes | /footwear/athletic
+link | Apparel & Footwear > Footwear | Work & Safety | /footwear/work
+feature | Apparel & Footwear | Clearance Apparel | /clearance/apparel
+feature | Apparel & Footwear | Top Rated Boots | /boots
+feature | Apparel & Footwear | New Arrivals | /new
+item |  | Electronics | /electronics
+group | Electronics | Computers |
+group | Electronics | Mobile & Audio |
+group | Electronics | Gaming |
+link | Electronics > Computers | MacBooks & Laptops | /electronics/computers
+link | Electronics > Computers | Tablets & iPads | /electronics/tablets
+link | Electronics > Mobile & Audio | Smartphones | /electronics/mobile
+link | Electronics > Mobile & Audio | Headphones | /electronics/audio
+link | Electronics > Gaming | Consoles | /electronics/gaming
+link | Electronics > Gaming | Games & Software | /electronics/gaming
+feature | Electronics | Apple Products | /electronics/apple
+feature | Electronics | Gaming Deals | /electronics/gaming
+item |  | Home & Living | /home
+group | Home & Living | Furniture |
+group | Home & Living | Kitchen |
+group | Home & Living | Bedding & Bath |
+link | Home & Living > Furniture | Bedroom | /home/furniture
+link | Home & Living > Kitchen | Appliances | /home/kitchen
+link | Home & Living > Bedding & Bath | Towels | /home/bath
+item |  | Sports & Outdoors | /sports-outdoors
+item |  | Uniforms | /uniforms
+item |  | Kids & Toys | /kids-toys

@@ -91,13 +91,25 @@ function main() {
   log(`\n⚠️  ${colors.bold}Block changes detected!${colors.reset}`, 'yellow');
   log(`Changed blocks: ${blockCheck.changedBlocks.join(', ')}`, 'yellow');
 
-  // Check which blocks have READMEs
-  const blocksWithoutReadme = blockCheck.changedBlocks.filter((block) => !checkReadmeExists(block));
+  // Skip README check for blocks being removed (directory no longer exists)
+  const blocksBeingRemoved = blockCheck.changedBlocks.filter(
+    (block) => !fs.existsSync(path.join('blocks', block)),
+  );
+  const blocksToCheck = blockCheck.changedBlocks.filter(
+    (block) => !blocksBeingRemoved.includes(block),
+  );
+
+  // Check which blocks have READMEs (only for blocks that still exist)
+  const blocksWithoutReadme = blocksToCheck.filter((block) => !checkReadmeExists(block));
 
   log('\n📝 README status for changed blocks:', 'yellow');
   blockCheck.changedBlocks.forEach((block) => {
-    const readmeStatus = checkReadmeExists(block) ? '✅' : '❌';
-    log(`  ${readmeStatus} blocks/${block}/README.md`, checkReadmeExists(block) ? 'green' : 'red');
+    if (blocksBeingRemoved.includes(block)) {
+      log(`  ⏭️  blocks/${block}/ (removed, skipping README check)`, 'blue');
+    } else {
+      const readmeStatus = checkReadmeExists(block) ? '✅' : '❌';
+      log(`  ${readmeStatus} blocks/${block}/README.md`, checkReadmeExists(block) ? 'green' : 'red');
+    }
   });
 
   // If there are blocks without READMEs, prevent the commit

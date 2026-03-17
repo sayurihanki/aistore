@@ -1,0 +1,94 @@
+body:is(.mcx, .mcx-preview) main .mcx-benefits-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-benefits .benefits {
+  background: var(--surface-1);
+  border-bottom: 1px solid var(--rim);
+  padding: 26px 48px;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-benefits .ben-grid {
+  display: grid;
+  gap: 0;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 0 auto;
+  max-width: 1500px;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-benefits .ben-item {
+  align-items: center;
+  border-right: 1px solid var(--rim);
+  display: flex;
+  gap: 16px;
+  padding: 0 36px;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-benefits .ben-item:first-child {
+  padding-left: 0;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-benefits .ben-item:last-child {
+  border-right: 0;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-benefits .ben-ico {
+  align-items: center;
+  background: var(--scarlet-glow);
+  border: 1px solid rgb(193 18 31 / 20%);
+  border-radius: var(--r-lg);
+  display: flex;
+  flex-shrink: 0;
+  height: 44px;
+  justify-content: center;
+  transition: var(--t-mid);
+  width: 44px;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-benefits .ben-item:hover .ben-ico {
+  background: var(--scarlet);
+  box-shadow: var(--shadow-red);
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-benefits .ben-ico svg {
+  color: var(--scarlet);
+  height: 20px;
+  transition: color var(--t-mid);
+  width: 20px;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-benefits .ben-item:hover .ben-ico svg {
+  color: #fff;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-benefits .ben-title {
+  color: var(--text-bright);
+  font-family: var(--font-ui);
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-benefits .ben-sub {
+  color: var(--text-dim);
+  font-size: 12px;
+  margin-top: 3px;
+}
+
+@media (max-width: 900px) {
+  body:is(.mcx, .mcx-preview) main .mcx-benefits .benefits {
+    padding: 26px 20px;
+  }
+
+  body:is(.mcx, .mcx-preview) main .mcx-benefits .ben-grid {
+    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  body:is(.mcx, .mcx-preview) main .mcx-benefits .ben-item {
+    border-right: 0;
+    padding: 0;
+  }
+}

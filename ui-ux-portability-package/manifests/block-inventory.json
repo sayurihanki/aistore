@@ -1,0 +1,3029 @@
+{
+  "generatedAt": "2026-03-16T05:45:11.286Z",
+  "summary": {
+    "totalBlocks": 135,
+    "withStyles": 135,
+    "withRuntime": 135,
+    "byCategory": {
+      "interactive-content": 10,
+      "content": 59,
+      "commerce": 55,
+      "shell": 5,
+      "forms": 6
+    }
+  },
+  "blocks": [
+    {
+      "name": "accordion",
+      "category": "interactive-content",
+      "subcategory": "engagement",
+      "title": "Accordion Block",
+      "overview": "The Accordion block converts authored rows into semantic `<details>` accordion items with a clickable `<summary>` label and expandable body content.",
+      "sourcePath": "blocks/accordion",
+      "files": {
+        "css": [
+          "blocks/accordion/accordion.css"
+        ],
+        "js": [
+          "blocks/accordion/accordion.js"
+        ],
+        "json": [
+          "blocks/accordion/_accordion.json"
+        ],
+        "readme": "blocks/accordion/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "age-gate",
+      "category": "content",
+      "subcategory": "general",
+      "title": "Age Gate Block",
+      "overview": "Shows a modal that requires users to enter their date of birth (MM/DD/YYYY). Calculates age and either grants access (18+ by default) or shows an error. Decision is persisted in `localStorage` and a cookie so the gate only appears once per browser.",
+      "sourcePath": "blocks/age-gate",
+      "files": {
+        "css": [
+          "blocks/age-gate/age-gate.css"
+        ],
+        "js": [
+          "blocks/age-gate/age-gate.js"
+        ],
+        "json": [
+          "blocks/age-gate/_age-gate.json"
+        ],
+        "readme": "blocks/age-gate/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "age-verification",
+      "category": "content",
+      "subcategory": "general",
+      "title": "Age Verification Block",
+      "overview": "Shows a modal with a question and two buttons. \"Yes\" grants access and dismisses; \"No\" redirects to a configurable URL. Decision is stored in `localStorage` so the prompt only appears once per browser.",
+      "sourcePath": "blocks/age-verification",
+      "files": {
+        "css": [
+          "blocks/age-verification/age-verification.css"
+        ],
+        "js": [
+          "blocks/age-verification/age-verification.js"
+        ],
+        "json": [
+          "blocks/age-verification/_age-verification.json"
+        ],
+        "readme": "blocks/age-verification/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "blog-post",
+      "category": "content",
+      "subcategory": "general",
+      "title": "Blog Post",
+      "overview": "Renders a full blog article with header, hero image, author metadata, body content, and an auto-generated table of contents sidebar.",
+      "sourcePath": "blocks/blog-post",
+      "files": {
+        "css": [
+          "blocks/blog-post/blog-post.css"
+        ],
+        "js": [
+          "blocks/blog-post/blog-post.js"
+        ],
+        "json": [
+          "blocks/blog-post/_blog-post.json"
+        ],
+        "readme": "blocks/blog-post/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "cards",
+      "category": "content",
+      "subcategory": "general",
+      "title": "Cards Block",
+      "overview": "The Cards block displays content in a responsive grid layout of card elements. Each card can contain an image and body content, making it ideal for showcasing products, features, team members, or any collection of related items in a visually consistent format.",
+      "sourcePath": "blocks/cards",
+      "files": {
+        "css": [
+          "blocks/cards/cards.css"
+        ],
+        "js": [
+          "blocks/cards/cards.js"
+        ],
+        "json": [
+          "blocks/cards/_cards.json"
+        ],
+        "readme": "blocks/cards/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "cards-list",
+      "category": "content",
+      "subcategory": "general",
+      "title": "Cards List Block",
+      "overview": "The `cards-list` block styles a simple list of authored cards into a consistent card grid presentation.",
+      "sourcePath": "blocks/cards-list",
+      "files": {
+        "css": [
+          "blocks/cards-list/cards-list.css"
+        ],
+        "js": [
+          "blocks/cards-list/cards-list.js"
+        ],
+        "json": [],
+        "readme": "blocks/cards-list/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "carousel",
+      "category": "interactive-content",
+      "subcategory": "engagement",
+      "title": "Carousel Block",
+      "overview": "The Carousel Block provides a responsive carousel/slider component for displaying multiple items in a rotating slideshow format.",
+      "sourcePath": "blocks/carousel",
+      "files": {
+        "css": [
+          "blocks/carousel/carousel.css"
+        ],
+        "js": [
+          "blocks/carousel/carousel.js"
+        ],
+        "json": [
+          "blocks/carousel/_carousel.json"
+        ],
+        "readme": "blocks/carousel/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "catalog-highlights",
+      "category": "content",
+      "subcategory": "general",
+      "title": "Catalog Highlights Block",
+      "overview": "The `catalog-highlights` block renders a section header and a responsive product-card grid for featured catalog items.",
+      "sourcePath": "blocks/catalog-highlights",
+      "files": {
+        "css": [
+          "blocks/catalog-highlights/catalog-highlights.css"
+        ],
+        "js": [
+          "blocks/catalog-highlights/catalog-highlights.js"
+        ],
+        "json": [
+          "blocks/catalog-highlights/_catalog-highlights.json"
+        ],
+        "readme": "blocks/catalog-highlights/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "circle-carousel",
+      "category": "interactive-content",
+      "subcategory": "engagement",
+      "title": "Circle Carousel Block",
+      "overview": "A responsive horizontal carousel displaying circular images with linked text below. Perfect for grocery store categories, featured products, or brand showcases with smooth sliding transitions and navigation controls.",
+      "sourcePath": "blocks/circle-carousel",
+      "files": {
+        "css": [
+          "blocks/circle-carousel/circle-carousel.css"
+        ],
+        "js": [
+          "blocks/circle-carousel/circle-carousel.js"
+        ],
+        "json": [
+          "blocks/circle-carousel/_circle-carousel.json"
+        ],
+        "readme": "blocks/circle-carousel/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "columns",
+      "category": "content",
+      "subcategory": "general",
+      "title": "columns",
+      "overview": "",
+      "sourcePath": "blocks/columns",
+      "files": {
+        "css": [
+          "blocks/columns/columns.css"
+        ],
+        "js": [
+          "blocks/columns/columns.js"
+        ],
+        "json": [
+          "blocks/columns/_columns.json"
+        ],
+        "readme": ""
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-account-header",
+      "category": "commerce",
+      "subcategory": "core",
+      "title": "Commerce Account Header Block",
+      "overview": "The Commerce Account Header block renders a standardized header component for account-related pages using the @dropins/tools Header component. It provides a consistent visual header with configurable title text for customer account sections.",
+      "sourcePath": "blocks/commerce-account-header",
+      "files": {
+        "css": [
+          "blocks/commerce-account-header/commerce-account-header.css"
+        ],
+        "js": [
+          "blocks/commerce-account-header/commerce-account-header.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-account-header/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-account-hub",
+      "category": "commerce",
+      "subcategory": "core",
+      "title": "Commerce Account Hub Block",
+      "overview": "The Commerce Account Hub block renders a staged, live-data summary dashboard for `/customer/account`.",
+      "sourcePath": "blocks/commerce-account-hub",
+      "files": {
+        "css": [
+          "blocks/commerce-account-hub/commerce-account-hub.css"
+        ],
+        "js": [
+          "blocks/commerce-account-hub/commerce-account-hub.js"
+        ],
+        "json": [
+          "blocks/commerce-account-hub/_commerce-account-hub.json"
+        ],
+        "readme": "blocks/commerce-account-hub/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "commerce-account-nav",
+      "category": "commerce",
+      "subcategory": "core",
+      "title": "Commerce Account Navigation Block",
+      "overview": "The Commerce Account Navigation block renders a navigation menu for customer account pages. It processes tabular data to create multiple navigation items with icons, titles, descriptions, and permission-based visibility. Each item includes active state detection and a collapsible menu toggle. The block integrates with the event bus to check user role permissions event emitted by auth dropin for dynamic access control, including special handling for company administrators.",
+      "sourcePath": "blocks/commerce-account-nav",
+      "files": {
+        "css": [
+          "blocks/commerce-account-nav/commerce-account-nav.css"
+        ],
+        "js": [
+          "blocks/commerce-account-nav/commerce-account-nav.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-account-nav/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-account-sidebar",
+      "category": "commerce",
+      "subcategory": "core",
+      "title": "Commerce Account Sidebar Block",
+      "overview": "The Commerce Account Sidebar block creates a dynamic navigation sidebar for customer account pages by loading configuration from a fragment and rendering interactive menu items with icons, titles, subtitles, and navigation arrows. It automatically detects the current page and highlights the active menu item.",
+      "sourcePath": "blocks/commerce-account-sidebar",
+      "files": {
+        "css": [
+          "blocks/commerce-account-sidebar/commerce-account-sidebar.css"
+        ],
+        "js": [
+          "blocks/commerce-account-sidebar/commerce-account-sidebar.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-account-sidebar/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-addresses",
+      "category": "commerce",
+      "subcategory": "core",
+      "title": "Commerce Addresses Block",
+      "overview": "The Commerce Addresses block renders a customer address management interface using the @dropins/storefront-account Addresses container. It provides functionality for viewing, adding, editing, and deleting customer addresses with authentication protection and configurable view modes.",
+      "sourcePath": "blocks/commerce-addresses",
+      "files": {
+        "css": [
+          "blocks/commerce-addresses/commerce-addresses.css"
+        ],
+        "js": [
+          "blocks/commerce-addresses/commerce-addresses.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-addresses/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-b2b-negotiable-quote",
+      "category": "commerce",
+      "subcategory": "b2b",
+      "title": "Commerce B2B Negotiable Quote Block",
+      "overview": "The Commerce B2B Negotiable Quote block provides two views for managing negotiable quotes for authenticated B2B customers:",
+      "sourcePath": "blocks/commerce-b2b-negotiable-quote",
+      "files": {
+        "css": [
+          "blocks/commerce-b2b-negotiable-quote/commerce-b2b-negotiable-quote.css"
+        ],
+        "js": [
+          "blocks/commerce-b2b-negotiable-quote/commerce-b2b-negotiable-quote.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-b2b-negotiable-quote/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-b2b-negotiable-quote-template",
+      "category": "commerce",
+      "subcategory": "b2b",
+      "title": "Commerce B2B Negotiable Quote Template Block",
+      "overview": "The Commerce B2B Negotiable Quote Template block provides a comprehensive interface for managing quote templates for authenticated B2B customers. It displays a list of quote templates with pagination controls and provides detailed template management including shipping address selection. This block requires company management functionality to be enabled and the user to be associated with a company.",
+      "sourcePath": "blocks/commerce-b2b-negotiable-quote-template",
+      "files": {
+        "css": [
+          "blocks/commerce-b2b-negotiable-quote-template/commerce-b2b-negotiable-quote-template.css"
+        ],
+        "js": [
+          "blocks/commerce-b2b-negotiable-quote-template/commerce-b2b-negotiable-quote-template.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-b2b-negotiable-quote-template/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-b2b-po-approval-flow",
+      "category": "commerce",
+      "subcategory": "b2b",
+      "title": "Commerce B2B PO Approval Flow Block",
+      "overview": "The Commerce B2B PO Approval Flow block renders the approval workflow for a purchase order using the @dropins/storefront-purchase-order PurchaseOrderApprovalFlow container. It displays approval rules, their statuses, and associated events with visual indicators for approved, rejected, and pending states.",
+      "sourcePath": "blocks/commerce-b2b-po-approval-flow",
+      "files": {
+        "css": [
+          "blocks/commerce-b2b-po-approval-flow/commerce-b2b-po-approval-flow.css"
+        ],
+        "js": [
+          "blocks/commerce-b2b-po-approval-flow/commerce-b2b-po-approval-flow.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-b2b-po-approval-flow/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-b2b-po-approval-rule-details",
+      "category": "commerce",
+      "subcategory": "b2b",
+      "title": "Commerce B2B PO Approval Rule Details Block",
+      "overview": "The Commerce B2B PO Approval Rule Details block renders detailed information about a specific purchase order approval rule using the @dropins/storefront-purchase-order ApprovalRuleDetails container. It provides rule detail viewing with authentication protection, permission-based access control, and navigation capabilities for returning to the approval rules list.",
+      "sourcePath": "blocks/commerce-b2b-po-approval-rule-details",
+      "files": {
+        "css": [
+          "blocks/commerce-b2b-po-approval-rule-details/commerce-b2b-po-approval-rule-details.css"
+        ],
+        "js": [
+          "blocks/commerce-b2b-po-approval-rule-details/commerce-b2b-po-approval-rule-details.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-b2b-po-approval-rule-details/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-b2b-po-approval-rule-form",
+      "category": "commerce",
+      "subcategory": "b2b",
+      "title": "Commerce B2B PO Approval Rule Form Block",
+      "overview": "The Commerce B2B PO Approval Rule Form block renders a form for creating new or editing existing purchase order approval rules using the @dropins/storefront-purchase-order ApprovalRuleForm container. It provides rule creation and editing capabilities with authentication protection, permission-based access control, and navigation for saving or canceling changes.",
+      "sourcePath": "blocks/commerce-b2b-po-approval-rule-form",
+      "files": {
+        "css": [
+          "blocks/commerce-b2b-po-approval-rule-form/commerce-b2b-po-approval-rule-form.css"
+        ],
+        "js": [
+          "blocks/commerce-b2b-po-approval-rule-form/commerce-b2b-po-approval-rule-form.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-b2b-po-approval-rule-form/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-b2b-po-approval-rules-list",
+      "category": "commerce",
+      "subcategory": "b2b",
+      "title": "Commerce B2B PO Approval Rules List Block",
+      "overview": "The Commerce B2B PO Approval Rules List block renders a list of purchase order approval rules using the @dropins/storefront-purchase-order PurchaseOrderApprovalRulesList container. It provides approval rule management with authentication protection, permission-based access control, and configurable navigation routes for creating, editing, and viewing rule details.",
+      "sourcePath": "blocks/commerce-b2b-po-approval-rules-list",
+      "files": {
+        "css": [
+          "blocks/commerce-b2b-po-approval-rules-list/commerce-b2b-po-approval-rules-list.css"
+        ],
+        "js": [
+          "blocks/commerce-b2b-po-approval-rules-list/commerce-b2b-po-approval-rules-list.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-b2b-po-approval-rules-list/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-b2b-po-checkout-success",
+      "category": "commerce",
+      "subcategory": "b2b",
+      "title": "Commerce B2B Purchase Order Checkout Success Block",
+      "overview": "The Commerce B2B PO Checkout Success block renders the post-purchase order confirmation experience for B2B purchase orders using the @dropins/storefront-purchase-order PurchaseOrderConfirmation container. It provides purchase order confirmation display with automatic scroll positioning, purchase order details navigation, and a continue shopping action.",
+      "sourcePath": "blocks/commerce-b2b-po-checkout-success",
+      "files": {
+        "css": [
+          "blocks/commerce-b2b-po-checkout-success/commerce-b2b-po-checkout-success.css"
+        ],
+        "js": [
+          "blocks/commerce-b2b-po-checkout-success/commerce-b2b-po-checkout-success.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-b2b-po-checkout-success/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-b2b-po-comment-form",
+      "category": "commerce",
+      "subcategory": "b2b",
+      "title": "Commerce B2B PO Comment Form Block",
+      "overview": "The Commerce B2B PO Comment Form block renders a form for adding comments to a purchase order using the @dropins/storefront-purchase-order PurchaseOrderCommentForm container. It provides comment submission functionality with authentication protection, permission-based access control, and real-time purchase order data refresh.",
+      "sourcePath": "blocks/commerce-b2b-po-comment-form",
+      "files": {
+        "css": [
+          "blocks/commerce-b2b-po-comment-form/commerce-b2b-po-comment-form.css"
+        ],
+        "js": [
+          "blocks/commerce-b2b-po-comment-form/commerce-b2b-po-comment-form.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-b2b-po-comment-form/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-b2b-po-comments-list",
+      "category": "commerce",
+      "subcategory": "b2b",
+      "title": "Commerce B2B PO Comments List Block",
+      "overview": "The Commerce B2B PO Comments List block renders a list of comments for a purchase order using the @dropins/storefront-purchase-order PurchaseOrderCommentsList container. It provides comment viewing functionality with authentication protection, permission-based access control, pagination controls, and configurable visibility limits.",
+      "sourcePath": "blocks/commerce-b2b-po-comments-list",
+      "files": {
+        "css": [
+          "blocks/commerce-b2b-po-comments-list/commerce-b2b-po-comments-list.css"
+        ],
+        "js": [
+          "blocks/commerce-b2b-po-comments-list/commerce-b2b-po-comments-list.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-b2b-po-comments-list/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-b2b-po-company-purchase-orders",
+      "category": "commerce",
+      "subcategory": "b2b",
+      "title": "Commerce B2B Company Purchase Orders Block",
+      "overview": "The Commerce B2B PO Company Purchase Orders block renders a list of company-wide purchase orders using the @dropins/storefront-purchase-order CompanyPurchaseOrders container. It provides purchase order management with authentication protection, permission-based access control, and configurable pagination.",
+      "sourcePath": "blocks/commerce-b2b-po-company-purchase-orders",
+      "files": {
+        "css": [
+          "blocks/commerce-b2b-po-company-purchase-orders/commerce-b2b-po-company-purchase-orders.css"
+        ],
+        "js": [
+          "blocks/commerce-b2b-po-company-purchase-orders/commerce-b2b-po-company-purchase-orders.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-b2b-po-company-purchase-orders/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-b2b-po-customer-purchase-orders",
+      "category": "commerce",
+      "subcategory": "b2b",
+      "title": "Commerce B2B Customer Purchase Orders Block",
+      "overview": "The Commerce B2B Customer Purchase Orders block renders a list of customer's own purchase orders using the @dropins/storefront-purchase-order CustomerPurchaseOrders container. It provides purchase order management with authentication protection, permission-based access control, and configurable pagination.",
+      "sourcePath": "blocks/commerce-b2b-po-customer-purchase-orders",
+      "files": {
+        "css": [
+          "blocks/commerce-b2b-po-customer-purchase-orders/commerce-b2b-po-customer-purchase-orders.css"
+        ],
+        "js": [
+          "blocks/commerce-b2b-po-customer-purchase-orders/commerce-b2b-po-customer-purchase-orders.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-b2b-po-customer-purchase-orders/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-b2b-po-header",
+      "category": "commerce",
+      "subcategory": "b2b",
+      "title": "Commerce B2B PO Header Block",
+      "overview": "The Commerce B2B PO Header block renders a dynamic header for purchase order pages using the @dropins/tools Header component. It provides contextual navigation and title updates based on the current page and purchase order data.",
+      "sourcePath": "blocks/commerce-b2b-po-header",
+      "files": {
+        "css": [
+          "blocks/commerce-b2b-po-header/commerce-b2b-po-header.css"
+        ],
+        "js": [
+          "blocks/commerce-b2b-po-header/commerce-b2b-po-header.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-b2b-po-header/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-b2b-po-history-log",
+      "category": "commerce",
+      "subcategory": "b2b",
+      "title": "Commerce B2B PO History Log Block",
+      "overview": "The Commerce B2B PO History Log block renders a chronological history of status changes and activities for a purchase order using the @dropins/storefront-purchase-order PurchaseOrderHistoryLog container. It provides activity tracking with authentication protection, permission-based access control, pagination controls, and configurable visibility limits.",
+      "sourcePath": "blocks/commerce-b2b-po-history-log",
+      "files": {
+        "css": [
+          "blocks/commerce-b2b-po-history-log/commerce-b2b-po-history-log.css"
+        ],
+        "js": [
+          "blocks/commerce-b2b-po-history-log/commerce-b2b-po-history-log.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-b2b-po-history-log/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-b2b-po-require-approval-purchase-orders",
+      "category": "commerce",
+      "subcategory": "b2b",
+      "title": "Commerce B2B Require Approval Purchase Orders Block",
+      "overview": "The Commerce B2B Require Approval Purchase Orders block renders a list of purchase orders that require approval using the @dropins/storefront-purchase-order RequireApprovalPurchaseOrders container. It provides purchase order approval management with authentication protection, permission-based access control, and configurable pagination.",
+      "sourcePath": "blocks/commerce-b2b-po-require-approval-purchase-orders",
+      "files": {
+        "css": [
+          "blocks/commerce-b2b-po-require-approval-purchase-orders/commerce-b2b-po-require-approval-purchase-orders.css"
+        ],
+        "js": [
+          "blocks/commerce-b2b-po-require-approval-purchase-orders/commerce-b2b-po-require-approval-purchase-orders.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-b2b-po-require-approval-purchase-orders/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-b2b-po-status",
+      "category": "commerce",
+      "subcategory": "b2b",
+      "title": "Commerce B2B PO Status Block",
+      "overview": "The Commerce B2B PO Status block renders the current status and available actions for a purchase order using the @dropins/storefront-purchase-order PurchaseOrderStatus container. It provides status display, action buttons (approve, reject, cancel, place order), authentication protection, permission-based access control, and real-time status updates with alert notifications.",
+      "sourcePath": "blocks/commerce-b2b-po-status",
+      "files": {
+        "css": [
+          "blocks/commerce-b2b-po-status/commerce-b2b-po-status.css"
+        ],
+        "js": [
+          "blocks/commerce-b2b-po-status/commerce-b2b-po-status.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-b2b-po-status/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-b2b-quote-checkout",
+      "category": "commerce",
+      "subcategory": "b2b",
+      "title": "Commerce B2B Quote Checkout",
+      "overview": "The Commerce B2B Quote Checkout block provides a comprehensive **one-page checkout** experience for **negotiable quotes** with dynamic form handling, payment processing, billing address management, and order placement. It integrates multiple dropin containers with dynamic UI state management and validation.",
+      "sourcePath": "blocks/commerce-b2b-quote-checkout",
+      "files": {
+        "css": [
+          "blocks/commerce-b2b-quote-checkout/commerce-b2b-quote-checkout.css"
+        ],
+        "js": [
+          "blocks/commerce-b2b-quote-checkout/commerce-b2b-quote-checkout.js",
+          "blocks/commerce-b2b-quote-checkout/constants.js",
+          "blocks/commerce-b2b-quote-checkout/containers.js",
+          "blocks/commerce-b2b-quote-checkout/fragments.js",
+          "blocks/commerce-b2b-quote-checkout/utils.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-b2b-quote-checkout/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 7
+    },
+    {
+      "name": "commerce-b2b-requisition-list",
+      "category": "commerce",
+      "subcategory": "b2b",
+      "title": "Commerce B2B Requisition List Block",
+      "overview": "The Commerce B2B Requisition List block surfaces a buyer's requisition lists using the `@dropins/storefront-requisition-list` drop-in. It renders a grid of lists, supports navigating to a specific list (detail view), and provides a route back to the grid. The block gates access by authentication and feature availability.",
+      "sourcePath": "blocks/commerce-b2b-requisition-list",
+      "files": {
+        "css": [
+          "blocks/commerce-b2b-requisition-list/commerce-b2b-requisition-list.css"
+        ],
+        "js": [
+          "blocks/commerce-b2b-requisition-list/commerce-b2b-requisition-list.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-b2b-requisition-list/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-b2b-requisition-list-view",
+      "category": "commerce",
+      "subcategory": "b2b",
+      "title": "Commerce B2B Requisition List View Block",
+      "overview": "The Commerce B2B Requisition List View block surfaces a buyer's requisition list using the `@dropins/storefront-requisition-list-view` drop-in. It renders the contents of a requisition list and provides a route back to the grid. The block gates access by authentication and feature availability.",
+      "sourcePath": "blocks/commerce-b2b-requisition-list-view",
+      "files": {
+        "css": [
+          "blocks/commerce-b2b-requisition-list-view/commerce-b2b-requisition-list-view.css"
+        ],
+        "js": [
+          "blocks/commerce-b2b-requisition-list-view/commerce-b2b-requisition-list-view.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-b2b-requisition-list-view/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-cart",
+      "category": "commerce",
+      "subcategory": "core",
+      "title": "Commerce Cart Block",
+      "overview": "The Commerce Cart block renders a comprehensive shopping cart interface with product management, order summary, gift options, wishlist integration, and B2B quote request functionality. It provides a full-featured cart experience with configurable options for item management, shipping estimation, checkout flow, and negotiable quote requests with minimum cart value thresholds.",
+      "sourcePath": "blocks/commerce-cart",
+      "files": {
+        "css": [
+          "blocks/commerce-cart/commerce-cart.css"
+        ],
+        "js": [
+          "blocks/commerce-cart/commerce-cart.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-cart/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-checkout",
+      "category": "commerce",
+      "subcategory": "core",
+      "title": "Commerce Checkout Block",
+      "overview": "The Commerce Checkout block provides a comprehensive **one-page checkout** experience with dynamic form handling, payment processing, address management, and order placement. It integrates multiple dropin containers for authentication, cart management, payment services, and order processing with dynamic UI state management and validation.",
+      "sourcePath": "blocks/commerce-checkout",
+      "files": {
+        "css": [
+          "blocks/commerce-checkout/commerce-checkout.css"
+        ],
+        "js": [
+          "blocks/commerce-checkout/commerce-checkout.js",
+          "blocks/commerce-checkout/constants.js",
+          "blocks/commerce-checkout/containers.js",
+          "blocks/commerce-checkout/fragments.js",
+          "blocks/commerce-checkout/utils.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-checkout/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 7
+    },
+    {
+      "name": "commerce-checkout-success",
+      "category": "commerce",
+      "subcategory": "core",
+      "title": "Commerce Checkout Success Block",
+      "overview": "The Commerce Checkout Success block renders the post-purchase order confirmation experience. It initializes the Storefront Order drop-in, displays order details (status, shipping, customer information, costs, products), includes gift options in a read-only view, and provides a continue shopping action with a contact support link.",
+      "sourcePath": "blocks/commerce-checkout-success",
+      "files": {
+        "css": [
+          "blocks/commerce-checkout-success/commerce-checkout-success.css"
+        ],
+        "js": [
+          "blocks/commerce-checkout-success/commerce-checkout-success.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-checkout-success/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-company-accept-invitation",
+      "category": "commerce",
+      "subcategory": "core",
+      "title": "Commerce Company Accept Invitation Block",
+      "overview": "The Commerce Company Accept Invitation block handles the acceptance of company invitations sent via email. It uses the @dropins/storefront-company-management AcceptInvitation container to automatically process invitation links and display the result.",
+      "sourcePath": "blocks/commerce-company-accept-invitation",
+      "files": {
+        "css": [
+          "blocks/commerce-company-accept-invitation/commerce-company-accept-invitation.css"
+        ],
+        "js": [
+          "blocks/commerce-company-accept-invitation/commerce-company-accept-invitation.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-company-accept-invitation/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-company-create",
+      "category": "commerce",
+      "subcategory": "core",
+      "title": "Commerce Company Create Block",
+      "overview": "The Commerce Company Create block provides a company registration form for B2B customers. It integrates with the Adobe Commerce Company Management dropin to handle company registration workflows, including frontend configuration checks, authentication validation, and form submission.",
+      "sourcePath": "blocks/commerce-company-create",
+      "files": {
+        "css": [
+          "blocks/commerce-company-create/commerce-company-create.css"
+        ],
+        "js": [
+          "blocks/commerce-company-create/commerce-company-create.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-company-create/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-company-credit",
+      "category": "commerce",
+      "subcategory": "core",
+      "title": "Commerce Company Credit Block",
+      "overview": "The Commerce Company Credit block renders a company credit display using the @dropins/storefront-company-management CompanyCreditContainer. It provides functionality for viewing company credit information with authentication protection and company configuration.",
+      "sourcePath": "blocks/commerce-company-credit",
+      "files": {
+        "css": [
+          "blocks/commerce-company-credit/commerce-company-credit.css"
+        ],
+        "js": [
+          "blocks/commerce-company-credit/commerce-company-credit.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-company-credit/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-company-profile",
+      "category": "commerce",
+      "subcategory": "core",
+      "title": "Commerce Company Profile Block",
+      "overview": "The Commerce Company Profile block provides company profile management functionality for B2B customers using the @dropins/storefront-company-management CompanyProfile container. It requires user authentication, company functionality to be enabled, and the customer to have an associated company. Users without these requirements are redirected to appropriate pages.",
+      "sourcePath": "blocks/commerce-company-profile",
+      "files": {
+        "css": [
+          "blocks/commerce-company-profile/commerce-company-profile.css"
+        ],
+        "js": [
+          "blocks/commerce-company-profile/commerce-company-profile.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-company-profile/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-company-roles-permissions",
+      "category": "commerce",
+      "subcategory": "core",
+      "title": "Commerce Company Roles & Permissions Block",
+      "overview": "The Commerce Company Roles & Permissions block displays company role management interface for B2B customers. It integrates with the Adobe Commerce Company Management dropin to show company roles, manage permissions, and provide administrative controls for role-based access control.",
+      "sourcePath": "blocks/commerce-company-roles-permissions",
+      "files": {
+        "css": [
+          "blocks/commerce-company-roles-permissions/commerce-company-roles-permissions.css"
+        ],
+        "js": [
+          "blocks/commerce-company-roles-permissions/commerce-company-roles-permissions.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-company-roles-permissions/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-company-structure",
+      "category": "commerce",
+      "subcategory": "core",
+      "title": "Commerce Company Structure Block",
+      "overview": "The Commerce Company Structure block displays company organizational structure and management interface for B2B customers using the `@dropins/storefront-company-management` CompanyStructure container. The block passes authentication state and redirect callbacks to the container, which handles showing either the company structure (for company users) or a registration link (for non-company users).",
+      "sourcePath": "blocks/commerce-company-structure",
+      "files": {
+        "css": [
+          "blocks/commerce-company-structure/commerce-company-structure.css"
+        ],
+        "js": [
+          "blocks/commerce-company-structure/commerce-company-structure.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-company-structure/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-company-users",
+      "category": "commerce",
+      "subcategory": "core",
+      "title": "Commerce Company Users Block",
+      "overview": "The Commerce Company Users block provides company user management functionality for B2B customers using the @dropins/storefront-company-management CompanyUsers container. It requires user authentication, company functionality to be enabled, and the customer to have an associated company. Users without these requirements are redirected to appropriate pages.",
+      "sourcePath": "blocks/commerce-company-users",
+      "files": {
+        "css": [
+          "blocks/commerce-company-users/commerce-company-users.css"
+        ],
+        "js": [
+          "blocks/commerce-company-users/commerce-company-users.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-company-users/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-confirm-account",
+      "category": "commerce",
+      "subcategory": "core",
+      "title": "Commerce Confirm Account Block",
+      "overview": "The Commerce Confirm Account block handles account confirmation and sign-in functionality with email confirmation support. It provides a sign-in form for users to confirm their account and displays success notifications with account management options.",
+      "sourcePath": "blocks/commerce-confirm-account",
+      "files": {
+        "css": [
+          "blocks/commerce-confirm-account/commerce-confirm-account.css"
+        ],
+        "js": [
+          "blocks/commerce-confirm-account/commerce-confirm-account.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-confirm-account/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-create-account",
+      "category": "commerce",
+      "subcategory": "core",
+      "title": "Commerce Create Account Block",
+      "overview": "The Commerce Create Account block provides user registration functionality with sign-up form, email confirmation, and privacy policy consent. It handles new user account creation with authentication flow integration and redirects authenticated users to their account page.",
+      "sourcePath": "blocks/commerce-create-account",
+      "files": {
+        "css": [
+          "blocks/commerce-create-account/commerce-create-account.css"
+        ],
+        "js": [
+          "blocks/commerce-create-account/commerce-create-account.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-create-account/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-create-password",
+      "category": "commerce",
+      "subcategory": "core",
+      "title": "Commerce Create Password Block",
+      "overview": "The Commerce Create Password block handles password update functionality for authenticated users. It provides a password update form with success notifications and account management options, redirecting unauthenticated users to the login page.",
+      "sourcePath": "blocks/commerce-create-password",
+      "files": {
+        "css": [
+          "blocks/commerce-create-password/commerce-create-password.css"
+        ],
+        "js": [
+          "blocks/commerce-create-password/commerce-create-password.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-create-password/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-create-return",
+      "category": "commerce",
+      "subcategory": "core",
+      "title": "Commerce Create Return Block",
+      "overview": "The Commerce Create Return block provides return request functionality for orders using the @dropins/storefront-order CreateReturn container. It handles return creation with product image rendering and success redirection based on authentication status.",
+      "sourcePath": "blocks/commerce-create-return",
+      "files": {
+        "css": [
+          "blocks/commerce-create-return/commerce-create-return.css"
+        ],
+        "js": [
+          "blocks/commerce-create-return/commerce-create-return.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-create-return/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-customer-company",
+      "category": "commerce",
+      "subcategory": "core",
+      "title": "Commerce Customer Company Block",
+      "overview": "The Commerce Customer Company block displays company-related information for B2B customers on the Account Information page. It shows the customer's company name, job title, work phone number, and user role in a clean, card-based layout.",
+      "sourcePath": "blocks/commerce-customer-company",
+      "files": {
+        "css": [
+          "blocks/commerce-customer-company/commerce-customer-company.css"
+        ],
+        "js": [
+          "blocks/commerce-customer-company/commerce-customer-company.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-customer-company/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-customer-details",
+      "category": "commerce",
+      "subcategory": "core",
+      "title": "Commerce Customer Details Block",
+      "overview": "The Commerce Customer Details block renders customer information display using the @dropins/storefront-order CustomerDetails container. It provides a simple wrapper for displaying customer details in order-related contexts.",
+      "sourcePath": "blocks/commerce-customer-details",
+      "files": {
+        "css": [
+          "blocks/commerce-customer-details/commerce-customer-details.css"
+        ],
+        "js": [
+          "blocks/commerce-customer-details/commerce-customer-details.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-customer-details/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-customer-information",
+      "category": "commerce",
+      "subcategory": "core",
+      "title": "Commerce Customer Information Block",
+      "overview": "The Commerce Customer Information block provides customer information management functionality using the @dropins/storefront-account CustomerInformation container. It requires user authentication and redirects unauthenticated users to the login page.",
+      "sourcePath": "blocks/commerce-customer-information",
+      "files": {
+        "css": [
+          "blocks/commerce-customer-information/commerce-customer-information.css"
+        ],
+        "js": [
+          "blocks/commerce-customer-information/commerce-customer-information.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-customer-information/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-forgot-password",
+      "category": "commerce",
+      "subcategory": "core",
+      "title": "Commerce Forgot Password Block",
+      "overview": "The Commerce Forgot Password block provides password reset functionality using the @dropins/storefront-auth ResetPassword container. It handles password reset requests and redirects authenticated users to their account page.",
+      "sourcePath": "blocks/commerce-forgot-password",
+      "files": {
+        "css": [
+          "blocks/commerce-forgot-password/commerce-forgot-password.css"
+        ],
+        "js": [
+          "blocks/commerce-forgot-password/commerce-forgot-password.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-forgot-password/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-gift-options",
+      "category": "commerce",
+      "subcategory": "core",
+      "title": "Commerce Gift Options Block",
+      "overview": "The Commerce Gift Options block renders gift options functionality using the @dropins/storefront-cart GiftOptions container. It provides read-only gift options display for order contexts with secondary view styling.",
+      "sourcePath": "blocks/commerce-gift-options",
+      "files": {
+        "css": [
+          "blocks/commerce-gift-options/commerce-gift-options.css"
+        ],
+        "js": [
+          "blocks/commerce-gift-options/commerce-gift-options.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-gift-options/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-login",
+      "category": "commerce",
+      "subcategory": "core",
+      "title": "Commerce Login Block",
+      "overview": "The Commerce Login block provides user authentication functionality using the @dropins/storefront-auth SignIn container. It handles user sign-in with forgot password integration and redirects authenticated users to their account page.",
+      "sourcePath": "blocks/commerce-login",
+      "files": {
+        "css": [
+          "blocks/commerce-login/commerce-login.css"
+        ],
+        "js": [
+          "blocks/commerce-login/commerce-login.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-login/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-mini-cart",
+      "category": "commerce",
+      "subcategory": "core",
+      "title": "Commerce Mini Cart Block",
+      "overview": "The Commerce Mini Cart block provides a compact cart interface with product management, notifications, and modal integration. It renders a mini cart with configurable options for product editing, undo functionality, and navigation URLs with real-time cart update notifications.",
+      "sourcePath": "blocks/commerce-mini-cart",
+      "files": {
+        "css": [
+          "blocks/commerce-mini-cart/commerce-mini-cart.css"
+        ],
+        "js": [
+          "blocks/commerce-mini-cart/commerce-mini-cart.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-mini-cart/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-order-cost-summary",
+      "category": "commerce",
+      "subcategory": "core",
+      "title": "Commerce Order Cost Summary Block",
+      "overview": "The Commerce Order Cost Summary block renders order cost information using the @dropins/storefront-order OrderCostSummary container. It provides a simple wrapper for displaying order cost details in order-related contexts.",
+      "sourcePath": "blocks/commerce-order-cost-summary",
+      "files": {
+        "css": [
+          "blocks/commerce-order-cost-summary/commerce-order-cost-summary.css"
+        ],
+        "js": [
+          "blocks/commerce-order-cost-summary/commerce-order-cost-summary.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-order-cost-summary/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-order-header",
+      "category": "commerce",
+      "subcategory": "core",
+      "title": "Commerce Order Header Block",
+      "overview": "The Commerce Order Header block renders a dynamic header for order-related pages with conditional back navigation and order number display. It provides a standardized header that updates based on order data and page context.",
+      "sourcePath": "blocks/commerce-order-header",
+      "files": {
+        "css": [
+          "blocks/commerce-order-header/commerce-order-header.css"
+        ],
+        "js": [
+          "blocks/commerce-order-header/commerce-order-header.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-order-header/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-order-product-list",
+      "category": "commerce",
+      "subcategory": "core",
+      "title": "Commerce Order Product List Block",
+      "overview": "The Commerce Order Product List block renders a list of products from an order using the @dropins/storefront-order OrderProductList container. It provides product display with image rendering, gift options, and product detail navigation.",
+      "sourcePath": "blocks/commerce-order-product-list",
+      "files": {
+        "css": [
+          "blocks/commerce-order-product-list/commerce-order-product-list.css"
+        ],
+        "js": [
+          "blocks/commerce-order-product-list/commerce-order-product-list.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-order-product-list/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-order-returns",
+      "category": "commerce",
+      "subcategory": "core",
+      "title": "Commerce Order Returns Block",
+      "overview": "The Commerce Order Returns block renders return information for orders using the @dropins/storefront-order OrderReturns container. It provides return tracking, product images, and navigation with authentication-aware routing.",
+      "sourcePath": "blocks/commerce-order-returns",
+      "files": {
+        "css": [
+          "blocks/commerce-order-returns/commerce-order-returns.css"
+        ],
+        "js": [
+          "blocks/commerce-order-returns/commerce-order-returns.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-order-returns/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-order-status",
+      "category": "commerce",
+      "subcategory": "core",
+      "title": "Commerce Order Status Block",
+      "overview": "The Commerce Order Status block renders order status information using the @dropins/storefront-order OrderStatus container. It provides order status display with return creation functionality and authentication-aware routing.",
+      "sourcePath": "blocks/commerce-order-status",
+      "files": {
+        "css": [
+          "blocks/commerce-order-status/commerce-order-status.css"
+        ],
+        "js": [
+          "blocks/commerce-order-status/commerce-order-status.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-order-status/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-orders-list",
+      "category": "commerce",
+      "subcategory": "core",
+      "title": "Commerce Orders List Block",
+      "overview": "The Commerce Orders List block renders a list of customer orders using the @dropins/storefront-account OrdersList container. It provides order management with product images, tracking links, and navigation with authentication protection and configurable view modes.",
+      "sourcePath": "blocks/commerce-orders-list",
+      "files": {
+        "css": [
+          "blocks/commerce-orders-list/commerce-orders-list.css"
+        ],
+        "js": [
+          "blocks/commerce-orders-list/commerce-orders-list.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-orders-list/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-return-header",
+      "category": "commerce",
+      "subcategory": "core",
+      "title": "Commerce Return Header Block",
+      "overview": "The Commerce Return Header block renders a dynamic header for return-related pages with conditional back navigation and return number display. It provides a standardized header that updates based on return data and page context.",
+      "sourcePath": "blocks/commerce-return-header",
+      "files": {
+        "css": [
+          "blocks/commerce-return-header/commerce-return-header.css"
+        ],
+        "js": [
+          "blocks/commerce-return-header/commerce-return-header.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-return-header/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-returns-list",
+      "category": "commerce",
+      "subcategory": "core",
+      "title": "Commerce Returns List Block",
+      "overview": "The Commerce Returns List block renders a list of customer returns using the @dropins/storefront-order ReturnsList container. It provides return management with product images, tracking links, and navigation with authentication protection and configurable view modes.",
+      "sourcePath": "blocks/commerce-returns-list",
+      "files": {
+        "css": [
+          "blocks/commerce-returns-list/commerce-returns-list.css"
+        ],
+        "js": [
+          "blocks/commerce-returns-list/commerce-returns-list.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-returns-list/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-search-order",
+      "category": "commerce",
+      "subcategory": "core",
+      "title": "Commerce Search Order Block",
+      "overview": "The Commerce Search Order block provides order search functionality using the @dropins/storefront-order OrderSearch container. It handles both authenticated and guest order searches with dynamic sign-in form rendering and authentication-aware routing.",
+      "sourcePath": "blocks/commerce-search-order",
+      "files": {
+        "css": [
+          "blocks/commerce-search-order/commerce-search-order.css"
+        ],
+        "js": [
+          "blocks/commerce-search-order/commerce-search-order.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-search-order/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-shipping-status",
+      "category": "commerce",
+      "subcategory": "core",
+      "title": "Commerce Shipping Status Block",
+      "overview": "The Commerce Shipping Status block renders shipping status information using the @dropins/storefront-order ShippingStatus container. It provides shipping tracking, product images, and navigation with UPS-specific tracking integration.",
+      "sourcePath": "blocks/commerce-shipping-status",
+      "files": {
+        "css": [
+          "blocks/commerce-shipping-status/commerce-shipping-status.css"
+        ],
+        "js": [
+          "blocks/commerce-shipping-status/commerce-shipping-status.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-shipping-status/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "commerce-wishlist",
+      "category": "commerce",
+      "subcategory": "core",
+      "title": "Commerce Wishlist Block",
+      "overview": "The Commerce Wishlist block provides wishlist management functionality using the @dropins/storefront-wishlist Wishlist container. It handles product wishlist operations with authentication modal integration, product data fetching, and cart integration.",
+      "sourcePath": "blocks/commerce-wishlist",
+      "files": {
+        "css": [
+          "blocks/commerce-wishlist/commerce-wishlist.css"
+        ],
+        "js": [
+          "blocks/commerce-wishlist/commerce-wishlist.js"
+        ],
+        "json": [],
+        "readme": "blocks/commerce-wishlist/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "customer-segment-personalization-block",
+      "category": "content",
+      "subcategory": "general",
+      "title": "Customer Segment Personalization Block",
+      "overview": "The `customer-segment-personalization-block` displays authored content only when the current shopper matches at least one authored Adobe Commerce customer segment.",
+      "sourcePath": "blocks/customer-segment-personalization-block",
+      "files": {
+        "css": [
+          "blocks/customer-segment-personalization-block/customer-segment-personalization-block.css"
+        ],
+        "js": [
+          "blocks/customer-segment-personalization-block/customer-segment-personalization-block.js",
+          "blocks/customer-segment-personalization-block/customer-segment-personalization-block.utils.js"
+        ],
+        "json": [
+          "blocks/customer-segment-personalization-block/_customer-segment-personalization-block.json"
+        ],
+        "readme": "blocks/customer-segment-personalization-block/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 5
+    },
+    {
+      "name": "embed",
+      "category": "interactive-content",
+      "subcategory": "engagement",
+      "title": "Embed Block",
+      "overview": "The Embed block displays third-party content (videos, social posts) inline on the page. It supports YouTube, Vimeo, Twitter, and generic iframe embeds. Embeds are loaded on demand for performance.",
+      "sourcePath": "blocks/embed",
+      "files": {
+        "css": [
+          "blocks/embed/embed.css"
+        ],
+        "js": [
+          "blocks/embed/embed.js"
+        ],
+        "json": [
+          "blocks/embed/_embed.json"
+        ],
+        "readme": "blocks/embed/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "enrichment",
+      "category": "content",
+      "subcategory": "general",
+      "title": "Enrichment Block",
+      "overview": "The `enrichment` block injects one or more fragment experiences based on product or category context.",
+      "sourcePath": "blocks/enrichment",
+      "files": {
+        "css": [
+          "blocks/enrichment/enrichment.css"
+        ],
+        "js": [
+          "blocks/enrichment/enrichment.js"
+        ],
+        "json": [],
+        "readme": "blocks/enrichment/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "ez-rack-builder",
+      "category": "content",
+      "subcategory": "general",
+      "title": "EZ Rack Builder",
+      "overview": "`ez-rack-builder` is a PDP-native luxury configurator block for regulation-aware ribbon rack builds.",
+      "sourcePath": "blocks/ez-rack-builder",
+      "files": {
+        "css": [
+          "blocks/ez-rack-builder/ez-rack-builder.css"
+        ],
+        "js": [
+          "blocks/ez-rack-builder/ez-rack-builder.commerce.js",
+          "blocks/ez-rack-builder/ez-rack-builder.js",
+          "blocks/ez-rack-builder/ez-rack-builder.lib.js"
+        ],
+        "json": [
+          "blocks/ez-rack-builder/_ez-rack-builder.json"
+        ],
+        "readme": "blocks/ez-rack-builder/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 7
+    },
+    {
+      "name": "ez-rack-builder-mockup",
+      "category": "content",
+      "subcategory": "general",
+      "title": "EZ Rack Builder Mockup",
+      "overview": "`ez-rack-builder-mockup` is a prototype-only luxury wizard block that recreates the cinematic EZ Rack builder flow without referencing a real product.",
+      "sourcePath": "blocks/ez-rack-builder-mockup",
+      "files": {
+        "css": [
+          "blocks/ez-rack-builder-mockup/ez-rack-builder-mockup.css"
+        ],
+        "js": [
+          "blocks/ez-rack-builder-mockup/ez-rack-builder-mockup.js",
+          "blocks/ez-rack-builder-mockup/ez-rack-builder-mockup.lib.js"
+        ],
+        "json": [
+          "blocks/ez-rack-builder-mockup/_ez-rack-builder-mockup.json"
+        ],
+        "readme": "blocks/ez-rack-builder-mockup/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 6
+    },
+    {
+      "name": "features-grid",
+      "category": "content",
+      "subcategory": "general",
+      "title": "Features Grid Block",
+      "overview": "The `features-grid` block renders a section header and a responsive grid of feature cards. It supports multiple card variants (`featured`, `default`, `wide`) and uses an IntersectionObserver to reveal cards as they enter the viewport. Built for EDS document authoring with a 2-column table structure.",
+      "sourcePath": "blocks/features-grid",
+      "files": {
+        "css": [
+          "blocks/features-grid/features-grid.css"
+        ],
+        "js": [
+          "blocks/features-grid/features-grid.js"
+        ],
+        "json": [],
+        "readme": "blocks/features-grid/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "footer",
+      "category": "shell",
+      "subcategory": "navigation-and-layout",
+      "title": "Footer Block",
+      "overview": "The Footer block provides the site footer by loading content from a fragment. On multistore setups, it also renders a store switcher button that opens a modal for selecting the active store view. The block uses design tokens for typography, spacing, and colors and supports responsive layout.",
+      "sourcePath": "blocks/footer",
+      "files": {
+        "css": [
+          "blocks/footer/footer.css"
+        ],
+        "js": [
+          "blocks/footer/footer.js"
+        ],
+        "json": [],
+        "readme": "blocks/footer/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "form",
+      "category": "forms",
+      "subcategory": "authorable-forms",
+      "title": "Form",
+      "overview": "Renders a dynamic form from a JSON definition, with client-side validation and POST submission to a configurable endpoint.",
+      "sourcePath": "blocks/form",
+      "files": {
+        "css": [
+          "blocks/form/form.css"
+        ],
+        "js": [
+          "blocks/form/form-fields.js",
+          "blocks/form/form.js"
+        ],
+        "json": [
+          "blocks/form/_form.json"
+        ],
+        "readme": "blocks/form/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 5
+    },
+    {
+      "name": "form-2",
+      "category": "forms",
+      "subcategory": "authorable-forms",
+      "title": "Form 2",
+      "overview": "A luxury dark/gold contact form with floating labels, inline validation, a simulated submission loading state, and an animated success screen.",
+      "sourcePath": "blocks/form-2",
+      "files": {
+        "css": [
+          "blocks/form-2/form-2.css"
+        ],
+        "js": [
+          "blocks/form-2/form-2.js"
+        ],
+        "json": [
+          "blocks/form-2/_form-2.json"
+        ],
+        "readme": "blocks/form-2/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "form-3",
+      "category": "forms",
+      "subcategory": "authorable-forms",
+      "title": "Form 3",
+      "overview": "Single-page contact form with floating labels, real-time field validation, staggered entrance animations, and an optional countdown redirect after successful submission. Built with a dark theme, gold accent colors, and glassmorphic (frosted glass) surfaces using `backdrop-filter`.",
+      "sourcePath": "blocks/form-3",
+      "files": {
+        "css": [
+          "blocks/form-3/form-3.css"
+        ],
+        "js": [
+          "blocks/form-3/form-3.js"
+        ],
+        "json": [
+          "blocks/form-3/_form-3.json"
+        ],
+        "readme": "blocks/form-3/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "form-4",
+      "category": "forms",
+      "subcategory": "authorable-forms",
+      "title": "Form 4",
+      "overview": "Three-step contact form with animated particle background, floating orbs, progress stepper, budget slider, star rating, color picker, drag-and-drop file upload, and a success screen with countdown redirect. Built with a deep-dark theme, blue/purple/green accent gradients, and glassmorphic surfaces using `backdrop-filter`.",
+      "sourcePath": "blocks/form-4",
+      "files": {
+        "css": [
+          "blocks/form-4/form-4.css"
+        ],
+        "js": [
+          "blocks/form-4/form-4.js"
+        ],
+        "json": [
+          "blocks/form-4/_form-4.json"
+        ],
+        "readme": "blocks/form-4/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "form-mccs-preferences",
+      "category": "forms",
+      "subcategory": "authorable-forms",
+      "title": "Form MCCS Preferences",
+      "overview": "`form-mccs-preferences` captures military life context, shopping and recreation interests, and communication preferences in a single refined glassmorphic experience. The block uses a scarlet, gold, and navy palette, supports reduced motion, and ends in a client-side success state with an optional redirect countdown.",
+      "sourcePath": "blocks/form-mccs-preferences",
+      "files": {
+        "css": [
+          "blocks/form-mccs-preferences/form-mccs-preferences.css"
+        ],
+        "js": [
+          "blocks/form-mccs-preferences/form-mccs-preferences.js"
+        ],
+        "json": [
+          "blocks/form-mccs-preferences/_form-mccs-preferences.json"
+        ],
+        "readme": "blocks/form-mccs-preferences/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 5
+    },
+    {
+      "name": "form-mccs-preferences-next",
+      "category": "forms",
+      "subcategory": "authorable-forms",
+      "title": "Form MCCS Preferences Next",
+      "overview": "`form-mccs-preferences-next` keeps the existing MCCS preference flow intact while recasting the experience as a darker, more premium two-panel shell. The left rail acts as the briefing panel and progress tracker, while the right rail presents the active form card and success state.",
+      "sourcePath": "blocks/form-mccs-preferences-next",
+      "files": {
+        "css": [
+          "blocks/form-mccs-preferences-next/form-mccs-preferences-next.css"
+        ],
+        "js": [
+          "blocks/form-mccs-preferences-next/form-mccs-preferences-next.js"
+        ],
+        "json": [
+          "blocks/form-mccs-preferences-next/_form-mccs-preferences-next.json"
+        ],
+        "readme": "blocks/form-mccs-preferences-next/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 5
+    },
+    {
+      "name": "fragment",
+      "category": "content",
+      "subcategory": "general",
+      "title": "Fragment Block",
+      "overview": "The `fragment` block embeds content from another path by fetching `<path>.plain.html`, decorating it as local page content, and inserting the resulting sections.",
+      "sourcePath": "blocks/fragment",
+      "files": {
+        "css": [
+          "blocks/fragment/fragment.css"
+        ],
+        "js": [
+          "blocks/fragment/fragment.js"
+        ],
+        "json": [
+          "blocks/fragment/_fragment.json"
+        ],
+        "readme": "blocks/fragment/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "guided-selling",
+      "category": "content",
+      "subcategory": "general",
+      "title": "Guided Selling",
+      "overview": "`guided-selling` is a dedicated MCX-style guided shopping block with:",
+      "sourcePath": "blocks/guided-selling",
+      "files": {
+        "css": [
+          "blocks/guided-selling/guided-selling.css"
+        ],
+        "js": [
+          "blocks/guided-selling/guided-selling.js",
+          "blocks/guided-selling/guided-selling.lib.js",
+          "blocks/guided-selling/guided-selling.sample.js"
+        ],
+        "json": [
+          "blocks/guided-selling/_guided-selling.json"
+        ],
+        "readme": "blocks/guided-selling/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 6
+    },
+    {
+      "name": "header",
+      "category": "shell",
+      "subcategory": "navigation-and-layout",
+      "title": "Header Block",
+      "overview": "The Header block provides the main navigation and commerce functionality for the site. It includes responsive navigation with dropdown menus, authentication (sign in/sign out), wishlist access, mini cart with lazy loading, and product search with live results. The block handles both desktop and mobile layouts with hamburger menu support and manages various interactive panels.",
+      "sourcePath": "blocks/header",
+      "files": {
+        "css": [
+          "blocks/header/header.css"
+        ],
+        "js": [
+          "blocks/header/header.js",
+          "blocks/header/renderAuthCombine.js",
+          "blocks/header/renderAuthDropdown.js",
+          "blocks/header/renderCompanySwitcher.js"
+        ],
+        "json": [],
+        "readme": "blocks/header/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 6
+    },
+    {
+      "name": "hero",
+      "category": "content",
+      "subcategory": "general",
+      "title": "hero",
+      "overview": "",
+      "sourcePath": "blocks/hero",
+      "files": {
+        "css": [
+          "blocks/hero/hero.css"
+        ],
+        "js": [
+          "blocks/hero/hero.js"
+        ],
+        "json": [
+          "blocks/hero/_hero.json"
+        ],
+        "readme": ""
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 3
+    },
+    {
+      "name": "hero-3",
+      "category": "content",
+      "subcategory": "general",
+      "title": "Hero 3 Block",
+      "overview": "Hero 3 is a split-layout parallax hero with a glassmorphic design system. It features a text column with staggered entrance animations and a media column with a main image, floating accent cards, and scroll-driven parallax layers.",
+      "sourcePath": "blocks/hero-3",
+      "files": {
+        "css": [
+          "blocks/hero-3/hero-3.css"
+        ],
+        "js": [
+          "blocks/hero-3/hero-3.js"
+        ],
+        "json": [
+          "blocks/hero-3/_hero-3.json"
+        ],
+        "readme": "blocks/hero-3/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "hero-5",
+      "category": "content",
+      "subcategory": "general",
+      "title": "Hero 5 Block",
+      "overview": "The `hero-5` block renders a two-column enterprise hero with animated background layers,",
+      "sourcePath": "blocks/hero-5",
+      "files": {
+        "css": [
+          "blocks/hero-5/hero-5.css"
+        ],
+        "js": [
+          "blocks/hero-5/hero-5.js"
+        ],
+        "json": [
+          "blocks/hero-5/_hero-5.json"
+        ],
+        "readme": "blocks/hero-5/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "hero-6",
+      "category": "content",
+      "subcategory": "general",
+      "title": "Hero 6 Block",
+      "overview": "The `hero-6` block (Chronicle Bento Hero) renders a bento-style hero with four cells: copy, platform metrics, feature highlights, and a decorative orbital SVG animation. It supports eyebrow labels, styled headlines (bold → accent green, italic → outline stroke), CTAs, stats with count-up animation, and feature rows.",
+      "sourcePath": "blocks/hero-6",
+      "files": {
+        "css": [
+          "blocks/hero-6/hero-6.css"
+        ],
+        "js": [
+          "blocks/hero-6/hero-6.js"
+        ],
+        "json": [
+          "blocks/hero-6/_hero-6.json"
+        ],
+        "readme": "blocks/hero-6/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "hero-cta",
+      "category": "content",
+      "subcategory": "general",
+      "title": "Hero CTA Block",
+      "overview": "The `hero-cta` block is a media-first hero with optional sidebar navigation and metadata-driven CTA styling.",
+      "sourcePath": "blocks/hero-cta",
+      "files": {
+        "css": [
+          "blocks/hero-cta/hero-cta.css"
+        ],
+        "js": [
+          "blocks/hero-cta/hero-cta.js"
+        ],
+        "json": [
+          "blocks/hero-cta/_hero-cta.json"
+        ],
+        "readme": "blocks/hero-cta/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "how-it-works-stats",
+      "category": "content",
+      "subcategory": "general",
+      "title": "How It Works + Stats Block",
+      "overview": "The `how-it-works-stats` block renders a 4-step process section, a 4-metric",
+      "sourcePath": "blocks/how-it-works-stats",
+      "files": {
+        "css": [
+          "blocks/how-it-works-stats/how-it-works-stats.css"
+        ],
+        "js": [
+          "blocks/how-it-works-stats/how-it-works-stats.js"
+        ],
+        "json": [
+          "blocks/how-it-works-stats/_how-it-works-stats.json"
+        ],
+        "readme": "blocks/how-it-works-stats/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "how-it-works-stats-2",
+      "category": "content",
+      "subcategory": "general",
+      "title": "How It Works + Stats 2 Block",
+      "overview": "The `how-it-works-stats-2` block renders a 4-step process section, a 4-metric",
+      "sourcePath": "blocks/how-it-works-stats-2",
+      "files": {
+        "css": [
+          "blocks/how-it-works-stats-2/how-it-works-stats-2.css"
+        ],
+        "js": [
+          "blocks/how-it-works-stats-2/how-it-works-stats-2.js"
+        ],
+        "json": [
+          "blocks/how-it-works-stats-2/_how-it-works-stats-2.json"
+        ],
+        "readme": "blocks/how-it-works-stats-2/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "live-block",
+      "category": "content",
+      "subcategory": "general",
+      "title": "Live Block",
+      "overview": "`live-block` renders a portable authenticated commerce dashboard with account-scoped KPIs, labeled charts, and activity panels.",
+      "sourcePath": "blocks/live-block",
+      "files": {
+        "css": [
+          "blocks/live-block/live-block.css"
+        ],
+        "js": [
+          "blocks/live-block/dashboard-core.js",
+          "blocks/live-block/live-block.js"
+        ],
+        "json": [
+          "blocks/live-block/_live-block.json"
+        ],
+        "readme": "blocks/live-block/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 5
+    },
+    {
+      "name": "live-block-premium",
+      "category": "content",
+      "subcategory": "general",
+      "title": "Live Block Premium",
+      "overview": "`live-block-premium` is a standalone premium dashboard block with a distinct visual language while keeping the same commerce data contract as `live-block`.",
+      "sourcePath": "blocks/live-block-premium",
+      "files": {
+        "css": [
+          "blocks/live-block-premium/live-block-premium.css"
+        ],
+        "js": [
+          "blocks/live-block-premium/live-block-premium.js"
+        ],
+        "json": [
+          "blocks/live-block-premium/_live-block-premium.json"
+        ],
+        "readme": "blocks/live-block-premium/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 5
+    },
+    {
+      "name": "luxury-configurator",
+      "category": "content",
+      "subcategory": "general",
+      "title": "Luxury Configurator",
+      "overview": "`luxury-configurator` is a standalone premium configuration block for a single Adobe Commerce parent product.",
+      "sourcePath": "blocks/luxury-configurator",
+      "files": {
+        "css": [
+          "blocks/luxury-configurator/luxury-configurator.css"
+        ],
+        "js": [
+          "blocks/luxury-configurator/luxury-configurator.js"
+        ],
+        "json": [
+          "blocks/luxury-configurator/_luxury-configurator.json"
+        ],
+        "readme": "blocks/luxury-configurator/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 5
+    },
+    {
+      "name": "mcx-announcement-bar",
+      "category": "content",
+      "subcategory": "general",
+      "title": "MCX Announcement Bar",
+      "overview": "The `mcx-announcement-bar` block renders the slim scrolling utility bar used at the top of the MCX experience for shipping, eligibility, and seasonal campaign messages. It reads plain text rows, duplicates them for a continuous marquee effect, and can optionally add a dismiss button that removes the entire section from the page.",
+      "sourcePath": "blocks/mcx-announcement-bar",
+      "files": {
+        "css": [
+          "blocks/mcx-announcement-bar/mcx-announcement-bar.css"
+        ],
+        "js": [
+          "blocks/mcx-announcement-bar/mcx-announcement-bar.js"
+        ],
+        "json": [
+          "blocks/mcx-announcement-bar/_mcx-announcement-bar.json"
+        ],
+        "readme": "blocks/mcx-announcement-bar/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "mcx-benefits",
+      "category": "content",
+      "subcategory": "general",
+      "title": "MCX Benefits",
+      "overview": "The `mcx-benefits` block renders the compact MCX value-proposition bar that calls out tax-free shopping, shipping perks, quality, and community impact. Each row becomes one benefit item with an icon, a headline, and a supporting subtitle.",
+      "sourcePath": "blocks/mcx-benefits",
+      "files": {
+        "css": [
+          "blocks/mcx-benefits/mcx-benefits.css"
+        ],
+        "js": [
+          "blocks/mcx-benefits/mcx-benefits.js"
+        ],
+        "json": [
+          "blocks/mcx-benefits/_mcx-benefits.json"
+        ],
+        "readme": "blocks/mcx-benefits/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "mcx-brands",
+      "category": "content",
+      "subcategory": "general",
+      "title": "MCX Brands",
+      "overview": "The `mcx-brands` block renders the horizontal brand roster used to reinforce assortment and trust on MCX landing pages. Authors only provide the brand names. The heading copy is fixed in the block code.",
+      "sourcePath": "blocks/mcx-brands",
+      "files": {
+        "css": [
+          "blocks/mcx-brands/mcx-brands.css"
+        ],
+        "js": [
+          "blocks/mcx-brands/mcx-brands.js"
+        ],
+        "json": [
+          "blocks/mcx-brands/_mcx-brands.json"
+        ],
+        "readme": "blocks/mcx-brands/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "mcx-category-grid",
+      "category": "content",
+      "subcategory": "general",
+      "title": "MCX Category Grid",
+      "overview": "The `mcx-category-grid` block renders the browseable merchandising grid used to send shoppers into major storefront categories. It supports an optional section header plus a grid of icon-led category tiles.",
+      "sourcePath": "blocks/mcx-category-grid",
+      "files": {
+        "css": [
+          "blocks/mcx-category-grid/mcx-category-grid.css"
+        ],
+        "js": [
+          "blocks/mcx-category-grid/mcx-category-grid.js"
+        ],
+        "json": [
+          "blocks/mcx-category-grid/_mcx-category-grid.json"
+        ],
+        "readme": "blocks/mcx-category-grid/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "mcx-category-page",
+      "category": "content",
+      "subcategory": "general",
+      "title": "MCX Category Page",
+      "overview": "The `mcx-category-page` block is the MCX-specific category landing experience for product discovery pages. It keeps the existing MCX shell, theme, header, and footer, but replaces the generic category body with a tactical layout that includes breadcrumb, hero, authored tabs, sticky Commerce facets, active-filter chips, sort controls, grid or list product views, and Commerce pagination. The page uses real Adobe Commerce product-discovery drop-ins for search state, filtering, sort, pagination, wishlist, and add-to-cart behavior while rendering a custom MCX card layout from the live search payload.",
+      "sourcePath": "blocks/mcx-category-page",
+      "files": {
+        "css": [
+          "blocks/mcx-category-page/mcx-category-page.css"
+        ],
+        "js": [
+          "blocks/mcx-category-page/mcx-category-page.js",
+          "blocks/mcx-category-page/mcx-category-page.lib.js"
+        ],
+        "json": [
+          "blocks/mcx-category-page/_mcx-category-page.json"
+        ],
+        "readme": "blocks/mcx-category-page/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 5
+    },
+    {
+      "name": "mcx-deal-countdown",
+      "category": "content",
+      "subcategory": "general",
+      "title": "MCX Deal Countdown",
+      "overview": "The `mcx-deal-countdown` block renders the MCX urgency strip for limited-time campaigns. Authors provide the promotional copy, the countdown end time, and the CTA. The timer behavior is activated by `scripts/mcx-ui.js` on MCX pages and MCX block-library previews.",
+      "sourcePath": "blocks/mcx-deal-countdown",
+      "files": {
+        "css": [
+          "blocks/mcx-deal-countdown/mcx-deal-countdown.css"
+        ],
+        "js": [
+          "blocks/mcx-deal-countdown/mcx-deal-countdown.js"
+        ],
+        "json": [
+          "blocks/mcx-deal-countdown/_mcx-deal-countdown.json"
+        ],
+        "readme": "blocks/mcx-deal-countdown/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "mcx-editorial-cards",
+      "category": "content",
+      "subcategory": "general",
+      "title": "MCX Editorial Cards",
+      "overview": "The `mcx-editorial-cards` block renders the large story-driven card grid used for editorial merchandising and supporting content on MCX landing pages. Each row becomes one image card with an index, a tag, a headline, and a description.",
+      "sourcePath": "blocks/mcx-editorial-cards",
+      "files": {
+        "css": [
+          "blocks/mcx-editorial-cards/mcx-editorial-cards.css"
+        ],
+        "js": [
+          "blocks/mcx-editorial-cards/mcx-editorial-cards.js"
+        ],
+        "json": [
+          "blocks/mcx-editorial-cards/_mcx-editorial-cards.json"
+        ],
+        "readme": "blocks/mcx-editorial-cards/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "mcx-featured-collections",
+      "category": "content",
+      "subcategory": "general",
+      "title": "MCX Featured Collections",
+      "overview": "The `mcx-featured-collections` block renders the editorial collection layout with one large lead card and two supporting cards. It supports an optional section label, title, and view-all link above the card layout.",
+      "sourcePath": "blocks/mcx-featured-collections",
+      "files": {
+        "css": [
+          "blocks/mcx-featured-collections/mcx-featured-collections.css"
+        ],
+        "js": [
+          "blocks/mcx-featured-collections/mcx-featured-collections.js"
+        ],
+        "json": [
+          "blocks/mcx-featured-collections/_mcx-featured-collections.json"
+        ],
+        "readme": "blocks/mcx-featured-collections/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "mcx-footer",
+      "category": "content",
+      "subcategory": "general",
+      "title": "MCX Footer",
+      "overview": "The `mcx-footer` block is the tactical MCX footer shell. Authors place the block on the page, but the real content comes from the fragment referenced by page metadata. If the fragment is missing or cannot be loaded, the block falls back to bundled demo footer data so previews still render.",
+      "sourcePath": "blocks/mcx-footer",
+      "files": {
+        "css": [
+          "blocks/mcx-footer/mcx-footer.css"
+        ],
+        "js": [
+          "blocks/mcx-footer/mcx-footer.js"
+        ],
+        "json": [
+          "blocks/mcx-footer/_mcx-footer.json"
+        ],
+        "readme": "blocks/mcx-footer/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "mcx-header",
+      "category": "content",
+      "subcategory": "general",
+      "title": "MCX Header",
+      "overview": "The `mcx-header` block is the tactical storefront header shell for the MCX experience. Like the footer, authors place the block on the page but manage the real navigation content through a fragment referenced in page metadata. If that fragment cannot be loaded, the block falls back to bundled demo navigation so previews still work.",
+      "sourcePath": "blocks/mcx-header",
+      "files": {
+        "css": [
+          "blocks/mcx-header/mcx-header.css"
+        ],
+        "js": [
+          "blocks/mcx-header/auth-combine-modal.js",
+          "blocks/mcx-header/mcx-header.js"
+        ],
+        "json": [
+          "blocks/mcx-header/_mcx-header.json"
+        ],
+        "readme": "blocks/mcx-header/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 5
+    },
+    {
+      "name": "mcx-hero",
+      "category": "content",
+      "subcategory": "general",
+      "title": "MCX Hero",
+      "overview": "The `mcx-hero` block is the flagship MCX homepage hero. It supports a multi-line headline, tactical eyebrow, an image-only hero carousel, two CTAs, legacy status badge rows, and up to four KPI stats. On MCX block-library preview URLs, the block can fall back to built-in demo content when no authored 2-column table is present so the preview still renders.",
+      "sourcePath": "blocks/mcx-hero",
+      "files": {
+        "css": [
+          "blocks/mcx-hero/mcx-hero.css"
+        ],
+        "js": [
+          "blocks/mcx-hero/mcx-hero.js"
+        ],
+        "json": [
+          "blocks/mcx-hero/_mcx-hero.json"
+        ],
+        "readme": "blocks/mcx-hero/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "mcx-newsletter",
+      "category": "content",
+      "subcategory": "general",
+      "title": "MCX Newsletter",
+      "overview": "The `mcx-newsletter` block renders the centered email signup panel used for insider deals and community updates. It is intentionally lightweight: the form UI is real, but submission is demo behavior handled by `scripts/mcx-ui.js` unless a backend integration is added later.",
+      "sourcePath": "blocks/mcx-newsletter",
+      "files": {
+        "css": [
+          "blocks/mcx-newsletter/mcx-newsletter.css"
+        ],
+        "js": [
+          "blocks/mcx-newsletter/mcx-newsletter.js"
+        ],
+        "json": [
+          "blocks/mcx-newsletter/_mcx-newsletter.json"
+        ],
+        "readme": "blocks/mcx-newsletter/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "mcx-product-cards",
+      "category": "content",
+      "subcategory": "general",
+      "title": "MCX Product Cards",
+      "overview": "The `mcx-product-cards` block renders the interactive MCX product grid with tabs, price chips, wishlist hearts, quick view, and demo cart behavior. The block itself builds the card markup from the authored table, and `scripts/mcx-ui.js` wires in tabs, modal behavior, wishlist toasts, and session-backed cart interactions on MCX pages and MCX block-library previews.",
+      "sourcePath": "blocks/mcx-product-cards",
+      "files": {
+        "css": [
+          "blocks/mcx-product-cards/mcx-product-cards.css"
+        ],
+        "js": [
+          "blocks/mcx-product-cards/mcx-product-cards.js"
+        ],
+        "json": [
+          "blocks/mcx-product-cards/_mcx-product-cards.json"
+        ],
+        "readme": "blocks/mcx-product-cards/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "mcx-promo-strip",
+      "category": "content",
+      "subcategory": "general",
+      "title": "MCX Promo Strip",
+      "overview": "The `mcx-promo-strip` block renders the full-width campaign banner used for large seasonal or clearance messaging on MCX pages. It is intentionally simple: badge, title, description, and one CTA.",
+      "sourcePath": "blocks/mcx-promo-strip",
+      "files": {
+        "css": [
+          "blocks/mcx-promo-strip/mcx-promo-strip.css"
+        ],
+        "js": [
+          "blocks/mcx-promo-strip/mcx-promo-strip.js"
+        ],
+        "json": [
+          "blocks/mcx-promo-strip/_mcx-promo-strip.json"
+        ],
+        "readme": "blocks/mcx-promo-strip/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "mcx-ticker",
+      "category": "content",
+      "subcategory": "general",
+      "title": "MCX Ticker",
+      "overview": "The `mcx-ticker` block renders the animated merchandising ticker used for short, repeatable highlights such as offers, brands, and service promises. Authors provide one line per ticker item, and the block duplicates those items to create a continuous scrolling track.",
+      "sourcePath": "blocks/mcx-ticker",
+      "files": {
+        "css": [
+          "blocks/mcx-ticker/mcx-ticker.css"
+        ],
+        "js": [
+          "blocks/mcx-ticker/mcx-ticker.js"
+        ],
+        "json": [
+          "blocks/mcx-ticker/_mcx-ticker.json"
+        ],
+        "readme": "blocks/mcx-ticker/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "medal-rack-configurator",
+      "category": "content",
+      "subcategory": "general",
+      "title": "Medal Rack Configurator",
+      "overview": "`medal-rack-configurator` is a prototype-first luxury configurator block for a ceremonial medal rack PDP experience.",
+      "sourcePath": "blocks/medal-rack-configurator",
+      "files": {
+        "css": [
+          "blocks/medal-rack-configurator/medal-rack-configurator.css"
+        ],
+        "js": [
+          "blocks/medal-rack-configurator/medal-rack-configurator.js",
+          "blocks/medal-rack-configurator/medal-rack-configurator.lib.js"
+        ],
+        "json": [
+          "blocks/medal-rack-configurator/_medal-rack-configurator.json"
+        ],
+        "readme": "blocks/medal-rack-configurator/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 6
+    },
+    {
+      "name": "modal",
+      "category": "interactive-content",
+      "subcategory": "engagement",
+      "title": "modal",
+      "overview": "",
+      "sourcePath": "blocks/modal",
+      "files": {
+        "css": [
+          "blocks/modal/modal.css"
+        ],
+        "js": [
+          "blocks/modal/modal.js"
+        ],
+        "json": [],
+        "readme": ""
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 2
+    },
+    {
+      "name": "newsletter",
+      "category": "content",
+      "subcategory": "general",
+      "title": "Newsletter Block",
+      "overview": "The **Newsletter** block is a configurable email-capture section for campaign and homepage use.",
+      "sourcePath": "blocks/newsletter",
+      "files": {
+        "css": [
+          "blocks/newsletter/newsletter.css"
+        ],
+        "js": [
+          "blocks/newsletter/newsletter.js"
+        ],
+        "json": [
+          "blocks/newsletter/_newsletter.json"
+        ],
+        "readme": "blocks/newsletter/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "product-configurator-luxe",
+      "category": "content",
+      "subcategory": "general",
+      "title": "Product Configurator Luxe",
+      "overview": "`product-configurator-luxe` is a product-scoped, PDP-aware luxury configurator for",
+      "sourcePath": "blocks/product-configurator-luxe",
+      "files": {
+        "css": [
+          "blocks/product-configurator-luxe/product-configurator-luxe.css"
+        ],
+        "js": [
+          "blocks/product-configurator-luxe/product-configurator-luxe.js"
+        ],
+        "json": [
+          "blocks/product-configurator-luxe/_product-configurator-luxe.json"
+        ],
+        "readme": "blocks/product-configurator-luxe/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 5
+    },
+    {
+      "name": "product-details",
+      "category": "content",
+      "subcategory": "general",
+      "title": "Product Details Block",
+      "overview": "The Product Details block provides comprehensive product detail page functionality using multiple @dropins/storefront-pdp containers. It handles product display, configuration, cart operations, wishlist integration, and SEO optimization with dynamic mode switching between add and update operations.",
+      "sourcePath": "blocks/product-details",
+      "files": {
+        "css": [
+          "blocks/product-details/product-details.css"
+        ],
+        "js": [
+          "blocks/product-details/product-details.js",
+          "blocks/product-details/requisition-list.js"
+        ],
+        "json": [
+          "blocks/product-details/_product-details.json"
+        ],
+        "readme": "blocks/product-details/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 6
+    },
+    {
+      "name": "product-highlights",
+      "category": "content",
+      "subcategory": "general",
+      "title": "Product Highlights Block",
+      "overview": "The `product-highlights` block renders a section header and a responsive product",
+      "sourcePath": "blocks/product-highlights",
+      "files": {
+        "css": [
+          "blocks/product-highlights/product-highlights.css"
+        ],
+        "js": [
+          "blocks/product-highlights/product-highlights.js"
+        ],
+        "json": [
+          "blocks/product-highlights/_product-highlights.json"
+        ],
+        "readme": "blocks/product-highlights/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "product-list-page",
+      "category": "content",
+      "subcategory": "general",
+      "title": "product-list-page",
+      "overview": "",
+      "sourcePath": "blocks/product-list-page",
+      "files": {
+        "css": [
+          "blocks/product-list-page/product-list-page.css"
+        ],
+        "js": [
+          "blocks/product-list-page/product-list-page.js",
+          "blocks/product-list-page/requisition-list.js"
+        ],
+        "json": [],
+        "readme": "blocks/product-list-page/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "product-recommendations",
+      "category": "content",
+      "subcategory": "general",
+      "title": "Product Recommendations Block",
+      "overview": "The Product Recommendations block provides personalized product recommendations using the @dropins/storefront-recommendations ProductList container. It handles recommendation loading with intersection observer, context tracking, and dynamic reloading based on user behavior and page changes.",
+      "sourcePath": "blocks/product-recommendations",
+      "files": {
+        "css": [
+          "blocks/product-recommendations/product-recommendations.css"
+        ],
+        "js": [
+          "blocks/product-recommendations/product-recommendations.js",
+          "blocks/product-recommendations/product-recommendations.lib.js"
+        ],
+        "json": [
+          "blocks/product-recommendations/_product-recommendations.json"
+        ],
+        "readme": "blocks/product-recommendations/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 5
+    },
+    {
+      "name": "product-teaser",
+      "category": "content",
+      "subcategory": "general",
+      "title": "Product Teaser Block",
+      "overview": "The Product Teaser block displays a single product card with image, name, price, and action buttons. It fetches live product data from the Adobe Commerce Catalog Service GraphQL API using a configured SKU, and supports both AEM Assets and standard Commerce image URLs.",
+      "sourcePath": "blocks/product-teaser",
+      "files": {
+        "css": [
+          "blocks/product-teaser/product-teaser.css"
+        ],
+        "js": [
+          "blocks/product-teaser/product-teaser-utils.js",
+          "blocks/product-teaser/product-teaser.js"
+        ],
+        "json": [
+          "blocks/product-teaser/_product-teaser.json"
+        ],
+        "readme": "blocks/product-teaser/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 5
+    },
+    {
+      "name": "product-technical-details",
+      "category": "content",
+      "subcategory": "general",
+      "title": "Product Technical Details",
+      "overview": "`product-technical-details` renders the lower PDP experience for the immersive rack variant:",
+      "sourcePath": "blocks/product-technical-details",
+      "files": {
+        "css": [
+          "blocks/product-technical-details/product-technical-details.css"
+        ],
+        "js": [
+          "blocks/product-technical-details/product-technical-details.js"
+        ],
+        "json": [
+          "blocks/product-technical-details/_product-technical-details.json"
+        ],
+        "readme": "blocks/product-technical-details/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 5
+    },
+    {
+      "name": "promo-popup",
+      "category": "content",
+      "subcategory": "general",
+      "title": "Promo Popup Spinner Wheel Block",
+      "overview": "A premium glassmorphic pop-up with an animated spinner wheel. Visitors trigger the popup on entry, spin the wheel to reveal a random promotion, and can claim their offer. Features frosted glass surfaces, 5 theme variants, animated gradient orbs, and configurable entry triggers.",
+      "sourcePath": "blocks/promo-popup",
+      "files": {
+        "css": [
+          "blocks/promo-popup/promo-popup.css"
+        ],
+        "js": [
+          "blocks/promo-popup/promo-popup.js"
+        ],
+        "json": [
+          "blocks/promo-popup/_promo-popup.json"
+        ],
+        "readme": "blocks/promo-popup/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 5
+    },
+    {
+      "name": "promo-strip",
+      "category": "content",
+      "subcategory": "general",
+      "title": "Promo Strip",
+      "overview": "`promo-strip` is a theme-agnostic promotional banner block for short campaign moments, guided-selling entry points, and inline conversion nudges.",
+      "sourcePath": "blocks/promo-strip",
+      "files": {
+        "css": [
+          "blocks/promo-strip/promo-strip.css"
+        ],
+        "js": [
+          "blocks/promo-strip/promo-strip.js"
+        ],
+        "json": [
+          "blocks/promo-strip/_promo-strip.json"
+        ],
+        "readme": "blocks/promo-strip/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "promotional-hero",
+      "category": "content",
+      "subcategory": "general",
+      "title": "Promotional Hero Block",
+      "overview": "The `promotional-hero` block renders a responsive campaign card grid with image-first cards, optional description copy, and one CTA per card.",
+      "sourcePath": "blocks/promotional-hero",
+      "files": {
+        "css": [
+          "blocks/promotional-hero/promotional-hero.css"
+        ],
+        "js": [
+          "blocks/promotional-hero/promotional-hero.js"
+        ],
+        "json": [
+          "blocks/promotional-hero/_promotional-hero.json"
+        ],
+        "readme": "blocks/promotional-hero/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "quiz-router",
+      "category": "interactive-content",
+      "subcategory": "engagement",
+      "title": "Quiz Router Block",
+      "overview": "The `quiz-router` block is a guided \"find your perfect product\" wizard that routes users to PLP (Product Listing Page), PDP (Product Detail Page), or a fragment based on authored question rows with option labels and destination URLs.",
+      "sourcePath": "blocks/quiz-router",
+      "files": {
+        "css": [
+          "blocks/quiz-router/quiz-router.css"
+        ],
+        "js": [
+          "blocks/quiz-router/quiz-router.js"
+        ],
+        "json": [
+          "blocks/quiz-router/_quiz-router.json"
+        ],
+        "readme": "blocks/quiz-router/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 8
+    },
+    {
+      "name": "quiz-router-mccs",
+      "category": "interactive-content",
+      "subcategory": "engagement",
+      "title": "Quiz Router MCCS",
+      "overview": "`quiz-router-mccs` is a guided Marine Corps Community Services arrival block for branching, concierge-style journeys.",
+      "sourcePath": "blocks/quiz-router-mccs",
+      "files": {
+        "css": [
+          "blocks/quiz-router-mccs/quiz-router-mccs.css"
+        ],
+        "js": [
+          "blocks/quiz-router-mccs/quiz-router-mccs.js"
+        ],
+        "json": [
+          "blocks/quiz-router-mccs/_quiz-router-mccs.json"
+        ],
+        "readme": "blocks/quiz-router-mccs/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 8
+    },
+    {
+      "name": "quote",
+      "category": "content",
+      "subcategory": "general",
+      "title": "Quote Block",
+      "overview": "The Quote block renders a quotation and optional attribution. It turns authored content into a semantic `<blockquote>` with styled quotation and attribution sections.",
+      "sourcePath": "blocks/quote",
+      "files": {
+        "css": [
+          "blocks/quote/quote.css"
+        ],
+        "js": [
+          "blocks/quote/quote.js"
+        ],
+        "json": [
+          "blocks/quote/_quote.json"
+        ],
+        "readme": "blocks/quote/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "search",
+      "category": "shell",
+      "subcategory": "navigation-and-layout",
+      "title": "Search Block",
+      "overview": "The Search block provides a content search experience that queries a JSON index and displays results in a responsive card grid. It supports URL-driven search state, term highlighting, and a minimal variant for compact layouts.",
+      "sourcePath": "blocks/search",
+      "files": {
+        "css": [
+          "blocks/search/search.css"
+        ],
+        "js": [
+          "blocks/search/search.js"
+        ],
+        "json": [
+          "blocks/search/_search.json"
+        ],
+        "readme": "blocks/search/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "search-bar",
+      "category": "shell",
+      "subcategory": "navigation-and-layout",
+      "title": "Search Bar Block",
+      "overview": "The `search-bar` block is a standalone storefront search input with inline product results, powered by product discovery drop-ins.",
+      "sourcePath": "blocks/search-bar",
+      "files": {
+        "css": [
+          "blocks/search-bar/search-bar.css"
+        ],
+        "js": [
+          "blocks/search-bar/search-bar.js"
+        ],
+        "json": [
+          "blocks/search-bar/_search-bar.json"
+        ],
+        "readme": "blocks/search-bar/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "store-locator",
+      "category": "content",
+      "subcategory": "general",
+      "title": "Store Locator Block",
+      "overview": "A Google Places (New) powered store finder for Adobe Commerce Storefront pages, with:",
+      "sourcePath": "blocks/store-locator",
+      "files": {
+        "css": [
+          "blocks/store-locator/store-locator.css"
+        ],
+        "js": [
+          "blocks/store-locator/store-locator.js"
+        ],
+        "json": [
+          "blocks/store-locator/_store-locator.json"
+        ],
+        "readme": "blocks/store-locator/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "table",
+      "category": "interactive-content",
+      "subcategory": "engagement",
+      "title": "Table Block",
+      "overview": "The Table block builds an HTML `<table>` from block content. It supports an optional header row and recreates a table from document/sheet rows and cells.",
+      "sourcePath": "blocks/table",
+      "files": {
+        "css": [
+          "blocks/table/table.css"
+        ],
+        "js": [
+          "blocks/table/table.js"
+        ],
+        "json": [
+          "blocks/table/_table.json"
+        ],
+        "readme": "blocks/table/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "tabs",
+      "category": "interactive-content",
+      "subcategory": "engagement",
+      "title": "Tabs Block",
+      "overview": "The Tabs block organizes content into tabbed panels using ARIA-compliant `role=\"tablist\"`, `role=\"tab\"`, and `role=\"tabpanel\"` attributes. The first tab is selected by default and panels are shown/hidden via `aria-hidden`.",
+      "sourcePath": "blocks/tabs",
+      "files": {
+        "css": [
+          "blocks/tabs/tabs.css"
+        ],
+        "js": [
+          "blocks/tabs/tabs.js"
+        ],
+        "json": [
+          "blocks/tabs/_tabs.json"
+        ],
+        "readme": "blocks/tabs/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "targeted-block",
+      "category": "content",
+      "subcategory": "general",
+      "title": "Targeted Block",
+      "overview": "The `targeted-block` displays authored content only when the current shopper matches the block's targeting rules.",
+      "sourcePath": "blocks/targeted-block",
+      "files": {
+        "css": [
+          "blocks/targeted-block/targeted-block.css"
+        ],
+        "js": [
+          "blocks/targeted-block/targeted-block.js"
+        ],
+        "json": [
+          "blocks/targeted-block/_targeted-block.json"
+        ],
+        "readme": "blocks/targeted-block/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "top-banner",
+      "category": "shell",
+      "subcategory": "navigation-and-layout",
+      "title": "Top Banner Block",
+      "overview": "The **Top Banner** block renders a global information strip that stays above the fixed site navigation.",
+      "sourcePath": "blocks/top-banner",
+      "files": {
+        "css": [
+          "blocks/top-banner/top-banner.css"
+        ],
+        "js": [
+          "blocks/top-banner/top-banner.js"
+        ],
+        "json": [
+          "blocks/top-banner/_top-banner.json"
+        ],
+        "readme": "blocks/top-banner/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "uniform-configurator",
+      "category": "content",
+      "subcategory": "general",
+      "title": "Uniform Configurator",
+      "overview": "Single-block DA.live configurator for a premium, multi-step uniform package flow with live pricing, SVG preview updates, structured lead capture, and a success state.",
+      "sourcePath": "blocks/uniform-configurator",
+      "files": {
+        "css": [
+          "blocks/uniform-configurator/uniform-configurator.css"
+        ],
+        "js": [
+          "blocks/uniform-configurator/uniform-configurator.commerce-core.js",
+          "blocks/uniform-configurator/uniform-configurator.commerce.js",
+          "blocks/uniform-configurator/uniform-configurator.js",
+          "blocks/uniform-configurator/uniform-configurator.lib.js"
+        ],
+        "json": [
+          "blocks/uniform-configurator/_uniform-configurator.json"
+        ],
+        "readme": "blocks/uniform-configurator/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 7
+    },
+    {
+      "name": "video",
+      "category": "interactive-content",
+      "subcategory": "engagement",
+      "title": "Video Block",
+      "overview": "The Video block embeds videos from YouTube, Vimeo, or self-hosted sources. It supports optional poster-image placeholders, autoplay, and background (looping/muted) modes. Videos are lazy-loaded via `IntersectionObserver` for performance.",
+      "sourcePath": "blocks/video",
+      "files": {
+        "css": [
+          "blocks/video/video.css"
+        ],
+        "js": [
+          "blocks/video/video.js"
+        ],
+        "json": [
+          "blocks/video/_video.json"
+        ],
+        "readme": "blocks/video/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "vip-hero-block",
+      "category": "content",
+      "subcategory": "general",
+      "title": "VIP Hero Block",
+      "overview": "The `vip-hero-block` renders a premium members-only hero with two primary regions:",
+      "sourcePath": "blocks/vip-hero-block",
+      "files": {
+        "css": [
+          "blocks/vip-hero-block/vip-hero-block.css"
+        ],
+        "js": [
+          "blocks/vip-hero-block/vip-hero-block.js"
+        ],
+        "json": [
+          "blocks/vip-hero-block/_vip-hero-block.json"
+        ],
+        "readme": "blocks/vip-hero-block/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "vip-hero-mccs",
+      "category": "content",
+      "subcategory": "general",
+      "title": "VIP Hero MCCS",
+      "overview": "`vip-hero-mccs` is a Commerce-segment-driven EDS hero for the MCCS promotions use case.",
+      "sourcePath": "blocks/vip-hero-mccs",
+      "files": {
+        "css": [
+          "blocks/vip-hero-mccs/vip-hero-mccs.css"
+        ],
+        "js": [
+          "blocks/vip-hero-mccs/vip-hero-mccs.js"
+        ],
+        "json": [
+          "blocks/vip-hero-mccs/_vip-hero-mccs.json"
+        ],
+        "readme": "blocks/vip-hero-mccs/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 5
+    },
+    {
+      "name": "vip-member-block",
+      "category": "content",
+      "subcategory": "general",
+      "title": "VIP Member Block",
+      "overview": "`vip-member-block` is a standalone promotional commerce block for VIP or elite member experiences.",
+      "sourcePath": "blocks/vip-member-block",
+      "files": {
+        "css": [
+          "blocks/vip-member-block/vip-member-block.css"
+        ],
+        "js": [
+          "blocks/vip-member-block/vip-member-block.js"
+        ],
+        "json": [
+          "blocks/vip-member-block/_vip-member-block.json"
+        ],
+        "readme": "blocks/vip-member-block/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 5
+    },
+    {
+      "name": "vip-member-block-real-v2",
+      "category": "content",
+      "subcategory": "general",
+      "title": "VIP Member Block Real V2",
+      "overview": "`vip-member-block-real-v2` is a live-data VIP account block that keeps the premium member layout while replacing authored demo commerce values with runtime Adobe Commerce drop-in data.",
+      "sourcePath": "blocks/vip-member-block-real-v2",
+      "files": {
+        "css": [
+          "blocks/vip-member-block-real-v2/vip-member-block-real-v2.css"
+        ],
+        "js": [
+          "blocks/vip-member-block-real-v2/vip-member-block-real-v2.js"
+        ],
+        "json": [
+          "blocks/vip-member-block-real-v2/_vip-member-block-real-v2.json"
+        ],
+        "readme": "blocks/vip-member-block-real-v2/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    }
+  ]
+}

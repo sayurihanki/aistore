@@ -1,0 +1,8 @@
+ez-rack-builder-mockup
+eyebrow-text	MarineShop · Awards Division
+title	Welcome to the\nEZ Rack Builder
+subtitle	Assemble your ribbon rack, medal display, or full awards package in minutes. Our system automatically applies regulation precedence. Prototype mode keeps everything local to the block.
+primary-cta-label	Start New Rack
+secondary-cta-label	Prototype Login
+review-cta-label	Save Prototype Rack
+prototype-note	Prototype mode only. This block recreates the full luxury builder experience without connecting to Commerce, cart, or PDP configuration.

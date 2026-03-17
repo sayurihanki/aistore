@@ -1,0 +1,88 @@
+.pdp-input-options--hidden {
+  display: none;
+}
+
+.pdp-input-options {
+  display: grid;
+  gap: var(--spacing-medium);
+}
+
+.pdp-input-options__field-wrapper {
+  display: grid;
+  gap: var(--spacing-xsmall);
+}
+
+.pdp-input-options__label {
+  color: var(--color-neutral-900);
+  font: var(--type-body-1-strong-font);
+  letter-spacing: var(--type-body-1-strong-letter-spacing);
+}
+
+.pdp-input-options__required {
+  color: var(--color-alert-content);
+}
+
+.pdp-input-options__helper {
+  color: var(--color-neutral-700);
+  font: var(--type-details-caption-1-font);
+  letter-spacing: var(--type-details-caption-1-letter-spacing);
+  margin: 0;
+}
+
+.pdp-input-options__control {
+  appearance: none;
+  background: var(--color-neutral-50);
+  border: 1px solid var(--color-neutral-300);
+  border-radius: var(--shape-border-radius-1);
+  color: var(--color-neutral-900);
+  font: var(--type-body-1-default-font);
+  letter-spacing: var(--type-body-1-default-letter-spacing);
+  min-height: 48px;
+  padding: 0 var(--spacing-small);
+  width: 100%;
+}
+
+.pdp-input-options__control[type='file'] {
+  align-items: center;
+  display: flex;
+  padding: var(--spacing-small);
+}
+
+.pdp-input-options__control:focus {
+  border-color: var(--color-brand-700);
+  outline: 2px solid color-mix(in srgb, var(--color-brand-700) 18%, transparent);
+  outline-offset: 1px;
+}
+
+.pdp-input-options textarea.pdp-input-options__control {
+  min-height: 120px;
+  padding: var(--spacing-small);
+  resize: vertical;
+}
+
+.pdp-input-options__selected-value {
+  align-items: center;
+  color: var(--color-neutral-800);
+  display: flex;
+  flex-wrap: wrap;
+  font: var(--type-details-caption-1-font);
+  gap: var(--spacing-small);
+  letter-spacing: var(--type-details-caption-1-letter-spacing);
+}
+
+.pdp-input-options__clear {
+  background: none;
+  border: none;
+  color: var(--color-brand-700);
+  cursor: pointer;
+  font: inherit;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.pdp-input-options__error {
+  color: var(--color-alert-content);
+  font: var(--type-details-caption-1-font);
+  letter-spacing: var(--type-details-caption-1-letter-spacing);
+  margin: 0;
+}

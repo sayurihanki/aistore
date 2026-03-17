@@ -1,0 +1,71 @@
+body:is(.mcx, .mcx-preview) main .mcx-brands-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-brands .brands-sect {
+  background: var(--surface-1);
+  border-bottom: 1px solid var(--rim);
+  border-top: 1px solid var(--rim);
+  padding: 52px 48px;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-brands .brands-inner {
+  margin: 0 auto;
+  max-width: 1500px;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-brands .brands-hd {
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.38em;
+  margin-bottom: 36px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-brands .brands-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-brands .brand-pill {
+  align-items: center;
+  border-right: 1px solid var(--rim);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  padding: 18px 12px;
+  transition: background var(--t-fast);
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-brands .brand-pill:last-child {
+  border-right: 0;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-brands .brand-pill:hover,
+body:is(.mcx, .mcx-preview) main .mcx-brands .brand-pill:focus-visible {
+  background: var(--surface-2);
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-brands .brand-nm {
+  color: var(--text-dim);
+  font-family: var(--font-ui);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color var(--t-fast);
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-brands .brand-pill:hover .brand-nm,
+body:is(.mcx, .mcx-preview) main .mcx-brands .brand-pill:focus-visible .brand-nm {
+  color: var(--text-body);
+}
+
+@media (max-width: 1200px) {
+  body:is(.mcx, .mcx-preview) main .mcx-brands .brands-row {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

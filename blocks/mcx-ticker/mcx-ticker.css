@@ -1,0 +1,69 @@
+body:is(.mcx, .mcx-preview) main .mcx-ticker-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-ticker .ticker-wrap {
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--rim);
+  border-top: 1px solid var(--rim);
+  overflow: hidden;
+  padding: 14px 0;
+  position: relative;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-ticker .ticker-wrap::before,
+body:is(.mcx, .mcx-preview) main .mcx-ticker .ticker-wrap::after {
+  content: '';
+  inset: 0 auto 0 0;
+  position: absolute;
+  width: 100px;
+  z-index: 2;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-ticker .ticker-wrap::before {
+  background: linear-gradient(90deg, var(--surface-2), transparent);
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-ticker .ticker-wrap::after {
+  background: linear-gradient(270deg, var(--surface-2), transparent);
+  inset: 0 0 0 auto;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-ticker .ticker-track {
+  animation: mcx-ticker-roll 35s linear infinite;
+  display: flex;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-ticker .ticker-track:hover {
+  animation-play-state: paused;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-ticker .ticker-item {
+  align-items: center;
+  color: var(--text-dim);
+  display: inline-flex;
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  gap: 14px;
+  letter-spacing: 0.14em;
+  padding: 0 44px;
+  text-transform: uppercase;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-ticker .ticker-item b {
+  color: var(--text-body);
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-ticker .ticker-gem {
+  color: var(--scarlet);
+  font-size: 7px;
+}
+
+@keyframes mcx-ticker-roll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}

@@ -1,0 +1,22 @@
+{
+  "definitions": [
+    {
+      "title": "MCX Header",
+      "id": "mcx-header",
+      "plugins": {
+        "da": {
+          "name": "mcx-header",
+          "rows": 1,
+          "columns": 1
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "mcx-header",
+      "fields": []
+    }
+  ],
+  "filters": []
+}

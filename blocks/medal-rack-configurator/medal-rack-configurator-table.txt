@@ -1,0 +1,7 @@
+medal-rack-configurator
+data-source	/data/configurators/medal-rack-configurator.json
+eyebrow	Service and Honor Collection
+title	Officer Heritage\nMedal Rack
+subtitle	Solid hardwood, hand-fitted hardware, engraved inscription, and a regulation-aware prototype preview for ceremonial display.
+primary-cta-label	Review prototype pricing
+prototype-note	Prototype mode only. This configurator previews the experience without adding anything to cart. Use the standard PDP purchase controls on this page for live checkout.

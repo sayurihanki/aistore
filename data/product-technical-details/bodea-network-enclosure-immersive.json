@@ -1,0 +1,185 @@
+{
+  "specsTitle": "Technical Specifications",
+  "featuresTitle": "Key Features",
+  "detailsTitle": "Full Details",
+  "specCards": [
+    {
+      "icon": "U",
+      "label": "Rack Height (EIA-310)",
+      "attribute": "rack_height",
+      "fallbackValue": "42",
+      "unit": "U"
+    },
+    {
+      "icon": "LOAD",
+      "label": "Static Load Capacity",
+      "attribute": "static_load_capacity",
+      "fallbackValue": "1500",
+      "unit": "kg"
+    },
+    {
+      "icon": "TEMP",
+      "label": "Operating Temperature",
+      "attribute": "operating_temperature",
+      "fallbackValue": "0-45 deg C"
+    },
+    {
+      "icon": "NOISE",
+      "label": "Acoustic Noise Level",
+      "attribute": "acoustic_noise_level",
+      "fallbackValue": "<42 dB"
+    },
+    {
+      "icon": "WIDTH",
+      "label": "Interior Width (19 in EIA)",
+      "attribute": "interior_width",
+      "fallbackValue": "600",
+      "unit": "mm"
+    },
+    {
+      "icon": "PDU",
+      "label": "Max PDU Circuit Load",
+      "attribute": "max_pdu_circuit_load",
+      "fallbackValue": "16",
+      "unit": "A"
+    }
+  ],
+  "features": [
+    {
+      "title": "Hot-Swap Rails",
+      "description": "Tool-free slide-rail mounting for standard 1U to 4U equipment."
+    },
+    {
+      "title": "Blanking Panel Kit",
+      "description": "1U blanking panels included for more controlled airflow management."
+    },
+    {
+      "title": "Front and Rear Airflow Doors",
+      "description": "High-open-area doors with integrated keylock and service access."
+    },
+    {
+      "title": "Cable Entry Brush Strips",
+      "description": "Top, bottom, and rear cable entry points with controlled passthrough."
+    },
+    {
+      "title": "Pre-fitted M6 Cage Nuts",
+      "description": "EIA-compliant mounting rail positions supplied across the cabinet."
+    },
+    {
+      "title": "Leveling Feet and Casters",
+      "description": "Lockable swivel casters plus adjustable leveling feet for deployment."
+    }
+  ],
+  "detailsSections": [
+    {
+      "title": "Dimensions and Physical",
+      "open": true,
+      "rows": [
+        {
+          "label": "External Height",
+          "value": "2,000 mm (78.7 in)"
+        },
+        {
+          "label": "External Width",
+          "value": "600 mm (23.6 in)"
+        },
+        {
+          "label": "External Depth",
+          "value": "1,000 mm (39.4 in)"
+        },
+        {
+          "label": "Internal Width",
+          "value": "482.6 mm (19.0 in EIA-310)"
+        },
+        {
+          "label": "Internal Depth",
+          "value": "940 mm"
+        },
+        {
+          "label": "Net Weight (empty)",
+          "value": "115 kg"
+        },
+        {
+          "label": "Finish Options",
+          "value": "RAL 9005 Matte Black / RAL 7035 Light Grey / Custom"
+        }
+      ]
+    },
+    {
+      "title": "Power and Electrical",
+      "rows": [
+        {
+          "label": "PDU Input Voltage",
+          "value": "100-240 V AC, 50/60 Hz"
+        },
+        {
+          "label": "Max Current (Single Feed)",
+          "value": "16 A at 230 V"
+        },
+        {
+          "label": "Outlet Types",
+          "value": "IEC C13 x 18, IEC C19 x 6"
+        },
+        {
+          "label": "Surge Protection",
+          "value": "Metal Oxide Varistor, 30 kA"
+        },
+        {
+          "label": "Managed PDU Option",
+          "value": "SNMP v3 / SSH / REST API per-outlet switching"
+        }
+      ]
+    },
+    {
+      "title": "Cooling and Airflow",
+      "rows": [
+        {
+          "label": "Door Perforation",
+          "value": "82 percent open area (front and rear)"
+        },
+        {
+          "label": "Optional Fan Units",
+          "value": "1U 6-fan tray, 4,200 CFM max"
+        },
+        {
+          "label": "Airflow Direction",
+          "value": "Front-to-rear by default"
+        },
+        {
+          "label": "Operating Temperature",
+          "attribute": "operating_temperature",
+          "value": "0-45 deg C"
+        },
+        {
+          "label": "Humidity",
+          "value": "5-95 percent RH non-condensing"
+        }
+      ]
+    },
+    {
+      "title": "Certifications and Compliance",
+      "rows": [
+        {
+          "label": "Safety",
+          "value": "UL 60950-1, CE, RoHS 2.0"
+        },
+        {
+          "label": "EMC",
+          "value": "CISPR 22 Class A, FCC Part 15 Class A"
+        },
+        {
+          "label": "Seismic",
+          "value": "GR-63-CORE Zone 4 rated"
+        },
+        {
+          "label": "IP Rating",
+          "value": "IP55 (with optional door seals)"
+        },
+        {
+          "label": "Standard",
+          "value": "EIA-310-E, IEC 60297"
+        }
+      ]
+    }
+  ]
+}

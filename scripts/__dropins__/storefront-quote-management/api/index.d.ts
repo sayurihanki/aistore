@@ -21,7 +21,6 @@ export * from './getQuoteTemplateData';
 export * from './createQuoteTemplate';
 export * from './getQuoteTemplates';
 export * from './sendQuoteTemplateForReview';
-export * from './setQuoteTemplateExpirationDate';
 export * from './acceptQuoteTemplate';
 export * from './cancelQuoteTemplate';
 export * from './deleteQuoteTemplate';

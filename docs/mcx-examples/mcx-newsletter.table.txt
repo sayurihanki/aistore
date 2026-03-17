@@ -1,0 +1,7 @@
+mcx-newsletter
+label | Stay in the Loop
+title | GET EXCLUSIVE DEALS
+description | Early access to MCX deals, new arrivals, and Marine community news. Reserved for authorized patrons - because you have earned these benefits.
+placeholder | Your military email address...
+button-text | Subscribe
+note | AUTHORIZED PATRONS ONLY - UNSUBSCRIBE ANYTIME - NO SPAM

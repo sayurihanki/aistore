@@ -1,0 +1,38 @@
+mcx-footer-data
+config | brand | about | Serving Marines and their families since 1897. Tax-free shopping that returns 100% of profits to the Marine Corps community through MCCS programs and activities.
+config | site | note | © 2026 Marine Corps Exchange (MCX) / MCCS. All rights reserved. Tax-free shopping for authorized DoD patrons.
+config | site | flag | Proudly Serving Since 1897
+social | facebook | Facebook | https://www.facebook.com/
+social | instagram | Instagram | https://www.instagram.com/
+social | twitter | Twitter | https://www.x.com/
+social | tiktok | TikTok | https://www.tiktok.com/
+column | Shop | New Arrivals | /new
+column | Shop | Men's | /mens
+column | Shop | Women's | /womens
+column | Shop | Kids & Baby | /kids
+column | Shop | Electronics | /electronics
+column | Shop | Home & Garden | /home
+column | Shop | Sports & Outdoors | /sports-outdoors
+column | Shop | Sale & Clearance | /clearance
+column | Services | Find a Store | /stores
+column | Services | Ship to Store | /shipping
+column | Services | Returns & Exchanges | /returns
+column | Services | Order Status | /orders
+column | Services | Military Layaway | /services
+column | Services | Gift Cards | /gift-cards
+column | Services | Price Match | /price-match
+column | About MCX | Our Mission | /about
+column | About MCX | MCCS Programs | /mccs
+column | About MCX | Patron Eligibility | /eligibility
+column | About MCX | Vendor Partnerships | /partners
+column | About MCX | Careers at MCX | /careers
+column | About MCX | Newsroom | /newsroom
+column | Support | Help Center | /help
+column | Support | Contact Us | /contact
+column | Support | Feedback | /feedback
+column | Support | Accessibility | /accessibility
+column | Support | Security Center | /security
+legal |  | Privacy Policy | /privacy
+legal |  | Terms of Use | /terms
+legal |  | Cookie Policy | /cookies
+legal |  | Accessibility | /accessibility

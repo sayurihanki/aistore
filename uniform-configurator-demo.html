@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta
+    http-equiv="Content-Security-Policy"
+    content="script-src 'nonce-aem' 'strict-dynamic' 'unsafe-inline' http: https:; base-uri 'self'; object-src 'none';"
+    move-to-http-header="true"
+  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Uniform Configurator Demo</title>
+  <meta
+    name="description"
+    content="Local harness for the Adobe Commerce-backed uniform configurator package flow."
+  />
+  <link rel="stylesheet" href="/styles/mcx-fonts.css" />
+  <script nonce="aem" type="importmap">
+    {
+      "imports": {
+        "@dropins/storefront-account/": "/scripts/__dropins__/storefront-account/",
+        "@dropins/storefront-auth/": "/scripts/__dropins__/storefront-auth/",
+        "@dropins/storefront-cart/": "/scripts/__dropins__/storefront-cart/",
+        "@dropins/storefront-checkout/": "/scripts/__dropins__/storefront-checkout/",
+        "@dropins/storefront-order/": "/scripts/__dropins__/storefront-order/",
+        "@dropins/storefront-payment-services/": "/scripts/__dropins__/storefront-payment-services/",
+        "@dropins/storefront-pdp/": "/scripts/__dropins__/storefront-pdp/",
+        "@dropins/storefront-recommendations/": "/scripts/__dropins__/storefront-recommendations/",
+        "@dropins/storefront-wishlist/": "/scripts/__dropins__/storefront-wishlist/",
+        "@dropins/storefront-personalization/": "/scripts/__dropins__/storefront-personalization/",
+        "@dropins/storefront-product-discovery/": "/scripts/__dropins__/storefront-product-discovery/",
+        "@dropins/storefront-quote-management/": "/scripts/__dropins__/storefront-quote-management/",
+        "@dropins/storefront-company-switcher/": "/scripts/__dropins__/storefront-company-switcher/",
+        "@dropins/storefront-company-management/": "/scripts/__dropins__/storefront-company-management/",
+        "@dropins/storefront-requisition-list/": "/scripts/__dropins__/storefront-requisition-list/",
+        "@dropins/storefront-purchase-order/": "/scripts/__dropins__/storefront-purchase-order/",
+        "@dropins/tools/": "/scripts/__dropins__/tools/"
+      }
+    }
+  </script>
+  <script nonce="aem" type="module">
+    if (!(HTMLScriptElement.supports?.('importmap'))) {
+      import('/scripts/__dropins__/tools/shims/importmap.js');
+    }
+  </script>
+  <script nonce="aem" src="/scripts/aem.js" type="module"></script>
+  <script nonce="aem" src="/scripts/scripts.js" type="module"></script>
+  <script nonce="aem" src="/scripts/commerce.js" type="module"></script>
+  <link rel="stylesheet" href="/styles/styles.css" />
+  <style>
+    body.uniform-configurator-demo {
+      background:
+        radial-gradient(circle at 12% 12%, rgb(193 18 31 / 8%), transparent 20%),
+        radial-gradient(circle at 84% 10%, rgb(201 168 76 / 16%), transparent 24%),
+        linear-gradient(180deg, #fbf6ef 0%, #f3ebdf 48%, #ece1d2 100%);
+      color: #152232;
+    }
+
+    .uniform-configurator-demo main {
+      display: grid;
+      gap: 0;
+    }
+
+    .uniform-configurator-demo .section {
+      margin: 0 auto;
+      width: min(140rem, calc(100vw - 3.2rem));
+    }
+
+    .uniform-configurator-demo .demo-intro {
+      display: grid;
+      gap: 1.2rem;
+      padding: 5.4rem 0 2.4rem;
+    }
+
+    .uniform-configurator-demo .demo-intro h1,
+    .uniform-configurator-demo .demo-intro p {
+      margin: 0;
+    }
+
+    .uniform-configurator-demo .demo-intro h1 {
+      font-size: clamp(3.8rem, 6vw, 6rem);
+      line-height: 0.94;
+      letter-spacing: -0.04em;
+    }
+
+    .uniform-configurator-demo .demo-intro p {
+      color: rgb(21 34 50 / 72%);
+      max-width: 76rem;
+    }
+  </style>
+</head>
+
+<body class="uniform-configurator-demo">
+  <header></header>
+  <main>
+    <div class="section demo-intro">
+      <h1>Uniform Configurator Demo</h1>
+      <p>
+        Local proof harness for the Commerce-backed uniform package flow against
+        <strong>USMC-OFFICER-BLUES-PACKAGE</strong>. This page is intended for contract
+        validation, live add-to-cart smoke checks, and pre-library verification.
+      </p>
+    </div>
+    <div class="section">
+      <div class="uniform-configurator block">
+        <div>
+          <div>sku</div>
+          <div>USMC-OFFICER-BLUES-PACKAGE</div>
+        </div>
+        <div>
+          <div>eyebrow</div>
+          <div>Marine Corps Uniform Division</div>
+        </div>
+        <div>
+          <div>title</div>
+          <div>Officer Dress Blues\nPackage Builder</div>
+        </div>
+        <div>
+          <div>subtitle</div>
+          <div>Configure your complete male officer blue dress uniform to USMC regulation standards with real-time pricing and a live visual preview.</div>
+        </div>
+        <div>
+          <div>data-source</div>
+          <div>/data/configurators/marine-officer-dress-blues.json</div>
+        </div>
+        <div>
+          <div>analytics-id</div>
+          <div>marine-officer-dress-blues</div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer></footer>
+</body>
+
+</html>

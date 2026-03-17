@@ -1,0 +1,12 @@
+mcx-product-cards
+label | Curated For You |  |
+title | NEW ARRIVALS |  |
+view-link | [View All Products](/products) |  |
+![Tactical boot](https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=75) | Danner<br>Tachyon 8 Tactical Boot GTX | rating: 5<br>reviews: 248<br>price: 189.99<br>original: 239.99<br>chip: Save $50 | category: footwear<br>flags: New<br>emoji: 🥾<br>sizes: 8, 9, 10, 11, 12
+![Sony headphones](https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=75) | Sony<br>WH-1000XM5 Noise Canceling Headphones | rating: 5<br>reviews: 1024<br>price: 279.99<br>original: 349.99<br>chip: Save $70 | category: electronics<br>flags: Sale<br>emoji: 🎧
+![Under Armour Active Hybrid vest](https://underarmour.scene7.com/is/image/Underarmour/V5-1378505-001_FC?bgc=F0F0F0&cache=on%2Con&fmt=jpg&hei=708&qlt=85&resMode=sharp2&rp=standard-0pad%7CpdpMainDesktop&scl=1&size=566%2C708&wid=566) | Under Armour<br>UA Active Hybrid Men's Vest | rating: 5<br>reviews: 37<br>price: 97.97<br>original: 130.00<br>chip: Save $32 | category: apparel<br>flags: Sale, New<br>emoji: 🧥<br>sizes: S, M, L, XL, XXL
+![Garmin watch](https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=75) | Garmin<br>Instinct 2X Solar Tactical Edition | rating: 5<br>reviews: 512<br>price: 424.99<br>original: 499.99<br>chip: Save $75 | category: electronics<br>flags: 15% Off<br>emoji: ⌚
+![Brooks running shoes](https://images.unsplash.com/photo-1514989940723-e8e51635b782?w=500&q=75) | Brooks<br>Ghost 16 Road Running Shoes | rating: 5<br>reviews: 893<br>price: 119.99<br>original: 139.99<br>chip: Save $20 | category: footwear<br>flags: New<br>emoji: 👟<br>sizes: 8, 9, 10, 11, 12
+![iPad Air](https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=500&q=75) | Apple<br>iPad Air M2 11-inch 128GB WiFi | rating: 5<br>reviews: 2104<br>price: 549.99<br>original: 599.00<br>chip: Save $49 | category: electronics<br>flags: MCX Bundle<br>emoji: 📱
+![5.11 backpack](https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&q=75) | 5.11 Tactical<br>Rush 72 2.0 Backpack 55L | rating: 5<br>reviews: 631<br>price: 154.99<br>original: 185.00<br>chip: Save $30 | category: tactical<br>flags: Top Rated<br>emoji: 🎒
+![PlayStation 5](https://images.unsplash.com/photo-1486401899868-0e435ed85128?w=500&q=75) | Sony PlayStation<br>PlayStation 5 Console Bundle | rating: 5<br>reviews: 3441<br>price: 449.99<br>original: 499.99<br>chip: Save $50 | category: electronics<br>flags: In Stock<br>emoji: 🎮

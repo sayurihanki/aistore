@@ -1,0 +1,51 @@
+mcx-hero-newcomer
+eyebrow | New to Base · Start Here · Active Duty
+heading-line-1 | WELCOME
+heading-line-2 | ABOARD
+heading-line-3 | your exchange, your way
+description | Just got your orders? Your Marine Corps Exchange is already here for you. Tax-free shopping, PCS discounts, and everything you need to settle in - from uniforms to home essentials. This is day one.
+primary-cta | [Get Started](#get-started)
+secondary-cta | [Explore Deals](#explore)
+rank-badge-1 | NEW TO BASE
+rank-badge-2 | FIRST DUTY STATION
+rank-badge-3 | CHECK-IN READY
+quick-link-1-label | What's New
+quick-link-1-href | #whats-new
+quick-link-1-icon | clock
+quick-link-1-tone | red
+quick-link-2-label | PCS Deals
+quick-link-2-href | #pcs-deals
+quick-link-2-icon | deals
+quick-link-2-tone | gold
+quick-link-3-label | Uniforms
+quick-link-3-href | #uniforms
+quick-link-3-icon | shield
+quick-link-3-tone | teal
+quick-link-4-label | Find Your Store
+quick-link-4-href | #store-locator
+quick-link-4-icon | pin
+quick-link-4-tone | red
+intel-1-tag | First Stop
+intel-1-value | Day One
+intel-1-sub | Base essentials for your first week
+intel-1-progress | 78
+intel-2-tag | PCS Support
+intel-2-value | 30% Off
+intel-2-sub | Welcome savings at your new exchange
+intel-2-progress | 100
+intel-3-tag | Uniform Ready
+intel-3-value | Ready Now
+intel-3-sub | Grab service basics after check-in
+intel-3-progress | 92
+intel-4-tag | Your Benefit
+intel-4-value | Tax Free
+intel-4-sub | Savings from your first stop on base
+intel-4-progress | 100
+stat-1-value | 30%
+stat-1-label | PCS Welcome Discount
+stat-2-value | Tax Free
+stat-2-label | Every Purchase
+stat-3-value | 127+
+stat-3-label | Exchange Locations
+stat-4-value | 24hr
+stat-4-label | Express Pickup

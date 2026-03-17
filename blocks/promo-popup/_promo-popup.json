@@ -1,0 +1,169 @@
+{
+  "definitions": [
+    {
+      "title": "Promo Popup Spinner Wheel",
+      "id": "promo-popup",
+      "model": "promo-popup",
+      "plugins": {
+        "da": {
+          "name": "promo-popup",
+          "rows": 20,
+          "columns": 3
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "promo-popup",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "data-headline",
+          "label": "Headline",
+          "description": "Main headline above the wheel",
+          "value": "Spin to Win!"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "data-subheadline",
+          "label": "Subheadline",
+          "description": "Supporting text below the headline",
+          "value": "One spin, one deal made just for you."
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "data-pill",
+          "label": "Pill Badge",
+          "value": "Exclusive offer"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "data-headline-highlight",
+          "label": "Headline Highlight",
+          "value": "Win"
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "data-trigger",
+          "label": "Entry Trigger",
+          "description": "When to show the popup",
+          "value": "time",
+          "options": [
+            { "name": "Time Delay", "value": "time" },
+            { "name": "Scroll Depth", "value": "scroll" },
+            { "name": "Exit Intent", "value": "exit" },
+            { "name": "Immediate", "value": "immediate" },
+            { "name": "First Interaction", "value": "first-interaction" }
+          ]
+        },
+        {
+          "component": "number",
+          "valueType": "number",
+          "name": "data-trigger-delay",
+          "label": "Trigger Delay (seconds)",
+          "description": "Seconds before popup shows (when trigger is Time Delay)",
+          "value": 3
+        },
+        {
+          "component": "number",
+          "valueType": "number",
+          "name": "data-trigger-scroll",
+          "label": "Scroll Depth (%)",
+          "description": "Scroll percentage to trigger (when trigger is Scroll Depth)",
+          "value": 50
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "data-storage-duration",
+          "label": "Storage Duration",
+          "description": "Days to remember 'seen' state. Use 'session' or '0' for session-only.",
+          "value": "1"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "data-spin-button-text",
+          "label": "Spin Button Text",
+          "value": "Spin the Wheel"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "data-no-thanks-text",
+          "label": "No Thanks Text",
+          "value": "No thanks, I'll skip"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "data-result-headline",
+          "label": "Result Headline",
+          "description": "Emoji or text after winning",
+          "value": "🎉"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "data-cta-button-text",
+          "label": "CTA Button Text",
+          "description": "Default text for claim links",
+          "value": "Claim Offer"
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "data-theme",
+          "label": "Theme",
+          "description": "Visual theme variant",
+          "value": "purple",
+          "options": [
+            { "name": "Purple", "value": "purple" },
+            { "name": "Emerald", "value": "emerald" },
+            { "name": "Sunset", "value": "sunset" },
+            { "name": "Midnight", "value": "midnight" },
+            { "name": "Minimal", "value": "minimal" }
+          ]
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "data-show-orb-bg",
+          "label": "Show Animated Orbs",
+          "description": "Display drifting gradient orbs behind modal",
+          "value": "true",
+          "options": [
+            { "name": "Yes", "value": "true" },
+            { "name": "No", "value": "false" }
+          ]
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "data-show-confetti",
+          "label": "Show Confetti on Win",
+          "value": "true",
+          "options": [
+            { "name": "Yes", "value": "true" },
+            { "name": "No", "value": "false" }
+          ]
+        },
+        {
+          "component": "number",
+          "valueType": "number",
+          "name": "data-spin-duration",
+          "label": "Spin Duration (seconds)",
+          "description": "How long the wheel spins (3–8 seconds)",
+          "value": 4
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

@@ -1,0 +1,54 @@
+{
+  "definitions": [
+    {
+      "title": "Product Technical Details",
+      "id": "product-technical-details",
+      "model": "product-technical-details",
+      "plugins": {
+        "da": {
+          "type": "key-value-block"
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "product-technical-details",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "data-source",
+          "label": "Data Source",
+          "required": false,
+          "value": ""
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "presentation",
+          "label": "Presentation",
+          "value": "default",
+          "options": [
+            {
+              "name": "Default",
+              "value": "default"
+            },
+            {
+              "name": "Rack Immersive",
+              "value": "rack-immersive"
+            }
+          ]
+        },
+        {
+          "component": "boolean",
+          "valueType": "boolean",
+          "name": "enable-parallax",
+          "label": "Enable Parallax",
+          "value": true
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

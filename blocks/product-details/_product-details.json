@@ -1,24 +1,54 @@
 {
-  "definitions": [{
-    "title": "Product Details",
-    "id": "product-details",
-    "model": "product-details",
-    "plugins": {
-      "da": {
-        "type": "key-value-block"
+  "definitions": [
+    {
+      "title": "Product Details",
+      "id": "product-details",
+      "model": "product-details",
+      "plugins": {
+        "da": {
+          "type": "key-value-block"
+        }
       }
     }
-  }],
-  "models": [{
-    "id": "product-details",
-    "fields": [
-      {
-        "component": "text",
-        "name": "defaultSku",
-        "label": "Default SKU",
-        "description": "Optional: Specify a default product SKU if this is a template page"
-      }
-    ]
-  }],
+  ],
+  "models": [
+    {
+      "id": "product-details",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "defaultsku",
+          "label": "Default SKU",
+          "value": ""
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "presentation",
+          "label": "Presentation",
+          "value": "default",
+          "options": [
+            {
+              "name": "Default",
+              "value": "default"
+            },
+            {
+              "name": "Auto Immersive",
+              "value": "auto-immersive"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "experience-data-source",
+          "label": "Experience Data Source",
+          "description": "Optional repo-relative or da.live JSON path for breadcrumb, promo, shipping, and review overrides.",
+          "value": ""
+        }
+      ]
+    }
+  ],
   "filters": []
 }

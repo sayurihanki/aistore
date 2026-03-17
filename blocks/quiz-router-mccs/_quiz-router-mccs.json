@@ -1,0 +1,48 @@
+{
+  "definitions": [
+    {
+      "title": "Quiz Router MCCS",
+      "id": "quiz-router-mccs",
+      "model": "quiz-router-mccs",
+      "filter": "quiz-router-mccs",
+      "plugins": {
+        "da": {
+          "name": "quiz-router-mccs",
+          "rows": 1,
+          "columns": 3
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "quiz-router-mccs",
+      "fields": [
+        {
+          "component": "text",
+          "name": "rowType",
+          "label": "Row Type",
+          "description": "Use landing, question, question:<id>, or option."
+        },
+        {
+          "component": "richtext",
+          "name": "content",
+          "label": "Content",
+          "description": "Landing uses P1 title, P2 subtitle, P3 tagline. Questions use P1 title, P2 subtitle. Options use P1 badge, P2 title, P3 description."
+        },
+        {
+          "component": "text",
+          "name": "destination",
+          "label": "Destination / CTA",
+          "description": "Landing uses button text. Options use #next, #step:<id>, /fragments/... for inline results, or /page for navigation."
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "quiz-router-mccs",
+      "components": []
+    }
+  ]
+}

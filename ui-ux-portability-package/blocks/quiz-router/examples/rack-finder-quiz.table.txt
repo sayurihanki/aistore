@@ -1,0 +1,33 @@
+quiz-router
+question | 1) Where will this rack/enclosure be deployed? | ![Deployment context](/images/quiz/rack-finder/q1-deployment.jpg)
+option | Data closet / branch office || Quiet near-desk installs || Popular || 🏢 | #next
+option | Small server room || 7-24U growth-ready footprint || Scalable || 🧰 | #next
+option | Open office / retail backroom || Customer-facing and noise-sensitive || Retail || 🛍️ | #next
+option | Industrial / warehouse edge | #next
+question | 2) How many rack units (U) do you expect now? | ![Rack units guide](/images/quiz/rack-finder/q2-rack-units.jpg)
+option | 1-6U (compact edge) | #next
+option | 7-12U (growth ready) | #next
+option | 13-24U (mid-scale) | #next
+option | 25-42U (high capacity) | #next
+option | I'm not sure yet | #next
+question | 3) What is your highest priority? | ![Priority chooser](/images/quiz/rack-finder/q3-priority.jpg)
+option | Quiet operation | #next
+option | Maximum airflow | #next
+option | Security / lockable access | #next
+option | Easy installation | #next
+question | 4) How dense is your cabling/network gear? | ![Cable density](/images/quiz/rack-finder/q4-cable-density.jpg)
+option | Light (few devices) | #next
+option | Moderate | #next
+option | Dense | #next
+option | Very dense / frequently changing | #next
+question | 5) How quickly will you scale? | ![Growth planning](/images/quiz/rack-finder/q5-growth.jpg)
+option | Stable for 12+ months | #next
+option | Moderate growth in 6-12 months | #next
+option | Aggressive growth in <6 months | #next
+option | Unknown / planning phase | #next
+question | 6) Pick your recommended starting shortlist | ![Recommended shortlist](/images/quiz/rack-finder/q6-recommendation.jpg)
+option | Compact Edge (6U/12U shortlist) | /network-enclosures?filter=sku:BD-NE-06U-1,BD-NE-12U-GLASS-6U,BD-NE-12U-GLASS-12U&sort=position_DESC
+option | Growth Ready (12U/24U shortlist) | /network-enclosures?filter=sku:BD-NE-12U-GLASS-12U,BD-NE-12U-GLASS-24U&sort=position_DESC
+option | High Capacity (24U/42U shortlist) | /network-enclosures?filter=sku:BD-NE-12U-GLASS-24U,BD-NE-12U-GLASS-42U&sort=position_DESC
+option | Compare All Enclosures | /network-enclosures?filter=sku:BD-NE-06U-1,BD-NE-12U-GLASS-6U,BD-NE-12U-GLASS-12U,BD-NE-12U-GLASS-24U,BD-NE-12U-GLASS-42U&sort=position_DESC
+option | Start from Category View | /server-racks?sort=position_DESC

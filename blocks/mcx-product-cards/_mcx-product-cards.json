@@ -1,0 +1,22 @@
+{
+  "definitions": [
+    {
+      "title": "MCX Product Cards",
+      "id": "mcx-product-cards",
+      "plugins": {
+        "da": {
+          "name": "mcx-product-cards",
+          "rows": 14,
+          "columns": 4
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "mcx-product-cards",
+      "fields": []
+    }
+  ],
+  "filters": []
+}

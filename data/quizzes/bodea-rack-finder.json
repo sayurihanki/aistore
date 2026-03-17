@@ -1,0 +1,79 @@
+{
+  "id": "bodea-rack-finder-v1",
+  "version": "1.0.0",
+  "consentRequired": true,
+  "questions": [
+    {
+      "id": "deployment",
+      "type": "single_select",
+      "text": "Where will this be deployed?",
+      "helpFragment": "/fragments/quiz/help/rack-units",
+      "options": [
+        {
+          "id": "branch_office",
+          "label": "Branch office",
+          "tags": ["edge", "compact"],
+          "next": "rack_units"
+        }
+      ]
+    },
+    {
+      "id": "rack_units",
+      "type": "single_select",
+      "text": "How many rack units (U) do you expect now?",
+      "helpFragment": "/fragments/quiz/help/rack-units",
+      "options": [
+        {
+          "id": "u_1_6",
+          "label": "1-6U (compact edge)",
+          "tags": ["compact", "edge"],
+          "next": "priority"
+        },
+        {
+          "id": "u_7_12",
+          "label": "7-12U (growth ready)",
+          "tags": ["growth"],
+          "next": "priority"
+        }
+      ]
+    },
+    {
+      "id": "priority",
+      "type": "single_select",
+      "text": "What is your highest priority?",
+      "helpFragment": "/fragments/quiz/help/airflow",
+      "options": [
+        {
+          "id": "airflow",
+          "label": "Maximum airflow",
+          "tags": ["airflow"],
+          "next": "result"
+        },
+        {
+          "id": "security",
+          "label": "Security / lockable access",
+          "tags": ["secure"],
+          "next": "result"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "id": "compact_edge",
+      "match": {
+        "allTags": ["edge", "compact"]
+      },
+      "title": "Compact Edge",
+      "route": "/network-enclosures?filter=sku:BD-NE-06U-1,BD-NE-12U-GLASS-6U,BD-NE-12U-GLASS-12U&sort=position_DESC"
+    },
+    {
+      "id": "secure_growth",
+      "match": {
+        "allTags": ["growth", "secure"]
+      },
+      "title": "Secure Growth",
+      "route": "/network-enclosures?filter=sku:BD-NE-12U-GLASS-12U,BD-NE-12U-GLASS-24U&sort=position_DESC"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "definitions": [
+    {
+      "title": "MCX Brands",
+      "id": "mcx-brands",
+      "plugins": {
+        "da": {
+          "name": "mcx-brands",
+          "rows": 7,
+          "columns": 1
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "mcx-brands",
+      "fields": []
+    }
+  ],
+  "filters": []
+}

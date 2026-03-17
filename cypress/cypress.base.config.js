@@ -17,12 +17,16 @@ module.exports = {
   e2e: {
     setupNodeEvents(on, config) {
       require('@cypress/grep/src/plugin')(config);
+      const { verifyUniformOrderItem } = require('./src/support/uniformAdminVerification');
 
       // Custom task to print logs to terminal in CI
       on("task", {
         log(message) {
           console.log(message);
           return null;
+        },
+        verifyUniformOrderItem(payload) {
+          return verifyUniformOrderItem(payload, config.env);
         },
       });
 

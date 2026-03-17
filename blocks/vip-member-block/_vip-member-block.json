@@ -1,0 +1,333 @@
+{
+  "definitions": [
+    {
+      "title": "VIP Member Block",
+      "id": "vip-member-block",
+      "model": "vip-member-block",
+      "plugins": {
+        "da": {
+          "name": "vip-member-block",
+          "rows": 39,
+          "columns": 1,
+          "fields": [
+            { "name": "eyebrowText", "selector": "div:nth-child(1)>div:nth-child(1)" },
+            { "name": "title", "selector": "div:nth-child(2)>div:nth-child(1)" },
+            { "name": "subtitle", "selector": "div:nth-child(3)>div:nth-child(1)" },
+            { "name": "stat1", "selector": "div:nth-child(4)>div:nth-child(1)" },
+            { "name": "stat2", "selector": "div:nth-child(5)>div:nth-child(1)" },
+            { "name": "stat3", "selector": "div:nth-child(6)>div:nth-child(1)" },
+            { "name": "featuredLabel", "selector": "div:nth-child(7)>div:nth-child(1)" },
+            { "name": "featuredDiscount", "selector": "div:nth-child(8)>div:nth-child(1)" },
+            { "name": "featuredCategory", "selector": "div:nth-child(9)>div:nth-child(1)" },
+            { "name": "featuredTitle", "selector": "div:nth-child(10)>div:nth-child(1)" },
+            { "name": "featuredDesc", "selector": "div:nth-child(11)>div:nth-child(1)" },
+            { "name": "featuredPrice", "selector": "div:nth-child(12)>div:nth-child(1)" },
+            { "name": "featuredCtaPrimary", "selector": "div:nth-child(13)>div:nth-child(1)>a" },
+            { "name": "featuredCtaSecondary", "selector": "div:nth-child(14)>div:nth-child(1)>a" },
+            { "name": "benefit1", "selector": "div:nth-child(15)>div:nth-child(1)" },
+            { "name": "benefit2", "selector": "div:nth-child(16)>div:nth-child(1)" },
+            { "name": "benefit3", "selector": "div:nth-child(17)>div:nth-child(1)" },
+            { "name": "benefit4", "selector": "div:nth-child(18)>div:nth-child(1)" },
+            { "name": "spotlightLabel", "selector": "div:nth-child(19)>div:nth-child(1)" },
+            { "name": "spotlightCount", "selector": "div:nth-child(20)>div:nth-child(1)" },
+            { "name": "spotlightItem1", "selector": "div:nth-child(21)>div:nth-child(1)" },
+            { "name": "spotlightItem2", "selector": "div:nth-child(22)>div:nth-child(1)" },
+            { "name": "spotlightItem3", "selector": "div:nth-child(23)>div:nth-child(1)" },
+            { "name": "spotlightFooterText", "selector": "div:nth-child(24)>div:nth-child(1)" },
+            { "name": "spotlightFooterLink", "selector": "div:nth-child(25)>div:nth-child(1)>a" },
+            { "name": "accountName", "selector": "div:nth-child(26)>div:nth-child(1)" },
+            { "name": "accountOrg", "selector": "div:nth-child(27)>div:nth-child(1)" },
+            { "name": "metric1", "selector": "div:nth-child(28)>div:nth-child(1)" },
+            { "name": "metric2", "selector": "div:nth-child(29)>div:nth-child(1)" },
+            { "name": "metric3", "selector": "div:nth-child(30)>div:nth-child(1)" },
+            { "name": "metric4", "selector": "div:nth-child(31)>div:nth-child(1)" },
+            { "name": "action1", "selector": "div:nth-child(32)>div:nth-child(1)" },
+            { "name": "action2", "selector": "div:nth-child(33)>div:nth-child(1)" },
+            { "name": "action3", "selector": "div:nth-child(34)>div:nth-child(1)" },
+            { "name": "proof1", "selector": "div:nth-child(35)>div:nth-child(1)" },
+            { "name": "proof2", "selector": "div:nth-child(36)>div:nth-child(1)" },
+            { "name": "proof3", "selector": "div:nth-child(37)>div:nth-child(1)" },
+            { "name": "proofCtaPrimary", "selector": "div:nth-child(38)>div:nth-child(1)>a" },
+            { "name": "proofCtaSub", "selector": "div:nth-child(39)>div:nth-child(1)" }
+          ]
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "vip-member-block",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "eyebrowText",
+          "label": "Eyebrow Text",
+          "value": "Private Member Offers - Q1 2025"
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "title",
+          "label": "Title"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "subtitle",
+          "label": "Subtitle",
+          "value": "Member-only pricing, first-access inventory, and concierge procurement - built for enterprise IT operations."
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "stat1",
+          "label": "Stat 1 (value | label)",
+          "value": "$48,000 | Available Credit"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "stat2",
+          "label": "Stat 2 (value | label)",
+          "value": "18% | Avg. Savings YTD"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "stat3",
+          "label": "Stat 3 (value | label)",
+          "value": "12 | Open Orders"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "featuredLabel",
+          "label": "Featured Label",
+          "value": "Member Exclusive"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "featuredDiscount",
+          "label": "Featured Discount (value | label)",
+          "value": "15% | Member Rate"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "featuredCategory",
+          "label": "Featured Category",
+          "value": "Infrastructure - Server Racks"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "featuredTitle",
+          "label": "Featured Title",
+          "value": "Bodea NE Series Network Enclosures"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "featuredDesc",
+          "label": "Featured Description",
+          "value": "Enterprise-grade modular enclosures from 6U to 42U."
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "featuredPrice",
+          "label": "Featured Price (member | was | tag)",
+          "value": "From $331.55 | $349.00 | Member Rate"
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "featuredCtaPrimary",
+          "label": "Featured Primary CTA Link"
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "featuredCtaSecondary",
+          "label": "Featured Secondary CTA Link"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "benefit1",
+          "label": "Benefit 1 (title | desc | linkText | linkUrl)",
+          "value": "Priority Inventory Access | First pick on incoming stock before it hits the public catalog. Reserve units up to 30 days ahead of availability. | Reserve Stock | /reserve-stock"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "benefit2",
+          "label": "Benefit 2 (title | desc | linkText | linkUrl)",
+          "value": "Dedicated Concierge | Your named account manager handles procurement, approvals, and escalations around the clock. | Contact Rep | /contact-rep"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "benefit3",
+          "label": "Benefit 3 (title | desc | linkText | linkUrl)",
+          "value": "Net-60 Extended Terms | Your account carries negotiated Net-60 payment terms with a $48K credit line. | View Terms | /terms"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "benefit4",
+          "label": "Benefit 4 (title | desc | linkText | linkUrl)",
+          "value": "Custom Maintenance Plans | Enterprise SLAs, lifecycle support, and firmware subscription programs tailored to your footprint. | Explore Plans | /plans"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "spotlightLabel",
+          "label": "Spotlight Label",
+          "value": "Member Pricing - Active Deals"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "spotlightCount",
+          "label": "Spotlight Count",
+          "value": "6 of 14 categories"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "spotlightItem1",
+          "label": "Spotlight Item 1 (name | meta | memberPrice | wasPrice)",
+          "value": "NE 6U CommBox Enclosure | SKU: BODEA-NE-6U - In Stock | $1,383.20 | $1,456.00"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "spotlightItem2",
+          "label": "Spotlight Item 2 (name | meta | memberPrice | wasPrice)",
+          "value": "Cat6 Patch Cable - Snagless 14ft | SKU: BODEA-CAT6-14 - 200+ units | $14.24 | $14.99"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "spotlightItem3",
+          "label": "Spotlight Item 3 (name | meta | memberPrice | wasPrice)",
+          "value": "NE 12U GlassFront - 42U Config | SKU: BODEA-NE-12U-42 - Low Stock | $1,804.05 | $1,899.00"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "spotlightFooterText",
+          "label": "Spotlight Footer Text",
+          "value": "Member pricing applied at checkout"
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "spotlightFooterLink",
+          "label": "Spotlight Footer Link"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "accountName",
+          "label": "Account Name",
+          "value": "David - Server Savvy Inc."
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "accountOrg",
+          "label": "Account Org",
+          "value": "West Region - Elite Member - Since 1994"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "metric1",
+          "label": "Metric 1 (value | label | delta | green?)",
+          "value": "$48K | Credit Line | Available | green"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "metric2",
+          "label": "Metric 2 (value | label | delta | green?)",
+          "value": "12 | Open Orders | +3 this week"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "metric3",
+          "label": "Metric 3 (value | label | delta | green?)",
+          "value": "$124K | YTD Spend | Up 12% YoY | green"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "metric4",
+          "label": "Metric 4 (value | label | delta | green?)",
+          "value": "3 | Locations | W / E / EMEA"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "action1",
+          "label": "Action 1 (label | badge?)",
+          "value": "Reorder Last Purchase | PO# 278455"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "action2",
+          "label": "Action 2 (label | badge?)",
+          "value": "Request a Quote"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "action3",
+          "label": "Action 3 (label | badge?)",
+          "value": "Contact My Rep | 24/7"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "proof1",
+          "label": "Proof 1 (title | sub)",
+          "value": "Compliance-Ready Infrastructure | All hardware ships with full compliance docs and firmware packs"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "proof2",
+          "label": "Proof 2 (title | sub)",
+          "value": "30,000+ SKUs Reserved | Elite members see inventory before public release"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "proof3",
+          "label": "Proof 3 (title | sub)",
+          "value": "Same-Day Order Processing | Orders placed before 2PM ship same business day"
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "proofCtaPrimary",
+          "label": "Proof CTA Link"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "proofCtaSub",
+          "label": "Proof CTA Supporting Text",
+          "value": "Negotiated catalog - All categories"
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

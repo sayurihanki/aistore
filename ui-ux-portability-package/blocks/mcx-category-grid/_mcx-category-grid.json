@@ -1,0 +1,22 @@
+{
+  "definitions": [
+    {
+      "title": "MCX Category Grid",
+      "id": "mcx-category-grid",
+      "plugins": {
+        "da": {
+          "name": "mcx-category-grid",
+          "rows": 12,
+          "columns": 4
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "mcx-category-grid",
+      "fields": []
+    }
+  ],
+  "filters": []
+}

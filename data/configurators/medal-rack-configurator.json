@@ -1,0 +1,173 @@
+{
+  "id": "medal-rack-configurator",
+  "version": "1.0.0",
+  "currency": "USD",
+  "pricing": {
+    "base": 495,
+    "engraving": 60,
+    "mountKit": 140
+  },
+  "defaults": {
+    "size": "sm",
+    "wood": "walnut",
+    "hardware": "gold",
+    "branch": "usmc",
+    "inscription": "Semper Fidelis"
+  },
+  "sizes": [
+    {
+      "id": "sm",
+      "label": "Standard",
+      "dimensions": "8\" x 10\"",
+      "cost": 0
+    },
+    {
+      "id": "md",
+      "label": "Medium",
+      "dimensions": "11\" x 14\"",
+      "cost": 60
+    },
+    {
+      "id": "lg",
+      "label": "Large",
+      "dimensions": "14\" x 18\"",
+      "cost": 120
+    },
+    {
+      "id": "xl",
+      "label": "Extra Large",
+      "dimensions": "18\" x 24\"",
+      "cost": 200
+    }
+  ],
+  "woods": [
+    {
+      "id": "walnut",
+      "label": "Walnut",
+      "cost": 0,
+      "gradientId": "woodWalnut"
+    },
+    {
+      "id": "mahogany",
+      "label": "Mahogany",
+      "cost": 40,
+      "gradientId": "woodMahogany"
+    },
+    {
+      "id": "ebony",
+      "label": "Ebony",
+      "cost": 80,
+      "gradientId": "woodEbony"
+    },
+    {
+      "id": "cherry",
+      "label": "Cherry",
+      "cost": 60,
+      "gradientId": "woodCherry"
+    },
+    {
+      "id": "maple",
+      "label": "Maple",
+      "cost": 50,
+      "gradientId": "woodMaple"
+    }
+  ],
+  "hardware": [
+    {
+      "id": "gold",
+      "label": "Gold",
+      "cost": 0,
+      "pinColor": "#c9a84c",
+      "plateColor": "#c9a84c"
+    },
+    {
+      "id": "silver",
+      "label": "Silver",
+      "cost": 0,
+      "pinColor": "#b0bcc7",
+      "plateColor": "#b7c0c9"
+    },
+    {
+      "id": "brass",
+      "label": "Brass",
+      "cost": 20,
+      "pinColor": "#b89040",
+      "plateColor": "#af8442"
+    },
+    {
+      "id": "pewter",
+      "label": "Pewter",
+      "cost": 15,
+      "pinColor": "#667387",
+      "plateColor": "#566171"
+    }
+  ],
+  "branches": [
+    {
+      "id": "usmc",
+      "label": "USMC",
+      "icon": "EGA",
+      "watermark": "USMC"
+    },
+    {
+      "id": "army",
+      "label": "Army",
+      "icon": "STAR",
+      "watermark": "ARMY"
+    },
+    {
+      "id": "navy",
+      "label": "Navy",
+      "icon": "ANCHOR",
+      "watermark": "NAVY"
+    },
+    {
+      "id": "airforce",
+      "label": "USAF",
+      "icon": "WING",
+      "watermark": "USAF"
+    },
+    {
+      "id": "cg",
+      "label": "USCG",
+      "icon": "COAST",
+      "watermark": "USCG"
+    },
+    {
+      "id": "sf",
+      "label": "USSF",
+      "icon": "ORBIT",
+      "watermark": "USSF"
+    }
+  ],
+  "addons": [
+    {
+      "id": "shadowbox",
+      "label": "Matching Shadow Box",
+      "description": "Solid hardwood shadow box in the selected finish for medals, photos, and keepsakes.",
+      "price": 195,
+      "icon": "FRAME"
+    },
+    {
+      "id": "ribbon-kit",
+      "label": "Replacement Ribbon Set",
+      "description": "Regulation-aware replacement ribbon bundle for the selected branch.",
+      "price": 85,
+      "icon": "RIBBON"
+    },
+    {
+      "id": "certificate",
+      "label": "Certificate of Authenticity",
+      "description": "Numbered archival certificate with build details and craftsman signature.",
+      "price": 48,
+      "icon": "CERT"
+    },
+    {
+      "id": "gift",
+      "label": "Heirloom Gift Box",
+      "description": "Magnetic closure presentation box with tissue wrap and gift card.",
+      "price": 35,
+      "icon": "GIFT"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "name": "@jenhanki/ui-ux-portability-package",
+  "version": "1.0.0",
+  "description": "Portable UI/UX package extracted from jenhankib2bbodea",
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "head.html",
+    "styles",
+    "fonts",
+    "icons",
+    "blocks",
+    "scripts",
+    "models",
+    "component-definition.json",
+    "component-models.json",
+    "component-filters.json",
+    "manifests",
+    "docs",
+    "tools",
+    "index.js"
+  ],
+  "exports": {
+    ".": "./index.js",
+    "./styles": "./styles/import-order.css",
+    "./manifest/tokens": "./manifests/design-tokens.json",
+    "./manifest/blocks": "./manifests/block-inventory.json",
+    "./manifest/dependencies": "./manifests/dropin-dependencies.json",
+    "./manifest/sections": "./manifests/section-conventions.json",
+    "./manifest/assets": "./manifests/assets.json"
+  }
+}

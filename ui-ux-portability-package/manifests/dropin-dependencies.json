@@ -1,0 +1,544 @@
+{
+  "generatedAt": "2026-03-16T05:45:11.397Z",
+  "summary": {
+    "totalPackages": 17,
+    "undeclaredPackages": []
+  },
+  "packages": [
+    {
+      "package": "@dropins/storefront-account",
+      "version": "~3.0.0",
+      "source": "declared",
+      "importCount": 22,
+      "importSpecifiers": [
+        "@dropins/storefront-account/api.js",
+        "@dropins/storefront-account/containers/Addresses.js",
+        "@dropins/storefront-account/containers/AddressForm.js",
+        "@dropins/storefront-account/containers/CustomerInformation.js",
+        "@dropins/storefront-account/containers/OrdersList.js",
+        "@dropins/storefront-account/render.js"
+      ],
+      "importedBy": [
+        "blocks/commerce-account-header/commerce-account-header.js",
+        "blocks/commerce-account-hub/commerce-account-hub.js",
+        "blocks/commerce-account-sidebar/commerce-account-sidebar.js",
+        "blocks/commerce-addresses/commerce-addresses.js",
+        "blocks/commerce-b2b-negotiable-quote-template/commerce-b2b-negotiable-quote-template.js",
+        "blocks/commerce-b2b-negotiable-quote/commerce-b2b-negotiable-quote.js",
+        "blocks/commerce-b2b-quote-checkout/containers.js",
+        "blocks/commerce-checkout/containers.js",
+        "blocks/commerce-customer-information/commerce-customer-information.js",
+        "blocks/commerce-orders-list/commerce-orders-list.js",
+        "blocks/live-block/dashboard-core.js",
+        "scripts/initializers/account.js"
+      ]
+    },
+    {
+      "package": "@dropins/storefront-auth",
+      "version": "~3.0.0",
+      "source": "declared",
+      "importCount": 36,
+      "importSpecifiers": [
+        "@dropins/storefront-auth/api.js",
+        "@dropins/storefront-auth/containers/AuthCombine.js",
+        "@dropins/storefront-auth/containers/ResetPassword.js",
+        "@dropins/storefront-auth/containers/SignIn.js",
+        "@dropins/storefront-auth/containers/SignUp.js",
+        "@dropins/storefront-auth/containers/SuccessNotification.js",
+        "@dropins/storefront-auth/containers/UpdatePassword.js",
+        "@dropins/storefront-auth/render.js"
+      ],
+      "importedBy": [
+        "blocks/commerce-b2b-negotiable-quote/commerce-b2b-negotiable-quote.js",
+        "blocks/commerce-b2b-quote-checkout/containers.js",
+        "blocks/commerce-checkout-success/commerce-checkout-success.js",
+        "blocks/commerce-checkout/containers.js",
+        "blocks/commerce-confirm-account/commerce-confirm-account.js",
+        "blocks/commerce-create-account/commerce-create-account.js",
+        "blocks/commerce-create-password/commerce-create-password.js",
+        "blocks/commerce-forgot-password/commerce-forgot-password.js",
+        "blocks/commerce-login/commerce-login.js",
+        "blocks/commerce-search-order/commerce-search-order.js",
+        "blocks/commerce-wishlist/commerce-wishlist.js",
+        "blocks/header/renderAuthCombine.js",
+        "blocks/header/renderAuthDropdown.js",
+        "blocks/mcx-header/auth-combine-modal.js",
+        "blocks/mcx-header/mcx-header.js",
+        "scripts/initializers/auth.js"
+      ]
+    },
+    {
+      "package": "@dropins/storefront-cart",
+      "version": "~3.0.0",
+      "source": "declared",
+      "importCount": 40,
+      "importSpecifiers": [
+        "@dropins/storefront-cart/api.js",
+        "@dropins/storefront-cart/containers/CartSummaryList.js",
+        "@dropins/storefront-cart/containers/Coupons.js",
+        "@dropins/storefront-cart/containers/EstimateShipping.js",
+        "@dropins/storefront-cart/containers/GiftCards.js",
+        "@dropins/storefront-cart/containers/GiftOptions.js",
+        "@dropins/storefront-cart/containers/MiniCart.js",
+        "@dropins/storefront-cart/containers/OrderSummary.js",
+        "@dropins/storefront-cart/render.js"
+      ],
+      "importedBy": [
+        "blocks/commerce-cart/commerce-cart.js",
+        "blocks/commerce-checkout-success/commerce-checkout-success.js",
+        "blocks/commerce-checkout/containers.js",
+        "blocks/commerce-gift-options/commerce-gift-options.js",
+        "blocks/commerce-mini-cart/commerce-mini-cart.js",
+        "blocks/commerce-order-product-list/commerce-order-product-list.js",
+        "blocks/commerce-wishlist/commerce-wishlist.js",
+        "blocks/ez-rack-builder/ez-rack-builder.js",
+        "blocks/header/header.js",
+        "blocks/live-block/dashboard-core.js",
+        "blocks/luxury-configurator/luxury-configurator.js",
+        "blocks/mcx-category-page/mcx-category-page.js",
+        "blocks/product-configurator-luxe/product-configurator-luxe.js",
+        "blocks/product-details/product-details.js",
+        "blocks/product-list-page/product-list-page.js",
+        "blocks/product-recommendations/product-recommendations.js",
+        "blocks/product-teaser/product-teaser.js",
+        "blocks/uniform-configurator/uniform-configurator.js",
+        "scripts/components/commerce-mini-pdp/commerce-mini-pdp.js",
+        "scripts/initializers/cart.js"
+      ]
+    },
+    {
+      "package": "@dropins/storefront-checkout",
+      "version": "~3.0.1",
+      "source": "declared",
+      "importCount": 31,
+      "importSpecifiers": [
+        "@dropins/storefront-checkout/api.js",
+        "@dropins/storefront-checkout/containers/BillToShippingAddress.js",
+        "@dropins/storefront-checkout/containers/EstimateShipping.js",
+        "@dropins/storefront-checkout/containers/LoginForm.js",
+        "@dropins/storefront-checkout/containers/MergedCartBanner.js",
+        "@dropins/storefront-checkout/containers/OutOfStock.js",
+        "@dropins/storefront-checkout/containers/PaymentMethods.js",
+        "@dropins/storefront-checkout/containers/PlaceOrder.js",
+        "@dropins/storefront-checkout/containers/ServerError.js",
+        "@dropins/storefront-checkout/containers/ShippingMethods.js",
+        "@dropins/storefront-checkout/containers/TermsAndConditions.js",
+        "@dropins/storefront-checkout/lib/utils.js",
+        "@dropins/storefront-checkout/render.js"
+      ],
+      "importedBy": [
+        "blocks/commerce-b2b-po-checkout-success/commerce-b2b-po-checkout-success.js",
+        "blocks/commerce-b2b-quote-checkout/commerce-b2b-quote-checkout.js",
+        "blocks/commerce-b2b-quote-checkout/containers.js",
+        "blocks/commerce-b2b-quote-checkout/fragments.js",
+        "blocks/commerce-checkout-success/commerce-checkout-success.js",
+        "blocks/commerce-checkout/commerce-checkout.js",
+        "blocks/commerce-checkout/containers.js",
+        "blocks/commerce-checkout/fragments.js",
+        "scripts/initializers/checkout.js"
+      ]
+    },
+    {
+      "package": "@dropins/storefront-company-management",
+      "version": "~1.0.0",
+      "source": "declared",
+      "importCount": 26,
+      "importSpecifiers": [
+        "@dropins/storefront-company-management/api.js",
+        "@dropins/storefront-company-management/containers/AcceptInvitation.js",
+        "@dropins/storefront-company-management/containers/CompanyCredit.js",
+        "@dropins/storefront-company-management/containers/CompanyProfile.js",
+        "@dropins/storefront-company-management/containers/CompanyRegistration.js",
+        "@dropins/storefront-company-management/containers/CompanyStructure.js",
+        "@dropins/storefront-company-management/containers/CompanyUsers.js",
+        "@dropins/storefront-company-management/containers/CustomerCompanyInfo.js",
+        "@dropins/storefront-company-management/containers/RolesAndPermissions.js",
+        "@dropins/storefront-company-management/render.js"
+      ],
+      "importedBy": [
+        "blocks/commerce-account-header/commerce-account-header.js",
+        "blocks/commerce-account-hub/commerce-account-hub.js",
+        "blocks/commerce-b2b-negotiable-quote-template/commerce-b2b-negotiable-quote-template.js",
+        "blocks/commerce-b2b-negotiable-quote/commerce-b2b-negotiable-quote.js",
+        "blocks/commerce-company-accept-invitation/commerce-company-accept-invitation.js",
+        "blocks/commerce-company-create/commerce-company-create.js",
+        "blocks/commerce-company-credit/commerce-company-credit.js",
+        "blocks/commerce-company-profile/commerce-company-profile.js",
+        "blocks/commerce-company-roles-permissions/commerce-company-roles-permissions.js",
+        "blocks/commerce-company-structure/commerce-company-structure.js",
+        "blocks/commerce-company-users/commerce-company-users.js",
+        "blocks/commerce-customer-company/commerce-customer-company.js",
+        "blocks/live-block/dashboard-core.js",
+        "scripts/initializers/company.js"
+      ]
+    },
+    {
+      "package": "@dropins/storefront-company-switcher",
+      "version": "~1.0.6",
+      "source": "declared",
+      "importCount": 3,
+      "importSpecifiers": [
+        "@dropins/storefront-company-switcher/api.js",
+        "@dropins/storefront-company-switcher/containers/CompanySwitcher.js",
+        "@dropins/storefront-company-switcher/render.js"
+      ],
+      "importedBy": [
+        "blocks/header/renderCompanySwitcher.js",
+        "scripts/initializers/company-switcher.js"
+      ]
+    },
+    {
+      "package": "@dropins/storefront-order",
+      "version": "~3.0.0",
+      "source": "declared",
+      "importCount": 29,
+      "importSpecifiers": [
+        "@dropins/storefront-order/api.js",
+        "@dropins/storefront-order/containers/CreateReturn.js",
+        "@dropins/storefront-order/containers/CustomerDetails.js",
+        "@dropins/storefront-order/containers/OrderCostSummary.js",
+        "@dropins/storefront-order/containers/OrderHeader.js",
+        "@dropins/storefront-order/containers/OrderProductList.js",
+        "@dropins/storefront-order/containers/OrderReturns.js",
+        "@dropins/storefront-order/containers/OrderSearch.js",
+        "@dropins/storefront-order/containers/OrderStatus.js",
+        "@dropins/storefront-order/containers/ReturnsList.js",
+        "@dropins/storefront-order/containers/ShippingStatus.js",
+        "@dropins/storefront-order/render.js"
+      ],
+      "importedBy": [
+        "blocks/commerce-b2b-quote-checkout/commerce-b2b-quote-checkout.js",
+        "blocks/commerce-checkout-success/commerce-checkout-success.js",
+        "blocks/commerce-checkout/commerce-checkout.js",
+        "blocks/commerce-create-return/commerce-create-return.js",
+        "blocks/commerce-customer-details/commerce-customer-details.js",
+        "blocks/commerce-order-cost-summary/commerce-order-cost-summary.js",
+        "blocks/commerce-order-product-list/commerce-order-product-list.js",
+        "blocks/commerce-order-returns/commerce-order-returns.js",
+        "blocks/commerce-order-status/commerce-order-status.js",
+        "blocks/commerce-returns-list/commerce-returns-list.js",
+        "blocks/commerce-search-order/commerce-search-order.js",
+        "blocks/commerce-shipping-status/commerce-shipping-status.js",
+        "scripts/initializers/order.js"
+      ]
+    },
+    {
+      "package": "@dropins/storefront-payment-services",
+      "version": "~3.0.0",
+      "source": "declared",
+      "importCount": 5,
+      "importSpecifiers": [
+        "@dropins/storefront-payment-services/api.js",
+        "@dropins/storefront-payment-services/containers/CreditCard.js",
+        "@dropins/storefront-payment-services/render.js"
+      ],
+      "importedBy": [
+        "blocks/commerce-checkout/commerce-checkout.js",
+        "blocks/commerce-checkout/containers.js",
+        "scripts/initializers/payment-services.js"
+      ]
+    },
+    {
+      "package": "@dropins/storefront-pdp",
+      "version": "~3.0.0",
+      "source": "declared",
+      "importCount": 31,
+      "importSpecifiers": [
+        "@dropins/storefront-pdp/api.js",
+        "@dropins/storefront-pdp/containers/ProductAttributes.js",
+        "@dropins/storefront-pdp/containers/ProductDescription.js",
+        "@dropins/storefront-pdp/containers/ProductGallery.js",
+        "@dropins/storefront-pdp/containers/ProductGiftCardOptions.js",
+        "@dropins/storefront-pdp/containers/ProductHeader.js",
+        "@dropins/storefront-pdp/containers/ProductOptions.js",
+        "@dropins/storefront-pdp/containers/ProductPrice.js",
+        "@dropins/storefront-pdp/containers/ProductQuantity.js",
+        "@dropins/storefront-pdp/containers/ProductShortDescription.js",
+        "@dropins/storefront-pdp/render.js"
+      ],
+      "importedBy": [
+        "blocks/commerce-wishlist/commerce-wishlist.js",
+        "blocks/ez-rack-builder/ez-rack-builder.js",
+        "blocks/luxury-configurator/luxury-configurator.js",
+        "blocks/product-configurator-luxe/product-configurator-luxe.js",
+        "blocks/product-details/product-details.js",
+        "blocks/product-details/requisition-list.js",
+        "blocks/uniform-configurator/uniform-configurator.js",
+        "scripts/components/commerce-mini-pdp/commerce-mini-pdp.js",
+        "scripts/components/pdp-input-options/pdp-input-options.js",
+        "scripts/initializers/pdp.js"
+      ]
+    },
+    {
+      "package": "@dropins/storefront-personalization",
+      "version": "~3.0.0",
+      "source": "declared",
+      "importCount": 4,
+      "importSpecifiers": [
+        "@dropins/storefront-personalization/api.js"
+      ],
+      "importedBy": [
+        "blocks/customer-segment-personalization-block/customer-segment-personalization-block.js",
+        "blocks/targeted-block/targeted-block.js",
+        "blocks/vip-hero-mccs/vip-hero-mccs.js",
+        "scripts/initializers/personalization.js"
+      ]
+    },
+    {
+      "package": "@dropins/storefront-product-discovery",
+      "version": "~3.0.0",
+      "source": "declared",
+      "importCount": 21,
+      "importSpecifiers": [
+        "@dropins/storefront-product-discovery/api.js",
+        "@dropins/storefront-product-discovery/containers/Facets.js",
+        "@dropins/storefront-product-discovery/containers/Pagination.js",
+        "@dropins/storefront-product-discovery/containers/SearchResults.js",
+        "@dropins/storefront-product-discovery/containers/SortBy.js",
+        "@dropins/storefront-product-discovery/render.js"
+      ],
+      "importedBy": [
+        "blocks/header/header.js",
+        "blocks/mcx-category-page/mcx-category-page.js",
+        "blocks/mcx-header/mcx-header.js",
+        "blocks/product-list-page/product-list-page.js",
+        "blocks/search-bar/search-bar.js",
+        "scripts/initializers/search.js"
+      ]
+    },
+    {
+      "package": "@dropins/storefront-purchase-order",
+      "version": "~1.0.0",
+      "source": "declared",
+      "importCount": 40,
+      "importSpecifiers": [
+        "@dropins/storefront-purchase-order/api.js",
+        "@dropins/storefront-purchase-order/containers/ApprovalRuleDetails.js",
+        "@dropins/storefront-purchase-order/containers/ApprovalRuleForm.js",
+        "@dropins/storefront-purchase-order/containers/ApprovalRulesList.js",
+        "@dropins/storefront-purchase-order/containers/CompanyPurchaseOrders.js",
+        "@dropins/storefront-purchase-order/containers/CustomerPurchaseOrders.js",
+        "@dropins/storefront-purchase-order/containers/PurchaseOrderApprovalFlow.js",
+        "@dropins/storefront-purchase-order/containers/PurchaseOrderCommentForm.js",
+        "@dropins/storefront-purchase-order/containers/PurchaseOrderCommentsList.js",
+        "@dropins/storefront-purchase-order/containers/PurchaseOrderConfirmation.js",
+        "@dropins/storefront-purchase-order/containers/PurchaseOrderHistoryLog.js",
+        "@dropins/storefront-purchase-order/containers/PurchaseOrderStatus.js",
+        "@dropins/storefront-purchase-order/containers/RequireApprovalPurchaseOrders.js",
+        "@dropins/storefront-purchase-order/render.js"
+      ],
+      "importedBy": [
+        "blocks/commerce-b2b-po-approval-flow/commerce-b2b-po-approval-flow.js",
+        "blocks/commerce-b2b-po-approval-rule-details/commerce-b2b-po-approval-rule-details.js",
+        "blocks/commerce-b2b-po-approval-rule-form/commerce-b2b-po-approval-rule-form.js",
+        "blocks/commerce-b2b-po-approval-rules-list/commerce-b2b-po-approval-rules-list.js",
+        "blocks/commerce-b2b-po-checkout-success/commerce-b2b-po-checkout-success.js",
+        "blocks/commerce-b2b-po-comment-form/commerce-b2b-po-comment-form.js",
+        "blocks/commerce-b2b-po-comments-list/commerce-b2b-po-comments-list.js",
+        "blocks/commerce-b2b-po-company-purchase-orders/commerce-b2b-po-company-purchase-orders.js",
+        "blocks/commerce-b2b-po-customer-purchase-orders/commerce-b2b-po-customer-purchase-orders.js",
+        "blocks/commerce-b2b-po-history-log/commerce-b2b-po-history-log.js",
+        "blocks/commerce-b2b-po-require-approval-purchase-orders/commerce-b2b-po-require-approval-purchase-orders.js",
+        "blocks/commerce-b2b-po-status/commerce-b2b-po-status.js",
+        "blocks/commerce-b2b-quote-checkout/commerce-b2b-quote-checkout.js",
+        "blocks/commerce-checkout/commerce-checkout.js",
+        "blocks/live-block/dashboard-core.js",
+        "scripts/initializers/purchase-order.js"
+      ]
+    },
+    {
+      "package": "@dropins/storefront-quote-management",
+      "version": "~1.0.0",
+      "source": "declared",
+      "importCount": 16,
+      "importSpecifiers": [
+        "@dropins/storefront-quote-management/api.js",
+        "@dropins/storefront-quote-management/containers/ManageNegotiableQuote.js",
+        "@dropins/storefront-quote-management/containers/ManageNegotiableQuoteTemplate.js",
+        "@dropins/storefront-quote-management/containers/OrderSummary.js",
+        "@dropins/storefront-quote-management/containers/QuotesListTable.js",
+        "@dropins/storefront-quote-management/containers/QuoteSummaryList.js",
+        "@dropins/storefront-quote-management/containers/QuoteTemplatesListTable.js",
+        "@dropins/storefront-quote-management/containers/RequestNegotiableQuoteForm.js",
+        "@dropins/storefront-quote-management/render.js"
+      ],
+      "importedBy": [
+        "blocks/commerce-account-hub/commerce-account-hub.js",
+        "blocks/commerce-b2b-negotiable-quote-template/commerce-b2b-negotiable-quote-template.js",
+        "blocks/commerce-b2b-negotiable-quote/commerce-b2b-negotiable-quote.js",
+        "blocks/commerce-b2b-quote-checkout/containers.js",
+        "blocks/commerce-cart/commerce-cart.js",
+        "blocks/live-block/dashboard-core.js",
+        "scripts/initializers/quote-management.js"
+      ]
+    },
+    {
+      "package": "@dropins/storefront-recommendations",
+      "version": "~3.0.0",
+      "source": "declared",
+      "importCount": 4,
+      "importSpecifiers": [
+        "@dropins/storefront-recommendations/api.js",
+        "@dropins/storefront-recommendations/containers/ProductList.js",
+        "@dropins/storefront-recommendations/render.js"
+      ],
+      "importedBy": [
+        "blocks/product-recommendations/product-recommendations.js",
+        "scripts/initializers/recommendations.js"
+      ]
+    },
+    {
+      "package": "@dropins/storefront-requisition-list",
+      "version": "1.0.0",
+      "source": "declared",
+      "importCount": 11,
+      "importSpecifiers": [
+        "@dropins/storefront-requisition-list/api.js",
+        "@dropins/storefront-requisition-list/containers/RequisitionListGrid.js",
+        "@dropins/storefront-requisition-list/containers/RequisitionListSelector.js",
+        "@dropins/storefront-requisition-list/containers/RequisitionListView.js",
+        "@dropins/storefront-requisition-list/render.js"
+      ],
+      "importedBy": [
+        "blocks/commerce-account-hub/commerce-account-hub.js",
+        "blocks/commerce-b2b-requisition-list-view/commerce-b2b-requisition-list-view.js",
+        "blocks/commerce-b2b-requisition-list/commerce-b2b-requisition-list.js",
+        "blocks/live-block/dashboard-core.js",
+        "blocks/product-details/requisition-list.js",
+        "blocks/product-list-page/requisition-list.js",
+        "scripts/initializers/requisition-list.js"
+      ]
+    },
+    {
+      "package": "@dropins/storefront-wishlist",
+      "version": "~3.0.0",
+      "source": "declared",
+      "importCount": 16,
+      "importSpecifiers": [
+        "@dropins/storefront-wishlist/api.js",
+        "@dropins/storefront-wishlist/containers/Wishlist.js",
+        "@dropins/storefront-wishlist/containers/WishlistAlert.js",
+        "@dropins/storefront-wishlist/containers/WishlistToggle.js",
+        "@dropins/storefront-wishlist/render.js"
+      ],
+      "importedBy": [
+        "blocks/commerce-cart/commerce-cart.js",
+        "blocks/commerce-wishlist/commerce-wishlist.js",
+        "blocks/live-block/dashboard-core.js",
+        "blocks/mcx-category-page/mcx-category-page.js",
+        "blocks/product-details/product-details.js",
+        "blocks/product-list-page/product-list-page.js",
+        "blocks/product-recommendations/product-recommendations.js",
+        "scripts/initializers/wishlist.js"
+      ]
+    },
+    {
+      "package": "@dropins/tools",
+      "version": "~1.6.0",
+      "source": "declared",
+      "importCount": 169,
+      "importSpecifiers": [
+        "@dropins/tools/components.js",
+        "@dropins/tools/event-bus.js",
+        "@dropins/tools/fetch-graphql.js",
+        "@dropins/tools/initializer.js",
+        "@dropins/tools/lib.js",
+        "@dropins/tools/lib/aem/assets.js",
+        "@dropins/tools/lib/aem/configs.js",
+        "@dropins/tools/preact.js",
+        "@dropins/tools/recaptcha.js"
+      ],
+      "importedBy": [
+        "blocks/commerce-account-header/commerce-account-header.js",
+        "blocks/commerce-account-hub/commerce-account-hub.js",
+        "blocks/commerce-account-nav/commerce-account-nav.js",
+        "blocks/commerce-account-sidebar/commerce-account-sidebar.js",
+        "blocks/commerce-b2b-negotiable-quote-template/commerce-b2b-negotiable-quote-template.js",
+        "blocks/commerce-b2b-negotiable-quote/commerce-b2b-negotiable-quote.js",
+        "blocks/commerce-b2b-po-approval-flow/commerce-b2b-po-approval-flow.js",
+        "blocks/commerce-b2b-po-approval-rule-details/commerce-b2b-po-approval-rule-details.js",
+        "blocks/commerce-b2b-po-approval-rule-form/commerce-b2b-po-approval-rule-form.js",
+        "blocks/commerce-b2b-po-approval-rules-list/commerce-b2b-po-approval-rules-list.js",
+        "blocks/commerce-b2b-po-checkout-success/commerce-b2b-po-checkout-success.js",
+        "blocks/commerce-b2b-po-comment-form/commerce-b2b-po-comment-form.js",
+        "blocks/commerce-b2b-po-comments-list/commerce-b2b-po-comments-list.js",
+        "blocks/commerce-b2b-po-company-purchase-orders/commerce-b2b-po-company-purchase-orders.js",
+        "blocks/commerce-b2b-po-customer-purchase-orders/commerce-b2b-po-customer-purchase-orders.js",
+        "blocks/commerce-b2b-po-header/commerce-b2b-po-header.js",
+        "blocks/commerce-b2b-po-history-log/commerce-b2b-po-history-log.js",
+        "blocks/commerce-b2b-po-require-approval-purchase-orders/commerce-b2b-po-require-approval-purchase-orders.js",
+        "blocks/commerce-b2b-po-status/commerce-b2b-po-status.js",
+        "blocks/commerce-b2b-quote-checkout/commerce-b2b-quote-checkout.js",
+        "blocks/commerce-b2b-quote-checkout/containers.js",
+        "blocks/commerce-b2b-quote-checkout/utils.js",
+        "blocks/commerce-cart/commerce-cart.js",
+        "blocks/commerce-checkout-success/commerce-checkout-success.js",
+        "blocks/commerce-checkout/commerce-checkout.js",
+        "blocks/commerce-checkout/containers.js",
+        "blocks/commerce-checkout/utils.js",
+        "blocks/commerce-company-create/commerce-company-create.js",
+        "blocks/commerce-company-credit/commerce-company-credit.js",
+        "blocks/commerce-confirm-account/commerce-confirm-account.js",
+        "blocks/commerce-create-password/commerce-create-password.js",
+        "blocks/commerce-create-return/commerce-create-return.js",
+        "blocks/commerce-forgot-password/commerce-forgot-password.js",
+        "blocks/commerce-mini-cart/commerce-mini-cart.js",
+        "blocks/commerce-order-header/commerce-order-header.js",
+        "blocks/commerce-order-product-list/commerce-order-product-list.js",
+        "blocks/commerce-order-returns/commerce-order-returns.js",
+        "blocks/commerce-orders-list/commerce-orders-list.js",
+        "blocks/commerce-return-header/commerce-return-header.js",
+        "blocks/commerce-returns-list/commerce-returns-list.js",
+        "blocks/commerce-search-order/commerce-search-order.js",
+        "blocks/commerce-shipping-status/commerce-shipping-status.js",
+        "blocks/commerce-wishlist/commerce-wishlist.js",
+        "blocks/customer-segment-personalization-block/customer-segment-personalization-block.js",
+        "blocks/ez-rack-builder/ez-rack-builder.js",
+        "blocks/footer/footer.js",
+        "blocks/fragment/fragment.js",
+        "blocks/header/header.js",
+        "blocks/header/renderAuthCombine.js",
+        "blocks/header/renderAuthDropdown.js",
+        "blocks/live-block/dashboard-core.js",
+        "blocks/luxury-configurator/luxury-configurator.js",
+        "blocks/mcx-category-page/mcx-category-page.js",
+        "blocks/mcx-header/auth-combine-modal.js",
+        "blocks/mcx-header/mcx-header.js",
+        "blocks/modal/modal.js",
+        "blocks/product-configurator-luxe/product-configurator-luxe.js",
+        "blocks/product-details/product-details.js",
+        "blocks/product-details/requisition-list.js",
+        "blocks/product-list-page/product-list-page.js",
+        "blocks/product-recommendations/product-recommendations.js",
+        "blocks/product-teaser/product-teaser-utils.js",
+        "blocks/product-technical-details/product-technical-details.js",
+        "blocks/search-bar/search-bar.js",
+        "blocks/targeted-block/targeted-block.js",
+        "blocks/uniform-configurator/uniform-configurator.commerce-core.js",
+        "blocks/vip-hero-mccs/vip-hero-mccs.js",
+        "blocks/vip-member-block-real-v2/vip-member-block-real-v2.js",
+        "scripts/commerce.js",
+        "scripts/components/commerce-mini-pdp/commerce-mini-pdp.js",
+        "scripts/components/pdp-input-options/pdp-input-options.js",
+        "scripts/delayed.js",
+        "scripts/initializers/account.js",
+        "scripts/initializers/auth.js",
+        "scripts/initializers/cart.js",
+        "scripts/initializers/checkout.js",
+        "scripts/initializers/company-switcher.js",
+        "scripts/initializers/company.js",
+        "scripts/initializers/index.js",
+        "scripts/initializers/order.js",
+        "scripts/initializers/payment-services.js",
+        "scripts/initializers/pdp.js",
+        "scripts/initializers/personalization.js",
+        "scripts/initializers/purchase-order.js",
+        "scripts/initializers/quote-management.js",
+        "scripts/initializers/recommendations.js",
+        "scripts/initializers/requisition-list.js",
+        "scripts/initializers/search.js",
+        "scripts/initializers/wishlist.js"
+      ]
+    }
+  ]
+}

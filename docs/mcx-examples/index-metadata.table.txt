@@ -1,0 +1,5 @@
+metadata
+template | mcx-home
+theme | mcx
+nav | /fragments/mcx-nav
+footer | /fragments/mcx-footer

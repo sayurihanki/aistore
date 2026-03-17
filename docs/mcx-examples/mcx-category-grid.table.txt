@@ -1,0 +1,15 @@
+mcx-category-grid
+label | Browse the Exchange |  |
+title | SHOP YOUR WAY |  |
+👕 | Apparel | 2,400+ items | [Shop Apparel](/apparel)
+👟 | Footwear | 890+ styles | [Shop Footwear](/footwear)
+💻 | Electronics | 1,200+ items | [Shop Electronics](/electronics)
+🏠 | Home & Living | 3,100+ items | [Shop Home](/home)
+🏋️ | Sports | 760+ items | [Shop Sports](/sports-outdoors)
+💄 | Beauty | 940+ items | [Shop Beauty](/beauty)
+🎮 | Gaming | 520+ items | [Shop Gaming](/gaming)
+🎒 | Tactical Gear | 380+ items | [Shop Tactical](/tactical)
+🧸 | Kids & Baby | 1,500+ items | [Shop Kids](/kids)
+⛺ | Outdoors | 670+ items | [Shop Outdoors](/sports-outdoors)
+🐾 | Pets | 290+ items | [Shop Pets](/pets)
+🎁 | Gifts | 800+ ideas | [Shop Gifts](/gifts)

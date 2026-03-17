@@ -1,0 +1,59 @@
+{
+  "definitions": [
+    {
+      "title": "MCX Category Page",
+      "id": "mcx-category-page",
+      "model": "mcx-category-page",
+      "plugins": {
+        "da": {
+          "name": "mcx-category-page",
+          "rows": 12,
+          "columns": 4
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "mcx-category-page",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "urlPath",
+          "label": "URL Path",
+          "value": "apparel-footwear"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "eyebrow",
+          "label": "Eyebrow",
+          "value": "Apparel & Footwear"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "title",
+          "label": "Title",
+          "value": "GEAR UP.\\nDRESS RIGHT."
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "description",
+          "label": "Description",
+          "value": "Built for training, off-duty, and everyday mission support."
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "hero-image-alt",
+          "label": "Hero Image Alt",
+          "value": "Apparel & Footwear category hero"
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

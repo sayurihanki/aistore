@@ -4,7 +4,6 @@ export interface UseItemsQuotedTemplateReturn {
     dropdownSelections: Record<string, string | undefined>;
     handleItemDropdownChange: (item: CartItemModel, action: string) => void;
     handleDismissRemoveBanner: () => void;
-    clearDropdownSelection: (item: CartItemModel) => void;
 }
 export interface UseItemsQuotedTemplateParams {
     handleRemoveItems: (items: CartItemModel[]) => void;
