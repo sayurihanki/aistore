@@ -1,0 +1,41 @@
+{
+  "public": {
+    "default": {
+      "commerce-endpoint": "https://na1.api.commerce.adobe.com/R2BTcyPc7knfUJMozF1oQQ/graphql",
+      "headers": {
+        "all": {
+          "Store": "usaistore"
+        },
+        "cs": {
+          "Magento-Store-Code": "aistore",
+          "Magento-Store-View-Code": "usaistore",
+          "Magento-Website-Code": "adobe"
+        }
+      },
+      "commerce-b2b-enabled": true,
+      "commerce-companies-enabled": true,
+      "commerce-assets-enabled": true,
+      "adobe-commerce-optimizer": false,
+      "analytics": {
+        "base-currency-code": "USD",
+        "environment": "Testing",
+        "environment-id": "R2BTcyPc7knfUJMozF1oQQ",
+        "store-code": "aistore",
+        "store-id": "aistore",
+        "store-name": "AI Store",
+        "store-url": "https://coresaas-subgraph-external:8000/R2BTcyPc7knfUJMozF1oQQ/",
+        "store-view-code": "usaistore",
+        "store-view-id": "usaistore",
+        "store-view-name": "AI US",
+        "website-code": "adobe",
+        "website-id": "adobe",
+        "website-name": "Adobe"
+      },
+      "plugins": {
+        "picker": {
+          "rootCategory": "18"
+        }
+      }
+    }
+  }
+}
