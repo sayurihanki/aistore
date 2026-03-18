@@ -163,6 +163,12 @@ const STORE_SWITCHER_OPTIONS = [
     matchToken: 'jenhankib2bapple',
   },
   {
+    id: 'usmccsmymcx',
+    label: 'usmccsmymcx',
+    href: 'https://main--usmccsmymcx--sayurihanki.aem.live/',
+    matchToken: 'usmccsmymcx',
+  },
+  {
     id: 'aistore',
     label: 'aistore',
     href: 'https://main--aistore--sayurihanki.aem.live/',

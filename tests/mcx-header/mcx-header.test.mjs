@@ -91,6 +91,32 @@ test('mcx-header renders the storefront switcher and guest account shortcut menu
   });
 });
 
+test('mcx-header recognizes the usmccsmymcx storefront in the site switcher', async () => {
+  await withFakeDom(async ({ document }) => {
+    const decorate = await loadDecorate();
+    const block = document.createElement('div');
+    block.className = 'mcx-header';
+    document.body.append(block);
+
+    await decorate(block);
+
+    const optionLabels = [...block.querySelectorAll('.store-switcher-option')]
+      .map((item) => item.textContent.trim());
+
+    assert.equal(block.querySelector('.store-switcher-toggle-label')?.textContent, 'usmccsmymcx');
+    assert.equal(optionLabels.includes('usmccsmymcx'), true);
+  }, {
+    window: {
+      location: {
+        href: 'https://main--usmccsmymcx--sayurihanki.aem.live/',
+        pathname: '/',
+        search: '',
+        hostname: 'main--usmccsmymcx--sayurihanki.aem.live',
+      },
+    },
+  });
+});
+
 test('mcx-header renders the authenticated account shortcut menu when auth cookies exist', async () => {
   await withFakeDom(async ({ document }) => {
     document.cookie = 'auth_dropin_firstname=Alex; auth_dropin_user_token=token';
