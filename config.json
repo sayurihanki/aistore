@@ -15,7 +15,15 @@
       "commerce-b2b-enabled": true,
       "commerce-companies-enabled": true,
       "commerce-assets-enabled": true,
-      "adobe-commerce-optimizer": false,
+      "navigation": {
+        "catalog": {
+          "vipCategory": {
+            "allowedGroupHashes": [
+              "ac3478d69a3c81fa62e60f5c3696165a4e5e6ac4"
+            ]
+          }
+        }
+      },
       "analytics": {
         "base-currency-code": "USD",
         "environment": "Testing",
@@ -35,7 +43,8 @@
         "picker": {
           "rootCategory": "18"
         }
-      }
+      },
+      "adobe-commerce-optimizer": false
     }
   }
 }

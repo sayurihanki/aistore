@@ -1,0 +1,22 @@
+{
+  "definitions": [
+    {
+      "title": "MCX Promo Strip",
+      "id": "mcx-promo-strip",
+      "plugins": {
+        "da": {
+          "name": "mcx-promo-strip",
+          "rows": 5,
+          "columns": 2
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "mcx-promo-strip",
+      "fields": []
+    }
+  ],
+  "filters": []
+}

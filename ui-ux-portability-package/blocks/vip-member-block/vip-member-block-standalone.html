@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bodea — VIP Member Block</title>
+<link rel="stylesheet" href="/styles/mcx-fonts.css">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  /* Bodea design system tokens */
+  --green-400: #26a067;
+  --green-500: #1f7a4d;
+  --green-600: #1a6640;
+  --green-50:  #e8faf2;
+  --green-100: #a8edcc;
+  --ink-950:   #080c0a;
+  --ink-900:   #0e1410;
+  --ink-800:   #161d18;
+  --ink-700:   #1f2b22;
+  --ink-600:   #2d3d30;
+  --ink-500:   #3d5342;
+  --ink-400:   #5a7060;
+  --ink-300:   #7f9985;
+  --ink-200:   #b0c5b5;
+  --ink-100:   #d8e5da;
+  --ink-50:    #f2f7f3;
+  --gold:      #c9a84c;
+  --gold-light:#e8c97a;
+  --cream:     #faf8f3;
+
+  /* Font families */
+  --font-display: 'Teko', 'Impact', sans-serif;
+  --font-base:    'Barlow', sans-serif;
+  --font-price:   'Barlow Condensed', sans-serif;
+
+  /* Spacing tokens */
+  --spacing-xxsmall: 4px;
+  --spacing-xsmall: 8px;
+  --spacing-small: 16px;
+  --spacing-medium: 24px;
+  --spacing-big: 32px;
+  --spacing-xbig: 40px;
+  --spacing-xxbig: 48px;
+  --spacing-large: 64px;
+
+  /* Shape tokens */
+  --shape-border-radius-1: 3px;
+  --shape-border-radius-2: 8px;
+  --shape-border-width-1: 1px;
+  --shape-shadow-1: 0 0 16px 0 rgb(0 0 0 / 16%);
+  --shape-shadow-2: 0 2px 16px 0 rgb(0 0 0 / 16%);
+
+  /* Motion tokens */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 0.2s;
+  --transition-medium: 0.4s;
+
+  /* Derived tokens */
+  --border: var(--shape-border-width-1) solid rgba(15, 61, 36, 0.1);
+  --border-gold: var(--shape-border-width-1) solid rgba(201, 168, 76, 0.3);
+  --shadow-focus: 0 0 0 3px #fff, 0 0 0 5px rgb(46 190 122 / 45%);
+}
+body {
+  background: var(--cream);
+  font-family: var(--font-base);
+  color: var(--ink-700);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── FAKE HERO STUB (for demo context) ── */
+.hero-stub {
+  height: 64px;
+  background: var(--ink-900);
+  display: flex;
+  align-items: center;
+  padding: 0 var(--spacing-xxbig);
+  gap: var(--spacing-xbig);
+}
+.hero-stub-logo {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.1em;
+}
+.hero-stub-nav { display: flex; gap: var(--spacing-big); }
+.hero-stub-nav span {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+}
+.hero-stub-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hero-stub-badge {
+  padding: var(--spacing-xxsmall) 12px;
+  border: var(--shape-border-width-1) solid rgba(201,168,76,0.5);
+  background: rgba(201,168,76,0.1);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  font-family: var(--font-display);
+}
+.hero-stub-user {
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  font-family: var(--font-base);
+}
+.hero-stub-user strong { color: rgba(255,255,255,0.85); font-weight: 500; }
+
+@media (max-width: 900px) {
+  .hero-stub { padding: 0 var(--spacing-small); gap: var(--spacing-small); }
+  .hero-stub-nav { display: none; }
+}
+
+/* ── PROMO BLOCK WRAPPER ── */
+.vip-block {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: clamp(var(--spacing-big), 6vw, var(--spacing-large)) clamp(var(--spacing-small), 4vw, var(--spacing-xxbig)) clamp(var(--spacing-xbig), 7vw, 80px);
+}
+
+/* ── SECTION HEADER ── */
+.block-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-xbig);
+  padding-bottom: var(--spacing-big);
+  border-bottom: var(--border);
+  opacity: 0;
+  animation: fade-in-up 0.6s var(--ease-out) 0.1s forwards;
+}
+.block-header-left { display: flex; flex-direction: column; gap: 10px; }
+.block-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.eyebrow-diamond {
+  width: 8px; height: 8px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+.eyebrow-text {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.block-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 3vw, 3.8rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ink-900);
+  line-height: 1.1;
+}
+.block-title em {
+  font-style: normal;
+  color: var(--green-400);
+}
+.block-sub {
+  font-family: var(--font-base);
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--ink-400);
+  line-height: 1.6;
+  margin-top: var(--spacing-xxsmall);
+}
+.block-header-right {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-small);
+  flex-shrink: 0;
+}
+.header-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  padding-left: var(--spacing-medium);
+  border-left: var(--border);
+}
+.header-stat-val {
+  font-family: var(--font-price);
+  font-size: clamp(1.6rem, 2vw, 2.2rem);
+  font-weight: 600;
+  color: var(--ink-900);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.header-stat-label {
+  font-family: var(--font-base);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-300);
+}
+
+/* ── MAIN GRID: 3 columns ── */
+.promo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: var(--spacing-small);
+}
+
+/* ── BASE CARD ── */
+.card {
+  background: #fff;
+  border: var(--border);
+  border-radius: var(--shape-border-radius-1);
+  overflow: hidden;
+  transition: box-shadow var(--transition-fast) var(--ease-out), transform var(--transition-fast) var(--ease-out);
+  opacity: 0;
+}
+.card:hover {
+  box-shadow: var(--shape-shadow-2);
+  transform: translateY(-3px);
+}
+.card:nth-child(1) { animation: fade-in-up 0.6s var(--ease-out) 0.2s forwards; }
+.card:nth-child(2) { animation: fade-in-up 0.6s var(--ease-out) 0.3s forwards; }
+.card:nth-child(3) { animation: fade-in-up 0.6s var(--ease-out) 0.4s forwards; }
+.card:nth-child(4) { animation: fade-in-up 0.6s var(--ease-out) 0.45s forwards; }
+.card:nth-child(5) { animation: fade-in-up 0.6s var(--ease-out) 0.5s forwards; }
+
+/* ── CARD: FEATURED OFFER (spans 2 rows col 1) ── */
+.card-featured {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.card-featured-visual {
+  flex: 1;
+  min-height: 220px;
+  background: var(--ink-800);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rack-illustration {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.9;
+}
+.card-featured-visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 70% 30%, rgba(38,160,103,0.2) 0%, transparent 60%);
+}
+.card-featured-visual::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 80px;
+  background: linear-gradient(to top, rgba(22,29,24,0.9), transparent);
+}
+.featured-label {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xsmall);
+  padding: 6px 14px;
+  background: rgba(201,168,76,0.15);
+  border: var(--shape-border-width-1) solid rgba(201,168,76,0.4);
+  backdrop-filter: blur(8px);
+  z-index: 2;
+}
+.featured-label span {
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+.featured-label-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--gold);
+  animation: pulse 2s ease-in-out infinite;
+}
+.featured-discount {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 2;
+  text-align: right;
+}
+.featured-discount-pct {
+  font-family: var(--font-price);
+  font-size: clamp(3.2rem, 4vw, 4.4rem);
+  font-weight: 600;
+  color: #fff;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+.featured-discount-label {
+  font-family: var(--font-base);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+}
+.card-featured-body {
+  padding: var(--spacing-medium) var(--spacing-medium) var(--spacing-medium);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-small);
+  border-top: 3px solid var(--green-400);
+}
+.featured-category {
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--green-500);
+}
+.featured-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 2vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ink-900);
+  line-height: 1.2;
+}
+.featured-desc {
+  font-family: var(--font-base);
+  font-size: 13.5px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--ink-400);
+}
+.featured-pricing {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 14px 0;
+  border-top: var(--border);
+  border-bottom: var(--border);
+  flex-wrap: wrap;
+}
+.price-member {
+  font-family: var(--font-price);
+  font-size: clamp(2rem, 2.4vw, 2.6rem);
+  font-weight: 600;
+  color: var(--ink-900);
+  letter-spacing: -0.02em;
+}
+.price-was {
+  font-family: var(--font-price);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--ink-300);
+  text-decoration: line-through;
+}
+.price-tag {
+  margin-left: auto;
+  padding: var(--spacing-xxsmall) 10px;
+  background: var(--green-50);
+  border: var(--shape-border-width-1) solid var(--green-100);
+  font-family: var(--font-base);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--green-600);
+  letter-spacing: 0.05em;
+}
+.featured-cta {
+  display: flex;
+  gap: 10px;
+}
+.btn-primary {
+  flex: 1;
+  padding: 13px 0;
+  background: var(--ink-900);
+  color: #fff;
+  border: none;
+  border-radius: var(--shape-border-radius-2);
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xsmall);
+  min-height: 48px;
+  transition: background var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--green-400);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s var(--ease-out);
+}
+.btn-primary:hover::after { transform: scaleX(1); }
+.btn-primary:hover { background: var(--ink-800); }
+.btn-primary:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
+.btn-outline {
+  padding: 13px 18px;
+  background: transparent;
+  color: var(--ink-600);
+  border: var(--border);
+  border-radius: var(--shape-border-radius-2);
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  min-height: 48px;
+  transition: all var(--transition-fast);
+}
+.btn-outline:hover { border-color: var(--ink-400); color: var(--ink-900); }
+.btn-outline:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
+
+/* ── CARD: TIER / BENEFITS (col 2-3, row 1) ── */
+.card-benefits {
+  grid-column: 2 / 4;
+  grid-row: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 0;
+}
+.benefit-item {
+  padding: var(--spacing-big) var(--spacing-medium);
+  border-right: var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-small);
+  transition: background var(--transition-fast);
+}
+.benefit-item:last-child { border-right: none; }
+.benefit-item:hover { background: var(--ink-50); }
+.benefit-icon-wrap {
+  width: 40px; height: 40px;
+  background: var(--green-50);
+  border: var(--shape-border-width-1) solid var(--green-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.benefit-icon-wrap svg {
+  width: 18px; height: 18px;
+  stroke: var(--green-500);
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.benefit-text { display: flex; flex-direction: column; gap: 5px; }
+.benefit-title {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink-900);
+  line-height: 1.2;
+}
+.benefit-desc {
+  font-family: var(--font-base);
+  font-size: 12.5px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--ink-400);
+}
+.benefit-link {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--green-500);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  border-bottom: var(--shape-border-width-1) solid transparent;
+  padding-bottom: 1px;
+  width: fit-content;
+  transition: border-color var(--transition-fast);
+}
+.benefit-link:hover { border-color: var(--green-400); }
+.benefit-link:focus-visible { outline: none; box-shadow: var(--shadow-focus); border-radius: 2px; }
+
+/* ── CARD: PRODUCT SPOTLIGHT (col 2, row 2) ── */
+.card-spotlight {
+  grid-column: 2;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+}
+.spotlight-header {
+  padding: 20px var(--spacing-medium) var(--spacing-small);
+  border-bottom: var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.spotlight-header-label {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-500);
+}
+.spotlight-header-count {
+  font-family: var(--font-price);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink-300);
+  letter-spacing: 0.05em;
+}
+.spotlight-items { flex: 1; }
+.spotlight-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-small);
+  padding: var(--spacing-small) var(--spacing-medium);
+  border-bottom: var(--border);
+  transition: background var(--transition-fast);
+  cursor: pointer;
+}
+.spotlight-item:last-child { border-bottom: none; }
+.spotlight-item:hover { background: var(--ink-50); }
+.spotlight-item:focus-visible { outline: none; box-shadow: inset var(--shadow-focus); }
+.spotlight-thumb {
+  width: 44px; height: 44px;
+  background: var(--ink-50);
+  border: var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.spotlight-thumb svg {
+  width: 20px; height: 20px;
+  stroke: var(--ink-400);
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+.spotlight-info { flex: 1; display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.spotlight-name {
+  font-family: var(--font-base);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-800);
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.spotlight-meta {
+  font-family: var(--font-base);
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--ink-300);
+  letter-spacing: 0.04em;
+}
+.spotlight-pricing { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; flex-shrink: 0; }
+.spotlight-price-member {
+  font-family: var(--font-price);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink-900);
+  letter-spacing: -0.01em;
+}
+.spotlight-price-was {
+  font-family: var(--font-price);
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--ink-300);
+  text-decoration: line-through;
+}
+.spotlight-footer {
+  padding: 14px var(--spacing-medium);
+  background: var(--ink-50);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.spotlight-footer-text {
+  font-family: var(--font-base);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--ink-400);
+}
+.spotlight-footer-link {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--green-500);
+  text-decoration: none;
+}
+.spotlight-footer-link:hover { color: var(--green-400); }
+.spotlight-footer-link:focus-visible { outline: none; box-shadow: var(--shadow-focus); border-radius: 2px; }
+
+/* ── CARD: ACCOUNT SUMMARY (col 3, row 2) ── */
+.card-account {
+  grid-column: 3;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+}
+.account-header {
+  padding: 20px var(--spacing-medium) var(--spacing-small);
+  border-bottom: var(--border);
+  background: var(--ink-900);
+  position: relative;
+  overflow: hidden;
+}
+.account-header::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 120px; height: 120px;
+  background: radial-gradient(circle, rgba(38,160,103,0.2), transparent 70%);
+  pointer-events: none;
+}
+.account-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-small);
+}
+.account-header-label {
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+}
+.account-live {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-price);
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--green-400);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.live-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--green-400);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+.account-name {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.01em;
+  margin-bottom: 2px;
+}
+.account-org {
+  font-family: var(--font-base);
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.04em;
+}
+.account-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-bottom: var(--border);
+}
+.account-metric {
+  padding: 18px 20px;
+  border-right: var(--border);
+  border-bottom: var(--border);
+}
+.account-metric:nth-child(2) { border-right: none; }
+.account-metric:nth-child(3) { border-bottom: none; }
+.account-metric:nth-child(4) { border-right: none; border-bottom: none; }
+.am-val {
+  font-family: var(--font-price);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--ink-900);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+.am-val.green { color: var(--green-500); }
+.am-label {
+  font-family: var(--font-base);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-300);
+}
+.am-delta {
+  font-family: var(--font-price);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--green-500);
+  margin-top: var(--spacing-xxsmall);
+}
+.account-actions {
+  padding: var(--spacing-small) 20px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xsmall);
+  flex: 1;
+  justify-content: flex-end;
+}
+.action-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px var(--spacing-small);
+  border: var(--border);
+  border-radius: var(--shape-border-radius-1);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.action-row:hover {
+  background: var(--green-50);
+  border-color: var(--green-100);
+}
+.action-row:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+.action-label {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-800);
+  letter-spacing: 0.02em;
+}
+.action-arrow {
+  font-size: 14px;
+  color: var(--ink-300);
+  transition: transform var(--transition-fast), color var(--transition-fast);
+}
+.action-row:hover .action-arrow {
+  color: var(--green-500);
+  transform: translateX(3px);
+}
+.action-badge {
+  padding: 2px var(--spacing-xsmall);
+  background: var(--green-50);
+  border: var(--shape-border-width-1) solid var(--green-100);
+  font-family: var(--font-price);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--green-600);
+  letter-spacing: 0.05em;
+}
+
+/* ── BOTTOM STRIP: Social Proof + CTA ── */
+.proof-strip {
+  margin-top: var(--spacing-small);
+  border: var(--border);
+  background: #fff;
+  border-radius: var(--shape-border-radius-1);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr auto;
+  align-items: center;
+  opacity: 0;
+  animation: fade-in-up 0.6s var(--ease-out) 0.6s forwards;
+}
+.proof-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: var(--spacing-medium) var(--spacing-big);
+}
+.proof-icon {
+  width: 36px; height: 36px;
+  background: var(--green-50);
+  border: var(--shape-border-width-1) solid var(--green-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.proof-icon svg {
+  width: 16px; height: 16px;
+  stroke: var(--green-500);
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+.proof-text { display: flex; flex-direction: column; gap: 3px; }
+.proof-title {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink-900);
+  letter-spacing: -0.01em;
+}
+.proof-sub {
+  font-family: var(--font-base);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--ink-400);
+}
+.proof-sep {
+  width: var(--shape-border-width-1);
+  height: 48px;
+  background: rgba(15,61,36,0.08);
+}
+.proof-cta {
+  padding: var(--spacing-medium) var(--spacing-xbig);
+  background: var(--ink-900);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-small);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+  text-decoration: none;
+  border: none;
+  border-radius: 0 var(--shape-border-radius-1) var(--shape-border-radius-1) 0;
+  grid-column: 6;
+  align-self: stretch;
+}
+.proof-cta:hover { background: var(--green-600); }
+.proof-cta:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
+.proof-cta-text { display: flex; flex-direction: column; gap: 2px; }
+.proof-cta-main {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #fff;
+}
+.proof-cta-sub {
+  font-family: var(--font-base);
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.5);
+}
+.proof-cta-arrow {
+  font-size: 20px;
+  color: var(--green-400);
+  transition: transform var(--transition-fast);
+}
+.proof-cta:hover .proof-cta-arrow { transform: translateX(4px); }
+
+/* ── ANIMATIONS ── */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.35; }
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+   ══════════════════════════════════════════ */
+
+/* ── TABLET / MEDIUM DESKTOP (max 1200px) ── */
+@media (max-width: 1200px) {
+  .promo-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+  }
+  .card-featured {
+    grid-column: 1 / 3;
+    grid-row: 1;
+    flex-direction: row;
+  }
+  .card-featured-visual { min-height: 280px; flex: 0 0 40%; }
+  .card-benefits {
+    grid-column: 1 / 3;
+    grid-row: 2;
+    grid-template-columns: 1fr 1fr;
+  }
+  .benefit-item:nth-child(2) { border-right: none; }
+  .benefit-item:nth-child(1),
+  .benefit-item:nth-child(2) { border-bottom: var(--border); }
+  .card-spotlight {
+    grid-column: 1;
+    grid-row: 3;
+  }
+  .card-account {
+    grid-column: 2;
+    grid-row: 3;
+  }
+}
+
+/* ── TABLET (max 900px) ── */
+@media (max-width: 900px) {
+  .block-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-medium);
+  }
+  .block-header-right {
+    width: 100%;
+    justify-content: flex-start;
+    gap: var(--spacing-small);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .header-stat {
+    align-items: flex-start;
+    border-left: none;
+    padding-left: 0;
+    padding-right: var(--spacing-medium);
+    border-right: var(--border);
+  }
+  .header-stat:last-child { border-right: none; }
+
+  .promo-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  .card-featured {
+    grid-column: 1;
+    flex-direction: column;
+  }
+  .card-featured-visual { flex: unset; min-height: 240px; }
+  .card-benefits {
+    grid-column: 1;
+    grid-row: auto;
+    grid-template-columns: 1fr 1fr;
+  }
+  .card-spotlight {
+    grid-column: 1;
+    grid-row: auto;
+  }
+  .card-account {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .proof-strip {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  .proof-sep { display: none; }
+  .proof-item {
+    padding: var(--spacing-small) var(--spacing-medium);
+    border-bottom: var(--border);
+  }
+  .proof-cta {
+    grid-column: 1;
+    border-radius: 0 0 var(--shape-border-radius-1) var(--shape-border-radius-1);
+    justify-content: center;
+    padding: var(--spacing-small) var(--spacing-medium);
+  }
+}
+
+/* ── MOBILE (max 720px) ── */
+@media (max-width: 720px) {
+  .card-benefits {
+    grid-template-columns: 1fr;
+  }
+  .benefit-item {
+    border-right: none;
+    border-bottom: var(--border);
+    padding: var(--spacing-medium) var(--spacing-small);
+  }
+  .benefit-item:last-child { border-bottom: none; }
+
+  .featured-cta {
+    flex-direction: column;
+  }
+  .btn-primary, .btn-outline { width: 100%; }
+  .btn-outline { text-align: center; display: flex; align-items: center; justify-content: center; }
+
+  .spotlight-item { gap: 12px; padding: 12px var(--spacing-small); }
+  .spotlight-name { font-size: 12px; }
+  .spotlight-pricing { gap: 2px; }
+  .spotlight-price-member { font-size: 13px; }
+
+  .account-metrics { grid-template-columns: 1fr; }
+  .account-metric { border-right: none; border-bottom: var(--border); }
+  .account-metric:nth-child(3) { border-bottom: var(--border); }
+  .account-metric:last-child { border-bottom: none; }
+}
+
+/* ── REDUCED MOTION ── */
+@media (prefers-reduced-motion: reduce) {
+  .vip-block,
+  .vip-block *,
+  .proof-strip,
+  .proof-strip * {
+    animation: none !important;
+    transition: none !important;
+  }
+  .card,
+  .block-header,
+  .proof-strip {
+    opacity: 1;
+  }
+}
+</style>
+</head>
+<body>
+<!-- Stub nav for context -->
+<div class="hero-stub" role="banner">
+  <div class="hero-stub-logo">Bodea</div>
+  <nav class="hero-stub-nav" aria-label="Main navigation">
+    <span>Catalog</span>
+    <span>Account</span>
+    <span>Orders</span>
+  </nav>
+  <div class="hero-stub-right">
+    <div class="hero-stub-badge" aria-label="Elite member status">&#9670; Elite Member</div>
+    <div class="hero-stub-user">Hi, <strong>David</strong> &middot; Server Savvy Inc.</div>
+  </div>
+</div>
+
+<!-- ═══════════ VIP PROMO BLOCK ═══════════ -->
+<div class="vip-block" role="region" aria-label="VIP member offers">
+  <!-- Header -->
+  <div class="block-header">
+    <div class="block-header-left">
+      <div class="block-eyebrow">
+        <div class="eyebrow-diamond" aria-hidden="true"></div>
+        <span class="eyebrow-text">Private Member Offers — Q1 2025</span>
+      </div>
+      <h2 class="block-title">Your <em>exclusive</em> catalog access.</h2>
+      <p class="block-sub">Member-only pricing, first-access inventory, and concierge procurement — built for enterprise IT operations.</p>
+    </div>
+    <div class="block-header-right" aria-label="Account statistics">
+      <div class="header-stat">
+        <div class="header-stat-val">$48,000</div>
+        <div class="header-stat-label">Available Credit</div>
+      </div>
+      <div class="header-stat">
+        <div class="header-stat-val">18%</div>
+        <div class="header-stat-label">Avg. Savings YTD</div>
+      </div>
+      <div class="header-stat">
+        <div class="header-stat-val">12</div>
+        <div class="header-stat-label">Open Orders</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Grid -->
+  <div class="promo-grid">
+    <!-- CARD 1: Featured Offer -->
+    <div class="card card-featured">
+      <div class="card-featured-visual">
+        <div class="featured-label">
+          <div class="featured-label-dot" aria-hidden="true"></div>
+          <span>Member Exclusive</span>
+        </div>
+        <svg width="180" height="200" viewBox="0 0 180 200" fill="none" xmlns="http://www.w3.org/2000/svg" class="rack-illustration" style="opacity:0.35" aria-hidden="true">
+          <rect x="20" y="10" width="140" height="180" rx="2" stroke="white" stroke-width="1"/>
+          <rect x="32" y="24" width="116" height="16" rx="1" fill="white" fill-opacity="0.08" stroke="white" stroke-width="0.5"/>
+          <rect x="32" y="46" width="116" height="16" rx="1" fill="white" fill-opacity="0.08" stroke="white" stroke-width="0.5"/>
+          <rect x="32" y="68" width="116" height="16" rx="1" fill="#26a067" fill-opacity="0.3" stroke="#26a067" stroke-width="0.5"/>
+          <rect x="32" y="90" width="116" height="16" rx="1" fill="white" fill-opacity="0.08" stroke="white" stroke-width="0.5"/>
+          <rect x="32" y="112" width="116" height="16" rx="1" fill="white" fill-opacity="0.08" stroke="white" stroke-width="0.5"/>
+          <rect x="32" y="134" width="116" height="16" rx="1" fill="white" fill-opacity="0.08" stroke="white" stroke-width="0.5"/>
+          <rect x="32" y="156" width="116" height="16" rx="1" fill="white" fill-opacity="0.08" stroke="white" stroke-width="0.5"/>
+          <circle cx="136" cy="32" r="3" fill="#26a067" fill-opacity="0.7"/>
+          <circle cx="136" cy="54" r="3" fill="#26a067" fill-opacity="0.7"/>
+          <circle cx="136" cy="76" r="3" fill="#26a067"/>
+          <circle cx="136" cy="98" r="3" fill="#26a067" fill-opacity="0.7"/>
+          <rect x="36" y="28" width="40" height="3" rx="1" fill="white" fill-opacity="0.3"/>
+          <rect x="36" y="50" width="55" height="3" rx="1" fill="white" fill-opacity="0.3"/>
+          <rect x="36" y="72" width="30" height="3" rx="1" fill="#26a067" fill-opacity="0.6"/>
+        </svg>
+        <div class="featured-discount">
+          <div class="featured-discount-pct">15%</div>
+          <div class="featured-discount-label">Member Rate</div>
+        </div>
+      </div>
+      <div class="card-featured-body">
+        <div class="featured-category">Infrastructure &middot; Server Racks</div>
+        <h3 class="featured-title">Bodea NE Series Network Enclosures</h3>
+        <div class="featured-desc">Enterprise-grade modular enclosures from 6U to 42U. Your member pricing applies across the full NE Series — including GlassFront configurations exclusive to Elite accounts.</div>
+        <div class="featured-pricing">
+          <div class="price-member">From $331.55</div>
+          <div class="price-was"><span class="sr-only">Was </span>$349.00</div>
+          <div class="price-tag">Member Rate</div>
+        </div>
+        <div class="featured-cta">
+          <a href="#" class="btn-primary" aria-label="Shop NE Series network enclosures">Shop NE Series <span aria-hidden="true">&rarr;</span></a>
+          <button class="btn-outline" aria-label="Request a quote for NE Series">Quote</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 2: Benefits Row -->
+    <div class="card card-benefits" role="list" aria-label="Member benefits">
+      <div class="benefit-item" role="listitem">
+        <div class="benefit-icon-wrap" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="benefit-text">
+          <div class="benefit-title">Priority Inventory Access</div>
+          <div class="benefit-desc">First pick on incoming stock before it hits the public catalog. Reserve units up to 30 days ahead of availability.</div>
+        </div>
+        <a href="#" class="benefit-link">Reserve Stock <span aria-hidden="true">&rarr;</span></a>
+      </div>
+      <div class="benefit-item" role="listitem">
+        <div class="benefit-icon-wrap" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="benefit-text">
+          <div class="benefit-title">Dedicated Concierge</div>
+          <div class="benefit-desc">Your named account manager handles procurement, approvals, and escalations around the clock — 24/7 support line.</div>
+        </div>
+        <a href="#" class="benefit-link">Contact Rep <span aria-hidden="true">&rarr;</span></a>
+      </div>
+      <div class="benefit-item" role="listitem">
+        <div class="benefit-icon-wrap" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        </div>
+        <div class="benefit-text">
+          <div class="benefit-title">Net-60 Extended Terms</div>
+          <div class="benefit-desc">Your account carries negotiated Net-60 payment terms with a $48K credit line — no per-order approval required.</div>
+        </div>
+        <a href="#" class="benefit-link">View Terms <span aria-hidden="true">&rarr;</span></a>
+      </div>
+      <div class="benefit-item" role="listitem">
+        <div class="benefit-icon-wrap" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <div class="benefit-text">
+          <div class="benefit-title">Custom Maintenance Plans</div>
+          <div class="benefit-desc">Enterprise SLAs, lifecycle support, and firmware subscription programs tailored to your infrastructure footprint.</div>
+        </div>
+        <a href="#" class="benefit-link">Explore Plans <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </div>
+
+    <!-- CARD 3: Product Spotlight -->
+    <div class="card card-spotlight">
+      <div class="spotlight-header">
+        <span class="spotlight-header-label">Member Pricing — Active Deals</span>
+        <span class="spotlight-header-count">6 of 14 categories</span>
+      </div>
+      <div class="spotlight-items" role="list" aria-label="Featured products">
+        <div class="spotlight-item" role="listitem" tabindex="0" aria-label="NE 6U CommBox Enclosure, member price $1,383.20">
+          <div class="spotlight-thumb" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <div class="spotlight-info">
+            <span class="spotlight-name">NE 6U CommBox Enclosure</span>
+            <span class="spotlight-meta">SKU: BODEA-NE-6U &middot; In Stock</span>
+          </div>
+          <div class="spotlight-pricing">
+            <span class="spotlight-price-member">$1,383.20</span>
+            <span class="spotlight-price-was"><span class="sr-only">Was </span>$1,456.00</span>
+          </div>
+        </div>
+        <div class="spotlight-item" role="listitem" tabindex="0" aria-label="Cat6 Patch Cable Snagless 14ft, member price $14.24">
+          <div class="spotlight-thumb" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="spotlight-info">
+            <span class="spotlight-name">Cat6 Patch Cable – Snagless 14ft</span>
+            <span class="spotlight-meta">SKU: BODEA-CAT6-14 &middot; 200+ units</span>
+          </div>
+          <div class="spotlight-pricing">
+            <span class="spotlight-price-member">$14.24</span>
+            <span class="spotlight-price-was"><span class="sr-only">Was </span>$14.99</span>
+          </div>
+        </div>
+        <div class="spotlight-item" role="listitem" tabindex="0" aria-label="NE 12U GlassFront 42U Config, member price $1,804.05">
+          <div class="spotlight-thumb" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          </div>
+          <div class="spotlight-info">
+            <span class="spotlight-name">NE 12U GlassFront – 42U Config</span>
+            <span class="spotlight-meta">SKU: BODEA-NE-12U-42 &middot; Low Stock</span>
+          </div>
+          <div class="spotlight-pricing">
+            <span class="spotlight-price-member">$1,804.05</span>
+            <span class="spotlight-price-was"><span class="sr-only">Was </span>$1,899.00</span>
+          </div>
+        </div>
+      </div>
+      <div class="spotlight-footer">
+        <span class="spotlight-footer-text">Member pricing applied at checkout</span>
+        <a href="#" class="spotlight-footer-link">View Full Catalog <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </div>
+
+    <!-- CARD 4: Account Summary -->
+    <div class="card card-account">
+      <div class="account-header">
+        <div class="account-header-top">
+          <span class="account-header-label">Account Overview</span>
+          <div class="account-live" aria-label="Account is live"><div class="live-dot" aria-hidden="true"></div>Live</div>
+        </div>
+        <div class="account-name">David &middot; Server Savvy Inc.</div>
+        <div class="account-org">West Region &middot; Elite Member &middot; Since 1994</div>
+      </div>
+      <div class="account-metrics" role="list" aria-label="Account metrics">
+        <div class="account-metric" role="listitem">
+          <div class="am-val">$48K</div>
+          <div class="am-label">Credit Line</div>
+          <div class="am-delta">&bull; Available</div>
+        </div>
+        <div class="account-metric" role="listitem">
+          <div class="am-val">12</div>
+          <div class="am-label">Open Orders</div>
+          <div class="am-delta">+3 this week</div>
+        </div>
+        <div class="account-metric" role="listitem">
+          <div class="am-val green">$124K</div>
+          <div class="am-label">YTD Spend</div>
+          <div class="am-delta">&uarr; 12% YoY</div>
+        </div>
+        <div class="account-metric" role="listitem">
+          <div class="am-val">3</div>
+          <div class="am-label">Locations</div>
+          <div class="am-delta">W &middot; E &middot; EMEA</div>
+        </div>
+      </div>
+      <div class="account-actions">
+        <div class="action-row" tabindex="0" role="button" aria-label="Reorder last purchase, PO number 278455">
+          <span class="action-label">Reorder Last Purchase</span>
+          <span class="action-badge">PO# 278455</span>
+          <span class="action-arrow" aria-hidden="true">&rarr;</span>
+        </div>
+        <div class="action-row" tabindex="0" role="button" aria-label="Request a quote">
+          <span class="action-label">Request a Quote</span>
+          <span class="action-arrow" aria-hidden="true">&rarr;</span>
+        </div>
+        <div class="action-row" tabindex="0" role="button" aria-label="Contact my rep, available 24/7">
+          <span class="action-label">Contact My Rep</span>
+          <span class="action-badge">24/7</span>
+          <span class="action-arrow" aria-hidden="true">&rarr;</span>
+        </div>
+      </div>
+    </div>
+  </div><!-- /promo-grid -->
+
+  <!-- Proof Strip -->
+  <div class="proof-strip">
+    <div class="proof-item">
+      <div class="proof-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="proof-text">
+        <div class="proof-title">Compliance-Ready Infrastructure</div>
+        <div class="proof-sub">All hardware ships with full compliance docs and firmware packs</div>
+      </div>
+    </div>
+    <div class="proof-sep" aria-hidden="true"></div>
+    <div class="proof-item">
+      <div class="proof-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+      </div>
+      <div class="proof-text">
+        <div class="proof-title">30,000+ SKUs Reserved</div>
+        <div class="proof-sub">Elite members see inventory 48 hours before public release</div>
+      </div>
+    </div>
+    <div class="proof-sep" aria-hidden="true"></div>
+    <div class="proof-item">
+      <div class="proof-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      </div>
+      <div class="proof-text">
+        <div class="proof-title">Same-Day Order Processing</div>
+        <div class="proof-sub">Orders placed before 2PM ship same business day</div>
+      </div>
+    </div>
+    <a href="#" class="proof-cta" aria-label="Access full member portal with negotiated catalog and all categories">
+      <div class="proof-cta-text">
+        <div class="proof-cta-main">Access Full Portal</div>
+        <div class="proof-cta-sub">Negotiated catalog &middot; All categories</div>
+      </div>
+      <div class="proof-cta-arrow" aria-hidden="true">&rarr;</div>
+    </a>
+  </div>
+</div>
+
+<!-- Screen reader only utility -->
+<style>.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }</style>
+
+<!-- Keyboard support for action rows -->
+<script>
+document.querySelectorAll('.action-row[role="button"]').forEach(row => {
+  row.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      row.click();
+    }
+  });
+});
+document.querySelectorAll('.spotlight-item[tabindex]').forEach(item => {
+  item.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      item.click();
+    }
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+promo-popup
+headline	Spin to Win!
+headline-highlight	Win
+subheadline	One spin, one deal made just for you.
+pill	Exclusive offer
+trigger	immediate
+trigger-delay	3
+trigger-scroll	50
+storage-duration	session
+theme	purple
+spin-button-text	Spin the Wheel
+no-thanks-text	No thanks, I'll skip
+result-headline	🎉
+cta-button-text	Claim Offer
+show-orb-bg	false
+show-confetti	true
+spin-duration	4
+10% Off	Use code <strong>SAVE10</strong> at checkout	/checkout
+Free Ship	Free shipping on orders over $50	/shipping
+BOGO	Buy one, get one <strong>50% off</strong> — today only	/sale
+$5 Off	$5 credit on your next order	/promo
+20% Off	Use code <strong>TWENTY</strong> — this week only	/checkout
+Gift	Free gift with any purchase over $75	/gifts
+VIP Access	Early access to our next drop	/vip
+5% Off	Better luck next time — use code <strong>TRY5</strong> at checkout	/checkout

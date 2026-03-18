@@ -1,0 +1,22 @@
+{
+  "definitions": [
+    {
+      "title": "Promo Strip",
+      "id": "promo-strip",
+      "plugins": {
+        "da": {
+          "name": "promo-strip",
+          "rows": 6,
+          "columns": 2
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "promo-strip",
+      "fields": []
+    }
+  ],
+  "filters": []
+}

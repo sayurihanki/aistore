@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MCCS Preference Form Preview</title>
+  <link rel="stylesheet" href="/styles/mcx-fonts.css">
+  <link rel="stylesheet" href="./blocks/form-mccs-preferences/form-mccs-preferences.css">
+  <style>
+    :root {
+      --type-base-font-family: "Barlow", system-ui, sans-serif;
+      --type-display-font-family: "Teko", "Impact", sans-serif;
+      --type-price-font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+      --type-body-1-default-font: normal normal 500 1.6rem/2.7rem var(--type-base-font-family);
+      --type-body-2-default-font: normal normal 500 1.4rem/2.2rem var(--type-base-font-family);
+      --type-body-2-strong-font: normal normal 600 1.4rem/2.2rem var(--type-base-font-family);
+      --type-button-2-font: normal normal 700 1.4rem/1.8rem var(--type-price-font-family);
+      --type-details-caption-1-font: normal normal 500 1.2rem/1.8rem "Rajdhani", var(--type-base-font-family);
+      --type-details-caption-2-font: normal normal 500 1.2rem/1.8rem "Rajdhani", var(--type-base-font-family);
+      --type-details-overline-font: normal normal 700 1.15rem/1.65rem "Rajdhani", var(--type-base-font-family);
+      --type-display-2-font: normal normal 700 clamp(4.8rem, 6vw, 7rem)/0.84 var(--type-display-font-family);
+      --type-display-3-font: normal normal 700 4rem/0.88 var(--type-display-font-family);
+      --type-headline-1-font: normal normal 700 clamp(3.2rem, 3vw, 4.4rem)/0.9 var(--type-display-font-family);
+      --type-headline-2-strong-font: normal normal 700 2.05rem/1.12 var(--type-price-font-family);
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+    }
+
+    body {
+      background: #f5f3ef;
+      font-family: var(--type-base-font-family);
+    }
+  </style>
+</head>
+<body>
+  <div class="form-mccs-preferences">
+    <div>Personalize
+your MCCS experience</div>
+    <div>Tell us about your military life, interests, and preferences. We will tailor shopping, events, and family programs around your world.</div>
+    <div></div>
+  </div>
+
+  <script type="module">
+    import decorate from './blocks/form-mccs-preferences/form-mccs-preferences.js';
+
+    decorate(document.querySelector('.form-mccs-preferences'));
+  </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "definitions": [
+    {
+      "title": "MCX Footer",
+      "id": "mcx-footer",
+      "plugins": {
+        "da": {
+          "name": "mcx-footer",
+          "rows": 1,
+          "columns": 1
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "mcx-footer",
+      "fields": []
+    }
+  ],
+  "filters": []
+}

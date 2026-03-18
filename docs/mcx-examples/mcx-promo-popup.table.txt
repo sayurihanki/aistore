@@ -1,0 +1,23 @@
+mcx-promo-popup
+campaign-id | summer-pcs-sale-2026
+eyebrow | Summer PCS Sale
+heading-line-1 | Settle In
+heading-line-2 | For Less
+description | New to base? Welcome aboard. Get an extra 20% off select home essentials, electronics, and tactical gear - on top of your tax-free savings.
+badge-value | 20%
+badge-label | Extra Off
+offer-1-value | 20%
+offer-1-label | Extra Discount
+offer-2-value | $0
+offer-2-label | Sales Tax
+offer-3-value | Free
+offer-3-label | Ship to Store
+end-datetime | 2026-07-31T23:59:59-07:00
+coupon-code | SEMPERFI20
+copy-button-text | Copy Code
+primary-cta | [Shop the Sale](/deals)
+secondary-cta | [Browse Deals](/clearance)
+fine-print | * Valid on select categories through July 31, 2026. Cannot be combined with other offers. Available to authorized MCX patrons online and in store.
+trigger | time
+trigger-delay | 3
+trigger-scroll | 50

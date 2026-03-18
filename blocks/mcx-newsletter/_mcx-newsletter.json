@@ -1,0 +1,22 @@
+{
+  "definitions": [
+    {
+      "title": "MCX Newsletter",
+      "id": "mcx-newsletter",
+      "plugins": {
+        "da": {
+          "name": "mcx-newsletter",
+          "rows": 6,
+          "columns": 2
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "mcx-newsletter",
+      "fields": []
+    }
+  ],
+  "filters": []
+}

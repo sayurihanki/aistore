@@ -1,0 +1,7 @@
+section-metadata
+quizrouter-id | new-to-base
+quizrouter-progress | true
+quizrouter-theme | welcome
+quizrouter-result-mode | fragment
+quizrouter-base | Camp Pendleton
+quizrouter-journey | Arrival Guide

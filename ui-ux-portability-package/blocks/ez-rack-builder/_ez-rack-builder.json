@@ -1,0 +1,123 @@
+{
+  "definitions": [
+    {
+      "title": "EZ Rack Builder",
+      "id": "ez-rack-builder",
+      "model": "ez-rack-builder",
+      "plugins": {
+        "da": {
+          "type": "key-value-block"
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "ez-rack-builder",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "sku",
+          "label": "SKU",
+          "required": true,
+          "value": "USMC-EZ-RACK"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "schema-url",
+          "label": "Schema URL",
+          "required": true,
+          "value": "/data/configurators/ez-rack-builder-usmc.json"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "eyebrow-text",
+          "label": "Eyebrow Text",
+          "value": "Marine Corps Awards Division"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "title",
+          "label": "Title",
+          "value": "Luxury EZ Rack Builder"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "subtitle",
+          "label": "Subtitle",
+          "value": "Assemble your regulation-aware ribbon rack in a ceremonial configuration studio."
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "primary-cta-label",
+          "label": "Primary CTA Label",
+          "value": "Add configured rack to cart"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "secondary-cta-label",
+          "label": "Secondary CTA Label",
+          "value": "Talk to a specialist"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "secondary-cta-href",
+          "label": "Secondary CTA Href",
+          "value": "/contact"
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "theme",
+          "label": "Theme",
+          "value": "scarlet-gold",
+          "options": [
+            {
+              "name": "Scarlet Gold",
+              "value": "scarlet-gold"
+            }
+          ]
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "presentation",
+          "label": "Presentation",
+          "value": "rack-immersive",
+          "options": [
+            {
+              "name": "Rack Immersive",
+              "value": "rack-immersive"
+            },
+            {
+              "name": "Default",
+              "value": "default"
+            }
+          ]
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "dd214-mode",
+          "label": "DD214 Mode",
+          "value": "smart-stub",
+          "options": [
+            {
+              "name": "Smart Stub",
+              "value": "smart-stub"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

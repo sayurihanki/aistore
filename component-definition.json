@@ -120,6 +120,18 @@
           }
         },
         {
+          "title": "Catalog Highlights",
+          "id": "catalog-highlights",
+          "model": "catalog-highlights",
+          "plugins": {
+            "da": {
+              "name": "catalog-highlights",
+              "rows": 1,
+              "columns": 8
+            }
+          }
+        },
+        {
           "title": "Carousel",
           "id": "carousel",
           "model": "carousel",
@@ -195,16 +207,6 @@
           }
         },
         {
-          "title": "Enrichment",
-          "id": "enrichment",
-          "model": "enrichment",
-          "plugins": {
-            "da": {
-              "type": "key-value-block"
-            }
-          }
-        },
-        {
           "title": "Fragment",
           "id": "fragment",
           "model": "fragment",
@@ -222,6 +224,49 @@
                   "selector": "div>div>p>a"
                 }
               ]
+            }
+          }
+        },
+        {
+          "title": "Guided Selling",
+          "id": "guided-selling",
+          "model": "guided-selling",
+          "plugins": {
+            "da": {
+              "type": "key-value-block"
+            }
+          }
+        },
+        {
+          "title": "Form MCCS Preferences",
+          "id": "form-mccs-preferences",
+          "plugins": {
+            "da": {
+              "name": "form-mccs-preferences",
+              "rows": 3,
+              "columns": 1
+            }
+          }
+        },
+        {
+          "title": "Form MCCS Preferences Next",
+          "id": "form-mccs-preferences-next",
+          "plugins": {
+            "da": {
+              "name": "form-mccs-preferences-next",
+              "rows": 3,
+              "columns": 1
+            }
+          }
+        },
+        {
+          "title": "Promo Strip",
+          "id": "promo-strip",
+          "plugins": {
+            "da": {
+              "name": "promo-strip",
+              "rows": 6,
+              "columns": 2
             }
           }
         },
@@ -251,6 +296,444 @@
           }
         },
         {
+          "title": "MCX Announcement Bar",
+          "id": "mcx-announcement-bar",
+          "plugins": {
+            "da": {
+              "name": "mcx-announcement-bar",
+              "rows": 6,
+              "columns": 1
+            }
+          }
+        },
+        {
+          "title": "MCX Benefits",
+          "id": "mcx-benefits",
+          "plugins": {
+            "da": {
+              "name": "mcx-benefits",
+              "rows": 4,
+              "columns": 3
+            }
+          }
+        },
+        {
+          "title": "MCX Brands",
+          "id": "mcx-brands",
+          "plugins": {
+            "da": {
+              "name": "mcx-brands",
+              "rows": 7,
+              "columns": 1
+            }
+          }
+        },
+        {
+          "title": "MCX Category Grid",
+          "id": "mcx-category-grid",
+          "plugins": {
+            "da": {
+              "name": "mcx-category-grid",
+              "rows": 12,
+              "columns": 4
+            }
+          }
+        },
+        {
+          "title": "MCX Category Page",
+          "id": "mcx-category-page",
+          "model": "mcx-category-page",
+          "plugins": {
+            "da": {
+              "name": "mcx-category-page",
+              "rows": 12,
+              "columns": 4
+            }
+          }
+        },
+        {
+          "title": "MCX Deal Countdown",
+          "id": "mcx-deal-countdown",
+          "plugins": {
+            "da": {
+              "name": "mcx-deal-countdown",
+              "rows": 8,
+              "columns": 2
+            }
+          }
+        },
+        {
+          "title": "MCX Editorial Cards",
+          "id": "mcx-editorial-cards",
+          "plugins": {
+            "da": {
+              "name": "mcx-editorial-cards",
+              "rows": 3,
+              "columns": 4
+            }
+          }
+        },
+        {
+          "title": "MCX Featured Collections",
+          "id": "mcx-featured-collections",
+          "plugins": {
+            "da": {
+              "name": "mcx-featured-collections",
+              "rows": 3,
+              "columns": 4
+            }
+          }
+        },
+        {
+          "title": "MCX Footer",
+          "id": "mcx-footer",
+          "plugins": {
+            "da": {
+              "name": "mcx-footer",
+              "rows": 1,
+              "columns": 1
+            }
+          }
+        },
+        {
+          "title": "MCX Header",
+          "id": "mcx-header",
+          "plugins": {
+            "da": {
+              "name": "mcx-header",
+              "rows": 1,
+              "columns": 1
+            }
+          }
+        },
+        {
+          "title": "MCX Hero Newcomer",
+          "id": "mcx-hero-newcomer",
+          "plugins": {
+            "da": {
+              "name": "mcx-hero-newcomer",
+              "rows": 50,
+              "columns": 2
+            }
+          }
+        },
+        {
+          "title": "MCX Hero",
+          "id": "mcx-hero",
+          "plugins": {
+            "da": {
+              "name": "mcx-hero",
+              "rows": 20,
+              "columns": 2
+            }
+          }
+        },
+        {
+          "title": "MCX Newsletter",
+          "id": "mcx-newsletter",
+          "plugins": {
+            "da": {
+              "name": "mcx-newsletter",
+              "rows": 6,
+              "columns": 2
+            }
+          }
+        },
+        {
+          "title": "MCX Product Cards",
+          "id": "mcx-product-cards",
+          "plugins": {
+            "da": {
+              "name": "mcx-product-cards",
+              "rows": 14,
+              "columns": 4
+            }
+          }
+        },
+        {
+          "title": "MCX Promo Popup",
+          "id": "mcx-promo-popup",
+          "plugins": {
+            "da": {
+              "name": "mcx-promo-popup",
+              "rows": 24,
+              "columns": 2
+            }
+          }
+        },
+        {
+          "title": "MCX Promo Strip",
+          "id": "mcx-promo-strip",
+          "plugins": {
+            "da": {
+              "name": "mcx-promo-strip",
+              "rows": 5,
+              "columns": 2
+            }
+          }
+        },
+        {
+          "title": "MCX Ticker",
+          "id": "mcx-ticker",
+          "plugins": {
+            "da": {
+              "name": "mcx-ticker",
+              "rows": 8,
+              "columns": 1
+            }
+          }
+        },
+        {
+          "title": "VIP Hero Block",
+          "id": "vip-hero-block",
+          "model": "vip-hero-block",
+          "plugins": {
+            "da": {
+              "type": "key-value-block",
+              "rows": 26,
+              "columns": 1,
+              "fields": [
+                {
+                  "name": "memberName",
+                  "selector": "div:nth-child(1)>div:nth-child(1)"
+                },
+                {
+                  "name": "memberTagline",
+                  "selector": "div:nth-child(2)>div:nth-child(1)"
+                },
+                {
+                  "name": "heroNumber",
+                  "selector": "div:nth-child(3)>div:nth-child(1)"
+                },
+                {
+                  "name": "headlineLine1",
+                  "selector": "div:nth-child(4)>div:nth-child(1)"
+                },
+                {
+                  "name": "headlineLine2",
+                  "selector": "div:nth-child(5)>div:nth-child(1)"
+                },
+                {
+                  "name": "headlineLine3",
+                  "selector": "div:nth-child(6)>div:nth-child(1)"
+                },
+                {
+                  "name": "postscript",
+                  "selector": "div:nth-child(7)>div:nth-child(1)"
+                },
+                {
+                  "name": "description",
+                  "selector": "div:nth-child(8)>div:nth-child(1)"
+                },
+                {
+                  "name": "ctaPrimary",
+                  "selector": "div:nth-child(9)>div:nth-child(1)>a"
+                },
+                {
+                  "name": "ctaSecondary",
+                  "selector": "div:nth-child(10)>div:nth-child(1)>a"
+                },
+                {
+                  "name": "perk1",
+                  "selector": "div:nth-child(11)>div:nth-child(1)"
+                },
+                {
+                  "name": "perk2",
+                  "selector": "div:nth-child(12)>div:nth-child(1)"
+                },
+                {
+                  "name": "perk3",
+                  "selector": "div:nth-child(13)>div:nth-child(1)"
+                },
+                {
+                  "name": "perk4",
+                  "selector": "div:nth-child(14)>div:nth-child(1)"
+                },
+                {
+                  "name": "dashboardEyebrow",
+                  "selector": "div:nth-child(15)>div:nth-child(1)"
+                },
+                {
+                  "name": "dashboardSubline",
+                  "selector": "div:nth-child(16)>div:nth-child(1)"
+                },
+                {
+                  "name": "metric1",
+                  "selector": "div:nth-child(17)>div:nth-child(1)"
+                },
+                {
+                  "name": "metric2",
+                  "selector": "div:nth-child(18)>div:nth-child(1)"
+                },
+                {
+                  "name": "metric3",
+                  "selector": "div:nth-child(19)>div:nth-child(1)"
+                },
+                {
+                  "name": "order1",
+                  "selector": "div:nth-child(20)>div:nth-child(1)"
+                },
+                {
+                  "name": "order2",
+                  "selector": "div:nth-child(21)>div:nth-child(1)"
+                },
+                {
+                  "name": "order3",
+                  "selector": "div:nth-child(22)>div:nth-child(1)"
+                },
+                {
+                  "name": "footerItem1",
+                  "selector": "div:nth-child(23)>div:nth-child(1)"
+                },
+                {
+                  "name": "footerItem2",
+                  "selector": "div:nth-child(24)>div:nth-child(1)"
+                },
+                {
+                  "name": "footerItem3",
+                  "selector": "div:nth-child(25)>div:nth-child(1)"
+                },
+                {
+                  "name": "footerRightText",
+                  "selector": "div:nth-child(26)>div:nth-child(1)"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "title": "VIP Hero MCCS",
+          "id": "vip-hero-mccs",
+          "model": "vip-hero-mccs",
+          "plugins": {
+            "da": {
+              "type": "key-value-block"
+            }
+          }
+        },
+        {
+          "title": "How It Works + Stats",
+          "id": "how-it-works-stats",
+          "model": "how-it-works-stats",
+          "plugins": {
+            "da": {
+              "rows": 12,
+              "columns": 1,
+              "fields": [
+                {
+                  "name": "tag",
+                  "selector": "div:nth-child(1)>div:nth-child(1)"
+                },
+                {
+                  "name": "title",
+                  "selector": "div:nth-child(2)>div:nth-child(1)"
+                },
+                {
+                  "name": "step1",
+                  "selector": "div:nth-child(3)>div:nth-child(1)"
+                },
+                {
+                  "name": "step2",
+                  "selector": "div:nth-child(4)>div:nth-child(1)"
+                },
+                {
+                  "name": "step3",
+                  "selector": "div:nth-child(5)>div:nth-child(1)"
+                },
+                {
+                  "name": "step4",
+                  "selector": "div:nth-child(6)>div:nth-child(1)"
+                },
+                {
+                  "name": "stat1",
+                  "selector": "div:nth-child(7)>div:nth-child(1)"
+                },
+                {
+                  "name": "stat2",
+                  "selector": "div:nth-child(8)>div:nth-child(1)"
+                },
+                {
+                  "name": "stat3",
+                  "selector": "div:nth-child(9)>div:nth-child(1)"
+                },
+                {
+                  "name": "stat4",
+                  "selector": "div:nth-child(10)>div:nth-child(1)"
+                },
+                {
+                  "name": "buttonPrimary",
+                  "selector": "div:nth-child(11)>div:nth-child(1)>a"
+                },
+                {
+                  "name": "buttonSecondary",
+                  "selector": "div:nth-child(12)>div:nth-child(1)>a"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "title": "How It Works + Stats 2",
+          "id": "how-it-works-stats-2",
+          "model": "how-it-works-stats-2",
+          "plugins": {
+            "da": {
+              "rows": 12,
+              "columns": 1,
+              "fields": [
+                {
+                  "name": "tag",
+                  "selector": "div:nth-child(1)>div:nth-child(1)"
+                },
+                {
+                  "name": "title",
+                  "selector": "div:nth-child(2)>div:nth-child(1)"
+                },
+                {
+                  "name": "step1",
+                  "selector": "div:nth-child(3)>div:nth-child(1)"
+                },
+                {
+                  "name": "step2",
+                  "selector": "div:nth-child(4)>div:nth-child(1)"
+                },
+                {
+                  "name": "step3",
+                  "selector": "div:nth-child(5)>div:nth-child(1)"
+                },
+                {
+                  "name": "step4",
+                  "selector": "div:nth-child(6)>div:nth-child(1)"
+                },
+                {
+                  "name": "stat1",
+                  "selector": "div:nth-child(7)>div:nth-child(1)"
+                },
+                {
+                  "name": "stat2",
+                  "selector": "div:nth-child(8)>div:nth-child(1)"
+                },
+                {
+                  "name": "stat3",
+                  "selector": "div:nth-child(9)>div:nth-child(1)"
+                },
+                {
+                  "name": "stat4",
+                  "selector": "div:nth-child(10)>div:nth-child(1)"
+                },
+                {
+                  "name": "buttonPrimary",
+                  "selector": "div:nth-child(11)>div:nth-child(1)>a"
+                },
+                {
+                  "name": "buttonSecondary",
+                  "selector": "div:nth-child(12)>div:nth-child(1)>a"
+                }
+              ]
+            }
+          }
+        },
+        {
           "title": "Targeted Block",
           "id": "targeted-block",
           "model": "targeted-block",
@@ -261,9 +744,9 @@
           }
         },
         {
-          "title": "Commerce Account Header",
-          "id": "commerce-account-header",
-          "model": "commerce-account-header",
+          "title": "Customer Segment Personalization Block",
+          "id": "customer-segment-personalization-block",
+          "model": "customer-segment-personalization-block",
           "plugins": {
             "da": {
               "type": "key-value-block"
@@ -271,20 +754,9 @@
           }
         },
         {
-          "title": "Commerce Account Sidebar",
-          "id": "commerce-account-sidebar",
-          "model": "commerce-account-sidebar",
-          "plugins": {
-            "da": {
-              "rows": 1,
-              "columns": 2
-            }
-          }
-        },
-        {
-          "title": "Commerce Addresses",
-          "id": "commerce-addresses",
-          "model": "commerce-addresses",
+          "title": "Live Block",
+          "id": "live-block",
+          "model": "live-block",
           "plugins": {
             "da": {
               "type": "key-value-block"
@@ -292,9 +764,9 @@
           }
         },
         {
-          "title": "Commerce Cart",
-          "id": "commerce-cart",
-          "model": "commerce-cart",
+          "title": "Live Block Premium",
+          "id": "live-block-premium",
+          "model": "live-block-premium",
           "plugins": {
             "da": {
               "type": "key-value-block"
@@ -302,130 +774,179 @@
           }
         },
         {
-          "title": "Commerce Checkout Success",
-          "id": "commerce-checkout-success",
-          "model": "commerce-checkout-success",
+          "title": "VIP Member Block",
+          "id": "vip-member-block",
+          "model": "vip-member-block",
           "plugins": {
             "da": {
-              "rows": 1,
-              "columns": 2
+              "name": "vip-member-block",
+              "rows": 39,
+              "columns": 1,
+              "fields": [
+                {
+                  "name": "eyebrowText",
+                  "selector": "div:nth-child(1)>div:nth-child(1)"
+                },
+                {
+                  "name": "title",
+                  "selector": "div:nth-child(2)>div:nth-child(1)"
+                },
+                {
+                  "name": "subtitle",
+                  "selector": "div:nth-child(3)>div:nth-child(1)"
+                },
+                {
+                  "name": "stat1",
+                  "selector": "div:nth-child(4)>div:nth-child(1)"
+                },
+                {
+                  "name": "stat2",
+                  "selector": "div:nth-child(5)>div:nth-child(1)"
+                },
+                {
+                  "name": "stat3",
+                  "selector": "div:nth-child(6)>div:nth-child(1)"
+                },
+                {
+                  "name": "featuredLabel",
+                  "selector": "div:nth-child(7)>div:nth-child(1)"
+                },
+                {
+                  "name": "featuredDiscount",
+                  "selector": "div:nth-child(8)>div:nth-child(1)"
+                },
+                {
+                  "name": "featuredCategory",
+                  "selector": "div:nth-child(9)>div:nth-child(1)"
+                },
+                {
+                  "name": "featuredTitle",
+                  "selector": "div:nth-child(10)>div:nth-child(1)"
+                },
+                {
+                  "name": "featuredDesc",
+                  "selector": "div:nth-child(11)>div:nth-child(1)"
+                },
+                {
+                  "name": "featuredPrice",
+                  "selector": "div:nth-child(12)>div:nth-child(1)"
+                },
+                {
+                  "name": "featuredCtaPrimary",
+                  "selector": "div:nth-child(13)>div:nth-child(1)>a"
+                },
+                {
+                  "name": "featuredCtaSecondary",
+                  "selector": "div:nth-child(14)>div:nth-child(1)>a"
+                },
+                {
+                  "name": "benefit1",
+                  "selector": "div:nth-child(15)>div:nth-child(1)"
+                },
+                {
+                  "name": "benefit2",
+                  "selector": "div:nth-child(16)>div:nth-child(1)"
+                },
+                {
+                  "name": "benefit3",
+                  "selector": "div:nth-child(17)>div:nth-child(1)"
+                },
+                {
+                  "name": "benefit4",
+                  "selector": "div:nth-child(18)>div:nth-child(1)"
+                },
+                {
+                  "name": "spotlightLabel",
+                  "selector": "div:nth-child(19)>div:nth-child(1)"
+                },
+                {
+                  "name": "spotlightCount",
+                  "selector": "div:nth-child(20)>div:nth-child(1)"
+                },
+                {
+                  "name": "spotlightItem1",
+                  "selector": "div:nth-child(21)>div:nth-child(1)"
+                },
+                {
+                  "name": "spotlightItem2",
+                  "selector": "div:nth-child(22)>div:nth-child(1)"
+                },
+                {
+                  "name": "spotlightItem3",
+                  "selector": "div:nth-child(23)>div:nth-child(1)"
+                },
+                {
+                  "name": "spotlightFooterText",
+                  "selector": "div:nth-child(24)>div:nth-child(1)"
+                },
+                {
+                  "name": "spotlightFooterLink",
+                  "selector": "div:nth-child(25)>div:nth-child(1)>a"
+                },
+                {
+                  "name": "accountName",
+                  "selector": "div:nth-child(26)>div:nth-child(1)"
+                },
+                {
+                  "name": "accountOrg",
+                  "selector": "div:nth-child(27)>div:nth-child(1)"
+                },
+                {
+                  "name": "metric1",
+                  "selector": "div:nth-child(28)>div:nth-child(1)"
+                },
+                {
+                  "name": "metric2",
+                  "selector": "div:nth-child(29)>div:nth-child(1)"
+                },
+                {
+                  "name": "metric3",
+                  "selector": "div:nth-child(30)>div:nth-child(1)"
+                },
+                {
+                  "name": "metric4",
+                  "selector": "div:nth-child(31)>div:nth-child(1)"
+                },
+                {
+                  "name": "action1",
+                  "selector": "div:nth-child(32)>div:nth-child(1)"
+                },
+                {
+                  "name": "action2",
+                  "selector": "div:nth-child(33)>div:nth-child(1)"
+                },
+                {
+                  "name": "action3",
+                  "selector": "div:nth-child(34)>div:nth-child(1)"
+                },
+                {
+                  "name": "proof1",
+                  "selector": "div:nth-child(35)>div:nth-child(1)"
+                },
+                {
+                  "name": "proof2",
+                  "selector": "div:nth-child(36)>div:nth-child(1)"
+                },
+                {
+                  "name": "proof3",
+                  "selector": "div:nth-child(37)>div:nth-child(1)"
+                },
+                {
+                  "name": "proofCtaPrimary",
+                  "selector": "div:nth-child(38)>div:nth-child(1)>a"
+                },
+                {
+                  "name": "proofCtaSub",
+                  "selector": "div:nth-child(39)>div:nth-child(1)"
+                }
+              ]
             }
           }
         },
         {
-          "title": "Commerce Checkout",
-          "id": "commerce-checkout",
-          "model": "commerce-checkout",
-          "plugins": {
-            "da": {
-              "rows": 1,
-              "columns": 2
-            }
-          }
-        },
-        {
-          "title": "Commerce Confirm Account",
-          "id": "commerce-confirm-account",
-          "model": "commerce-confirm-account",
-          "plugins": {
-            "da": {
-              "rows": 1,
-              "columns": 2
-            }
-          }
-        },
-        {
-          "title": "Commerce Create Account",
-          "id": "commerce-create-account",
-          "model": "commerce-create-account",
-          "plugins": {
-            "da": {
-              "rows": 1,
-              "columns": 2
-            }
-          }
-        },
-        {
-          "title": "Commerce Create Password",
-          "id": "commerce-create-password",
-          "model": "commerce-create-password",
-          "plugins": {
-            "da": {
-              "rows": 1,
-              "columns": 2
-            }
-          }
-        },
-        {
-          "title": "Commerce Create Return",
-          "id": "commerce-create-return",
-          "model": "commerce-create-return",
-          "plugins": {
-            "da": {
-              "rows": 1,
-              "columns": 2
-            }
-          }
-        },
-        {
-          "title": "Commerce Customer Details",
-          "id": "commerce-customer-details",
-          "model": "commerce-customer-details",
-          "plugins": {
-            "da": {
-              "rows": 1,
-              "columns": 2
-            }
-          }
-        },
-        {
-          "title": "Commerce Customer Information",
-          "id": "commerce-customer-information",
-          "model": "commerce-customer-information",
-          "plugins": {
-            "da": {
-              "rows": 1,
-              "columns": 2
-            }
-          }
-        },
-        {
-          "title": "Commerce Forgot Password",
-          "id": "commerce-forgot-password",
-          "model": "commerce-forgot-password",
-          "plugins": {
-            "da": {
-              "rows": 1,
-              "columns": 2
-            }
-          }
-        },
-        {
-          "title": "Commerce Gift Options",
-          "id": "commerce-gift-options",
-          "model": "commerce-gift-options",
-          "plugins": {
-            "da": {
-              "rows": 1,
-              "columns": 2
-            }
-          }
-        },
-        {
-          "title": "Commerce Login",
-          "id": "commerce-login",
-          "model": "commerce-login",
-          "plugins": {
-            "da": {
-              "rows": 1,
-              "columns": 2
-            }
-          }
-        },
-        {
-          "title": "Commerce Mini Cart",
-          "id": "commerce-mini-cart",
-          "model": "commerce-mini-cart",
+          "title": "VIP Member Block Real V2",
+          "id": "vip-member-block-real-v2",
+          "model": "vip-member-block-real-v2",
           "plugins": {
             "da": {
               "type": "key-value-block"
@@ -433,64 +954,9 @@
           }
         },
         {
-          "title": "Commerce Order Cost Summary",
-          "id": "commerce-order-cost-summary",
-          "model": "commerce-order-cost-summary",
-          "plugins": {
-            "da": {
-              "rows": 1,
-              "columns": 2
-            }
-          }
-        },
-        {
-          "title": "Commerce Order Header",
-          "id": "commerce-order-header",
-          "model": "commerce-order-header",
-          "plugins": {
-            "da": {
-              "rows": 1,
-              "columns": 2
-            }
-          }
-        },
-        {
-          "title": "Commerce Order Product List",
-          "id": "commerce-order-product-list",
-          "model": "commerce-order-product-list",
-          "plugins": {
-            "da": {
-              "rows": 1,
-              "columns": 2
-            }
-          }
-        },
-        {
-          "title": "Commerce Order Returns",
-          "id": "commerce-order-returns",
-          "model": "commerce-order-returns",
-          "plugins": {
-            "da": {
-              "rows": 1,
-              "columns": 2
-            }
-          }
-        },
-        {
-          "title": "Commerce Order Status",
-          "id": "commerce-order-status",
-          "model": "commerce-order-status",
-          "plugins": {
-            "da": {
-              "rows": 1,
-              "columns": 2
-            }
-          }
-        },
-        {
-          "title": "Commerce Orders List",
-          "id": "commerce-orders-list",
-          "model": "commerce-orders-list",
+          "title": "Commerce Account Hub",
+          "id": "commerce-account-hub",
+          "model": "commerce-account-hub",
           "plugins": {
             "da": {
               "type": "key-value-block"
@@ -498,20 +964,9 @@
           }
         },
         {
-          "title": "Commerce Return Header",
-          "id": "commerce-return-header",
-          "model": "commerce-return-header",
-          "plugins": {
-            "da": {
-              "rows": 1,
-              "columns": 2
-            }
-          }
-        },
-        {
-          "title": "Commerce Returns List",
-          "id": "commerce-returns-list",
-          "model": "commerce-returns-list",
+          "title": "Uniform Configurator",
+          "id": "uniform-configurator",
+          "model": "uniform-configurator",
           "plugins": {
             "da": {
               "type": "key-value-block"
@@ -519,34 +974,28 @@
           }
         },
         {
-          "title": "Commerce Search Order",
-          "id": "commerce-search-order",
-          "model": "commerce-search-order",
+          "title": "Quiz Router",
+          "id": "quiz-router",
+          "model": "quiz-router",
+          "filter": "quiz-router",
           "plugins": {
             "da": {
+              "name": "quiz-router",
               "rows": 1,
-              "columns": 2
+              "columns": 3
             }
           }
         },
         {
-          "title": "Commerce Shipping Status",
-          "id": "commerce-shipping-status",
-          "model": "commerce-shipping-status",
+          "title": "Quiz Router MCCS",
+          "id": "quiz-router-mccs",
+          "model": "quiz-router-mccs",
+          "filter": "quiz-router-mccs",
           "plugins": {
             "da": {
+              "name": "quiz-router-mccs",
               "rows": 1,
-              "columns": 2
-            }
-          }
-        },
-        {
-          "title": "Commerce Wishlist",
-          "id": "commerce-wishlist",
-          "model": "commerce-wishlist",
-          "plugins": {
-            "da": {
-              "type": "key-value-block"
+              "columns": 3
             }
           }
         }
@@ -557,12 +1006,34 @@
       "id": "product",
       "components": [
         {
+          "title": "Product Configurator Luxe",
+          "id": "product-configurator-luxe",
+          "model": "product-configurator-luxe",
+          "plugins": {
+            "da": {
+              "type": "key-value-block"
+            }
+          }
+        },
+        {
           "title": "Product Details",
           "id": "product-details",
           "model": "product-details",
           "plugins": {
             "da": {
               "type": "key-value-block"
+            }
+          }
+        },
+        {
+          "title": "Product Highlights",
+          "id": "product-highlights",
+          "model": "product-highlights",
+          "plugins": {
+            "da": {
+              "name": "product-highlights",
+              "rows": 4,
+              "columns": 2
             }
           }
         },
@@ -580,6 +1051,26 @@
           "title": "Product Recommendations",
           "id": "product-recommendations",
           "model": "product-recommendations",
+          "plugins": {
+            "da": {
+              "type": "key-value-block"
+            }
+          }
+        },
+        {
+          "title": "Product Teaser",
+          "id": "product-teaser",
+          "model": "product-teaser",
+          "plugins": {
+            "da": {
+              "type": "key-value-block"
+            }
+          }
+        },
+        {
+          "title": "Product Technical Details",
+          "id": "product-technical-details",
+          "model": "product-technical-details",
           "plugins": {
             "da": {
               "type": "key-value-block"

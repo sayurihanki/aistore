@@ -1,0 +1,65 @@
+{
+  "generatedAt": "2026-03-16T05:45:11.397Z",
+  "sectionStyleVariants": [
+    "dark-glass",
+    "glass",
+    "highlight",
+    "light"
+  ],
+  "sectionDataPaddingValues": [
+    "big",
+    "default",
+    "huge",
+    "large",
+    "medium",
+    "small",
+    "xbig",
+    "xhuge",
+    "xxbig",
+    "xxhuge"
+  ],
+  "sectionDataMarginValues": [
+    "big",
+    "huge",
+    "large",
+    "medium",
+    "small",
+    "xbig",
+    "xhuge",
+    "xxbig",
+    "xxhuge"
+  ],
+  "globalBreakpointsPx": [
+    "1024",
+    "600",
+    "900"
+  ],
+  "headerNavigationTokens": [
+    "--nav-dropdown-radius",
+    "--nav-flyout-bg",
+    "--nav-flyout-border",
+    "--nav-flyout-shadow",
+    "--nav-highlight-bg",
+    "--nav-highlight-bg-selected",
+    "--nav-highlight-border",
+    "--nav-highlight-shadow",
+    "--nav-hover-radius",
+    "--nav-interaction-speed",
+    "--nav-live-search-bg",
+    "--nav-live-search-border",
+    "--nav-live-search-radius",
+    "--nav-live-search-shadow",
+    "--nav-live-search-width",
+    "--nav-overlay-blur",
+    "--nav-pill-bg",
+    "--nav-pill-bg-hover",
+    "--nav-pill-border",
+    "--nav-pill-shadow",
+    "--nav-shell-glow",
+    "--nav-tool-bg",
+    "--nav-tool-bg-hover",
+    "--nav-tool-border",
+    "--nav-tool-shadow"
+  ],
+  "hasReducedMotionSupport": true
+}

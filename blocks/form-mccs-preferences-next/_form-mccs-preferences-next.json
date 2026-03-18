@@ -1,0 +1,49 @@
+{
+  "definitions": [
+    {
+      "title": "Form MCCS Preferences Next",
+      "id": "form-mccs-preferences-next",
+      "plugins": {
+        "da": {
+          "name": "form-mccs-preferences-next",
+          "rows": 3,
+          "columns": 1
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "form-mccs-preferences-next",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "title",
+          "label": "Form Title",
+          "description": "Heading displayed on the left briefing panel. Use a newline to split the title across two lines.",
+          "value": "Personalize\nyour MCCS experience",
+          "required": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "subtitle",
+          "label": "Form Subtitle",
+          "description": "Supporting copy shown beneath the heading.",
+          "value": "Tell us about your military life, interests, and preferences. We will tailor shopping, events, and family programs around your world.",
+          "required": false
+        },
+        {
+          "component": "aem-content",
+          "valueType": "string",
+          "name": "redirect",
+          "label": "Redirect URL",
+          "description": "Optional page to navigate to after successful submission.",
+          "required": false
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

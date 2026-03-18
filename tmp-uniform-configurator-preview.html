@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uniform Configurator Preview</title>
+    <link rel="stylesheet" href="/styles/mcx-fonts.css">
+    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="/blocks/uniform-configurator/uniform-configurator.css">
+    <script type="module">
+      import decorate from '/blocks/uniform-configurator/uniform-configurator.js';
+
+      window.addEventListener('DOMContentLoaded', async () => {
+        const block = document.querySelector('.uniform-configurator');
+        await decorate(block);
+
+        const title = block.querySelector('.cfg-hero__title');
+        const subtitle = block.querySelector('.cfg-hero__sub');
+        const debug = document.createElement('pre');
+        debug.style.font = '12px/1.4 monospace';
+        debug.style.padding = '16px';
+        debug.style.margin = '24px';
+        debug.style.background = '#fff';
+        debug.style.border = '1px solid #ccc';
+        debug.textContent = JSON.stringify({
+          title: title?.textContent,
+          subtitle: subtitle?.textContent,
+          titleDisplay: title ? getComputedStyle(title).display : null,
+          titleColor: title ? getComputedStyle(title).color : null,
+          titleFontSize: title ? getComputedStyle(title).fontSize : null,
+          titleHeight: title ? title.getBoundingClientRect().height : null,
+          subtitleColor: subtitle ? getComputedStyle(subtitle).color : null,
+          subtitleHeight: subtitle ? subtitle.getBoundingClientRect().height : null,
+        }, null, 2);
+        document.body.append(debug);
+      });
+    </script>
+  </head>
+  <body class="appear">
+    <main>
+      <div class="section appear">
+        <div class="uniform-configurator">
+          <div>
+            <div>eyebrow</div>
+            <div>Marine Corps Uniform Division</div>
+          </div>
+          <div>
+            <div>title</div>
+            <div>Officer Dress Blues\nPackage Builder</div>
+          </div>
+          <div>
+            <div>subtitle</div>
+            <div>Configure your complete male officer blue dress uniform to USMC regulation standards with real-time pricing and a live visual preview.</div>
+          </div>
+          <div>
+            <div>data-source</div>
+            <div>/data/configurators/marine-officer-dress-blues.json</div>
+          </div>
+          <div>
+            <div>submit-url</div>
+            <div><a href="https://example.com/api/uniform-leads">https://example.com/api/uniform-leads</a></div>
+          </div>
+          <div>
+            <div>success-title</div>
+            <div>Order Submitted</div>
+          </div>
+          <div>
+            <div>success-message</div>
+            <div>Your Blue Dress Package is now in production. Our veteran uniform team will review your specifications and reach out within 24 hours to confirm details.</div>
+          </div>
+          <div>
+            <div>analytics-id</div>
+            <div>marine-officer-dress-blues</div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+{
+  "definitions": [
+    {
+      "title": "Medal Rack Configurator",
+      "id": "medal-rack-configurator",
+      "model": "medal-rack-configurator",
+      "plugins": {
+        "da": {
+          "type": "key-value-block"
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "medal-rack-configurator",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "data-source",
+          "label": "Data Source",
+          "value": "/data/configurators/medal-rack-configurator.json"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "eyebrow",
+          "label": "Eyebrow",
+          "value": "Service and Honor Collection"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "title",
+          "label": "Title",
+          "value": "Officer Heritage\nMedal Rack"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "subtitle",
+          "label": "Subtitle",
+          "value": "Solid hardwood, hand-fitted hardware, engraved inscription, and a regulation-aware prototype preview for ceremonial display."
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "primary-cta-label",
+          "label": "Primary CTA Label",
+          "value": "Review prototype pricing"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "prototype-note",
+          "label": "Prototype Note",
+          "value": "Prototype mode only. This configurator previews the experience without adding anything to cart. Use the standard PDP purchase controls on this page for live checkout."
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

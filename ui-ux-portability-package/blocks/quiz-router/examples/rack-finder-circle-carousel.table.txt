@@ -1,0 +1,7 @@
+circle-carousel
+![Server racks](/images/quiz/carousel/server-racks.jpg) | Server Racks -> /server-racks
+![Network enclosures](/images/quiz/carousel/network-enclosures.jpg) | Network Enclosures -> /network-enclosures
+![Power and cooling](/images/quiz/carousel/power-cooling.jpg) | Power & Cooling -> /power-cooling
+![Cable management](/images/quiz/carousel/cable-management.jpg) | Cable Management -> /cable-management
+![Accessories](/images/quiz/carousel/accessories.jpg) | Accessories -> /accessories
+![Edge deployment](/images/quiz/carousel/edge-deployment.jpg) | Edge Deployment Guide -> /fragments/quiz/help/rack-units

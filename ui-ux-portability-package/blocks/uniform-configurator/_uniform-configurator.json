@@ -1,0 +1,85 @@
+{
+  "definitions": [
+    {
+      "title": "Uniform Configurator",
+      "id": "uniform-configurator",
+      "model": "uniform-configurator",
+      "plugins": {
+        "da": {
+          "type": "key-value-block"
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "uniform-configurator",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "eyebrow",
+          "label": "Eyebrow",
+          "value": "Marine Corps Uniform Division"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "title",
+          "label": "Title",
+          "value": "Officer Dress Blues\nPackage Builder"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "subtitle",
+          "label": "Subtitle",
+          "value": "Configure your complete male officer blue dress uniform to USMC regulation standards with real-time pricing and a live visual preview."
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "data-source",
+          "label": "Data Source",
+          "value": "/data/configurators/marine-officer-dress-blues.json"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "sku",
+          "label": "Commerce SKU",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "submit-url",
+          "label": "Submit URL",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "success-title",
+          "label": "Success Title",
+          "value": "Order Submitted"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "success-message",
+          "label": "Success Message",
+          "value": "Your Blue Dress Package is now in production. Our veteran uniform team will review your specifications and reach out within 24 hours to confirm details."
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "analytics-id",
+          "label": "Analytics ID",
+          "value": "marine-officer-dress-blues"
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

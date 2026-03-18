@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MCCS Preference Form Next Preview</title>
+  <link rel="stylesheet" href="/styles/mcx-fonts.css">
+  <link rel="stylesheet" href="./blocks/form-mccs-preferences-next/form-mccs-preferences-next.css">
+  <style>
+    :root {
+      --gs-scarlet: #c1121f;
+      --gs-scarlet-dark: #8b0000;
+      --gs-gold: #c9a227;
+      --gs-gold-light: #e2c261;
+      --gs-bg: #060a0d;
+      --gs-s1: #0d1520;
+      --gs-s2: #111d2a;
+      --gs-s3: #192333;
+      --gs-s4: #1f2d3e;
+      --gs-text-primary: #f2ede5;
+      --gs-text-secondary: #8595a6;
+      --gs-text-muted: #3e4e60;
+      --gs-border: rgb(255 255 255 / 7%);
+      --gs-border-gold: rgb(201 162 39 / 22%);
+      --gs-font-display: "Teko", "Impact", sans-serif;
+      --gs-font-condensed: "Barlow Condensed", "Arial Narrow", sans-serif;
+      --gs-font-tactical: "Rajdhani", "Barlow", sans-serif;
+      --gs-font-body: "Barlow", system-ui, sans-serif;
+      --gs-ease: cubic-bezier(0.4, 0, 0.2, 1);
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --gs-r-sm: 4px;
+      --gs-r-md: 8px;
+      --gs-r-lg: 14px;
+      --gs-r-xl: 22px;
+      --type-body-1-default-font: normal normal 500 1.7rem/2.8rem var(--gs-font-body);
+      --type-body-2-default-font: normal normal 500 1.5rem/2.4rem var(--gs-font-body);
+      --type-body-2-strong-font: normal normal 700 1.5rem/2.4rem var(--gs-font-body);
+      --type-button-1-font: normal normal 700 1.6rem/2rem var(--gs-font-condensed);
+      --type-button-1-letter-spacing: 0.14em;
+      --type-button-2-font: normal normal 700 1.4rem/1.8rem var(--gs-font-condensed);
+      --type-details-caption-1-font: normal normal 500 1.2rem/1.8rem var(--gs-font-tactical);
+      --type-details-caption-2-font: normal normal 500 1.2rem/1.8rem var(--gs-font-tactical);
+      --type-details-overline-font: normal normal 700 1.15rem/1.65rem var(--gs-font-tactical);
+      --type-display-2-font: normal normal 700 clamp(4.8rem, 6vw, 7rem)/0.84 var(--gs-font-display);
+      --type-display-3-font: normal normal 700 4rem/0.88 var(--gs-font-display);
+      --type-headline-1-font: normal normal 700 clamp(3.2rem, 3vw, 4.4rem)/0.9 var(--gs-font-display);
+      --type-headline-2-strong-font: normal normal 700 2.05rem/1.12 var(--gs-font-condensed);
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 20% 20%, rgb(193 18 31 / 12%), transparent 30%),
+        radial-gradient(circle at 85% 15%, rgb(201 162 39 / 8%), transparent 25%),
+        linear-gradient(180deg, #05080c 0%, var(--gs-bg) 22%, var(--gs-s1) 100%);
+      font-family: var(--gs-font-body);
+    }
+  </style>
+</head>
+<body>
+  <div class="form-mccs-preferences-next">
+    <div>Personalize
+your MCCS experience</div>
+    <div>Tell us about your military life, interests, and preferences. We will tailor shopping, events, and family programs around your world.</div>
+    <div><a href="https://example.com/thank-you">https://example.com/thank-you</a></div>
+  </div>
+
+  <script type="module">
+    import decorate from './blocks/form-mccs-preferences-next/form-mccs-preferences-next.js';
+
+    decorate(document.querySelector('.form-mccs-preferences-next'));
+  </script>
+</body>
+</html>

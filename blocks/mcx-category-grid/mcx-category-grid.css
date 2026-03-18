@@ -1,0 +1,110 @@
+body:is(.mcx, .mcx-preview) main .mcx-category-grid .cat-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-category-grid .cat-tile {
+  align-items: center;
+  background: var(--surface-3);
+  border: 1px solid var(--rim);
+  border-radius: var(--r-xl);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: hidden;
+  padding: 28px 16px 22px;
+  position: relative;
+  text-align: center;
+  transition: var(--t-mid) var(--ease);
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-category-grid .cat-tile::after {
+  background: radial-gradient(ellipse at 50% 100%, rgb(193 18 31 / 20%), transparent 70%);
+  content: '';
+  inset: 0;
+  opacity: 0;
+  position: absolute;
+  transition: opacity var(--t-mid);
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-category-grid .cat-tile:hover,
+body:is(.mcx, .mcx-preview) main .mcx-category-grid .cat-tile:focus-visible {
+  border-color: rgb(193 18 31 / 40%);
+  box-shadow: 0 16px 40px rgb(193 18 31 / 12%);
+  transform: translateY(-6px) scale(1.02);
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-category-grid .cat-tile:hover::after,
+body:is(.mcx, .mcx-preview) main .mcx-category-grid .cat-tile:focus-visible::after {
+  opacity: 1;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-category-grid .cat-emoji,
+body:is(.mcx, .mcx-preview) main .mcx-category-grid .cat-name,
+body:is(.mcx, .mcx-preview) main .mcx-category-grid .cat-count {
+  position: relative;
+  z-index: 1;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-category-grid .cat-emoji {
+  align-items: center;
+  background: var(--surface-4);
+  border-radius: var(--r-lg);
+  display: flex;
+  font-size: 30px;
+  height: 58px;
+  justify-content: center;
+  transition: var(--t-mid) var(--ease-spring);
+  width: 58px;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-category-grid .cat-emoji picture,
+body:is(.mcx, .mcx-preview) main .mcx-category-grid .cat-emoji img {
+  border-radius: inherit;
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-category-grid .cat-tile:hover .cat-emoji,
+body:is(.mcx, .mcx-preview) main .mcx-category-grid .cat-tile:focus-visible .cat-emoji {
+  background: var(--scarlet);
+  transform: rotate(-8deg) scale(1.15);
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-category-grid .cat-name {
+  color: var(--text-body);
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color var(--t-fast);
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-category-grid .cat-tile:hover .cat-name,
+body:is(.mcx, .mcx-preview) main .mcx-category-grid .cat-tile:focus-visible .cat-name {
+  color: var(--text-bright);
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-category-grid .cat-count {
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  margin-top: -4px;
+}
+
+@media (max-width: 1200px) {
+  body:is(.mcx, .mcx-preview) main .mcx-category-grid .cat-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  body:is(.mcx, .mcx-preview) main .mcx-category-grid .cat-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

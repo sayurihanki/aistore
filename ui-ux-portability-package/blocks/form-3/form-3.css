@@ -1,0 +1,617 @@
+/* ===== Form-3 — Glassmorphic Dark / Gold Luxury Theme ===== */
+
+.form-3 {
+  --f3-bg: #0f0e0c;
+  --f3-surface: #1a1815;
+  --f3-border: #2e2b26;
+  --f3-border-focus: #c9a96e;
+  --f3-border-success: #5a9e72;
+  --f3-border-error: #c05050;
+  --f3-text: #e8e2d6;
+  --f3-text-muted: #7a7060;
+  --f3-text-label: #a09080;
+  --f3-gold: #c9a96e;
+  --f3-gold-light: #e8d5a8;
+  --f3-radius: 4px;
+  --f3-radius-lg: 16px;
+  --f3-transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --f3-shadow-focus: 0 0 0 3px rgb(201 169 110 / 20%);
+
+  background: var(--f3-bg);
+  padding: 0;
+  width: 100%;
+  max-width: 780px;
+  margin: 0 auto;
+  border-radius: var(--f3-radius-lg);
+  overflow: hidden;
+  position: relative;
+  box-shadow:
+    0 2px 4px rgb(0 0 0 / 40%),
+    0 24px 80px rgb(0 0 0 / 55%),
+    inset 0 1px 0 rgb(201 169 110 / 10%);
+  border: 1px solid rgb(201 169 110 / 12%);
+  backdrop-filter: blur(40px);
+}
+
+/* glassmorphic shimmer */
+.form-3::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 0%, rgb(201 169 110 / 6%) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 80% 100%, rgb(201 169 110 / 4%) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* --- Form element --- */
+
+.form-3 .f3-element {
+  padding: clamp(2rem, 5vw, 3.5rem) clamp(1.5rem, 5vw, 4rem) clamp(2.5rem, 5vw, 4rem);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Header --- */
+
+.form-3 .f3-header {
+  margin-bottom: clamp(1.75rem, 4vw, 2.75rem);
+  padding-bottom: clamp(1.5rem, 3vw, 2.25rem);
+  border-bottom: 1px solid var(--f3-border);
+  position: relative;
+}
+
+.form-3 .f3-header::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 3.5rem;
+  height: 2px;
+  background: linear-gradient(90deg, var(--f3-gold), transparent);
+  border-radius: 1px;
+}
+
+.form-3 .f3-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 600;
+  color: var(--f3-text);
+  line-height: 1.1;
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.02em;
+}
+
+.form-3 .f3-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.125rem);
+  color: var(--f3-text-muted);
+  margin: 0;
+  font-weight: 300;
+  line-height: 1.65;
+}
+
+/* --- Fields grid --- */
+
+.form-3 .f3-fields {
+  display: grid;
+  gap: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+.form-3 .f3-fields--two-col {
+  grid-template-columns: 1fr 1fr;
+}
+
+.form-3 .f3-span-2 {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 540px) {
+  .form-3 .f3-fields--two-col {
+    grid-template-columns: 1fr;
+  }
+
+  .form-3 {
+    border-radius: 10px;
+  }
+}
+
+/* --- Field group --- */
+
+.form-3 .f3-group {
+  position: relative;
+}
+
+/* --- Labels (base) --- */
+
+.form-3 .f3-label {
+  display: block;
+  font-size: clamp(0.75rem, 1.5vw, 0.8125rem);
+  font-weight: 500;
+  color: var(--f3-text-label);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+  transition: color var(--f3-transition);
+}
+
+.form-3 .f3-req {
+  color: var(--f3-gold);
+}
+
+/* --- Validation messages --- */
+
+.form-3 .f3-msg {
+  display: block;
+  font-size: clamp(0.75rem, 1.5vw, 0.8125rem);
+  margin-top: 0.375rem;
+  min-height: 1em;
+  color: var(--f3-border-error);
+}
+
+/* --- Input wrapper --- */
+
+.form-3 .f3-input-wrap {
+  position: relative;
+}
+
+/* --- Inputs (base) --- */
+
+.form-3 .f3-input {
+  width: 100%;
+  background: rgb(26 24 21 / 45%);
+  border: 1px solid var(--f3-border);
+  border-radius: var(--f3-radius);
+  color: var(--f3-text);
+  font-family: inherit;
+  font-size: clamp(1rem, 2vw, 1.0625rem);
+  font-weight: 400;
+  padding: clamp(0.875rem, 2vw, 1rem) clamp(1rem, 2vw, 1.25rem);
+  outline: none;
+  transition:
+    border-color var(--f3-transition),
+    box-shadow var(--f3-transition),
+    background var(--f3-transition);
+  box-sizing: border-box;
+  appearance: none;
+  caret-color: var(--f3-gold);
+  backdrop-filter: blur(12px);
+}
+
+.form-3 .f3-input::placeholder {
+  color: var(--f3-text-muted);
+  opacity: 0.6;
+}
+
+.form-3 .f3-input:hover {
+  border-color: #3e3a34;
+  background: rgb(30 28 25 / 70%);
+}
+
+.form-3 .f3-input:focus {
+  border-color: var(--f3-border-focus);
+  box-shadow: var(--f3-shadow-focus);
+  background: rgb(30 28 25 / 80%);
+}
+
+/* --- Floating label --- */
+
+.form-3 .f3-group--float .f3-label {
+  position: absolute;
+  top: clamp(0.875rem, 2vw, 1rem);
+  left: clamp(1rem, 2vw, 1.25rem);
+  font-size: clamp(1rem, 2vw, 1.0625rem);
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 400;
+  color: var(--f3-text-muted);
+  pointer-events: none;
+  transition:
+    top 0.2s ease,
+    font-size 0.2s ease,
+    color 0.2s ease,
+    letter-spacing 0.2s ease;
+  z-index: 1;
+  margin-bottom: 0;
+}
+
+.form-3 .f3-group--float .f3-input {
+  padding-top: clamp(1.375rem, 2.5vw, 1.5rem);
+  padding-bottom: clamp(0.375rem, 1vw, 0.5rem);
+}
+
+.form-3 .f3-group--float.f3-group--filled .f3-label,
+.form-3 .f3-group--float:focus-within .f3-label {
+  top: clamp(0.25rem, 0.5vw, 0.375rem);
+  font-size: clamp(0.625rem, 1.2vw, 0.7rem);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--f3-gold);
+}
+
+/* --- Textarea --- */
+
+.form-3 .f3-textarea {
+  resize: vertical;
+  min-height: clamp(8rem, 15vw, 10rem);
+  line-height: 1.65;
+}
+
+/* --- Select --- */
+
+.form-3 .f3-input-wrap select.f3-input {
+  padding-right: 3rem;
+  cursor: pointer;
+}
+
+.form-3 .f3-select-chevron {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--f3-text-muted);
+  display: flex;
+  align-items: center;
+}
+
+.form-3 .f3-select-chevron svg {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+/* --- Legend (for radio/checkbox groups) --- */
+
+.form-3 .f3-legend {
+  display: block;
+  font-size: clamp(0.75rem, 1.5vw, 0.8125rem);
+  font-weight: 500;
+  color: var(--f3-text-label);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.875rem;
+}
+
+/* --- Choices (radio / checkbox pills) --- */
+
+.form-3 .f3-choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.form-3 .f3-choice {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  cursor: pointer;
+  padding: clamp(0.5rem, 1.2vw, 0.625rem) clamp(0.875rem, 2vw, 1.125rem);
+  color: var(--f3-text);
+  font-size: clamp(0.9375rem, 2vw, 1.0625rem);
+  background: rgb(26 24 21 / 45%);
+  border: 1px solid var(--f3-border);
+  border-radius: var(--f3-radius);
+  transition: border-color var(--f3-transition), background var(--f3-transition);
+  backdrop-filter: blur(8px);
+}
+
+.form-3 .f3-choice:hover {
+  border-color: #3e3a34;
+  background: rgb(30 28 25 / 70%);
+}
+
+.form-3 .f3-choice input[type='checkbox'],
+.form-3 .f3-choice input[type='radio'] {
+  width: 1.125rem;
+  height: 1.125rem;
+  min-width: 1.125rem;
+  background: transparent;
+  border: 1.5px solid var(--f3-border);
+  border-radius: 3px;
+  appearance: none;
+  cursor: pointer;
+  transition: all var(--f3-transition);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.form-3 .f3-choice input[type='radio'] {
+  border-radius: 50%;
+}
+
+.form-3 .f3-choice input:checked {
+  background: var(--f3-gold);
+  border-color: var(--f3-gold);
+}
+
+.form-3 .f3-choice:has(input:checked) {
+  border-color: rgb(201 169 110 / 40%);
+  background: rgb(201 169 110 / 6%);
+}
+
+.form-3 .f3-choice input[type='checkbox']:checked::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230f0e0c' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80%;
+}
+
+.form-3 .f3-choice input[type='radio']:checked::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  background: #0f0e0c;
+  border-radius: 50%;
+}
+
+/* --- Link inside choices --- */
+
+.form-3 .f3-link {
+  color: var(--f3-gold);
+  text-decoration: none;
+}
+
+.form-3 .f3-link:hover {
+  text-decoration: underline;
+}
+
+/* --- Success screen --- */
+
+.form-3 .f3-success {
+  padding: clamp(3rem, 6vw, 4.5rem) clamp(1.5rem, 5vw, 4rem);
+  text-align: center;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.4s ease 0.1s, transform 0.4s ease 0.1s;
+  position: relative;
+  z-index: 1;
+}
+
+.form-3 .f3-success--visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.form-3 .f3-success-icon {
+  width: clamp(3.5rem, 8vw, 4.5rem);
+  height: clamp(3.5rem, 8vw, 4.5rem);
+  margin: 0 auto 1.5rem;
+  background: rgb(90 158 114 / 10%);
+  border: 1px solid rgb(90 158 114 / 30%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-3 .f3-success-icon svg {
+  width: clamp(1.5rem, 4vw, 2rem);
+  height: clamp(1.5rem, 4vw, 2rem);
+  stroke: var(--f3-border-success);
+}
+
+.form-3 .f3-success h3 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  color: var(--f3-text);
+  margin: 0 0 0.625rem;
+}
+
+.form-3 .f3-success p {
+  color: var(--f3-text-muted);
+  font-size: clamp(1rem, 2vw, 1.0625rem);
+  margin: 0;
+}
+
+/* --- Countdown redirect --- */
+
+.form-3 .f3-countdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.form-3 .f3-countdown-ring {
+  position: relative;
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.form-3 .f3-countdown-ring svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.form-3 .f3-ring-track {
+  fill: none;
+  stroke: var(--f3-border);
+  stroke-width: 2;
+}
+
+.form-3 .f3-ring-fill {
+  fill: none;
+  stroke: var(--f3-gold);
+  stroke-width: 2.5;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  stroke-linecap: round;
+}
+
+.form-3 .f3-countdown-number {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--f3-gold);
+}
+
+.form-3 .f3-redirect-now {
+  background: none;
+  border: 1px solid var(--f3-border);
+  border-radius: var(--f3-radius);
+  color: var(--f3-gold);
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.5rem 1.25rem;
+  cursor: pointer;
+  transition: border-color var(--f3-transition), background var(--f3-transition);
+}
+
+.form-3 .f3-redirect-now:hover {
+  border-color: var(--f3-gold);
+  background: rgb(201 169 110 / 8%);
+}
+
+/* --- Submit button --- */
+
+.form-3 .f3-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: clamp(1rem, 2.5vw, 1.125rem) 2rem;
+  margin-top: 0.75rem;
+  background: var(--f3-gold);
+  color: #0f0e0c;
+  border: none;
+  border-radius: var(--f3-radius);
+  font-family: inherit;
+  font-size: clamp(0.9375rem, 2vw, 1rem);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background var(--f3-transition),
+    transform 0.15s ease,
+    box-shadow var(--f3-transition);
+  position: relative;
+  overflow: hidden;
+  min-height: 52px;
+}
+
+.form-3 .f3-submit::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    transparent 50%,
+    rgb(255 255 255 / 14%) 100%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.4s ease;
+}
+
+.form-3 .f3-submit:hover::before {
+  transform: translateX(0);
+}
+
+.form-3 .f3-submit:hover {
+  background: var(--f3-gold-light);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 32px rgb(201 169 110 / 30%);
+}
+
+.form-3 .f3-submit:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.form-3 .f3-submit:focus-visible {
+  outline: 2px solid var(--f3-gold);
+  outline-offset: 2px;
+}
+
+.form-3 .f3-submit-icon {
+  display: flex;
+  align-items: center;
+}
+
+.form-3 .f3-submit-icon svg {
+  width: 1.125rem;
+  height: 1.125rem;
+  transition: transform 0.2s ease;
+}
+
+.form-3 .f3-submit:hover .f3-submit-icon svg {
+  transform: translateX(3px);
+}
+
+/* --- Loading state --- */
+
+.form-3 .f3-submit.f3-submit--loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.form-3 .f3-submit.f3-submit--loading .f3-submit-icon svg {
+  animation: f3-spin 0.8s linear infinite;
+}
+
+@keyframes f3-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* --- Validation states (last — highest specificity overrides) --- */
+
+.form-3 .f3-group.f3-group--success .f3-label {
+  color: var(--f3-border-success);
+}
+
+.form-3 .f3-group.f3-group--error .f3-label {
+  color: var(--f3-border-error);
+}
+
+.form-3 .f3-group.f3-group--success .f3-input {
+  border-color: var(--f3-border-success);
+}
+
+.form-3 .f3-group.f3-group--error .f3-input {
+  border-color: var(--f3-border-error);
+}
+
+.form-3 .f3-group.f3-group--success .f3-input:focus {
+  box-shadow: 0 0 0 3px rgb(90 158 114 / 20%);
+}
+
+.form-3 .f3-group.f3-group--error .f3-input:focus {
+  box-shadow: 0 0 0 3px rgb(192 80 80 / 20%);
+}
+
+/* --- Responsive success --- */
+
+@media (max-width: 540px) {
+  .form-3 .f3-success {
+    padding: 3rem 1.5rem;
+  }
+
+  .form-3 .f3-choice {
+    width: 100%;
+  }
+}
+
+/* --- Reduced motion --- */
+
+@media (prefers-reduced-motion: reduce) {
+  .form-3 .f3-submit,
+  .form-3 .f3-submit::before,
+  .form-3 .f3-input,
+  .form-3 .f3-choice,
+  .form-3 .f3-choice input,
+  .form-3 .f3-success {
+    transition: none;
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "definitions": [
+    {
+      "title": "EZ Rack Builder Mockup",
+      "id": "ez-rack-builder-mockup",
+      "model": "ez-rack-builder-mockup",
+      "plugins": {
+        "da": {
+          "type": "key-value-block"
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "ez-rack-builder-mockup",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "eyebrow-text",
+          "label": "Eyebrow Text",
+          "value": "MarineShop · Awards Division"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "title",
+          "label": "Title",
+          "value": "Welcome to the\nEZ Rack Builder"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "subtitle",
+          "label": "Subtitle",
+          "value": "Assemble your ribbon rack, medal display, or full awards package in minutes. Our system automatically applies regulation precedence. Prototype mode keeps everything local to the block."
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "primary-cta-label",
+          "label": "Primary CTA Label",
+          "value": "Start New Rack"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "secondary-cta-label",
+          "label": "Secondary CTA Label",
+          "value": "Prototype Login"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "review-cta-label",
+          "label": "Review CTA Label",
+          "value": "Save Prototype Rack"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "prototype-note",
+          "label": "Prototype Note",
+          "value": "Prototype mode only. This block recreates the full luxury builder experience without connecting to Commerce, cart, or PDP configuration."
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

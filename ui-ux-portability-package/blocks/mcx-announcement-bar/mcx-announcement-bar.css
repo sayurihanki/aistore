@@ -1,0 +1,112 @@
+body:is(.mcx, .mcx-preview) :is(main, header) .mcx-announcement-bar-container .section {
+  max-width: none;
+  padding: 0;
+}
+
+body:is(.mcx, .mcx-preview) :is(main, header) .mcx-announcement-bar-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+body:is(.mcx, .mcx-preview) :is(main, header) .mcx-announcement-bar {
+  overflow: hidden;
+}
+
+body:is(.mcx, .mcx-preview) :is(main, header) .mcx-announcement-bar .ann-bar {
+  align-items: center;
+  background: linear-gradient(90deg, var(--scarlet-deep) 0%, var(--scarlet) 50%, #d4202e 100%);
+  display: flex;
+  justify-content: center;
+  min-height: 42px;
+  overflow: hidden;
+  padding: 9px 64px;
+  position: relative;
+  text-align: center;
+}
+
+body:is(.mcx, .mcx-preview) :is(main, header) .mcx-announcement-bar .ann-bar::before {
+  animation: mcx-ann-shimmer 3.5s linear infinite;
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 14%), transparent);
+  content: '';
+  bottom: 0;
+  left: -100%;
+  position: absolute;
+  top: 0;
+  width: 50%;
+}
+
+body:is(.mcx, .mcx-preview) :is(main, header) .mcx-announcement-bar .ann-inner {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 1440px;
+  position: relative;
+  z-index: 1;
+}
+
+body:is(.mcx, .mcx-preview) :is(main, header) .mcx-announcement-bar .ann-item {
+  align-items: center;
+  color: rgb(255 255 255 / 92%);
+  display: inline-flex;
+  font-family: var(--font-tactical);
+  font-size: 12px;
+  font-weight: 600;
+  gap: 8px;
+  letter-spacing: 0.14em;
+  padding: 0 22px;
+  text-transform: uppercase;
+}
+
+body:is(.mcx, .mcx-preview) :is(main, header) .mcx-announcement-bar .ann-dot {
+  background: rgb(255 255 255 / 36%);
+  border-radius: 50%;
+  display: block;
+  flex-shrink: 0;
+  height: 3px;
+  width: 3px;
+}
+
+body:is(.mcx, .mcx-preview) :is(main, header) .mcx-announcement-bar .ann-close {
+  align-items: center;
+  background: none;
+  color: rgb(255 255 255 / 60%);
+  display: inline-flex;
+  font-size: 14px;
+  justify-content: center;
+  padding: 6px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transition: color var(--t-fast);
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+body:is(.mcx, .mcx-preview) :is(main, header) .mcx-announcement-bar .ann-close:hover,
+body:is(.mcx, .mcx-preview) :is(main, header) .mcx-announcement-bar .ann-close:focus-visible {
+  color: #fff;
+}
+
+@keyframes mcx-ann-shimmer {
+  to {
+    left: 160%;
+  }
+}
+
+@media (max-width: 900px) {
+  body:is(.mcx, .mcx-preview) :is(main, header) .mcx-announcement-bar .ann-bar {
+    padding: 9px 40px 9px 20px;
+  }
+
+  body:is(.mcx, .mcx-preview) :is(main, header) .mcx-announcement-bar .ann-item {
+    font-size: 11px;
+    padding: 0 14px;
+  }
+
+  body:is(.mcx, .mcx-preview) :is(main, header) .mcx-announcement-bar .ann-dot {
+    display: none;
+  }
+}

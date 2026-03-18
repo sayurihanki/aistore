@@ -1,0 +1,22 @@
+{
+  "definitions": [
+    {
+      "title": "MCX Announcement Bar",
+      "id": "mcx-announcement-bar",
+      "plugins": {
+        "da": {
+          "name": "mcx-announcement-bar",
+          "rows": 6,
+          "columns": 1
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "mcx-announcement-bar",
+      "fields": []
+    }
+  ],
+  "filters": []
+}

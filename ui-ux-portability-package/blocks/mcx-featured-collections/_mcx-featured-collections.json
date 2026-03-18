@@ -1,0 +1,22 @@
+{
+  "definitions": [
+    {
+      "title": "MCX Featured Collections",
+      "id": "mcx-featured-collections",
+      "plugins": {
+        "da": {
+          "name": "mcx-featured-collections",
+          "rows": 3,
+          "columns": 4
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "mcx-featured-collections",
+      "fields": []
+    }
+  ],
+  "filters": []
+}

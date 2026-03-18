@@ -1,0 +1,84 @@
+body:is(.mcx, .mcx-preview) main .mcx-editorial-cards-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-editorial-cards .ed-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-editorial-cards .ed-card {
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-editorial-cards .ed-photo,
+body:is(.mcx, .mcx-preview) main .mcx-editorial-cards .ed-photo img {
+  background: var(--surface-3);
+  display: block;
+  height: 500px;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease);
+  width: 100%;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-editorial-cards .ed-card:hover .ed-photo img,
+body:is(.mcx, .mcx-preview) main .mcx-editorial-cards .ed-card:focus-within .ed-photo img {
+  transform: scale(1.06);
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-editorial-cards .ed-shade {
+  background: linear-gradient(to top, rgb(4 8 16 / 97%) 0%, rgb(4 8 16 / 45%) 45%, transparent 100%);
+  inset: 0;
+  position: absolute;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-editorial-cards .ed-body {
+  bottom: 0;
+  left: 0;
+  padding: 32px 28px;
+  position: absolute;
+  right: 0;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-editorial-cards .ed-idx {
+  color: rgb(255 255 255 / 4%);
+  font-family: var(--font-hero);
+  font-size: 90px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: -26px;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-editorial-cards .ed-tag {
+  color: var(--scarlet);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-editorial-cards .ed-title {
+  color: #fff;
+  font-family: var(--font-ui);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 10px;
+}
+
+body:is(.mcx, .mcx-preview) main .mcx-editorial-cards .ed-desc {
+  color: rgb(255 255 255 / 50%);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  body:is(.mcx, .mcx-preview) main .mcx-editorial-cards .ed-grid {
+    grid-template-columns: 1fr;
+  }
+}

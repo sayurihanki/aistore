@@ -1,0 +1,291 @@
+{
+  "id": "marine-officer-dress-blues",
+  "version": "1.0.0",
+  "currency": "USD",
+  "baseItems": [
+    {
+      "id": "coat",
+      "label": "Dress Coat",
+      "summaryLabel": "Blue Dress Coat",
+      "price": 395
+    },
+    {
+      "id": "trouser",
+      "label": "Trousers",
+      "summaryLabel": "Blue Dress Trousers",
+      "price": 215
+    },
+    {
+      "id": "shirt",
+      "label": "Dress Shirt",
+      "summaryLabel": "Dress Shirt",
+      "price": 68
+    }
+  ],
+  "options": {
+    "coat": {
+      "length": [
+        { "value": "regular", "label": "Regular" },
+        { "value": "long", "label": "Long" },
+        { "value": "short", "label": "Short" },
+        { "value": "xlong", "label": "X-Long" }
+      ],
+      "size": [
+        "34",
+        "36",
+        "38",
+        "40",
+        "42",
+        "44",
+        "46",
+        "48",
+        "50",
+        "52",
+        "54"
+      ]
+    },
+    "trouser": {
+      "waist": [
+        "28",
+        "29",
+        "30",
+        "31",
+        "32",
+        "33",
+        "34",
+        "35",
+        "36",
+        "38",
+        "40",
+        "42",
+        "44",
+        "46"
+      ],
+      "inseam": [
+        "28",
+        "29",
+        "30",
+        "31",
+        "32",
+        "33",
+        "34",
+        "36"
+      ]
+    },
+    "shirt": {
+      "neck": [
+        "13",
+        "13.5",
+        "14",
+        "14.5",
+        "15",
+        "15.5",
+        "16",
+        "16.5",
+        "17",
+        "17.5",
+        "18",
+        "18.5"
+      ],
+      "sleeve": [
+        "30",
+        "31",
+        "32",
+        "33",
+        "34",
+        "35",
+        "36",
+        "37"
+      ],
+      "collarStrip": [
+        "14",
+        "14.5",
+        "15",
+        "15.5",
+        "16",
+        "16.5"
+      ]
+    },
+    "shoes": {
+      "label": "Oxford Dress Shoes",
+      "price": 89,
+      "size": [
+        "7",
+        "7.5",
+        "8",
+        "8.5",
+        "9",
+        "9.5",
+        "10",
+        "10.5",
+        "11",
+        "11.5",
+        "12",
+        "13",
+        "14",
+        "15"
+      ],
+      "width": [
+        { "value": "N", "label": "Narrow (N)" },
+        { "value": "M", "label": "Medium (M)" },
+        { "value": "W", "label": "Wide (W)" },
+        { "value": "XW", "label": "Extra Wide (XW)" }
+      ]
+    },
+    "belt": {
+      "label": "Belt & Buckle",
+      "price": 34,
+      "size": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36",
+        "38",
+        "40",
+        "42",
+        "44"
+      ],
+      "buckleStyles": [
+        {
+          "id": "ega",
+          "label": "EGA",
+          "price": 0,
+          "icon": "⚓",
+          "description": "Included"
+        },
+        {
+          "id": "sword",
+          "label": "Sword",
+          "price": 12,
+          "icon": "⚔️",
+          "description": "Ceremonial upgrade"
+        }
+      ]
+    },
+    "cover": {
+      "label": "Officer Service Cover",
+      "price": 78,
+      "size": [
+        "6⅜",
+        "6½",
+        "6⅝",
+        "6¾",
+        "6⅞",
+        "7",
+        "7⅛",
+        "7¼",
+        "7⅜",
+        "7½",
+        "7⅝",
+        "7¾"
+      ]
+    },
+    "frame": {
+      "label": "Cover Frame",
+      "price": 42,
+      "size": [
+        { "value": "S", "label": "Small (6⅜–6½)" },
+        { "value": "M", "label": "Medium (6⅝–6¾)" },
+        { "value": "L", "label": "Large (6⅞–7)" },
+        { "value": "XL", "label": "X-Large (7⅛–7¼)" },
+        { "value": "XXL", "label": "XX-Large (7⅜+)" }
+      ]
+    }
+  },
+  "ranks": [
+    { "id": "2lt", "label": "2nd Lt", "shortLabel": "2ndLt", "payGrade": "O-1", "price": 28, "preview": { "type": "pips", "count": 1 } },
+    { "id": "1lt", "label": "1st Lt", "shortLabel": "1stLt", "payGrade": "O-2", "price": 28, "preview": { "type": "pips", "count": 2 } },
+    { "id": "capt", "label": "Captain", "shortLabel": "Capt", "payGrade": "O-3", "price": 32, "preview": { "type": "pips", "count": 3 } },
+    { "id": "maj", "label": "Major", "shortLabel": "Major", "payGrade": "O-4", "price": 36, "preview": { "type": "bars", "count": 1 } },
+    { "id": "ltcol", "label": "Lt Col", "shortLabel": "LtCol", "payGrade": "O-5", "price": 36, "preview": { "type": "bars", "count": 2 } },
+    { "id": "col", "label": "Colonel", "shortLabel": "Col", "payGrade": "O-6", "price": 36, "preview": { "type": "bars", "count": 3 } },
+    { "id": "bgen", "label": "Brig Gen", "shortLabel": "BGen", "payGrade": "O-7", "price": 52, "preview": { "type": "stars", "count": 1 } },
+    { "id": "mgen", "label": "Maj Gen", "shortLabel": "MGen", "payGrade": "O-8", "price": 58, "preview": { "type": "stars", "count": 2 } },
+    { "id": "ltgen", "label": "Lt Gen", "shortLabel": "LtGen", "payGrade": "O-9", "price": 64, "preview": { "type": "stars", "count": 3 } },
+    { "id": "gen", "label": "General", "shortLabel": "General", "payGrade": "O-10", "price": 72, "preview": { "type": "stars", "count": 4 } }
+  ],
+  "medalPackages": [
+    { "id": "none", "label": "None", "previewCount": 0, "price": 0 },
+    { "id": "basic", "label": "Starter (3)", "previewCount": 3, "price": 38 },
+    { "id": "standard", "label": "Standard (6)", "previewCount": 6, "price": 72 },
+    { "id": "full", "label": "Full Rack (12)", "previewCount": 12, "price": 138 }
+  ],
+  "extras": [
+    {
+      "id": "marksmanship-badge",
+      "label": "Marksmanship Badge",
+      "description": "Expert / Sharpshooter / Marksman",
+      "price": 14
+    },
+    {
+      "id": "pistol-qualification-badge",
+      "label": "Pistol Qualification Badge",
+      "description": "Expert / Sharpshooter / Marksman",
+      "price": 14
+    },
+    {
+      "id": "naval-aviator-wings",
+      "label": "Naval Aviator Wings",
+      "description": "Gold wings for aviation designator officers",
+      "price": 24
+    },
+    {
+      "id": "parachutist-badge",
+      "label": "Parachutist Badge",
+      "description": "USMC jump wings — gold",
+      "price": 18
+    },
+    {
+      "id": "scuba-diver-badge",
+      "label": "Scuba Diver Badge",
+      "description": "Combatant Diver course graduate",
+      "price": 18
+    },
+    {
+      "id": "rush-tailoring",
+      "label": "Rush Tailoring (2 weeks)",
+      "description": "For ceremony deadlines. Requires a confirmed event date.",
+      "price": 85
+    }
+  ],
+  "measurements": {
+    "chest": { "label": "Chest", "min": 28, "max": 65, "step": 0.5, "placeholder": "42", "unit": "in" },
+    "waist": { "label": "Waist", "min": 24, "max": 58, "step": 0.5, "placeholder": "34", "unit": "in" },
+    "hip": { "label": "Hip", "min": 28, "max": 60, "step": 0.5, "placeholder": "38", "unit": "in" },
+    "shoulder": { "label": "Shoulder Width", "min": 12, "max": 24, "step": 0.25, "placeholder": "18", "unit": "in" },
+    "sleeve": { "label": "Sleeve Length", "min": 24, "max": 40, "step": 0.5, "placeholder": "33", "unit": "in" },
+    "inseam": { "label": "Inseam", "min": 24, "max": 40, "step": 0.5, "placeholder": "32", "unit": "in" },
+    "neck": { "label": "Neck", "min": 12, "max": 22, "step": 0.5, "placeholder": "16", "unit": "in" },
+    "height": { "label": "Height", "min": 56, "max": 84, "step": 1, "placeholder": "70", "unit": "in" },
+    "weight": { "label": "Weight", "min": 100, "max": 350, "step": 1, "placeholder": "185", "unit": "lbs" }
+  },
+  "shippingStates": [
+    "VA",
+    "CA",
+    "NC",
+    "SC",
+    "GA",
+    "FL",
+    "TX",
+    "AZ",
+    "WA",
+    "HI",
+    "MD",
+    "DC"
+  ],
+  "notices": {
+    "coat": {
+      "title": "USMC MCO P1020.34H",
+      "text": "Officer blue dress coat features standing collar, gold-bordered sleeve cuffs, shoulder boards, and gold-colored buttons per regulation."
+    },
+    "rank": {
+      "title": "Regulation Note",
+      "text": "Rank insignia hardware includes shoulder board devices, collar insignia, and sleeve ornamentation per current officer dress uniform guidance."
+    },
+    "fulfillment": {
+      "title": "100% Regulation Guarantee",
+      "text": "Every package is reviewed by our USMC-veteran uniform team against current regulation before shipment. If any item is out of regulation, we correct it at no charge."
+    }
+  }
+}

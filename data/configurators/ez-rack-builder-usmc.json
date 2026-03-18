@@ -1,0 +1,600 @@
+{
+  "id": "ez-rack-builder-usmc",
+  "version": "1.0.0",
+  "currency": "USD",
+  "width": 3,
+  "branches": [
+    {
+      "id": "usmc",
+      "label": "Marine Corps",
+      "status": "enabled",
+      "icon": "EGA",
+      "watermark": "USMC"
+    },
+    {
+      "id": "army",
+      "label": "Army",
+      "status": "coming-soon",
+      "icon": "STAR",
+      "watermark": "ARMY"
+    },
+    {
+      "id": "navy",
+      "label": "Navy",
+      "status": "coming-soon",
+      "icon": "ANCHOR",
+      "watermark": "NAVY"
+    },
+    {
+      "id": "air-force",
+      "label": "Air Force",
+      "status": "coming-soon",
+      "icon": "WING",
+      "watermark": "USAF"
+    },
+    {
+      "id": "coast-guard",
+      "label": "Coast Guard",
+      "status": "coming-soon",
+      "icon": "COAST",
+      "watermark": "USCG"
+    },
+    {
+      "id": "space-force",
+      "label": "Space Force",
+      "status": "coming-soon",
+      "icon": "ORBIT",
+      "watermark": "USSF"
+    }
+  ],
+  "rackTypes": [
+    {
+      "id": "standard-ribbons",
+      "label": "Standard Ribbons",
+      "description": "Full-size regulation ribbons mounted for ceremonial wear and inspection-ready presentation.",
+      "commerceValue": "Standard Ribbons",
+      "preview": {
+        "kind": "ribbons",
+        "ribbonHeight": 18,
+        "ribbonWidth": 68,
+        "rowOffset": 0
+      }
+    },
+    {
+      "id": "thin-ribbons",
+      "label": "Thin Ribbons",
+      "description": "A slimmer everyday profile with a sharp, precision-stacked silhouette.",
+      "commerceValue": "Thin Ribbons",
+      "preview": {
+        "kind": "ribbons",
+        "ribbonHeight": 14,
+        "ribbonWidth": 68,
+        "rowOffset": 0
+      }
+    },
+    {
+      "id": "tiny-ribbons",
+      "label": "Tiny Ribbons",
+      "description": "Miniature ribbon format scaled for hats, jackets, and compact ceremonial applications.",
+      "commerceValue": "Tiny Ribbons",
+      "preview": {
+        "kind": "ribbons",
+        "ribbonHeight": 12,
+        "ribbonWidth": 54,
+        "rowOffset": 0
+      }
+    },
+    {
+      "id": "standard-medals",
+      "label": "Standard Medals",
+      "description": "Ribbon rack presentation paired with medal visual emphasis for dress uniform review.",
+      "commerceValue": "Standard Medals",
+      "preview": {
+        "kind": "medals",
+        "ribbonHeight": 18,
+        "ribbonWidth": 68,
+        "rowOffset": 10
+      }
+    }
+  ],
+  "options": {
+    "spacing": [
+      {
+        "id": "flush",
+        "label": "Flush",
+        "description": "Tight, regulation-forward spacing with a compact visual footprint.",
+        "commerceValue": "Flush"
+      },
+      {
+        "id": "padded",
+        "label": "Padded",
+        "description": "Breathing room between ribbons for a slightly more dimensional luxury finish.",
+        "commerceValue": "Padded"
+      }
+    ],
+    "alignment": [
+      {
+        "id": "centered",
+        "label": "Centered",
+        "description": "Balanced row alignment for a clean ceremonial presentation.",
+        "commerceValue": "Centered"
+      },
+      {
+        "id": "right",
+        "label": "Right",
+        "description": "Right-justified row alignment for regulation-oriented rack geometry.",
+        "commerceValue": "Right"
+      }
+    ],
+    "assembly": [
+      {
+        "id": "assembled",
+        "label": "Assembled",
+        "description": "Delivered ready to wear with all ribbons arranged and mounted in precedence order.",
+        "commerceValue": "Assembled"
+      },
+      {
+        "id": "unassembled",
+        "label": "Unassembled",
+        "description": "Shipped as individual components for custom field assembly.",
+        "commerceValue": "Unassembled"
+      }
+    ]
+  },
+  "devices": [
+    {
+      "id": "bronze-star",
+      "label": "3/16 in Bronze Star",
+      "type": "count",
+      "max": 5,
+      "symbol": "✦"
+    },
+    {
+      "id": "gold-star",
+      "label": "5/16 in Gold Star",
+      "type": "count",
+      "max": 3,
+      "symbol": "★"
+    },
+    {
+      "id": "silver-star",
+      "label": "5/16 in Silver Star",
+      "type": "count",
+      "max": 3,
+      "symbol": "☆"
+    },
+    {
+      "id": "gold-v",
+      "label": "Gold V",
+      "type": "toggle",
+      "max": 1,
+      "symbol": "V"
+    },
+    {
+      "id": "bronze-c",
+      "label": "Bronze C",
+      "type": "toggle",
+      "max": 1,
+      "symbol": "C"
+    },
+    {
+      "id": "gold-numerals",
+      "label": "Gold Numerals",
+      "type": "text",
+      "max": 3,
+      "symbol": "G"
+    },
+    {
+      "id": "numerals",
+      "label": "Numerals",
+      "type": "text",
+      "max": 3,
+      "symbol": "N"
+    }
+  ],
+  "importProfiles": [
+    {
+      "id": "combat-tour",
+      "label": "Combat Tour Profile",
+      "description": "A fast starting point for a recent deployment-focused USMC ribbon rack.",
+      "awardIds": [
+        "air-medal",
+        "combat-action",
+        "natl-defense",
+        "afg-campaign",
+        "gwot-exp"
+      ]
+    },
+    {
+      "id": "career-service",
+      "label": "Career Service Profile",
+      "description": "A service-heavy baseline with conduct, unit, and campaign awards pre-staged.",
+      "awardIds": [
+        "nmc-commend",
+        "nmc-achieve",
+        "mc-good-conduct",
+        "navy-unit",
+        "mc-unit",
+        "natl-defense",
+        "global-war-terr"
+      ]
+    }
+  ],
+  "addons": [],
+  "awards": [
+    {
+      "id": "silver-star",
+      "branchId": "usmc",
+      "label": "Silver Star",
+      "precedence": 1,
+      "gradient": "linear-gradient(90deg,#1a3580 0 25%,#c00018 25% 33%,#fff 33% 40%,#c00018 40% 47%,#1a3580 47% 53%,#c00018 53% 60%,#fff 60% 67%,#c00018 67% 75%,#1a3580 75% 100%)",
+      "category": "Personal Decorations",
+      "searchTokens": [
+        "silver star",
+        "valor",
+        "personal decoration"
+      ],
+      "deviceIds": [
+        "gold-star",
+        "silver-star",
+        "gold-v"
+      ]
+    },
+    {
+      "id": "def-sup-svc",
+      "branchId": "usmc",
+      "label": "Defense Superior Service",
+      "precedence": 2,
+      "gradient": "linear-gradient(90deg,#1a3580 0 30%,#c9a227 30% 50%,#b8d0e8 50% 70%,#c9a227 70% 100%)",
+      "category": "Personal Decorations",
+      "searchTokens": [
+        "defense superior service",
+        "dssm"
+      ],
+      "deviceIds": [
+        "gold-star",
+        "silver-star"
+      ]
+    },
+    {
+      "id": "lom-officer",
+      "branchId": "usmc",
+      "label": "Legion of Merit - Officer",
+      "precedence": 3,
+      "gradient": "linear-gradient(90deg,#8b0000 0 15%,#fff 15% 20%,#c00018 20% 28%,#1a3580 28% 72%,#c00018 72% 80%,#fff 80% 85%,#8b0000 85% 100%)",
+      "category": "Personal Decorations",
+      "searchTokens": [
+        "legion of merit",
+        "officer"
+      ],
+      "deviceIds": []
+    },
+    {
+      "id": "lom",
+      "branchId": "usmc",
+      "label": "Legion of Merit",
+      "precedence": 4,
+      "gradient": "linear-gradient(90deg,#8b0000 0 12%,#c00018 12% 88%,#8b0000 88% 100%)",
+      "category": "Personal Decorations",
+      "searchTokens": [
+        "legion of merit"
+      ],
+      "deviceIds": [
+        "gold-star",
+        "silver-star"
+      ]
+    },
+    {
+      "id": "navy-mc",
+      "branchId": "usmc",
+      "label": "Navy and Marine Corps Medal",
+      "precedence": 5,
+      "gradient": "linear-gradient(90deg,#1a3580 0 18%,#c9a227 18% 26%,#1a3580 26% 74%,#c9a227 74% 82%,#1a3580 82% 100%)",
+      "category": "Personal Decorations",
+      "searchTokens": [
+        "navy marine corps medal",
+        "nmc medal"
+      ],
+      "deviceIds": [
+        "gold-star",
+        "silver-star"
+      ]
+    },
+    {
+      "id": "bronze-star-medal",
+      "branchId": "usmc",
+      "label": "Bronze Star",
+      "precedence": 6,
+      "gradient": "linear-gradient(90deg,#c00018 0 18%,#1a3580 18% 25%,#fff 25% 38%,#1a3580 38% 62%,#fff 62% 75%,#1a3580 75% 82%,#c00018 82% 100%)",
+      "category": "Personal Decorations",
+      "searchTokens": [
+        "bronze star",
+        "bsm"
+      ],
+      "deviceIds": [
+        "gold-star",
+        "silver-star",
+        "gold-v",
+        "bronze-c"
+      ]
+    },
+    {
+      "id": "purple-heart",
+      "branchId": "usmc",
+      "label": "Purple Heart",
+      "precedence": 7,
+      "gradient": "linear-gradient(90deg,#5a1a6e 0 20%,#c9a227 20% 28%,#5a1a6e 28% 72%,#c9a227 72% 80%,#5a1a6e 80% 100%)",
+      "category": "Personal Decorations",
+      "searchTokens": [
+        "purple heart"
+      ],
+      "deviceIds": [
+        "gold-star",
+        "silver-star"
+      ]
+    },
+    {
+      "id": "def-mer-svc",
+      "branchId": "usmc",
+      "label": "Defense Meritorious Service",
+      "precedence": 8,
+      "gradient": "linear-gradient(90deg,#1a1a8b 0 20%,#c00018 20% 40%,#fff 40% 60%,#c00018 60% 80%,#1a1a8b 80% 100%)",
+      "category": "Personal Decorations",
+      "searchTokens": [
+        "defense meritorious service"
+      ],
+      "deviceIds": [
+        "gold-star",
+        "silver-star"
+      ]
+    },
+    {
+      "id": "mer-svc",
+      "branchId": "usmc",
+      "label": "Meritorious Service",
+      "precedence": 9,
+      "gradient": "linear-gradient(90deg,#c00018 0 18%,#fff 18% 25%,#1a3580 25% 75%,#fff 75% 82%,#c00018 82% 100%)",
+      "category": "Personal Decorations",
+      "searchTokens": [
+        "meritorious service"
+      ],
+      "deviceIds": [
+        "gold-star",
+        "silver-star"
+      ]
+    },
+    {
+      "id": "air-medal",
+      "branchId": "usmc",
+      "label": "Air Medal",
+      "precedence": 10,
+      "gradient": "linear-gradient(90deg,#1a4a1a 0 25%,#c9a227 25% 45%,#1a4a1a 45% 55%,#c9a227 55% 75%,#1a4a1a 75% 100%)",
+      "category": "Personal Decorations",
+      "searchTokens": [
+        "air medal"
+      ],
+      "deviceIds": [
+        "bronze-star",
+        "gold-star",
+        "silver-star",
+        "gold-v",
+        "gold-numerals",
+        "numerals"
+      ]
+    },
+    {
+      "id": "js-commend",
+      "branchId": "usmc",
+      "label": "Joint Service Commendation",
+      "precedence": 11,
+      "gradient": "linear-gradient(90deg,#1a3580 0 22%,#c00018 22% 32%,#fff 32% 42%,#c00018 42% 58%,#fff 58% 68%,#c00018 68% 78%,#1a3580 78% 100%)",
+      "category": "Personal Decorations",
+      "searchTokens": [
+        "joint service commendation",
+        "jscm"
+      ],
+      "deviceIds": [
+        "gold-star",
+        "silver-star"
+      ]
+    },
+    {
+      "id": "nmc-commend",
+      "branchId": "usmc",
+      "label": "Navy and Marine Corps Commendation",
+      "precedence": 12,
+      "gradient": "linear-gradient(90deg,#0a4a0a 0 25%,#fff 25% 35%,#c9a227 35% 65%,#fff 65% 75%,#0a4a0a 75% 100%)",
+      "category": "Personal Decorations",
+      "searchTokens": [
+        "navy marine corps commendation",
+        "nmc commendation"
+      ],
+      "deviceIds": [
+        "gold-star",
+        "silver-star",
+        "gold-v",
+        "bronze-c"
+      ]
+    },
+    {
+      "id": "js-achieve",
+      "branchId": "usmc",
+      "label": "Joint Service Achievement",
+      "precedence": 13,
+      "gradient": "linear-gradient(90deg,#1a3580 0 20%,#c00018 20% 30%,#c9a227 30% 45%,#c00018 45% 55%,#c9a227 55% 70%,#c00018 70% 80%,#1a3580 80% 100%)",
+      "category": "Personal Decorations",
+      "searchTokens": [
+        "joint service achievement"
+      ],
+      "deviceIds": [
+        "gold-star",
+        "silver-star"
+      ]
+    },
+    {
+      "id": "nmc-achieve",
+      "branchId": "usmc",
+      "label": "Navy and Marine Corps Achievement",
+      "precedence": 14,
+      "gradient": "linear-gradient(90deg,#0a4a0a 0 20%,#c9a227 20% 35%,#0a4a0a 35% 65%,#c9a227 65% 80%,#0a4a0a 80% 100%)",
+      "category": "Personal Decorations",
+      "searchTokens": [
+        "navy marine corps achievement"
+      ],
+      "deviceIds": [
+        "gold-star",
+        "silver-star",
+        "gold-v"
+      ]
+    },
+    {
+      "id": "combat-action",
+      "branchId": "usmc",
+      "label": "Combat Action Ribbon",
+      "precedence": 15,
+      "gradient": "linear-gradient(90deg,#c9a227 0 15%,#3a6020 15% 30%,#c00018 30% 70%,#3a6020 70% 85%,#c9a227 85% 100%)",
+      "category": "Combat and Valor",
+      "searchTokens": [
+        "combat action ribbon",
+        "car"
+      ],
+      "deviceIds": []
+    },
+    {
+      "id": "navy-unit",
+      "branchId": "usmc",
+      "label": "Navy Unit Commendation",
+      "precedence": 16,
+      "gradient": "linear-gradient(90deg,#c9a227 0 20%,#556b2f 20% 80%,#c9a227 80% 100%)",
+      "category": "Unit Awards",
+      "searchTokens": [
+        "navy unit commendation"
+      ],
+      "deviceIds": [
+        "bronze-star",
+        "gold-star"
+      ]
+    },
+    {
+      "id": "mc-unit",
+      "branchId": "usmc",
+      "label": "Marine Corps Unit Commendation",
+      "precedence": 17,
+      "gradient": "linear-gradient(90deg,#c00018 0 20%,#c9a227 20% 30%,#c00018 30% 70%,#c9a227 70% 80%,#c00018 80% 100%)",
+      "category": "Unit Awards",
+      "searchTokens": [
+        "marine corps unit commendation"
+      ],
+      "deviceIds": [
+        "bronze-star",
+        "gold-star"
+      ]
+    },
+    {
+      "id": "mc-good-conduct",
+      "branchId": "usmc",
+      "label": "Marine Corps Good Conduct",
+      "precedence": 18,
+      "gradient": "linear-gradient(135deg,#c00018 0 45%,#c9a227 45% 55%,#c00018 55% 100%)",
+      "category": "Service Awards",
+      "searchTokens": [
+        "good conduct",
+        "marine corps good conduct"
+      ],
+      "deviceIds": [
+        "bronze-star",
+        "gold-star",
+        "silver-star"
+      ]
+    },
+    {
+      "id": "mc-expeditionary",
+      "branchId": "usmc",
+      "label": "Marine Corps Expeditionary",
+      "precedence": 19,
+      "gradient": "linear-gradient(90deg,#c00018 0 15%,#c9a227 15% 25%,#c00018 25% 75%,#c9a227 75% 85%,#c00018 85% 100%)",
+      "category": "Campaign and Expeditionary",
+      "searchTokens": [
+        "marine corps expeditionary"
+      ],
+      "deviceIds": [
+        "bronze-star",
+        "gold-star",
+        "silver-star"
+      ]
+    },
+    {
+      "id": "natl-defense",
+      "branchId": "usmc",
+      "label": "National Defense",
+      "precedence": 20,
+      "gradient": "linear-gradient(90deg,#c00018 0 20%,#fff 20% 30%,#1a3580 30% 50%,#fff 50% 70%,#c00018 70% 100%)",
+      "category": "Service Awards",
+      "searchTokens": [
+        "national defense"
+      ],
+      "deviceIds": [
+        "bronze-star",
+        "gold-star"
+      ]
+    },
+    {
+      "id": "afg-campaign",
+      "branchId": "usmc",
+      "label": "Afghanistan Campaign",
+      "precedence": 21,
+      "gradient": "linear-gradient(90deg,#c00018 0 15%,#000 15% 28%,#c9a227 28% 42%,#c00018 42% 58%,#c9a227 58% 72%,#000 72% 85%,#c00018 85% 100%)",
+      "category": "Campaign and Expeditionary",
+      "searchTokens": [
+        "afghanistan campaign"
+      ],
+      "deviceIds": [
+        "bronze-star",
+        "gold-star",
+        "silver-star"
+      ]
+    },
+    {
+      "id": "iraq-campaign",
+      "branchId": "usmc",
+      "label": "Iraq Campaign",
+      "precedence": 22,
+      "gradient": "linear-gradient(90deg,#c9a227 0 15%,#000 15% 28%,#c00018 28% 42%,#000 42% 58%,#c00018 58% 72%,#000 72% 85%,#c9a227 85% 100%)",
+      "category": "Campaign and Expeditionary",
+      "searchTokens": [
+        "iraq campaign"
+      ],
+      "deviceIds": [
+        "bronze-star",
+        "gold-star",
+        "silver-star"
+      ]
+    },
+    {
+      "id": "global-war-terr",
+      "branchId": "usmc",
+      "label": "Global War on Terrorism Service",
+      "precedence": 23,
+      "gradient": "linear-gradient(90deg,#1a1a8b 0 18%,#c00018 18% 28%,#fff 28% 38%,#c00018 38% 62%,#fff 62% 72%,#c00018 72% 82%,#1a1a8b 82% 100%)",
+      "category": "Service Awards",
+      "searchTokens": [
+        "global war on terrorism service",
+        "gwot service"
+      ],
+      "deviceIds": []
+    },
+    {
+      "id": "gwot-exp",
+      "branchId": "usmc",
+      "label": "Global War on Terrorism Expeditionary",
+      "precedence": 24,
+      "gradient": "linear-gradient(90deg,#1a1a8b 0 15%,#c9a227 15% 25%,#1a1a8b 25% 75%,#c9a227 75% 85%,#1a1a8b 85% 100%)",
+      "category": "Campaign and Expeditionary",
+      "searchTokens": [
+        "global war on terrorism expeditionary",
+        "gwot expeditionary"
+      ],
+      "deviceIds": []
+    }
+  ]
+}

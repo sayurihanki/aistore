@@ -1,0 +1,39 @@
+{
+  "generatedAt": "2026-03-16T05:45:11.398Z",
+  "fonts": {
+    "count": 8,
+    "files": [
+      "fonts/adobe-clean-italic-400.woff2",
+      "fonts/adobe-clean-normal-400.woff2",
+      "fonts/adobe-clean-normal-500.woff2",
+      "fonts/adobe-clean-normal-700.woff2",
+      "fonts/roboto-bold.woff2",
+      "fonts/roboto-condensed-bold.woff2",
+      "fonts/roboto-medium.woff2",
+      "fonts/roboto-regular.woff2"
+    ]
+  },
+  "icons": {
+    "count": 18,
+    "files": [
+      "icons/brand-picker-caret.svg",
+      "icons/caret-down-fill.svg",
+      "icons/caret-left-fill.svg",
+      "icons/caret-right-fill.svg",
+      "icons/caret-up-fill.svg",
+      "icons/cart.svg",
+      "icons/chevron-down.svg",
+      "icons/chevron-left.svg",
+      "icons/chevron-right.svg",
+      "icons/chevron-up.svg",
+      "icons/close.svg",
+      "icons/edit.svg",
+      "icons/heart.svg",
+      "icons/loader.gif",
+      "icons/rounded-triangle.svg",
+      "icons/search.svg",
+      "icons/trash.svg",
+      "icons/x-lg.svg"
+    ]
+  }
+}

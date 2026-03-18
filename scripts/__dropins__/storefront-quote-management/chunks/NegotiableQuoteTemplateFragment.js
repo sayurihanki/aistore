@@ -110,10 +110,6 @@ const e=`
           amount_off
           percent_off
         }
-        row_catalog_discount {
-          amount_off
-          percent_off
-        }
         discounts {
           label
           value

@@ -1,0 +1,4 @@
+section-metadata
+quizrouter-progress | true
+quizrouter-theme | premium
+quizrouter-result-mode | navigate

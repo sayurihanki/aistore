@@ -1,0 +1,22 @@
+{
+  "definitions": [
+    {
+      "title": "MCX Ticker",
+      "id": "mcx-ticker",
+      "plugins": {
+        "da": {
+          "name": "mcx-ticker",
+          "rows": 8,
+          "columns": 1
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "mcx-ticker",
+      "fields": []
+    }
+  ],
+  "filters": []
+}

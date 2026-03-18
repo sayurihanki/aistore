@@ -1,0 +1,307 @@
+{
+  "id": "bodea-network-enclosure-luxe-v1",
+  "productTypes": [
+    "ComplexProductView"
+  ],
+  "preview": {
+    "mode": "rack-elevation"
+  },
+  "steps": [
+    {
+      "id": "footprint",
+      "label": "Footprint",
+      "title": "Define the enclosure footprint",
+      "description": "Anchor the rack height in Commerce, then tune the physical posture for the environment you are planning around.",
+      "controls": [
+        {
+          "id": "rack-units",
+          "source": "commerce-option",
+          "label": "Rack height",
+          "commerceOptionLabel": "U",
+          "ui": "card-grid",
+          "required": true,
+          "summaryLabel": "Rack height",
+          "previewBinding": "rack-units",
+          "optionMeta": {
+            "6U": {
+              "badge": "Compact Edge",
+              "description": "For branch offices and light switch stacks."
+            },
+            "12U": {
+              "badge": "Growth Ready",
+              "description": "Balanced for branch growth and AV control racks."
+            },
+            "24U": {
+              "badge": "Core Closet",
+              "description": "For denser network cores and staged service growth."
+            },
+            "42U": {
+              "badge": "High Capacity",
+              "description": "Full-height posture for primary rooms and dense cabling."
+            }
+          }
+        },
+        {
+          "id": "depth-profile",
+          "source": "advisory-select",
+          "label": "Depth profile",
+          "ui": "segmented",
+          "required": true,
+          "defaultValue": "balanced",
+          "summaryLabel": "Depth",
+          "previewBinding": "depth",
+          "options": [
+            {
+              "value": "compact",
+              "label": "Compact",
+              "description": "Tighter footprint for branch-office installs."
+            },
+            {
+              "value": "balanced",
+              "label": "Balanced",
+              "description": "Default Bodea profile for mixed network stacks."
+            },
+            {
+              "value": "extended",
+              "label": "Extended",
+              "description": "Extra service room for denser cable and PDU runs."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "access-airflow",
+      "label": "Access",
+      "title": "Tune service access and thermal posture",
+      "description": "Choose how the cabinet should feel in the room: locked, breathable, quiet, or service-forward.",
+      "controls": [
+        {
+          "id": "security-profile",
+          "source": "advisory-select",
+          "label": "Door and lock profile",
+          "ui": "card-grid",
+          "required": true,
+          "summaryLabel": "Access profile",
+          "previewBinding": "security",
+          "options": [
+            {
+              "value": "glass-lock",
+              "label": "Glass + key lock",
+              "badge": "Recommended",
+              "description": "Executive-facing finish with controlled access."
+            },
+            {
+              "value": "solid-lock",
+              "label": "Solid secure door",
+              "description": "More opaque visual privacy for shared environments."
+            },
+            {
+              "value": "open-service",
+              "label": "Open service front",
+              "description": "Fastest access for lab and staging workflows."
+            }
+          ]
+        },
+        {
+          "id": "deployment-profile",
+          "source": "advisory-select",
+          "label": "Deployment setting",
+          "ui": "chips",
+          "required": true,
+          "summaryLabel": "Deployment",
+          "previewBinding": "deployment",
+          "options": [
+            {
+              "value": "branch-office",
+              "label": "Branch office"
+            },
+            {
+              "value": "server-room",
+              "label": "Server room"
+            },
+            {
+              "value": "warehouse",
+              "label": "Warehouse edge"
+            },
+            {
+              "value": "retail",
+              "label": "Retail backroom"
+            }
+          ]
+        },
+        {
+          "id": "airflow-profile",
+          "source": "advisory-select",
+          "label": "Airflow priority",
+          "ui": "segmented",
+          "required": true,
+          "defaultValue": "balanced",
+          "summaryLabel": "Airflow",
+          "previewBinding": "airflow",
+          "options": [
+            {
+              "value": "balanced",
+              "label": "Balanced",
+              "description": "Best for mixed loads and moderate fan noise."
+            },
+            {
+              "value": "high-airflow",
+              "label": "High airflow",
+              "description": "Stronger ventilation emphasis for hotter cores."
+            },
+            {
+              "value": "quiet-zone",
+              "label": "Quiet zone",
+              "description": "Softer thermal posture for customer-adjacent installs."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "operations",
+      "label": "Operations",
+      "title": "Layer in operational readiness",
+      "description": "Use advisory inputs to recommend cable runs, thermal kits, and service posture without forcing additional Commerce variants.",
+      "controls": [
+        {
+          "id": "cable-density",
+          "source": "advisory-select",
+          "label": "Cable density",
+          "ui": "chips",
+          "required": true,
+          "defaultValue": "moderate",
+          "summaryLabel": "Cable density",
+          "previewBinding": "cable-density",
+          "options": [
+            {
+              "value": "light",
+              "label": "Light"
+            },
+            {
+              "value": "moderate",
+              "label": "Moderate"
+            },
+            {
+              "value": "dense",
+              "label": "Dense"
+            },
+            {
+              "value": "very-dense",
+              "label": "Very dense"
+            }
+          ]
+        },
+        {
+          "id": "thermal-kit",
+          "source": "advisory-select",
+          "label": "Thermal kit posture",
+          "ui": "segmented",
+          "required": false,
+          "defaultValue": "passive",
+          "summaryLabel": "Thermal kit",
+          "previewBinding": "thermal-kit",
+          "options": [
+            {
+              "value": "passive",
+              "label": "Passive"
+            },
+            {
+              "value": "fan-assisted",
+              "label": "Fan assisted"
+            },
+            {
+              "value": "monitored",
+              "label": "Monitored"
+            }
+          ]
+        },
+        {
+          "id": "service-window",
+          "source": "advisory-select",
+          "label": "Service posture",
+          "ui": "dropdown",
+          "required": false,
+          "summaryLabel": "Service posture",
+          "previewBinding": "service-window",
+          "options": [
+            {
+              "value": "standard",
+              "label": "Standard maintenance"
+            },
+            {
+              "value": "expedited",
+              "label": "Expedited access"
+            },
+            {
+              "value": "mission-critical",
+              "label": "Mission critical staging"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "review",
+      "label": "Review",
+      "title": "Review the finished build",
+      "description": "Confirm the enclosure posture, then add the recommended accessories in the same cart action."
+    }
+  ],
+  "addons": [
+    {
+      "id": "patch-14",
+      "sku": "BODEA Cat6 Patch Cable – Snagless Boot-14 ft",
+      "label": "Cat6 service cable, 14 ft",
+      "description": "A balanced branch-length patch run for structured closets.",
+      "badge": "Cable ready",
+      "defaultSelected": false,
+      "quantityStrategy": "match-base-quantity",
+      "conditions": [
+        {
+          "controlId": "cable-density",
+          "includes": [
+            "moderate",
+            "dense",
+            "very-dense"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "patch-25",
+      "sku": "BODEA Cat6 Patch Cable – Snagless Boot-25 ft",
+      "label": "Cat6 service cable, 25 ft",
+      "description": "A stronger run for taller cabinets or offset switch positions.",
+      "badge": "Extended run",
+      "defaultSelected": false,
+      "quantityStrategy": "match-base-quantity",
+      "conditions": [
+        {
+          "controlId": "depth-profile",
+          "includes": [
+            "extended"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "patch-50",
+      "sku": "BODEA Cat6 Patch Cable – Snagless Boot-50 ft",
+      "label": "Cat6 long-run cable, 50 ft",
+      "description": "For warehouse edge routes and longer uplink staging runs.",
+      "badge": "Warehouse",
+      "defaultSelected": false,
+      "quantityStrategy": "match-base-quantity",
+      "conditions": [
+        {
+          "controlId": "deployment-profile",
+          "includes": [
+            "warehouse"
+          ]
+        }
+      ]
+    }
+  ]
+}

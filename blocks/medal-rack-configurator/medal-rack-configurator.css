@@ -1,0 +1,658 @@
+.medal-rack-configurator {
+  margin-block: var(--spacing-xxbig);
+}
+
+.medal-rack-configurator-block-message {
+  margin: 0;
+  padding: var(--spacing-medium);
+  border: 1px solid rgb(10 41 24 / 12%);
+  border-radius: var(--shape-border-radius-3);
+  background: linear-gradient(180deg, rgb(255 255 255 / 92%), rgb(244 248 245 / 96%));
+  box-shadow: 0 24px 60px rgb(8 12 10 / 10%);
+  color: var(--ink-700);
+  font: var(--type-body-2-default-font);
+}
+
+.medal-rack-configurator-block-message[data-type='error'] {
+  border-color: rgb(195 80 80 / 25%);
+  color: #8a2c2c;
+}
+
+.medal-rack-configurator .medal-rack-configurator__shell {
+  --mrc-surface: linear-gradient(180deg, rgb(7 11 18 / 96%), rgb(15 24 38 / 94%));
+  --mrc-surface-soft: rgb(11 17 29 / 72%);
+  --mrc-border: rgb(255 255 255 / 10%);
+  --mrc-border-strong: rgb(201 168 76 / 22%);
+  --mrc-text: #f7f2e8;
+  --mrc-muted: rgb(229 220 206 / 72%);
+  --mrc-accent: var(--gold);
+  --mrc-accent-strong: var(--gold-light);
+  --mrc-shadow: 0 32px 90px rgb(2 6 20 / 34%);
+
+  position: relative;
+  display: grid;
+  gap: var(--spacing-big);
+  color: var(--mrc-text);
+}
+
+.medal-rack-configurator .medal-rack-configurator__shell::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--shape-border-radius-3);
+  background:
+    radial-gradient(circle at 10% 15%, rgb(201 168 76 / 13%), transparent 28%),
+    radial-gradient(circle at 88% 10%, rgb(38 160 103 / 12%), transparent 24%),
+    linear-gradient(120deg, transparent 0%, rgb(255 255 255 / 4%) 42%, transparent 78%);
+  pointer-events: none;
+}
+
+.medal-rack-configurator .medal-rack-configurator__preview-column,
+.medal-rack-configurator .medal-rack-configurator__config-column {
+  min-width: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.medal-rack-configurator .medal-rack-configurator__preview-card,
+.medal-rack-configurator .medal-rack-configurator__config-card {
+  height: 100%;
+  border: 1px solid var(--mrc-border);
+  border-radius: 3.2rem;
+  background: var(--mrc-surface);
+  box-shadow: var(--mrc-shadow), inset 0 1px 0 rgb(255 255 255 / 6%);
+  overflow: hidden;
+}
+
+.medal-rack-configurator .medal-rack-configurator__preview-card {
+  display: grid;
+  gap: var(--spacing-medium);
+  padding: clamp(2rem, 4vw, 3.2rem);
+}
+
+.medal-rack-configurator .medal-rack-configurator__preview-copy {
+  display: grid;
+  gap: var(--spacing-small);
+}
+
+.medal-rack-configurator .medal-rack-configurator__eyebrow,
+.medal-rack-configurator .medal-rack-configurator__label,
+.medal-rack-configurator .medal-rack-configurator__group-step {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  border: 1px solid var(--mrc-border-strong);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 4%);
+  color: var(--mrc-accent-strong);
+  font: var(--type-details-overline-font);
+  letter-spacing: 0.14em;
+  padding: 0.8rem 1.2rem;
+  text-transform: uppercase;
+}
+
+.medal-rack-configurator .medal-rack-configurator__title {
+  margin: 0;
+  color: var(--mrc-text);
+  font: var(--type-display-2-font);
+  letter-spacing: var(--type-display-2-letter-spacing);
+  line-height: 1;
+}
+
+.medal-rack-configurator .medal-rack-configurator__subtitle {
+  margin: 0;
+  max-width: 52ch;
+  color: var(--mrc-muted);
+  font: var(--type-body-2-default-font);
+}
+
+.medal-rack-configurator .medal-rack-configurator__preview-stage {
+  position: relative;
+  overflow: hidden;
+  min-height: 40rem;
+  padding: clamp(2rem, 4vw, 3rem);
+  border: 1px solid rgb(255 255 255 / 8%);
+  border-radius: 2.6rem;
+  background:
+    radial-gradient(circle at 50% 18%, rgb(255 255 255 / 10%), transparent 32%),
+    linear-gradient(180deg, rgb(5 9 16 / 98%), rgb(15 23 35 / 94%));
+}
+
+.medal-rack-configurator .medal-rack-configurator__preview-glow {
+  position: absolute;
+  inset: 6% 18% auto;
+  height: 24rem;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgb(201 168 76 / 18%), transparent 70%);
+  filter: blur(24px);
+}
+
+.medal-rack-configurator .medal-rack-configurator__svg-wrap {
+  position: relative;
+  z-index: 1;
+  width: min(32rem, 100%);
+  margin: 0 auto;
+  transition: transform var(--transition-medium) var(--ease-out);
+}
+
+.medal-rack-configurator .medal-rack-configurator__svg-wrap[data-preview-size='md'] {
+  transform: scale(1.02);
+}
+
+.medal-rack-configurator .medal-rack-configurator__svg-wrap[data-preview-size='lg'] {
+  transform: scale(1.05);
+}
+
+.medal-rack-configurator .medal-rack-configurator__svg-wrap[data-preview-size='xl'] {
+  transform: scale(1.08);
+}
+
+.medal-rack-configurator .medal-rack-configurator__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 20px 48px rgb(0 0 0 / 44%));
+}
+
+.medal-rack-configurator .medal-rack-configurator__svg-watermark {
+  fill: rgb(255 255 255 / 6%);
+  font-family: var(--font-display, var(--type-display-font-family, sans-serif));
+  font-size: 2.8rem;
+  letter-spacing: 0.14em;
+}
+
+.medal-rack-configurator .medal-rack-configurator__svg-inscription {
+  fill: #120d08;
+  font-family: var(--font-display, var(--type-display-font-family, sans-serif));
+  font-size: 1.3rem;
+  font-style: italic;
+  font-weight: 700;
+}
+
+.medal-rack-configurator .medal-rack-configurator__preview-readout {
+  display: grid;
+  gap: 1rem;
+}
+
+.medal-rack-configurator .medal-rack-configurator__preview-detail-title {
+  color: var(--mrc-text);
+  font: var(--type-headline-2-strong-font);
+  letter-spacing: var(--type-headline-2-strong-letter-spacing);
+}
+
+.medal-rack-configurator .medal-rack-configurator__preview-detail-text {
+  margin: 0;
+  color: var(--mrc-muted);
+  font: var(--type-body-2-default-font);
+}
+
+.medal-rack-configurator .medal-rack-configurator__summary-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.medal-rack-configurator .medal-rack-configurator__summary-chip {
+  display: grid;
+  gap: 0.3rem;
+  min-width: 11rem;
+  padding: 1rem 1.2rem;
+  border: 1px solid rgb(255 255 255 / 7%);
+  border-radius: 1.6rem;
+  background: rgb(255 255 255 / 3%);
+}
+
+.medal-rack-configurator .medal-rack-configurator__summary-chip-label {
+  color: var(--mrc-muted);
+  font: var(--type-details-caption-2-font);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.medal-rack-configurator .medal-rack-configurator__summary-chip-value {
+  color: var(--mrc-text);
+  font: var(--type-body-2-strong-font);
+}
+
+.medal-rack-configurator .medal-rack-configurator__config-card {
+  display: grid;
+  gap: var(--spacing-medium);
+  padding: clamp(2rem, 4vw, 3.2rem);
+}
+
+.medal-rack-configurator .medal-rack-configurator__price-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--spacing-medium);
+  padding-bottom: var(--spacing-small);
+  border-bottom: 1px solid rgb(255 255 255 / 8%);
+}
+
+.medal-rack-configurator .medal-rack-configurator__price-block {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.medal-rack-configurator .medal-rack-configurator__price-value {
+  color: var(--mrc-text);
+  font: var(--type-display-3-font);
+  letter-spacing: var(--type-display-3-letter-spacing);
+}
+
+.medal-rack-configurator .medal-rack-configurator__breakdown-toggle {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--mrc-accent-strong);
+  cursor: pointer;
+  font: var(--type-details-caption-1-font);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.medal-rack-configurator .medal-rack-configurator__breakdown {
+  padding: 1.6rem 1.8rem;
+  border: 1px solid rgb(255 255 255 / 8%);
+  border-radius: 1.8rem;
+  background: var(--mrc-surface-soft);
+}
+
+.medal-rack-configurator .medal-rack-configurator__breakdown-rows {
+  display: grid;
+  gap: 1rem;
+}
+
+.medal-rack-configurator .medal-rack-configurator__breakdown-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--mrc-muted);
+  font: var(--type-body-2-default-font);
+}
+
+.medal-rack-configurator .medal-rack-configurator__breakdown-row--total {
+  padding-top: 1rem;
+  border-top: 1px solid rgb(255 255 255 / 8%);
+  color: var(--mrc-accent-strong);
+}
+
+.medal-rack-configurator .medal-rack-configurator__breakdown-value {
+  color: inherit;
+  font: var(--type-body-2-strong-font);
+}
+
+.medal-rack-configurator .medal-rack-configurator__groups {
+  display: grid;
+  gap: var(--spacing-medium);
+}
+
+.medal-rack-configurator .medal-rack-configurator__group {
+  display: grid;
+  gap: 1.4rem;
+  min-inline-size: 0;
+  margin: 0;
+  padding: 0 0 var(--spacing-medium);
+  border: 0;
+  border-bottom: 1px solid rgb(255 255 255 / 8%);
+}
+
+.medal-rack-configurator .medal-rack-configurator__group:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.medal-rack-configurator .medal-rack-configurator__group-legend {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0;
+}
+
+.medal-rack-configurator .medal-rack-configurator__group-title {
+  color: var(--mrc-text);
+  font: var(--type-headline-2-default-font);
+  letter-spacing: var(--type-headline-2-default-letter-spacing);
+}
+
+.medal-rack-configurator .medal-rack-configurator__group-help {
+  margin: 0;
+  color: var(--mrc-muted);
+  font: var(--type-body-2-default-font);
+}
+
+.medal-rack-configurator .medal-rack-configurator__size-grid,
+.medal-rack-configurator .medal-rack-configurator__swatch-grid,
+.medal-rack-configurator .medal-rack-configurator__branch-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.medal-rack-configurator .medal-rack-configurator__size-option,
+.medal-rack-configurator .medal-rack-configurator__swatch-option,
+.medal-rack-configurator .medal-rack-configurator__branch-option,
+.medal-rack-configurator .medal-rack-configurator__addon-option {
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+
+.medal-rack-configurator .medal-rack-configurator__size-option input,
+.medal-rack-configurator .medal-rack-configurator__swatch-option input,
+.medal-rack-configurator .medal-rack-configurator__branch-option input,
+.medal-rack-configurator .medal-rack-configurator__addon-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.medal-rack-configurator .medal-rack-configurator__size-card,
+.medal-rack-configurator .medal-rack-configurator__swatch-card,
+.medal-rack-configurator .medal-rack-configurator__branch-card,
+.medal-rack-configurator .medal-rack-configurator__addon-card,
+.medal-rack-configurator .medal-rack-configurator__inscription-input,
+.medal-rack-configurator .medal-rack-configurator__inscription-preview {
+  box-sizing: border-box;
+  border: 1px solid rgb(255 255 255 / 10%);
+  border-radius: 1.8rem;
+  background: rgb(255 255 255 / 3%);
+  transition:
+    border-color var(--transition-fast) var(--ease-out),
+    transform var(--transition-fast) var(--ease-out),
+    background-color var(--transition-fast) var(--ease-out),
+    box-shadow var(--transition-fast) var(--ease-out);
+}
+
+.medal-rack-configurator .medal-rack-configurator__size-card,
+.medal-rack-configurator .medal-rack-configurator__branch-card {
+  display: grid;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 1.4rem;
+}
+
+.medal-rack-configurator .medal-rack-configurator__size-badge,
+.medal-rack-configurator .medal-rack-configurator__option-price,
+.medal-rack-configurator .medal-rack-configurator__swatch-price,
+.medal-rack-configurator .medal-rack-configurator__branch-icon {
+  color: var(--mrc-accent-strong);
+  font: var(--type-details-caption-1-font);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.medal-rack-configurator .medal-rack-configurator__size-name,
+.medal-rack-configurator .medal-rack-configurator__branch-name,
+.medal-rack-configurator .medal-rack-configurator__addon-name {
+  color: var(--mrc-text);
+  font: var(--type-body-2-strong-font);
+}
+
+.medal-rack-configurator .medal-rack-configurator__size-dimensions,
+.medal-rack-configurator .medal-rack-configurator__addon-description,
+.medal-rack-configurator .medal-rack-configurator__swatch-name {
+  color: var(--mrc-muted);
+  font: var(--type-body-2-default-font);
+}
+
+.medal-rack-configurator .medal-rack-configurator__swatch-card {
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+  width: 100%;
+  min-height: 10.2rem;
+  padding: 1.4rem 1.2rem;
+  text-align: center;
+}
+
+.medal-rack-configurator .medal-rack-configurator__swatch-visual {
+  display: block;
+  width: 5.8rem;
+  height: 5.8rem;
+  border: 1px solid rgb(255 255 255 / 10%);
+  border-radius: 1.3rem;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 10%);
+}
+
+.medal-rack-configurator .medal-rack-configurator__swatch-visual[data-gradient='woodWalnut'] {
+  background: linear-gradient(160deg, #5c3317 0%, #7a4520 30%, #4e2c10 60%, #6b3a18 100%);
+}
+
+.medal-rack-configurator .medal-rack-configurator__swatch-visual[data-gradient='woodMahogany'] {
+  background: linear-gradient(160deg, #6b1a1a 0%, #8b2525 30%, #5a1515 60%, #7a2020 100%);
+}
+
+.medal-rack-configurator .medal-rack-configurator__swatch-visual[data-gradient='woodEbony'] {
+  background: linear-gradient(160deg, #17120f 0%, #201813 30%, #110d0b 60%, #1d1713 100%);
+}
+
+.medal-rack-configurator .medal-rack-configurator__swatch-visual[data-gradient='woodCherry'] {
+  background: linear-gradient(160deg, #7a2e1e 0%, #9c3d28 30%, #6b2518 60%, #883424 100%);
+}
+
+.medal-rack-configurator .medal-rack-configurator__swatch-visual[data-gradient='woodMaple'] {
+  background: linear-gradient(160deg, #d4b896 0%, #c8a882 30%, #b89070 60%, #c8a07a 100%);
+}
+
+.medal-rack-configurator .medal-rack-configurator__swatch-visual[data-hardware='gold'] {
+  background: linear-gradient(160deg, #b8850a 0%, #d9b95a 40%, #c9a03e 60%, #b08030 100%);
+}
+
+.medal-rack-configurator .medal-rack-configurator__swatch-visual[data-hardware='silver'] {
+  background: linear-gradient(160deg, #6b7a82 0%, #a8b8c3 40%, #8b9aa3 60%, #7a8a95 100%);
+}
+
+.medal-rack-configurator .medal-rack-configurator__swatch-visual[data-hardware='brass'] {
+  background: linear-gradient(160deg, #8b7230 0%, #c0a050 40%, #a08040 60%, #906020 100%);
+}
+
+.medal-rack-configurator .medal-rack-configurator__swatch-visual[data-hardware='pewter'] {
+  background: linear-gradient(160deg, #404550 0%, #5a6070 40%, #484e5a 60%, #3e4250 100%);
+}
+
+.medal-rack-configurator .medal-rack-configurator__branch-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.medal-rack-configurator .medal-rack-configurator__branch-card {
+  align-content: start;
+  gap: 0.8rem;
+  justify-items: start;
+  min-height: 9.8rem;
+  padding: 1.6rem 1.5rem;
+}
+
+.medal-rack-configurator .medal-rack-configurator__branch-icon {
+  color: var(--mrc-accent-strong);
+}
+
+.medal-rack-configurator .medal-rack-configurator__inscription-input {
+  width: 100%;
+  min-width: 0;
+  padding: 1.6rem 1.8rem;
+  color: var(--mrc-text);
+  font: var(--type-headline-1-font);
+  outline: 0;
+}
+
+.medal-rack-configurator .medal-rack-configurator__inscription-input::placeholder {
+  color: rgb(229 220 206 / 44%);
+}
+
+.medal-rack-configurator .medal-rack-configurator__inscription-input:focus {
+  border-color: rgb(201 168 76 / 58%);
+  box-shadow: 0 0 0 3px rgb(201 168 76 / 14%);
+}
+
+.medal-rack-configurator .medal-rack-configurator__inscription-preview {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 5.8rem;
+  padding: 1.2rem 1.8rem;
+  color: var(--mrc-accent-strong);
+  font: var(--type-headline-2-default-font);
+  font-style: italic;
+  text-align: center;
+}
+
+.medal-rack-configurator .medal-rack-configurator__addon-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.medal-rack-configurator .medal-rack-configurator__addon-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.4rem;
+}
+
+.medal-rack-configurator .medal-rack-configurator__addon-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 5.6rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid rgb(255 255 255 / 8%);
+  border-radius: 1.3rem;
+  background: rgb(255 255 255 / 4%);
+  color: var(--mrc-accent-strong);
+  font: var(--type-details-caption-1-font);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.medal-rack-configurator .medal-rack-configurator__addon-copy {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.medal-rack-configurator .medal-rack-configurator__addon-price {
+  color: var(--mrc-accent-strong);
+  font: var(--type-body-2-strong-font);
+}
+
+.medal-rack-configurator .medal-rack-configurator__size-option:hover .medal-rack-configurator__size-card,
+.medal-rack-configurator .medal-rack-configurator__swatch-option:hover .medal-rack-configurator__swatch-card,
+.medal-rack-configurator .medal-rack-configurator__branch-option:hover .medal-rack-configurator__branch-card,
+.medal-rack-configurator .medal-rack-configurator__addon-option:hover .medal-rack-configurator__addon-card {
+  transform: translateY(-1px);
+  border-color: rgb(201 168 76 / 36%);
+}
+
+.medal-rack-configurator .medal-rack-configurator__size-option input:checked + .medal-rack-configurator__size-card,
+.medal-rack-configurator .medal-rack-configurator__swatch-option input:checked + .medal-rack-configurator__swatch-card,
+.medal-rack-configurator .medal-rack-configurator__branch-option input:checked + .medal-rack-configurator__branch-card,
+.medal-rack-configurator .medal-rack-configurator__addon-option input:checked + .medal-rack-configurator__addon-card {
+  border-color: rgb(201 168 76 / 58%);
+  background: rgb(201 168 76 / 8%);
+  box-shadow: 0 12px 30px rgb(0 0 0 / 16%);
+}
+
+.medal-rack-configurator .medal-rack-configurator__action-rail {
+  display: grid;
+  gap: 1.2rem;
+  padding-top: var(--spacing-small);
+  border-top: 1px solid rgb(255 255 255 / 8%);
+}
+
+.medal-rack-configurator .medal-rack-configurator__action-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.medal-rack-configurator .medal-rack-configurator__action-pills span {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.7rem 1rem;
+  border: 1px solid rgb(255 255 255 / 8%);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 3%);
+  color: var(--mrc-muted);
+  font: var(--type-details-caption-2-font);
+}
+
+.medal-rack-configurator .medal-rack-configurator__cta {
+  justify-content: center;
+  width: 100%;
+  padding: 1.8rem 2rem;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--mrc-accent) 0%, var(--mrc-accent-strong) 100%);
+  box-shadow: 0 10px 28px rgb(201 168 76 / 24%);
+  color: var(--ink-950);
+  cursor: pointer;
+  font: var(--type-button-2-font);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.medal-rack-configurator .medal-rack-configurator__prototype-note {
+  margin: 0;
+  padding: 1.4rem 1.6rem;
+  border: 1px solid rgb(201 168 76 / 24%);
+  border-radius: 1.6rem;
+  background: rgb(201 168 76 / 10%);
+  color: var(--mrc-text);
+  font: var(--type-body-2-default-font);
+}
+
+.medal-rack-configurator .medal-rack-configurator__prototype-note:focus {
+  outline: 2px solid rgb(201 168 76 / 48%);
+  outline-offset: 3px;
+}
+
+@media (min-width: 768px) {
+  .medal-rack-configurator .medal-rack-configurator__size-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .medal-rack-configurator .medal-rack-configurator__swatch-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .medal-rack-configurator .medal-rack-configurator__branch-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .medal-rack-configurator .medal-rack-configurator__shell {
+    grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
+    align-items: start;
+  }
+
+  .medal-rack-configurator .medal-rack-configurator__preview-column {
+    position: sticky;
+    top: calc(var(--nav-height) + var(--spacing-medium));
+  }
+
+  .medal-rack-configurator .medal-rack-configurator__size-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .medal-rack-configurator .medal-rack-configurator__swatch-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .medal-rack-configurator .medal-rack-configurator__svg-wrap,
+  .medal-rack-configurator .medal-rack-configurator__size-card,
+  .medal-rack-configurator .medal-rack-configurator__swatch-card,
+  .medal-rack-configurator .medal-rack-configurator__branch-card,
+  .medal-rack-configurator .medal-rack-configurator__addon-card,
+  .medal-rack-configurator .medal-rack-configurator__inscription-input,
+  .medal-rack-configurator .medal-rack-configurator__inscription-preview {
+    transition: none;
+  }
+
+  .medal-rack-configurator .medal-rack-configurator__preview-glow {
+    filter: none;
+  }
+}

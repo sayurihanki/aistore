@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta
+    http-equiv="Content-Security-Policy"
+    content="script-src 'self' 'unsafe-inline' http: https:; base-uri 'self'; object-src 'none';"
+    move-to-http-header="true"
+  >
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personalize Your MCCS Experience</title>
+  <meta name="description" content="MCCS guided personalization experience for shopping, events, and family programs.">
+  <meta name="template" content="mcx-home">
+  <meta name="theme" content="mcx">
+  <meta name="nav" content="/fragments/mcx-nav">
+  <meta name="footer" content="/fragments/mcx-footer">
+  <script type="importmap">
+    {
+      "imports": {
+        "@dropins/storefront-account/": "/scripts/__dropins__/storefront-account/",
+        "@dropins/storefront-auth/": "/scripts/__dropins__/storefront-auth/",
+        "@dropins/storefront-cart/": "/scripts/__dropins__/storefront-cart/",
+        "@dropins/storefront-checkout/": "/scripts/__dropins__/storefront-checkout/",
+        "@dropins/storefront-order/": "/scripts/__dropins__/storefront-order/",
+        "@dropins/storefront-payment-services/": "/scripts/__dropins__/storefront-payment-services/",
+        "@dropins/storefront-pdp/": "/scripts/__dropins__/storefront-pdp/",
+        "@dropins/storefront-recommendations/": "/scripts/__dropins__/storefront-recommendations/",
+        "@dropins/storefront-wishlist/": "/scripts/__dropins__/storefront-wishlist/",
+        "@dropins/storefront-personalization/": "/scripts/__dropins__/storefront-personalization/",
+        "@dropins/storefront-product-discovery/": "/scripts/__dropins__/storefront-product-discovery/",
+        "@dropins/storefront-quote-management/": "/scripts/__dropins__/storefront-quote-management/",
+        "@dropins/storefront-company-switcher/": "/scripts/__dropins__/storefront-company-switcher/",
+        "@dropins/storefront-company-management/": "/scripts/__dropins__/storefront-company-management/",
+        "@dropins/storefront-requisition-list/": "/scripts/__dropins__/storefront-requisition-list/",
+        "@dropins/storefront-purchase-order/": "/scripts/__dropins__/storefront-purchase-order/",
+        "@dropins/tools/": "/scripts/__dropins__/tools/"
+      }
+    }
+  </script>
+  <script type="module">
+    if (!(HTMLScriptElement.supports?.('importmap'))) {
+      await import('/scripts/__dropins__/tools/shims/importmap.js');
+    }
+  </script>
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="/styles/storefront-reference.css">
+  <script type="module">
+    const response = await fetch('/drafts/personalize.plain.html');
+    const html = await response.text();
+    const mountPage = async () => {
+      document.querySelector('main').innerHTML = html;
+      await import('/scripts/scripts.js');
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', mountPage, { once: true });
+    } else {
+      await mountPage();
+    }
+  </script>
+</head>
+
+<body>
+  <header></header>
+  <main></main>
+  <footer></footer>
+</body>
+
+</html>

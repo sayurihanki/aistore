@@ -1,0 +1,9 @@
+mcx-deal-countdown
+label | Flash Sale - Limited Time
+title | SPRING CLEARANCE UP TO 40% OFF
+description | Exclusive deals across apparel, electronics, tactical gear, and more. Tax-free pricing for all authorized MCX patrons - active duty, veterans, retirees, and families.
+end-datetime | 2026-04-01T23:59:59-07:00
+cta | [Shop All Deals](/deals)
+cta-note | Do not miss out - deals expire when the timer hits zero.
+ended-text | Ended
+hide-cta-when-ended | false

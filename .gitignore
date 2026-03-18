@@ -11,3 +11,6 @@ helix-importer-ui
 # Ignore .map files in scripts/__dropins__/ directory and all its subdirectories
 scripts/__dropins__/**/*.map
 .env
+
+# Claude worktrees (local dev artifacts, not for version control)
+.claude/worktrees/

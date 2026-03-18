@@ -1,0 +1,22 @@
+{
+  "definitions": [
+    {
+      "title": "MCX Deal Countdown",
+      "id": "mcx-deal-countdown",
+      "plugins": {
+        "da": {
+          "name": "mcx-deal-countdown",
+          "rows": 8,
+          "columns": 2
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "mcx-deal-countdown",
+      "fields": []
+    }
+  ],
+  "filters": []
+}

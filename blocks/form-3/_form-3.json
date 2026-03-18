@@ -1,0 +1,49 @@
+{
+  "definitions": [
+    {
+      "title": "Form 3",
+      "id": "form-3",
+      "plugins": {
+        "da": {
+          "name": "form-3",
+          "rows": 3,
+          "columns": 1
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "form-3",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "title",
+          "label": "Form Title",
+          "description": "Heading displayed at the top of the form",
+          "value": "Get in touch",
+          "required": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "subtitle",
+          "label": "Form Subtitle",
+          "description": "Short description shown below the title",
+          "value": "Send us a message and we'll respond within one business day.",
+          "required": false
+        },
+        {
+          "component": "aem-content",
+          "valueType": "string",
+          "name": "redirect",
+          "label": "Redirect URL",
+          "description": "Optional page to navigate to after successful submission (link in row 3)",
+          "required": false
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

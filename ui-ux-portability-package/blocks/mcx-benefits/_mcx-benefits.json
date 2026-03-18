@@ -1,0 +1,22 @@
+{
+  "definitions": [
+    {
+      "title": "MCX Benefits",
+      "id": "mcx-benefits",
+      "plugins": {
+        "da": {
+          "name": "mcx-benefits",
+          "rows": 4,
+          "columns": 3
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "mcx-benefits",
+      "fields": []
+    }
+  ],
+  "filters": []
+}
