@@ -9,8 +9,13 @@
   >
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Personalize Your MCCS Experience</title>
-  <meta name="description" content="MCCS guided personalization experience for shopping, events, and family programs.">
+  <title>Getting Your Uniform Right | AI Store</title>
+  <meta name="description" content="A Marine’s field guide to buying, maintaining, and replacing every uniform component with confidence.">
+  <meta name="author" content="MCX Editorial Desk">
+  <meta name="category" content="Uniform Guide">
+  <meta name="publishdate" content="2026-02-22">
+  <meta name="image" content="/og-field-manual.png">
+  <meta property="og:image" content="/og-field-manual.png">
   <meta name="template" content="mcx-home">
   <meta name="theme" content="mcx">
   <meta name="nav" content="/fragments/mcx-nav">
@@ -50,7 +55,7 @@
   <link rel="stylesheet" href="/styles/styles.css">
   <link rel="stylesheet" href="/styles/storefront-reference.css">
   <script type="module">
-    const response = await fetch('/drafts/personalize.plain.html');
+    const response = await fetch('/.da/blogs/mccs-blog.plain.html');
     const html = await response.text();
     const mountPage = async () => {
       document.querySelector('main').innerHTML = html;

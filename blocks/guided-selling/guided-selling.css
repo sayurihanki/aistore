@@ -636,6 +636,21 @@ main > .section.guided-selling-section > div {
   color: #fff;
 }
 
+.guided-selling .gs-option-check::after {
+  border-bottom: 2px solid currentcolor;
+  border-right: 2px solid currentcolor;
+  content: '';
+  height: 11px;
+  opacity: 0;
+  transform: rotate(45deg) translate(-2px, -1px);
+  transition: opacity var(--gs-transition);
+  width: 6px;
+}
+
+.guided-selling .gs-option.is-selected .gs-option-check::after {
+  opacity: 1;
+}
+
 .guided-selling .gs-option-visual {
   font-size: 4.2rem;
   line-height: 1;
@@ -805,9 +820,29 @@ main > .section.guided-selling-section > div {
   width: 28px;
 }
 
+.guided-selling .gs-loading-item-mark::before {
+  background: currentcolor;
+  border-radius: 50%;
+  content: '';
+  height: 6px;
+  opacity: 0.5;
+  width: 6px;
+}
+
 .guided-selling .gs-loading-item.is-done .gs-loading-item-mark {
   background: var(--gs-gold);
   color: var(--gs-black);
+}
+
+.guided-selling .gs-loading-item.is-done .gs-loading-item-mark::before {
+  background: none;
+  border-bottom: 2px solid currentcolor;
+  border-radius: 0;
+  border-right: 2px solid currentcolor;
+  height: 10px;
+  opacity: 1;
+  transform: rotate(45deg) translate(-2px, -1px);
+  width: 5px;
 }
 
 .guided-selling .gs-results-header {
@@ -945,10 +980,6 @@ main > .section.guided-selling-section > div {
   justify-content: center;
   overflow: hidden;
   position: relative;
-}
-
-.guided-selling .gs-card-media.is-emoji {
-  font-size: 6.8rem;
 }
 
 .guided-selling .gs-media-image {
@@ -1115,6 +1146,142 @@ main > .section.guided-selling-section > div {
 .guided-selling .gs-bundle-icon {
   flex-shrink: 0;
   font-size: 4rem;
+}
+
+/* A compact, drawn icon language replaces ornamental emoji throughout the edit. */
+.guided-selling .gs-icon-mark {
+  --gs-icon-size: 48px;
+
+  align-items: center;
+  border: 1px solid currentcolor;
+  color: var(--gs-gold);
+  display: inline-flex;
+  flex: 0 0 var(--gs-icon-size);
+  height: var(--gs-icon-size);
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  width: var(--gs-icon-size);
+}
+
+.guided-selling .gs-icon-mark::before,
+.guided-selling .gs-icon-mark::after {
+  content: '';
+  position: absolute;
+}
+
+.guided-selling .gs-icon-mark--gear::before {
+  border: 1px solid currentcolor;
+  border-radius: 50%;
+  height: 47%;
+  width: 47%;
+}
+
+.guided-selling .gs-icon-mark--gear::after {
+  background: currentcolor;
+  border-radius: 50%;
+  height: 12%;
+  width: 12%;
+}
+
+.guided-selling .gs-icon-mark--service::before {
+  border: 1px solid currentcolor;
+  height: 46%;
+  transform: rotate(45deg);
+  width: 46%;
+}
+
+.guided-selling .gs-icon-mark--service::after {
+  background: currentcolor;
+  height: 1px;
+  transform: rotate(-45deg);
+  width: 72%;
+}
+
+.guided-selling .gs-icon-mark--home::before {
+  border-left: 1px solid currentcolor;
+  border-top: 1px solid currentcolor;
+  height: 43%;
+  transform: rotate(45deg) translate(-13%, -13%);
+  width: 43%;
+}
+
+.guided-selling .gs-icon-mark--home::after {
+  border: 1px solid currentcolor;
+  border-top: 0;
+  bottom: 20%;
+  height: 31%;
+  width: 40%;
+}
+
+.guided-selling .gs-icon-mark--motion::before {
+  background: linear-gradient(135deg, transparent 0 20%, currentcolor 21% 27%, transparent 28% 44%, currentcolor 45% 51%, transparent 52% 68%, currentcolor 69% 75%, transparent 76%);
+  height: 62%;
+  transform: skewX(-18deg);
+  width: 72%;
+}
+
+.guided-selling .gs-icon-mark--terrain::before {
+  border-left: 1px solid currentcolor;
+  border-top: 1px solid currentcolor;
+  height: 52%;
+  transform: rotate(45deg) translate(9%, 9%);
+  width: 52%;
+}
+
+.guided-selling .gs-icon-mark--terrain::after {
+  background: currentcolor;
+  bottom: 24%;
+  height: 1px;
+  width: 66%;
+}
+
+.guided-selling .gs-icon-mark--utility::before {
+  border: 1px solid currentcolor;
+  height: 48%;
+  width: 42%;
+}
+
+.guided-selling .gs-icon-mark--utility::after {
+  background: currentcolor;
+  height: 1px;
+  width: 24%;
+}
+
+.guided-selling .gs-option-visual.gs-icon-mark {
+  --gs-icon-size: 54px;
+
+  color: var(--gs-scarlet);
+}
+
+.guided-selling .gs-option-image-visual.gs-icon-mark {
+  --gs-icon-size: 78px;
+
+  color: var(--gs-scarlet);
+}
+
+.guided-selling .gs-card-media.is-icon {
+  background: linear-gradient(145deg, var(--gs-surface-4), var(--gs-surface-3));
+}
+
+.guided-selling .gs-media-icon {
+  --gs-icon-size: 88px;
+
+  color: var(--gs-gold-light);
+}
+
+.guided-selling .gs-profile-avatar .gs-icon-mark {
+  --gs-icon-size: 42px;
+
+  border-color: #fff;
+  color: #fff;
+}
+
+.guided-selling .gs-band-icon.gs-icon-mark,
+.guided-selling .gs-bundle-icon.gs-icon-mark {
+  --gs-icon-size: 52px;
+
+  color: var(--gs-gold);
 }
 
 .guided-selling .gs-bundle-body {

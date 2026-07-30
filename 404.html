@@ -8,6 +8,14 @@
     move-to-http-header="true"
   >
   <title>Page not found</title>
+  <meta name="template" content="mcx-home">
+  <meta name="theme" content="mcx">
+  <meta name="nav" content="/fragments/mcx-nav">
+  <meta name="footer" content="/fragments/mcx-footer">
+  <style>
+    html { background: #eee9dd; }
+    body:not(.appear) { visibility: hidden; }
+  </style>
   <script nonce="aem" type="importmap">
     {
         "imports": {
@@ -112,7 +120,8 @@
       <svg viewBox="1 0 38 18" class="error-number">
         <text x="0" y="17">404</text>
       </svg>
-      <h2 class="error-message">Page Not Found</h2>
+      <p class="error-kicker">Exchange record / 404</p>
+      <h2 class="error-message">This issue could not be located.</h2>
       <p class="button-container">
         <a href="/" class="button secondary error-button-home">Go home</a>
       </p>

@@ -16,5 +16,8 @@ test('mcx preview helpers recognize directory and .plain.html library routes', (
   assert.equal(getMcxLibraryPreviewBlockName('/.da/library/blocks/mcx-hero.plain.html'), 'mcx-hero');
   assert.equal(getMcxLibraryPreviewBlockName('/library/blocks/mcx-product-cards/'), 'mcx-product-cards');
   assert.equal(getMcxLibraryPreviewBlockName('/blocks/mcx-header.plain.html'), 'mcx-header');
+  assert.equal(getMcxLibraryPreviewBlockName('/.da/library/blocks/guided-selling'), 'guided-selling');
+  assert.equal(getMcxLibraryPreviewBlockName('/.da/library/blocks/uniform-configurator'), 'uniform-configurator');
+  assert.equal(getMcxLibraryPreviewBlockName('/.da/library/blocks/ez-rack-builder-mockup'), 'ez-rack-builder-mockup');
   assert.equal(getMcxLibraryPreviewBlockName('/library/blocks/product-list-page.plain.html'), null);
 });

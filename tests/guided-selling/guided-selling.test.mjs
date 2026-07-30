@@ -247,7 +247,7 @@ test('guided-selling loads real JSON data, transitions through loading, and rank
 
     const results = block.querySelector('[data-screen="results"]');
     assert.ok(results.classList.contains('is-active'));
-    assert.equal(block.querySelector('.gs-results-badge').textContent, '✓ Profile Complete — 94% Match Score');
+    assert.equal(block.querySelector('.gs-results-badge').textContent, 'Selections saved');
 
     const cardTitles = [...block.querySelectorAll('.gs-card-title')].map((node) => node.textContent);
     assert.deepEqual(cardTitles.slice(0, 4), [

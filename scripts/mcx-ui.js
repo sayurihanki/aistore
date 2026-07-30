@@ -5,7 +5,6 @@ function getProductData(card) {
     brand: card.dataset.brand || '',
     category: card.dataset.cat || 'all',
     chip: card.dataset.chip || '',
-    emoji: card.dataset.emoji || '◆',
     flags: (card.dataset.flags || '').split(',').map((entry) => entry.trim()).filter(Boolean),
     name: card.dataset.name || '',
     original: card.dataset.original || '',
@@ -60,7 +59,7 @@ function showToast(title, subtitle = '', type = 'green') {
 
   const icon = document.createElement('div');
   icon.className = `t-ico ${type}`;
-  icon.textContent = type === 'green' ? '✓' : '♥';
+  icon.setAttribute('aria-hidden', 'true');
 
   const copy = document.createElement('div');
   const heading = document.createElement('div');
@@ -250,7 +249,7 @@ function initProductInteractions(cartRef) {
       loveButton.classList.toggle('loved');
       const card = loveButton.closest('.prod-card');
       showToast(
-        loveButton.classList.contains('loved') ? 'Saved to Wishlist ♥' : 'Removed from Wishlist',
+        loveButton.classList.contains('loved') ? 'Saved to Wishlist' : 'Removed from Wishlist',
         card?.dataset.name || '',
         loveButton.classList.contains('loved') ? 'red' : 'green',
       );
@@ -265,7 +264,7 @@ function initProductInteractions(cartRef) {
       const product = getProductData(card);
       const originalText = addButton.dataset.originalLabel || addButton.textContent;
       addButton.dataset.originalLabel = originalText;
-      addButton.textContent = '✓ Added!';
+      addButton.textContent = 'Added';
       addButton.classList.add('is-added');
       updateCart(cartRef, product);
       showToast('Added to Cart!', product.name);

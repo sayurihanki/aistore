@@ -3,13 +3,21 @@ import { cloneGuidedSellingSample } from './guided-selling.sample.js';
 const SOURCE_HOSTS = new Set(['da.live', 'www.da.live', 'content.da.live']);
 const ALLOWED_THEMES = new Set(['dark', 'light']);
 const PREVIEW_PATTERN = /\/(?:\.da\/library\/blocks|library\/blocks)\/guided-selling\/?$/;
+const GEAR_EDIT_LOADING_MESSAGES = [
+  'Reading your selections',
+  'Reviewing the current assortment',
+  'Checking duty and everyday needs',
+  'Preparing category paths',
+  'Assembling gear sets',
+  'Finishing your gear edit',
+];
 
 export const DEFAULT_CONFIG = {
-  eyebrow: 'AI-Powered Style Match',
-  title: 'FIND YOUR\nPERFECT\nGEAR',
-  subtitle: 'Answer 7 quick questions and we will build a personalized shopping list matched to your life, mission, and style.',
-  startCtaLabel: 'Start Finding My Style',
-  resultsCtaLabel: 'Shop All Recommendations',
+  eyebrow: 'MCX Guided Gear Edit',
+  title: 'THE RIGHT\nGEAR. NO\nGUESSWORK.',
+  subtitle: 'A short series of choices gives you a precise edit of field, duty, fitness, and everyday gear.',
+  startCtaLabel: 'Build My Gear Edit',
+  resultsCtaLabel: 'Shop The Edit',
   resultsCtaUrl: '#shop-all',
   theme: 'dark',
   analyticsId: 'mcx-guided-selling',
@@ -198,7 +206,7 @@ export function normalizeDataset(dataset) {
       ? dataset.profiles
       : {},
     steps,
-    loadingMessages: normalizeArray(dataset?.loadingMessages),
+    loadingMessages: GEAR_EDIT_LOADING_MESSAGES,
     results: {
       summaryScore: Number(dataset?.results?.summaryScore) || 0,
       totalMatches: Number(dataset?.results?.totalMatches) || 0,
@@ -273,9 +281,9 @@ export function getProfileForAnswers(dataset, answers = {}) {
   const firstStep = dataset.steps[0];
   const selected = firstStep ? answers[firstStep.id]?.[0] : '';
   return dataset.profiles[selected] || dataset.profiles.default || {
-    avatar: '🛍️',
+    avatar: 'gear',
     name: 'Marine Shopper',
-    subtitle: 'Personalized recommendations are ready.',
+    subtitle: 'Your gear edit is ready for review.',
   };
 }
 

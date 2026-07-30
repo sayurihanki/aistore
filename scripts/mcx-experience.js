@@ -13,6 +13,15 @@ const MCX_CONTENT_BLOCKS = new Set([
   'mcx-product-cards',
   'mcx-promo-strip',
   'mcx-ticker',
+  'blog-post',
+  'ez-rack-builder-mockup',
+  'form-mccs-preferences-next',
+  'guided-selling',
+  'personalization-confirmation',
+  'product-details',
+  'product-list-page',
+  'promo-strip',
+  'uniform-configurator',
 ]);
 
 function getPrimaryClassName(element) {
@@ -24,7 +33,7 @@ export function hasMcxContentBlock(root) {
 
   return [...root.querySelectorAll('div')].some((node) => {
     const className = getPrimaryClassName(node);
-    return MCX_CONTENT_BLOCKS.has(className);
+    return MCX_CONTENT_BLOCKS.has(className) || className.startsWith('commerce-');
   });
 }
 

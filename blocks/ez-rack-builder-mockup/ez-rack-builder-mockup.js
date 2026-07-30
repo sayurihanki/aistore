@@ -337,7 +337,8 @@ function renderRackListItems(rack) {
         type="button"
         data-action="remove-award"
         data-award-id="${award.id}"
-      >✕</button>
+        aria-label="Remove ${escapeHtml(award.name)}"
+      ></button>
     </div>
   `).join('');
 }
@@ -345,7 +346,7 @@ function renderRackListItems(rack) {
 function renderWelcomeScreen(config, state) {
   const prototypeMessage = state.welcomeNoteVisible ? `
     <div class="ez-rack-builder-mockup__prototype-note is-inline">
-      <strong>Prototype Notice</strong>
+      <strong>Builder Note</strong>
       <p>${escapeHtml(config.prototypeNote)}</p>
     </div>
   ` : '';
@@ -372,7 +373,7 @@ function renderWelcomeScreen(config, state) {
       </div>
       <div class="ez-rack-builder-mockup__welcome-cards">
         <div class="ez-rack-builder-mockup__welcome-card">
-          <div class="ez-rack-builder-mockup__welcome-card-icon is-green">≣</div>
+          <div class="ez-rack-builder-mockup__welcome-card-icon is-green" aria-hidden="true"></div>
           <div class="ez-rack-builder-mockup__welcome-card-title">Start Here</div>
           <div class="ez-rack-builder-mockup__welcome-card-desc">Build your rack by following a few easy steps. Awards are automatically sorted by precedence.</div>
           <button
@@ -383,9 +384,9 @@ function renderWelcomeScreen(config, state) {
           >${escapeHtml(config.primaryCtaLabel)}</button>
         </div>
         <div class="ez-rack-builder-mockup__welcome-card">
-          <div class="ez-rack-builder-mockup__welcome-card-icon is-blue">◌</div>
-          <div class="ez-rack-builder-mockup__welcome-card-title">Prototype Account</div>
-          <div class="ez-rack-builder-mockup__welcome-card-desc">This mockup keeps the entire luxury flow local to the block, so supporting actions stay informational only.</div>
+          <div class="ez-rack-builder-mockup__welcome-card-icon is-blue" aria-hidden="true"></div>
+          <div class="ez-rack-builder-mockup__welcome-card-title">Builder Guide</div>
+          <div class="ez-rack-builder-mockup__welcome-card-desc">Review the steps, precedence, and rack options before you begin.</div>
           <button
             class="ez-rack-builder-mockup__button ez-rack-builder-mockup__button--outline"
             type="button"
@@ -531,17 +532,17 @@ function renderDevicePanel(state) {
       </div>
       <div class="ez-rack-builder-mockup__device-list">
         <div class="ez-rack-builder-mockup__device-row">
-          <span class="ez-rack-builder-mockup__device-icon">✦</span>
+          <span class="ez-rack-builder-mockup__device-icon is-star is-bronze" aria-hidden="true"></span>
           <span class="ez-rack-builder-mockup__device-label">3/16″ Bronze Star</span>
           <select class="ez-rack-builder-mockup__device-select" data-action="device-count" data-device="bronze">${countOptions(5, draft.bronze)}</select>
         </div>
         <div class="ez-rack-builder-mockup__device-row">
-          <span class="ez-rack-builder-mockup__device-icon is-gold">★</span>
+          <span class="ez-rack-builder-mockup__device-icon is-star is-gold" aria-hidden="true"></span>
           <span class="ez-rack-builder-mockup__device-label">5/16″ Gold Star</span>
           <select class="ez-rack-builder-mockup__device-select" data-action="device-count" data-device="gold">${countOptions(3, draft.gold)}</select>
         </div>
         <div class="ez-rack-builder-mockup__device-row">
-          <span class="ez-rack-builder-mockup__device-icon is-silver">☆</span>
+          <span class="ez-rack-builder-mockup__device-icon is-star is-silver" aria-hidden="true"></span>
           <span class="ez-rack-builder-mockup__device-label">5/16″ Silver Star</span>
           <select class="ez-rack-builder-mockup__device-select" data-action="device-count" data-device="silver">${countOptions(3, draft.silver)}</select>
         </div>
@@ -744,7 +745,7 @@ function renderReviewScreen(config, state) {
           </div>
           ${state.prototypeNoteVisible ? `
             <div class="ez-rack-builder-mockup__prototype-note">
-              <strong>Prototype saved locally</strong>
+              <strong>Rack draft saved</strong>
               <p>${escapeHtml(config.prototypeNote)}</p>
             </div>
           ` : ''}

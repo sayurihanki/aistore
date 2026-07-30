@@ -1,4 +1,4 @@
-const MCX_LIBRARY_PREVIEW_PATH_RE = /\/(?:\.da\/library\/blocks|library\/blocks|blocks)\/(mcx-[^/.]+)(?:\.plain\.html)?\/?$/;
+const MCX_LIBRARY_PREVIEW_PATH_RE = /\/(?:\.da\/library\/blocks|library\/blocks|blocks)\/(mcx-[^/.]+|guided-selling|uniform-configurator|ez-rack-builder-mockup)(?:\.plain\.html)?\/?$/;
 
 export function getMcxLibraryPreviewBlockName(pathname = window.location.pathname) {
   const match = pathname.match(MCX_LIBRARY_PREVIEW_PATH_RE);

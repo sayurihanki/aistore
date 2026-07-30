@@ -39,6 +39,23 @@ test('hasMcxContentBlock includes the MCX promo popup block', () => {
   assert.equal(hasMcxContentBlock(main), true);
 });
 
+test('hasMcxContentBlock includes shared product and commerce page blocks', () => {
+  assert.equal(hasMcxContentBlock(createPageWithBlock('product-details').main), true);
+  assert.equal(hasMcxContentBlock(createPageWithBlock('product-list-page').main), true);
+  assert.equal(hasMcxContentBlock(createPageWithBlock('commerce-cart').main), true);
+});
+
+test('hasMcxContentBlock includes personalization routes', () => {
+  assert.equal(hasMcxContentBlock(createPageWithBlock('form-mccs-preferences-next').main), true);
+  assert.equal(hasMcxContentBlock(createPageWithBlock('guided-selling').main), true);
+});
+
+test('hasMcxContentBlock includes editorial and configurator routes', () => {
+  assert.equal(hasMcxContentBlock(createPageWithBlock('blog-post').main), true);
+  assert.equal(hasMcxContentBlock(createPageWithBlock('uniform-configurator').main), true);
+  assert.equal(hasMcxContentBlock(createPageWithBlock('ez-rack-builder-mockup').main), true);
+});
+
 test('hasMcxContentBlock ignores MCX helper data nodes', () => {
   const { main } = createPageWithBlock('mcx-nav-data');
 

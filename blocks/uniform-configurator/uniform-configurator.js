@@ -264,10 +264,10 @@ function renderStepButtons(labels, state) {
   }).join('');
 }
 
-function renderNotice(notice, icon) {
+function renderNotice(notice) {
   return `
     <div class="reg-notice">
-      <span class="reg-notice__icon">${icon}</span>
+      <span class="reg-notice__icon" aria-hidden="true"></span>
       <div class="reg-notice__text">
         <strong>${escapeHtml(notice.title)}</strong>
         ${escapeHtml(notice.text)}
@@ -676,7 +676,7 @@ function createShell(runtime) {
   `;
   const successSection = commerceMode ? '' : `
           <div class="cfg-success" id="uc-success" hidden>
-            <div class="success-icon">✓</div>
+            <div class="success-icon" aria-hidden="true"></div>
             <h2 class="success-title">${escapeHtml(config.successTitle)}</h2>
             <p class="success-sub">${escapeHtml(config.successMessage)}</p>
             <button class="btn btn-primary" type="button" data-reset-configurator>Build Another Package</button>
@@ -744,7 +744,7 @@ function createShell(runtime) {
     value: state.selections.coatSize,
   })}
               </div>
-              ${renderNotice(data.notices.coat, '!')}
+              ${renderNotice(data.notices.coat)}
             </div>
 
             <div class="cfg-section">
@@ -891,7 +891,7 @@ function createShell(runtime) {
                 ${renderRankCards(data, state)}
               </div>
               ${renderFieldError('rank')}
-              ${renderNotice(data.notices.rank, '§')}
+              ${renderNotice(data.notices.rank)}
             </div>
 
             <div class="cfg-actions">
@@ -982,7 +982,7 @@ function createShell(runtime) {
               ${renderRushToggle(data, state)}
             </div>
 
-            ${renderNotice(data.notices.fulfillment, '✦')}
+            ${renderNotice(data.notices.fulfillment)}
 
             <p class="cfg-submit-error" id="uc-submit-error" hidden></p>
 

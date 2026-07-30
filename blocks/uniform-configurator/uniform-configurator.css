@@ -1281,6 +1281,15 @@ body.columns .uniform-configurator .cfg-form-area {
   background: linear-gradient(135deg, var(--uc-scarlet), var(--uc-gold));
   color: #fff;
   font: var(--type-details-overline-font);
+  position: relative;
+}
+
+.uniform-configurator .reg-notice__icon::before {
+  border: 1px solid currentcolor;
+  content: '';
+  height: 0.75rem;
+  transform: rotate(45deg);
+  width: 0.75rem;
 }
 
 .uniform-configurator .reg-notice__text {
@@ -1346,6 +1355,16 @@ body.columns .uniform-configurator .cfg-form-area {
   color: #fff;
   font: var(--type-display-3-font);
   box-shadow: var(--uc-shadow-button);
+  position: relative;
+}
+
+.uniform-configurator .success-icon::after {
+  border-bottom: 3px solid #fff;
+  border-right: 3px solid #fff;
+  content: '';
+  height: 2.6rem;
+  transform: rotate(45deg) translate(-0.45rem, -0.2rem);
+  width: 1.35rem;
 }
 
 .uniform-configurator .success-title {

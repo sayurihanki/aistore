@@ -57,7 +57,7 @@ test('normalizeBlockConfig fills default authoring copy', () => {
 
   assert.equal(config.title, 'Custom Title');
   assert.equal(config.primaryCtaLabel, 'Launch');
-  assert.equal(config.reviewCtaLabel, 'Save Prototype Rack');
+  assert.equal(config.reviewCtaLabel, 'Save Rack Draft');
 });
 
 test('createInitialState starts on welcome with standard ribbons selected', () => {
