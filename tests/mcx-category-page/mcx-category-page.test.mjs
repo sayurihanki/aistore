@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 
 import {
+  getBaseCategoryFilters,
   getProductActionMode,
   getProductOptionHighlights,
   getProductPriceSummary,
@@ -30,6 +31,44 @@ test('parseCategoryPageConfig keeps urlPath and normalizes authored tabs', () =>
     attribute: 'categories',
     in: ['Men\'s'],
   });
+});
+
+test('category-id is parsed and its child paths become the base category filter', () => {
+  const config = parseCategoryPageConfig([
+    ['category-id', '18', '', ''],
+  ]);
+
+  assert.equal(config.categoryId, '18');
+  assert.deepEqual(getBaseCategoryFilters('', config.tabs[0], [
+    'apparel',
+    'retail',
+    'accessories',
+  ]), [
+    {
+      attribute: 'categoryPath',
+      in: ['apparel', 'retail', 'accessories'],
+    },
+    {
+      attribute: 'visibility',
+      in: ['Search', 'Catalog, Search'],
+    },
+  ]);
+});
+
+test('a direct URL path takes precedence over resolved category-id child paths', () => {
+  assert.deepEqual(getBaseCategoryFilters('retail', { id: 'all' }, [
+    'apparel',
+    'accessories',
+  ]), [
+    {
+      attribute: 'categoryPath',
+      eq: 'retail',
+    },
+    {
+      attribute: 'visibility',
+      in: ['Search', 'Catalog, Search'],
+    },
+  ]);
 });
 
 test('serializeSearchState and parseSearchState round-trip category state', () => {

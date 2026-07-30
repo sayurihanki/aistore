@@ -10,9 +10,10 @@ The table below is a real block instance so the block library page or preview pa
 
 | mcx-category-page | | | |
 | --- | --- | --- | --- |
-| urlPath | apparel-footwear |  |  |
-| eyebrow | Apparel & Footwear |  |  |
-| title | GEAR UP.<br>DRESS RIGHT. |  |  |
+| category-id | 19 |  |  |
+| urlPath | retail |  |  |
+| eyebrow | Retail |  |  |
+| title | Retail |  |  |
 | description | Live Commerce results styled for the MCX tactical experience, built for training, off-duty, and everyday mission support. |  |  |
 | hero-image | ![Apparel and footwear category hero](https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1200&q=80) |  |  |
 | hero-image-alt | Apparel and footwear category hero |  |  |
@@ -30,7 +31,8 @@ Top-level config rows:
 
 | Row key | Value location | Notes |
 | --- | --- | --- |
-| `urlPath` | Column 2 | Required. Base Commerce category path used for the category filter. |
+| `urlPath` | Column 2 | Use this for a single Commerce category path. Required only when `category-id` is not authored. |
+| `category-id` | Column 2 | Optional Commerce category ID for page identity. When `urlPath` is blank, its direct child category paths are resolved before the product search. |
 | `eyebrow` | Column 2 | Optional small uppercase label in the hero. |
 | `title` | Column 2 | Optional hero headline. Line breaks are preserved. |
 | `description` | Column 2 | Optional hero supporting copy. |
@@ -50,7 +52,7 @@ The first `All` tab should usually leave columns 3 and 4 empty so it only applie
 
 ## Rendering And Behavior
 
-- The block always applies the base category filter `categoryPath=urlPath` plus the standard searchable visibility filter.
+- The block applies the authored `categoryPath=urlPath` filter when present. If it is blank, it uses the resolved child paths for `category-id`, plus the standard searchable visibility filter.
 - Authored tabs are local category shortcuts that trigger a new product-discovery search and stay synchronized with the URL via the `tab` query parameter.
 - Commerce facets, sort, and pagination remain real drop-ins; the block restyles them and keeps active filter chips outside the facet rail for the MCX presentation.
 - Product cards use live search payload data for image, price, stock, product type, and option highlights. Simple products add directly to cart; complex products route to the PDP.
@@ -59,7 +61,7 @@ The first `All` tab should usually leave columns 3 and 4 empty so it only applie
 
 ## Common Gotchas
 
-- `urlPath` must match an indexed Commerce category path, not just the page URL slug you want to publish.
+- Use `urlPath` whenever the catalog has a direct searchable path (for example, `retail` for category ID 19). Use `category-id` on its own only for a parent category whose direct child paths should be included.
 - Avoid tab filters that duplicate the base `categoryPath` clause. Prefer child category or facet attributes such as `categories`, `brand`, or other searchable attributes exposed by your catalog.
 - Keep the block as the main authored body for the page. The MCX shell is supplied by page metadata and fragments, so do not add a second custom header or footer in the page body.
 - Because the block uses live drop-ins, sort and facet interactions depend on the configured Commerce search index being available for the current store headers.

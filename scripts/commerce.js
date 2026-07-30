@@ -46,6 +46,44 @@ export const CORE_FETCH_GRAPHQL = new FetchGraphQL();
 // Catalog Service Fetch GraphQL Instance
 export const CS_FETCH_GRAPHQL = new FetchGraphQL();
 
+const CATEGORY_PATHS_QUERY = `
+  query categoryPaths {
+    categories {
+      parentId
+      urlPath
+    }
+  }
+`;
+
+/**
+ * Gets the searchable child category paths for a Commerce category.
+ *
+ * Product Discovery searches category URL paths rather than numeric category
+ * IDs. A category picker, however, supplies the numeric parent ID. Resolving
+ * the paths here lets a PLP use the selected parent category and include the
+ * products assigned to each of its direct child categories.
+ *
+ * @param {string|number} categoryId Commerce parent category ID
+ * @returns {Promise<string[]>} searchable category paths
+ */
+export async function getChildCategoryPaths(categoryId) {
+  const normalizedCategoryId = String(categoryId || '').trim();
+  if (!normalizedCategoryId) {
+    return [];
+  }
+
+  try {
+    const response = await CS_FETCH_GRAPHQL.fetchGraphQl(CATEGORY_PATHS_QUERY);
+    return [...new Set((response?.data?.categories || [])
+      .filter((category) => String(category?.parentId) === normalizedCategoryId)
+      .map((category) => String(category?.urlPath || '').replace(/^\/+|\/+$/g, ''))
+      .filter(Boolean))];
+  } catch (error) {
+    console.warn('Unable to resolve child category paths for the PLP.', error);
+    return [];
+  }
+}
+
 /**
  * Constants
  */
