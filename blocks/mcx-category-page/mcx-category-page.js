@@ -14,7 +14,6 @@ import {
 } from '../../scripts/mcx-block-utils.js';
 import {
   fetchPlaceholders,
-  getChildCategoryPaths,
   getProductLink,
   getSearchContext,
 } from '../../scripts/commerce.js';
@@ -748,6 +747,16 @@ function syncUrl(state) {
   }
 }
 
+async function resolveChildCategoryPaths(categoryId) {
+  const commerce = await import('../../scripts/commerce.js');
+  if (typeof commerce.getChildCategoryPaths !== 'function') {
+    console.warn('Category-ID PLP support is not available in the current storefront script.');
+    return [];
+  }
+
+  return commerce.getChildCategoryPaths(categoryId);
+}
+
 export default async function decorate(block) {
   const labels = await fetchPlaceholders();
   const rows = getRows(block);
@@ -763,7 +772,15 @@ export default async function decorate(block) {
   }
 
   if (config.categoryId && !config.urlPath) {
-    config.categoryPaths = await getChildCategoryPaths(config.categoryId);
+    config.categoryPaths = await resolveChildCategoryPaths(config.categoryId);
+    if (!config.categoryPaths.length) {
+      block.innerHTML = `
+        <div class="mcx-category-page__message mcx-category-page__message--error">
+          No searchable child categories were found for category ID ${escapeHtml(config.categoryId)}
+        </div>
+      `;
+      return;
+    }
   }
 
   block.dataset.category = config.categoryId || config.urlPath;
