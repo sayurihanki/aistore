@@ -5,7 +5,7 @@ This package is a portable extraction of the site UI/UX layer from `jenhankib2bb
 ## What This Contains
 
 - Global design system CSS: tokens, typography, layout, section variants, motion, and accessibility fallbacks.
-- All authored block implementations (`135` blocks) including styles, runtime JS, and per-block README docs.
+- All authored block implementations (`138` blocks) including styles, runtime JS, and per-block README docs.
 - UI runtime scripts (AEM + commerce + initializers + analytics glue) excluding generated `scripts/__dropins__`.
 - Font and icon assets (`8` font files, `18` icon files).
 - Machine-readable manifests for tokens, component catalog, dependencies, and section conventions.

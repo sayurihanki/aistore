@@ -1,10 +1,10 @@
-const STEP_LABELS = ['Military Life', 'Interests', 'Communication'];
+const STEP_LABELS = ['Profile', 'Interests', 'Contact'];
 
 const STEP_BRIEFS = [
   {
     kicker: 'Step 01',
-    title: 'Map your MCCS profile',
-    body: 'Ground the experience in installation, household, and service context so the recommendations feel mission-ready from the first session.',
+    title: 'Set your MCCS details',
+    body: 'Start with your installation, household, and service details so the store experience reflects your day-to-day needs.',
   },
   {
     kicker: 'Step 02',
@@ -142,8 +142,11 @@ function el(tag, props = {}, children = []) {
   return node;
 }
 
-function buildFieldLabel(label, { required = false, optional = false } = {}) {
-  const labelNode = el('div', { className: 'mpn-field-label' }, label);
+function buildFieldLabel(label, { required = false, optional = false, htmlFor = '' } = {}) {
+  const labelNode = el(htmlFor ? 'label' : 'div', {
+    className: 'mpn-field-label',
+    ...(htmlFor ? { htmlFor } : {}),
+  }, label);
 
   if (required) {
     labelNode.append(el('span', { className: 'mpn-field-required', textContent: '*' }));
@@ -192,7 +195,11 @@ function createField({
   const wrap = el('div', { className: 'mpn-input-wrap' });
   let input;
 
-  field.append(buildFieldLabel(label, { required, optional }));
+  field.append(buildFieldLabel(label, {
+    required,
+    optional,
+    htmlFor: controlId(key),
+  }));
 
   if (type === 'textarea') {
     input = el('textarea', {
@@ -218,7 +225,8 @@ function createField({
 
     wrap.append(input, el('span', {
       className: 'mpn-select-chevron',
-      textContent: 'v',
+      textContent: '⌄',
+      attributes: { 'aria-hidden': 'true' },
     }));
   } else {
     input = el('input', {
@@ -362,7 +370,7 @@ function createBriefingPanel(titleLineOne, titleAccent, subtitle) {
   }
 
   aside.append(
-    el('div', { className: 'mpn-badge' }, 'MCCS Personalization Intake'),
+    el('div', { className: 'mpn-badge' }, 'MCCS Member Preferences'),
     heading,
     el('p', { className: 'mpn-subtitle', textContent: subtitle }),
     el('div', { className: 'mpn-mission' }, [
@@ -386,7 +394,7 @@ function createBriefingPanel(titleLineOne, titleAccent, subtitle) {
     el('div', { className: 'mpn-trust' }, [
       el('div', { className: 'mpn-trust-item' }, [
         el('span', { className: 'mpn-trust-dot' }),
-        'Client-side demo flow. No backend profile mutation in this build.',
+        'Your choices stay on this device until you decide to continue.',
       ]),
       el('div', { className: 'mpn-trust-item' }, [
         el('span', { className: 'mpn-trust-dot' }),
@@ -404,7 +412,7 @@ function createBriefingPanel(titleLineOne, titleAccent, subtitle) {
 
 function createStageHeader() {
   return el('div', { className: 'mpn-stage-header' }, [
-    el('div', { className: 'mpn-stage-eyebrow', textContent: 'Command Form / Tactical Luxury' }),
+    el('div', { className: 'mpn-stage-eyebrow', textContent: 'MCCS Preference Brief' }),
     el('div', { className: 'mpn-stage-pill', id: 'mpn-top-step', textContent: 'Step 1 of 3' }),
   ]);
 }
@@ -422,7 +430,7 @@ function buildStepOne() {
     el('div', { className: 'mpn-step-title', textContent: 'Your military life' }),
     el('div', {
       className: 'mpn-step-subtitle',
-      textContent: 'Help us understand your connection to MCCS so we can personalize your experience across every installation.',
+      textContent: 'Tell us how you connect to MCCS so your account reflects the programs and services that matter to you.',
     }),
   );
 
@@ -546,7 +554,7 @@ function buildStepTwo() {
     el('div', { className: 'mpn-step-title', textContent: 'Shopping & recreation' }),
     el('div', {
       className: 'mpn-step-subtitle',
-      textContent: 'Select the categories and activities that interest you. We will use these to surface relevant offers, recommendations, and events.',
+      textContent: 'Select the categories and activities that interest you. We will use these choices to highlight relevant offers, useful product groups, and events.',
     }),
   );
 
@@ -737,7 +745,7 @@ function buildStepThree() {
       type: 'textarea',
       span2: true,
       optional: true,
-      placeholder: 'Special interests, accessibility needs, or feedback on your MCCS experience...',
+      placeholder: 'Special interests, accessibility needs, or feedback on your MCCS experience…',
       maxLength: 500,
     }),
     consentField,
@@ -948,11 +956,11 @@ function buildSuccessCard(block, redirectUrl) {
       el('div', { className: 'mpn-success-seal-ring' }),
       el('div', { className: 'mpn-success-seal-core', textContent: 'OK' }),
     ]),
-    el('div', { className: 'mpn-success-kicker', textContent: 'Profile Updated' }),
+    el('div', { className: 'mpn-success-kicker', textContent: 'Preferences Saved' }),
     el('h2', { className: 'mpn-success__title', textContent: 'Preferences saved' }),
     el('p', {
       className: 'mpn-success-body',
-      textContent: 'Your profile has been updated. We will use your preferences to personalize your MCCS experience across shopping, events, and family programs.',
+      textContent: 'Your preferences have been saved for shopping, events, and family programs across MCCS.',
     }),
     chipsWrap,
   );
@@ -963,7 +971,7 @@ function buildSuccessCard(block, redirectUrl) {
     const number = el('div', { className: 'mpn-count-number', textContent: '5' });
     const label = el('div', {
       className: 'mpn-count-label',
-      textContent: 'Redirecting to your personalized experience...',
+      textContent: 'Returning you to MCCS...',
     });
     const goNow = el('button', {
       className: 'mpn-go-now',

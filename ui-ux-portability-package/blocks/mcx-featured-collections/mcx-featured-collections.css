@@ -59,11 +59,11 @@ body:is(.mcx, .mcx-preview) main .mcx-featured-collections .feat-name {
 }
 
 body:is(.mcx, .mcx-preview) main .mcx-featured-collections .feat-link {
-  backdrop-filter: blur(10px);
-  background: rgb(255 255 255 / 10%);
-  border: 1px solid rgb(255 255 255 / 18%);
-  border-radius: var(--r-sm);
-  color: #fff;
+  backdrop-filter: none;
+  background: transparent;
+  border: 1px solid var(--ledger-paper, #eee9dd);
+  border-radius: 0;
+  color: var(--ledger-paper, #eee9dd);
   display: inline-flex;
   font-family: var(--font-ui);
   font-size: 12px;

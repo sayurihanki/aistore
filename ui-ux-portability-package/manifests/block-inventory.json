@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-03-16T05:45:11.286Z",
+  "generatedAt": "2026-07-31T07:37:29.984Z",
   "summary": {
-    "totalBlocks": 135,
-    "withStyles": 135,
-    "withRuntime": 135,
+    "totalBlocks": 138,
+    "withStyles": 138,
+    "withRuntime": 138,
     "byCategory": {
       "interactive-content": 10,
-      "content": 59,
+      "content": 62,
       "commerce": 55,
       "shell": 5,
       "forms": 6
@@ -255,12 +255,14 @@
         "js": [
           "blocks/commerce-account-header/commerce-account-header.js"
         ],
-        "json": [],
+        "json": [
+          "blocks/commerce-account-header/_commerce-account-header.json"
+        ],
         "readme": "blocks/commerce-account-header/README.md"
       },
       "hasStyles": true,
       "hasRuntime": true,
-      "fileCount": 3
+      "fileCount": 4
     },
     {
       "name": "commerce-account-hub",
@@ -320,12 +322,14 @@
         "js": [
           "blocks/commerce-account-sidebar/commerce-account-sidebar.js"
         ],
-        "json": [],
+        "json": [
+          "blocks/commerce-account-sidebar/_commerce-account-sidebar.json"
+        ],
         "readme": "blocks/commerce-account-sidebar/README.md"
       },
       "hasStyles": true,
       "hasRuntime": true,
-      "fileCount": 3
+      "fileCount": 4
     },
     {
       "name": "commerce-addresses",
@@ -341,12 +345,14 @@
         "js": [
           "blocks/commerce-addresses/commerce-addresses.js"
         ],
-        "json": [],
+        "json": [
+          "blocks/commerce-addresses/_commerce-addresses.json"
+        ],
         "readme": "blocks/commerce-addresses/README.md"
       },
       "hasStyles": true,
       "hasRuntime": true,
-      "fileCount": 3
+      "fileCount": 4
     },
     {
       "name": "commerce-b2b-negotiable-quote",
@@ -744,12 +750,14 @@
         "js": [
           "blocks/commerce-cart/commerce-cart.js"
         ],
-        "json": [],
+        "json": [
+          "blocks/commerce-cart/_commerce-cart.json"
+        ],
         "readme": "blocks/commerce-cart/README.md"
       },
       "hasStyles": true,
       "hasRuntime": true,
-      "fileCount": 3
+      "fileCount": 4
     },
     {
       "name": "commerce-checkout",
@@ -769,12 +777,14 @@
           "blocks/commerce-checkout/fragments.js",
           "blocks/commerce-checkout/utils.js"
         ],
-        "json": [],
+        "json": [
+          "blocks/commerce-checkout/_commerce-checkout.json"
+        ],
         "readme": "blocks/commerce-checkout/README.md"
       },
       "hasStyles": true,
       "hasRuntime": true,
-      "fileCount": 7
+      "fileCount": 8
     },
     {
       "name": "commerce-checkout-success",
@@ -790,12 +800,14 @@
         "js": [
           "blocks/commerce-checkout-success/commerce-checkout-success.js"
         ],
-        "json": [],
+        "json": [
+          "blocks/commerce-checkout-success/_commerce-checkout-success.json"
+        ],
         "readme": "blocks/commerce-checkout-success/README.md"
       },
       "hasStyles": true,
       "hasRuntime": true,
-      "fileCount": 3
+      "fileCount": 4
     },
     {
       "name": "commerce-company-accept-invitation",
@@ -958,12 +970,14 @@
         "js": [
           "blocks/commerce-confirm-account/commerce-confirm-account.js"
         ],
-        "json": [],
+        "json": [
+          "blocks/commerce-confirm-account/_commerce-confirm-account.json"
+        ],
         "readme": "blocks/commerce-confirm-account/README.md"
       },
       "hasStyles": true,
       "hasRuntime": true,
-      "fileCount": 3
+      "fileCount": 4
     },
     {
       "name": "commerce-create-account",
@@ -979,12 +993,14 @@
         "js": [
           "blocks/commerce-create-account/commerce-create-account.js"
         ],
-        "json": [],
+        "json": [
+          "blocks/commerce-create-account/_commerce-create-account.json"
+        ],
         "readme": "blocks/commerce-create-account/README.md"
       },
       "hasStyles": true,
       "hasRuntime": true,
-      "fileCount": 3
+      "fileCount": 4
     },
     {
       "name": "commerce-create-password",
@@ -1000,12 +1016,14 @@
         "js": [
           "blocks/commerce-create-password/commerce-create-password.js"
         ],
-        "json": [],
+        "json": [
+          "blocks/commerce-create-password/_commerce-create-password.json"
+        ],
         "readme": "blocks/commerce-create-password/README.md"
       },
       "hasStyles": true,
       "hasRuntime": true,
-      "fileCount": 3
+      "fileCount": 4
     },
     {
       "name": "commerce-create-return",
@@ -1021,12 +1039,14 @@
         "js": [
           "blocks/commerce-create-return/commerce-create-return.js"
         ],
-        "json": [],
+        "json": [
+          "blocks/commerce-create-return/_commerce-create-return.json"
+        ],
         "readme": "blocks/commerce-create-return/README.md"
       },
       "hasStyles": true,
       "hasRuntime": true,
-      "fileCount": 3
+      "fileCount": 4
     },
     {
       "name": "commerce-customer-company",
@@ -1063,12 +1083,14 @@
         "js": [
           "blocks/commerce-customer-details/commerce-customer-details.js"
         ],
-        "json": [],
+        "json": [
+          "blocks/commerce-customer-details/_commerce-customer-details.json"
+        ],
         "readme": "blocks/commerce-customer-details/README.md"
       },
       "hasStyles": true,
       "hasRuntime": true,
-      "fileCount": 3
+      "fileCount": 4
     },
     {
       "name": "commerce-customer-information",
@@ -1084,12 +1106,14 @@
         "js": [
           "blocks/commerce-customer-information/commerce-customer-information.js"
         ],
-        "json": [],
+        "json": [
+          "blocks/commerce-customer-information/_commerce-customer-information.json"
+        ],
         "readme": "blocks/commerce-customer-information/README.md"
       },
       "hasStyles": true,
       "hasRuntime": true,
-      "fileCount": 3
+      "fileCount": 4
     },
     {
       "name": "commerce-forgot-password",
@@ -1105,12 +1129,14 @@
         "js": [
           "blocks/commerce-forgot-password/commerce-forgot-password.js"
         ],
-        "json": [],
+        "json": [
+          "blocks/commerce-forgot-password/_commerce-forgot-password.json"
+        ],
         "readme": "blocks/commerce-forgot-password/README.md"
       },
       "hasStyles": true,
       "hasRuntime": true,
-      "fileCount": 3
+      "fileCount": 4
     },
     {
       "name": "commerce-gift-options",
@@ -1126,12 +1152,14 @@
         "js": [
           "blocks/commerce-gift-options/commerce-gift-options.js"
         ],
-        "json": [],
+        "json": [
+          "blocks/commerce-gift-options/_commerce-gift-options.json"
+        ],
         "readme": "blocks/commerce-gift-options/README.md"
       },
       "hasStyles": true,
       "hasRuntime": true,
-      "fileCount": 3
+      "fileCount": 4
     },
     {
       "name": "commerce-login",
@@ -1147,12 +1175,14 @@
         "js": [
           "blocks/commerce-login/commerce-login.js"
         ],
-        "json": [],
+        "json": [
+          "blocks/commerce-login/_commerce-login.json"
+        ],
         "readme": "blocks/commerce-login/README.md"
       },
       "hasStyles": true,
       "hasRuntime": true,
-      "fileCount": 3
+      "fileCount": 4
     },
     {
       "name": "commerce-mini-cart",
@@ -1168,12 +1198,14 @@
         "js": [
           "blocks/commerce-mini-cart/commerce-mini-cart.js"
         ],
-        "json": [],
+        "json": [
+          "blocks/commerce-mini-cart/_commerce-mini-cart.json"
+        ],
         "readme": "blocks/commerce-mini-cart/README.md"
       },
       "hasStyles": true,
       "hasRuntime": true,
-      "fileCount": 3
+      "fileCount": 4
     },
     {
       "name": "commerce-order-cost-summary",
@@ -1189,12 +1221,14 @@
         "js": [
           "blocks/commerce-order-cost-summary/commerce-order-cost-summary.js"
         ],
-        "json": [],
+        "json": [
+          "blocks/commerce-order-cost-summary/_commerce-order-cost-summary.json"
+        ],
         "readme": "blocks/commerce-order-cost-summary/README.md"
       },
       "hasStyles": true,
       "hasRuntime": true,
-      "fileCount": 3
+      "fileCount": 4
     },
     {
       "name": "commerce-order-header",
@@ -1210,12 +1244,14 @@
         "js": [
           "blocks/commerce-order-header/commerce-order-header.js"
         ],
-        "json": [],
+        "json": [
+          "blocks/commerce-order-header/_commerce-order-header.json"
+        ],
         "readme": "blocks/commerce-order-header/README.md"
       },
       "hasStyles": true,
       "hasRuntime": true,
-      "fileCount": 3
+      "fileCount": 4
     },
     {
       "name": "commerce-order-product-list",
@@ -1231,12 +1267,14 @@
         "js": [
           "blocks/commerce-order-product-list/commerce-order-product-list.js"
         ],
-        "json": [],
+        "json": [
+          "blocks/commerce-order-product-list/_commerce-order-product-list.json"
+        ],
         "readme": "blocks/commerce-order-product-list/README.md"
       },
       "hasStyles": true,
       "hasRuntime": true,
-      "fileCount": 3
+      "fileCount": 4
     },
     {
       "name": "commerce-order-returns",
@@ -1252,12 +1290,14 @@
         "js": [
           "blocks/commerce-order-returns/commerce-order-returns.js"
         ],
-        "json": [],
+        "json": [
+          "blocks/commerce-order-returns/_commerce-order-returns.json"
+        ],
         "readme": "blocks/commerce-order-returns/README.md"
       },
       "hasStyles": true,
       "hasRuntime": true,
-      "fileCount": 3
+      "fileCount": 4
     },
     {
       "name": "commerce-order-status",
@@ -1273,12 +1313,14 @@
         "js": [
           "blocks/commerce-order-status/commerce-order-status.js"
         ],
-        "json": [],
+        "json": [
+          "blocks/commerce-order-status/_commerce-order-status.json"
+        ],
         "readme": "blocks/commerce-order-status/README.md"
       },
       "hasStyles": true,
       "hasRuntime": true,
-      "fileCount": 3
+      "fileCount": 4
     },
     {
       "name": "commerce-orders-list",
@@ -1294,12 +1336,14 @@
         "js": [
           "blocks/commerce-orders-list/commerce-orders-list.js"
         ],
-        "json": [],
+        "json": [
+          "blocks/commerce-orders-list/_commerce-orders-list.json"
+        ],
         "readme": "blocks/commerce-orders-list/README.md"
       },
       "hasStyles": true,
       "hasRuntime": true,
-      "fileCount": 3
+      "fileCount": 4
     },
     {
       "name": "commerce-return-header",
@@ -1315,12 +1359,14 @@
         "js": [
           "blocks/commerce-return-header/commerce-return-header.js"
         ],
-        "json": [],
+        "json": [
+          "blocks/commerce-return-header/_commerce-return-header.json"
+        ],
         "readme": "blocks/commerce-return-header/README.md"
       },
       "hasStyles": true,
       "hasRuntime": true,
-      "fileCount": 3
+      "fileCount": 4
     },
     {
       "name": "commerce-returns-list",
@@ -1336,12 +1382,14 @@
         "js": [
           "blocks/commerce-returns-list/commerce-returns-list.js"
         ],
-        "json": [],
+        "json": [
+          "blocks/commerce-returns-list/_commerce-returns-list.json"
+        ],
         "readme": "blocks/commerce-returns-list/README.md"
       },
       "hasStyles": true,
       "hasRuntime": true,
-      "fileCount": 3
+      "fileCount": 4
     },
     {
       "name": "commerce-search-order",
@@ -1357,12 +1405,14 @@
         "js": [
           "blocks/commerce-search-order/commerce-search-order.js"
         ],
-        "json": [],
+        "json": [
+          "blocks/commerce-search-order/_commerce-search-order.json"
+        ],
         "readme": "blocks/commerce-search-order/README.md"
       },
       "hasStyles": true,
       "hasRuntime": true,
-      "fileCount": 3
+      "fileCount": 4
     },
     {
       "name": "commerce-shipping-status",
@@ -1378,12 +1428,14 @@
         "js": [
           "blocks/commerce-shipping-status/commerce-shipping-status.js"
         ],
-        "json": [],
+        "json": [
+          "blocks/commerce-shipping-status/_commerce-shipping-status.json"
+        ],
         "readme": "blocks/commerce-shipping-status/README.md"
       },
       "hasStyles": true,
       "hasRuntime": true,
-      "fileCount": 3
+      "fileCount": 4
     },
     {
       "name": "commerce-wishlist",
@@ -1399,12 +1451,14 @@
         "js": [
           "blocks/commerce-wishlist/commerce-wishlist.js"
         ],
-        "json": [],
+        "json": [
+          "blocks/commerce-wishlist/_commerce-wishlist.json"
+        ],
         "readme": "blocks/commerce-wishlist/README.md"
       },
       "hasStyles": true,
       "hasRuntime": true,
-      "fileCount": 3
+      "fileCount": 4
     },
     {
       "name": "customer-segment-personalization-block",
@@ -1467,12 +1521,14 @@
         "js": [
           "blocks/enrichment/enrichment.js"
         ],
-        "json": [],
+        "json": [
+          "blocks/enrichment/_enrichment.json"
+        ],
         "readme": "blocks/enrichment/README.md"
       },
       "hasStyles": true,
       "hasRuntime": true,
-      "fileCount": 3
+      "fileCount": 4
     },
     {
       "name": "ez-rack-builder",
@@ -2263,6 +2319,29 @@
       "fileCount": 4
     },
     {
+      "name": "mcx-hero-newcomer",
+      "category": "content",
+      "subcategory": "general",
+      "title": "MCX Hero Newcomer",
+      "overview": "The `mcx-hero-newcomer` block is a newcomer-focused MCX hero variant. It keeps the tactical scarlet-and-gold visual language, but swaps the image carousel for an abstract command-surface layout with layered background motion, optional rank badges, quick links, right-side intel panels, two CTAs, and up to four stats.",
+      "sourcePath": "blocks/mcx-hero-newcomer",
+      "files": {
+        "css": [
+          "blocks/mcx-hero-newcomer/mcx-hero-newcomer.css"
+        ],
+        "js": [
+          "blocks/mcx-hero-newcomer/mcx-hero-newcomer.js"
+        ],
+        "json": [
+          "blocks/mcx-hero-newcomer/_mcx-hero-newcomer.json"
+        ],
+        "readme": "blocks/mcx-hero-newcomer/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
       "name": "mcx-newsletter",
       "category": "content",
       "subcategory": "general",
@@ -2303,6 +2382,29 @@
           "blocks/mcx-product-cards/_mcx-product-cards.json"
         ],
         "readme": "blocks/mcx-product-cards/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "mcx-promo-popup",
+      "category": "content",
+      "subcategory": "general",
+      "title": "MCX Promo Popup",
+      "overview": "The `mcx-promo-popup` block renders the tactical MCX promotional modal used for short-term campaigns, offer codes, and urgency-driven merchandising moments. It is an MCX-only overlay block, not a generic popup system. Authors provide the campaign ID, visual copy, offer stats, countdown deadline, coupon code, and two CTAs through the same 2-column field-table pattern used by the rest of the MCX block library.",
+      "sourcePath": "blocks/mcx-promo-popup",
+      "files": {
+        "css": [
+          "blocks/mcx-promo-popup/mcx-promo-popup.css"
+        ],
+        "js": [
+          "blocks/mcx-promo-popup/mcx-promo-popup.js"
+        ],
+        "json": [
+          "blocks/mcx-promo-popup/_mcx-promo-popup.json"
+        ],
+        "readme": "blocks/mcx-promo-popup/README.md"
       },
       "hasStyles": true,
       "hasRuntime": true,
@@ -2467,7 +2569,7 @@
       },
       "hasStyles": true,
       "hasRuntime": true,
-      "fileCount": 6
+      "fileCount": 8
     },
     {
       "name": "product-highlights",
@@ -2507,12 +2609,14 @@
           "blocks/product-list-page/product-list-page.js",
           "blocks/product-list-page/requisition-list.js"
         ],
-        "json": [],
+        "json": [
+          "blocks/product-list-page/_product-list-page.json"
+        ],
         "readme": "blocks/product-list-page/README.md"
       },
       "hasStyles": true,
       "hasRuntime": true,
-      "fileCount": 4
+      "fileCount": 5
     },
     {
       "name": "product-recommendations",
@@ -2718,6 +2822,29 @@
           "blocks/quote/_quote.json"
         ],
         "readme": "blocks/quote/README.md"
+      },
+      "hasStyles": true,
+      "hasRuntime": true,
+      "fileCount": 4
+    },
+    {
+      "name": "scroll-story",
+      "category": "content",
+      "subcategory": "general",
+      "title": "Scroll Story",
+      "overview": "The `scroll-story` block renders a cinematic editorial sequence built from sticky full-viewport chapters. Each authored row becomes one chapter with a large multi-line headline, a compact caption stack, and two floating side images that reveal with staged motion and gentle parallax.",
+      "sourcePath": "blocks/scroll-story",
+      "files": {
+        "css": [
+          "blocks/scroll-story/scroll-story.css"
+        ],
+        "js": [
+          "blocks/scroll-story/scroll-story.js"
+        ],
+        "json": [
+          "blocks/scroll-story/_scroll-story.json"
+        ],
+        "readme": "blocks/scroll-story/README.md"
       },
       "hasStyles": true,
       "hasRuntime": true,

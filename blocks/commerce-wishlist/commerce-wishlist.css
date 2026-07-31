@@ -175,9 +175,21 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .commerce-wishl
   padding: 0;
 }
 
+/*
+ * The dropin pins .wishlist-login__sign-in to `grid-column: 2`, which leaves
+ * the empty-state card auto-placed in a column that sizes to 0 and spills its
+ * contents across the note. The sheet reads top to bottom, so both children are
+ * pinned back to a single column.
+ */
 .commerce-wishlist .wishlist-wishlist__content--empty > div {
   display: grid;
   gap: 0;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.commerce-wishlist .wishlist-wishlist__content--empty > div > * {
+  grid-column: 1;
+  min-width: 0;
 }
 
 .commerce-wishlist .wishlist-empty-wishlist {

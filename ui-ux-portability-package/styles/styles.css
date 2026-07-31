@@ -169,23 +169,23 @@
   --type-body-1-strong-letter-spacing: 0;
   --type-body-1-emphasized-font: normal normal 700 1.7rem/2.8rem var(--type-base-font-family);
   --type-body-1-emphasized-letter-spacing: 0;
-  --type-body-2-default-font: normal normal 500 1.5rem/2.4rem var(--type-base-font-family);
+  --type-body-2-default-font: normal normal 500 1.75rem/2.7rem var(--type-base-font-family);
   --type-body-2-default-letter-spacing: 0;
-  --type-body-2-strong-font: normal normal 700 1.5rem/2.4rem var(--type-base-font-family);
+  --type-body-2-strong-font: normal normal 700 1.75rem/2.7rem var(--type-base-font-family);
   --type-body-2-strong-letter-spacing: 0;
-  --type-body-2-emphasized-font: normal normal 700 1.5rem/2.4rem var(--type-base-font-family);
+  --type-body-2-emphasized-font: normal normal 700 1.75rem/2.7rem var(--type-base-font-family);
   --type-body-2-emphasized-letter-spacing: 0;
   --type-body-1-default-font-family: var(--type-base-font-family);
   --type-body-2-default-font-family: var(--type-base-font-family);
-  --type-button-1-font: normal normal 700 1.6rem/2rem var(--gs-font-condensed);
+  --type-button-1-font: normal normal 700 1.9rem/2.3rem var(--gs-font-condensed);
   --type-button-1-letter-spacing: 0.14em;
-  --type-button-2-font: normal normal 700 1.4rem/1.8rem var(--gs-font-condensed);
+  --type-button-2-font: normal normal 700 1.75rem/2.2rem var(--gs-font-condensed);
   --type-button-2-letter-spacing: 0.14em;
-  --type-details-caption-1-font: normal normal 500 1.2rem/1.8rem var(--gs-font-tactical);
+  --type-details-caption-1-font: normal normal 500 1.5rem/2.1rem var(--gs-font-tactical);
   --type-details-caption-1-letter-spacing: 0.1em;
-  --type-details-caption-2-font: normal normal 500 1.2rem/1.8rem var(--gs-font-tactical);
+  --type-details-caption-2-font: normal normal 500 1.5rem/2.1rem var(--gs-font-tactical);
   --type-details-caption-2-letter-spacing: 0.1em;
-  --type-details-overline-font: normal normal 700 1.15rem/1.65rem var(--gs-font-tactical);
+  --type-details-overline-font: normal normal 700 1.5rem/2rem var(--gs-font-tactical);
   --type-details-overline-letter-spacing: 0.18em;
 
   /* Additional tokens */

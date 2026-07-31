@@ -401,9 +401,10 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce
 }
 
 .commerce-orders-list .account-empty-list .dropin-card__content {
-  display: grid;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
   gap: 16px;
-  justify-items: start;
   padding: clamp(32px, 4vw, 56px) clamp(24px, 3vw, 40px);
   text-align: left;
 }
@@ -432,13 +433,37 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce
   width: 44px;
 }
 
+/*
+ * Rule-led kicker, matching the saved-items sheet. The dropin's EmptyList
+ * renders only an icon and a message, so the section label is drawn here.
+ * Decorative — the message carries the meaning.
+ */
+.commerce-orders-list .account-empty-list .dropin-card__content::after {
+  border-bottom: 1px solid var(--ol-rule);
+  color: var(--ol-scarlet);
+  content: 'Order history';
+  display: block;
+  font-family: var(--ol-data);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  line-height: 1.3;
+  order: -1;
+  padding-bottom: 14px;
+  text-transform: uppercase;
+  width: 100%;
+}
+
 .commerce-orders-list .account-empty-list .dropin-illustrated-message__message {
-  color: var(--ol-ink-soft);
-  font-family: var(--ol-body);
-  font-size: 17px;
-  line-height: 1.6;
+  color: var(--ol-ink);
+  font-family: var(--ol-display);
+  font-size: clamp(28px, 3vw, 38px);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 0.92;
   margin: 0;
-  max-width: 52ch;
+  max-width: 18ch;
+  text-transform: uppercase;
 }
 
 .commerce-orders-list .dropin-pagination {

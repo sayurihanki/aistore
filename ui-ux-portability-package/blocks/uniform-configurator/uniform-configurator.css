@@ -1,1375 +1,1798 @@
+/*
+ * MCX / Issue Ledger — Uniform configuration sheet
+ *
+ * The most formal surface on the site. It is a regulation document a Marine is
+ * trusted to act on, so it is built as an official configuration sheet: paper
+ * canvas, 1px ink rules, square corners, Rajdhani metadata, Barlow Condensed
+ * display, and scarlet held back for "act", "current", and genuine compliance
+ * attention. No floating panels, no glass, no glow, no score language.
+ *
+ * Token grammar comes from styles/mcx-issue-ledger.css; this file owns the
+ * sheet and every control emitted by
+ * blocks/uniform-configurator/uniform-configurator.js.
+ *
+ * Selector weight
+ * styles/mcx-commerce-ledger.css carries a rescue pass over this block at
+ * `body:is(.mcx.mcx.mcx, …) main .uniform-configurator …` — five classes and
+ * two elements — which forces `background: transparent` and one rule colour
+ * onto the cards, sections, notices and panels this sheet has to control. That
+ * file is shared with other surfaces, so rather than edit it, every rule here
+ * repeats the block class five times: five classes on the root plus one on the
+ * descendant outranks the rescue pass in every case, and the sheet still
+ * renders correctly on pages that never load the shared stylesheet.
+ *
+ * Layout note: uniform-configurator.js writes inline styles onto .cfg-layout,
+ * .cfg-preview, .cfg-preview__figure, .cfg-form-area and .cfg-panel (flex
+ * direction, sticky column, widths) and reads --uc-layout-gap-mobile /
+ * --uc-layout-gap-desktop / --uc-progress from CSS. Those three custom
+ * properties are part of the block's contract and must keep their names.
+ */
+
 /* stylelint-disable no-descending-specificity */
 
-.uniform-configurator {
-  --uc-font-display: 'Teko', var(--type-display-font-family), 'Impact', sans-serif;
-  --uc-font-condensed: 'Barlow Condensed', var(--font-body, sans-serif);
-  --uc-font-tactical: 'Rajdhani', var(--font-body, system-ui, sans-serif);
-  --uc-font-body: 'Barlow', var(--font-body, system-ui, sans-serif);
-  --uc-scarlet: #c1121f;
-  --uc-scarlet-dark: #8b0000;
-  --uc-scarlet-glow: rgb(193 18 31 / 18%);
-  --uc-gold: #c9a227;
-  --uc-gold-light: #e2c261;
-  --uc-gold-wash: rgb(201 162 39 / 16%);
-  --uc-gold-glow: rgb(201 162 39 / 22%);
-  --uc-ink: #0f1a24;
-  --uc-ink-soft: #3d4d5e;
-  --uc-ink-muted: #7a8a9a;
-  --uc-bg: #f8f4ee;
-  --uc-bg-strong: #efe7db;
-  --uc-surface: rgb(255 252 247 / 96%);
-  --uc-surface-strong: #fffdfa;
-  --uc-surface-muted: #f3ece3;
-  --uc-border: rgb(19 33 50 / 10%);
-  --uc-border-strong: rgb(201 162 39 / 28%);
-  --uc-border-soft: rgb(255 255 255 / 58%);
-  --uc-shadow-shell: 0 48px 120px rgb(45 35 20 / 14%), 0 16px 48px rgb(45 35 20 / 8%);
-  --uc-shadow-card: 0 24px 56px rgb(45 35 20 / 12%), 0 8px 24px rgb(45 35 20 / 6%);
-  --uc-shadow-card-hover: 0 32px 72px rgb(45 35 20 / 16%), 0 12px 32px rgb(45 35 20 / 10%);
-  --uc-shadow-button: 0 16px 36px rgb(193 18 31 / 24%), 0 6px 16px rgb(193 18 31 / 14%);
-  --uc-shadow-button-hover: 0 24px 48px rgb(193 18 31 / 30%), 0 8px 24px rgb(193 18 31 / 18%);
-  --uc-shadow-gold: 0 16px 36px rgb(201 162 39 / 30%), 0 6px 16px rgb(201 162 39 / 16%);
-  --uc-shadow-focus: 0 0 0 4px rgb(193 18 31 / 14%);
-  --uc-shell-max: 1320px;
-  --uc-hero-max: 1140px;
-  --uc-layout-gap-mobile: clamp(1.8rem, 2vw, 2.2rem);
-  --uc-layout-gap-desktop: clamp(2.4rem, 3vw, 3.6rem);
-  --uc-ease-out: var(--ease-out, cubic-bezier(0.4, 0, 0.2, 1));
-  --uc-ease-spring: var(--ease-spring, cubic-bezier(0.34, 1.56, 0.64, 1));
-  --uc-transition: 0.25s;
+/* ---------------------------------------------------------------- *
+ * 1. Page frame
+ * ---------------------------------------------------------------- */
 
-  position: relative;
-  display: block;
-  width: 100%;
-  color: var(--uc-ink);
-  font-family: var(--uc-font-body);
-  -webkit-font-smoothing: antialiased;
+main > .section:has(.uniform-configurator-wrapper) > div {
+  max-width: none;
+  padding: 0;
 }
 
 .uniform-configurator-wrapper {
-  width: 100%;
   max-width: 100%;
+  width: 100%;
 }
 
 body.columns main > .section > div.uniform-configurator-wrapper {
-  width: 100%;
-  max-width: 100%;
   flex: 1 1 100%;
+  max-width: 100%;
+  width: 100%;
 }
 
-.uniform-configurator > .uniform-configurator__shell,
-.uniform-configurator > .uniform-configurator__shell *,
-.uniform-configurator > .uniform-configurator__shell *::before,
-.uniform-configurator > .uniform-configurator__shell *::after {
+/* ---------------------------------------------------------------- *
+ * 2. Block root and local tokens
+ * ---------------------------------------------------------------- */
+
+.uniform-configurator {
+  --ucfg-paper: var(--ledger-paper, #eee9dd);
+  --ucfg-paper-deep: var(--ledger-paper-deep, #d8d1c2);
+  --ucfg-field: #f8f4eb;
+  --ucfg-field-live: #fff;
+  --ucfg-ink: var(--ledger-ink, #10130f);
+  --ucfg-scarlet: var(--ledger-scarlet, #c51f2a);
+  --ucfg-olive: var(--ledger-olive, #565c48);
+  --ucfg-silver: var(--ledger-silver, #bbc4c0);
+  --ucfg-rule: var(--ledger-rule, rgb(16 19 15 / 24%));
+  --ucfg-rule-strong: rgb(16 19 15 / 42%);
+  --ucfg-rule-light: var(--ledger-rule-light, rgb(238 233 221 / 22%));
+  --ucfg-ink-soft: rgb(16 19 15 / 70%);
+  --ucfg-ink-quiet: rgb(16 19 15 / 48%);
+  --ucfg-ink-wash: rgb(16 19 15 / 4%);
+  --ucfg-paper-soft: rgb(238 233 221 / 68%);
+  --ucfg-paper-quiet: rgb(238 233 221 / 46%);
+  --ucfg-display: var(--ledger-display, "Barlow Condensed", "Arial Narrow", sans-serif);
+  --ucfg-body: var(--ledger-body, "Barlow", system-ui, sans-serif);
+  --ucfg-data: var(--ledger-data, "Rajdhani", "Barlow Condensed", monospace);
+  --ucfg-gutter: clamp(20px, 3.4vw, 52px);
+  --ucfg-hero-pad-end: clamp(24px, 3vw, 40px);
+  --ucfg-sheet-pad: clamp(18px, 2vw, 26px);
+  --ucfg-t-hover: 180ms;
+  --ucfg-t-ui: 320ms;
+  --ucfg-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --uc-layout-gap-mobile: clamp(24px, 4vw, 32px);
+  --uc-layout-gap-desktop: clamp(32px, 3.4vw, 56px);
+
+  color: var(--ucfg-ink);
+  display: block;
+  font-family: var(--ucfg-body);
+  position: relative;
+  width: 100%;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator > .uniform-configurator__shell,
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator > .uniform-configurator__shell *,
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator > .uniform-configurator__shell *::before,
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator > .uniform-configurator__shell *::after {
   box-sizing: border-box;
 }
 
-.uniform-configurator-block-message {
+/*
+ * 3. Shared label, title and body grammar
+ *
+ * Every argument inside these :is() lists is a single class on purpose. `:is()`
+ * takes the weight of its heaviest argument, so one compound selector such as
+ * `.order-summary__header p` would lift the whole group above the per-element
+ * rules further down the file and silently win the spacing and size arguments.
+ * Compound cases are given the full grammar in their own rule instead.
+ */
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator :is(
+  .cfg-hero__eyebrow,
+  .cfg-hero__chip,
+  .cfg-panel__kicker,
+  .cfg-panel__step,
+  .cfg-preview__badge,
+  .cfg-static-chip,
+  .cfg-section__icon,
+  .field__label,
+  .measure-field__label,
+  .measure-field__unit,
+  .price-label,
+  .card-opt__price,
+  .rank-card__abbr,
+  .btn,
+  .step-btn__label,
+  .step-btn__num
+) {
+  font-family: var(--ucfg-data);
+  font-weight: 700;
+  letter-spacing: 0.16em;
   margin: 0;
-  border: 1px solid var(--uc-border);
-  border-radius: 2.4rem;
-  padding: clamp(1.8rem, 2vw, 2.4rem);
-  font: var(--type-body-2-default-font);
-  color: var(--uc-ink-soft);
-  background:
-    radial-gradient(circle at top right, var(--uc-gold-wash), transparent 32%),
-    linear-gradient(180deg, rgb(255 253 249 / 95%), rgb(246 240 232 / 96%));
-  box-shadow: var(--uc-shadow-card);
-}
-
-.uniform-configurator-block-message[data-type='error'] {
-  color: #8a2618;
-  border-color: rgb(180 35 24 / 18%);
-  background:
-    radial-gradient(circle at top right, rgb(193 18 31 / 10%), transparent 28%),
-    linear-gradient(180deg, rgb(255 249 248 / 96%), rgb(255 241 238 / 94%));
-}
-
-.uniform-configurator > .uniform-configurator__shell {
-  container-type: inline-size;
-  isolation: isolate;
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  max-width: var(--uc-shell-max);
-  margin: 0 auto;
-  padding: clamp(2rem, 3vw, 3rem);
-  overflow: hidden;
-  border: 1px solid var(--uc-border-soft);
-  border-radius: clamp(36px, 4.5vw, 60px);
-  background:
-    linear-gradient(165deg, rgb(253 250 246 / 99%) 0%, rgb(247 242 234 / 98%) 40%, rgb(239 231 219 / 98%) 100%);
-  box-shadow: var(--uc-shadow-shell);
-}
-
-.uniform-configurator > .uniform-configurator__shell::before,
-.uniform-configurator > .uniform-configurator__shell::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: -1;
-}
-
-.uniform-configurator > .uniform-configurator__shell::before {
-  background:
-    radial-gradient(ellipse 80% 50% at 15% 8%, var(--uc-scarlet-glow), transparent 32%),
-    radial-gradient(ellipse 70% 45% at 88% 10%, var(--uc-gold-glow), transparent 30%),
-    radial-gradient(ellipse 90% 60% at 50% 102%, rgb(201 162 39 / 8%), transparent 42%);
-}
-
-.uniform-configurator > .uniform-configurator__shell::after {
-  inset: 20px;
-  border: 1px solid rgb(255 255 255 / 60%);
-  border-radius: inherit;
-  background:
-    linear-gradient(180deg, rgb(255 255 255 / 24%) 0%, transparent 20%),
-    linear-gradient(90deg, rgb(255 255 255 / 6%) 1px, transparent 1px),
-    linear-gradient(rgb(255 255 255 / 5%) 1px, transparent 1px);
-  background-size: auto, 64px 64px, 64px 64px;
-  opacity: 0.52;
-}
-
-.uniform-configurator .cfg-hero,
-.uniform-configurator .cfg-steps-nav,
-.uniform-configurator .cfg-preview,
-.uniform-configurator .cfg-form-area {
-  animation: fade-up 0.7s var(--uc-ease-out) both;
-}
-
-.uniform-configurator .cfg-hero {
-  animation-delay: 0.05s;
-  position: relative;
-  isolation: isolate;
-  display: grid;
-  justify-items: center;
-  gap: 1.4rem;
-  width: min(100%, var(--uc-hero-max));
-  margin: 0 auto clamp(2.2rem, 4vw, 3.2rem);
-  padding: clamp(2.8rem, 4vw, 4.2rem) clamp(1.6rem, 4vw, 3.2rem) clamp(2.4rem, 3.5vw, 3.2rem);
-  border: 1px solid var(--uc-border-soft);
-  border-radius: clamp(32px, 4vw, 48px);
-  background:
-    linear-gradient(175deg, rgb(255 255 255 / 78%) 0%, rgb(255 250 245 / 42%) 50%, rgb(255 248 240 / 28%) 100%);
-  box-shadow:
-    0 28px 64px rgb(45 35 20 / 10%),
-    0 8px 24px rgb(45 35 20 / 6%),
-    inset 0 1px 0 rgb(255 255 255 / 88%);
-  overflow: hidden;
-  text-align: center;
-}
-
-.uniform-configurator .cfg-hero::before,
-.uniform-configurator .cfg-hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.uniform-configurator .cfg-hero::before {
-  z-index: -2;
-  background:
-    radial-gradient(ellipse 60% 40% at 16% 20%, rgb(193 18 31 / 10%), transparent 32%),
-    radial-gradient(ellipse 55% 35% at 84% 16%, rgb(201 162 39 / 16%), transparent 36%),
-    linear-gradient(140deg, rgb(201 162 39 / 4%) 0%, transparent 50%);
-}
-
-.uniform-configurator .cfg-hero::after {
-  inset: 16px;
-  z-index: -1;
-  border: 1px solid rgb(255 255 255 / 48%);
-  border-radius: inherit;
-  background: linear-gradient(180deg, rgb(255 255 255 / 20%) 0%, transparent 100%);
-}
-
-.uniform-configurator .cfg-hero__eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 1rem;
-  width: fit-content;
-  margin: 0;
-  padding: 0.7rem 1.5rem;
-  border: 1px solid rgb(201 162 39 / 28%);
-  border-radius: 999px;
-  background: rgb(255 255 255 / 88%);
-  font: normal normal 600 clamp(1.55rem, 1.25vw, 1.95rem)/1 var(--uc-font-display);
-  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #8c6f14;
-  text-shadow: 0 1px 0 rgb(255 255 255 / 88%);
-  box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 92%),
-    0 4px 16px rgb(201 162 39 / 12%);
-  transition: box-shadow var(--uc-transition) var(--uc-ease-out);
 }
 
-.uniform-configurator .cfg-hero__eyebrow:hover {
-  box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 92%),
-    0 6px 24px rgb(201 162 39 / 18%);
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator :is(
+  .cfg-panel__sub,
+  .cfg-inline-copy,
+  .cfg-hero__sub,
+  .toggle-info__sub,
+  .summary-item__detail,
+  .field__hint,
+  .success-sub,
+  .reg-notice__text
+) {
+  color: var(--ucfg-ink-soft);
+  font-family: var(--ucfg-body);
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0;
 }
 
-.uniform-configurator .cfg-hero__eyebrow::before,
-.uniform-configurator .cfg-hero__eyebrow::after {
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator :is(
+  .cfg-panel__title,
+  .cfg-section__title,
+  .card-opt__name,
+  .rank-card__title,
+  .toggle-info__title,
+  .summary-item__name,
+  .success-title,
+  .price-total
+) {
+  font-family: var(--ucfg-display);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* ---------------------------------------------------------------- *
+ * 4. The sheet
+ * ---------------------------------------------------------------- */
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator > .uniform-configurator__shell {
+  background: var(--ucfg-paper);
+  border: 1px solid var(--ucfg-ink);
+  border-radius: 0;
+  box-shadow: none;
+  margin: clamp(20px, 3vw, 44px) auto clamp(48px, 7vw, 104px);
+  max-width: 1480px;
+  overflow: visible;
+  padding: 0;
+  position: relative;
+  width: calc(100% - clamp(24px, 6vw, 96px));
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator > .uniform-configurator__shell::before,
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator > .uniform-configurator__shell::after {
+  content: none;
+}
+
+/* ---------------------------------------------------------------- *
+ * 5. Masthead
+ * ---------------------------------------------------------------- */
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-hero {
+  animation: ucfg-reveal 560ms var(--ucfg-ease) backwards;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--ucfg-ink);
+  border-radius: 0;
+  border-top: 3px solid var(--ucfg-scarlet);
+  box-shadow: none;
+  display: grid;
+  gap: clamp(14px, 1.6vw, 20px);
+  justify-items: start;
+  max-width: none;
+  overflow: visible;
+  padding: clamp(28px, 4vw, 56px) var(--ucfg-gutter) var(--ucfg-hero-pad-end);
+  text-align: left;
+  width: 100%;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-hero::before,
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-hero::after {
+  content: none;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-hero__eyebrow {
+  align-items: center;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--ucfg-scarlet);
+  display: inline-flex;
+  font-size: 11px;
+  gap: 12px;
+  letter-spacing: 0.2em;
+  min-height: 0;
+  padding: 0;
+  text-shadow: none;
+  width: auto;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-hero__eyebrow::before {
+  background: var(--ucfg-scarlet);
   content: '';
   display: block;
-  width: 2.4rem;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgb(201 162 39 / 70%));
+  flex-shrink: 0;
+  height: 2px;
+  width: 34px;
 }
 
-.uniform-configurator .cfg-hero__eyebrow::after {
-  background: linear-gradient(90deg, rgb(201 162 39 / 70%), transparent);
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-hero__eyebrow::after {
+  content: none;
 }
 
-.uniform-configurator .cfg-hero__title {
-  max-width: min(100%, 12ch);
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-hero__title {
+  color: var(--ucfg-ink);
+  font-family: var(--ucfg-display);
+  font-size: clamp(52px, 7.2vw, 104px);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 0.78;
   margin: 0;
-  font: normal normal 700 clamp(4.4rem, 7vw, 7.6rem)/0.9 var(--uc-font-display);
-  letter-spacing: -0.04em;
-  color: var(--uc-ink);
-  text-shadow: 0 2px 4px rgb(255 255 255 / 50%);
+  max-width: 13ch;
+  text-shadow: none;
+  text-transform: uppercase;
   text-wrap: balance;
 }
 
-.uniform-configurator .cfg-hero__title-line {
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-hero__title-line {
   display: block;
 }
 
-.uniform-configurator .cfg-hero__title-line--accent {
-  color: var(--uc-gold);
-  text-shadow: 0 8px 20px rgb(201 162 39 / 20%);
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-hero__title-line--accent {
+  color: var(--ucfg-scarlet);
+  text-shadow: none;
 }
 
-.uniform-configurator .cfg-hero__sub {
-  max-width: 62rem;
-  margin: 0;
-  font: var(--type-body-1-default-font);
-  line-height: 1.65;
-  color: var(--uc-ink-soft);
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-hero__sub {
+  font-size: clamp(15px, 1.05vw, 17px);
+  max-width: 64ch;
   text-wrap: pretty;
 }
 
-.uniform-configurator .cfg-hero__highlights {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.85rem;
-  width: 100%;
-}
-
-.uniform-configurator .cfg-hero__chip:nth-child(1) { animation: fade-up 0.45s var(--uc-ease-out) 0.35s both; }
-.uniform-configurator .cfg-hero__chip:nth-child(2) { animation: fade-up 0.45s var(--uc-ease-out) 0.42s both; }
-.uniform-configurator .cfg-hero__chip:nth-child(3) { animation: fade-up 0.45s var(--uc-ease-out) 0.49s both; }
-
-.uniform-configurator .cfg-hero__chip,
-.uniform-configurator .cfg-preview__badge,
-.uniform-configurator .cfg-static-chip,
-.uniform-configurator .cfg-panel__step {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: fit-content;
-  min-height: 3.2rem;
-  padding: 0.55rem 1rem;
-  border-radius: 999px;
-  font: var(--type-details-overline-font);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  font-family: var(--uc-font-tactical);
-}
-
-.uniform-configurator .cfg-hero__chip {
-  border: 1px solid rgb(19 33 50 / 8%);
-  background: rgb(255 255 255 / 78%);
-  color: var(--uc-ink-soft);
-  box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 90%),
-    0 2px 8px rgb(19 33 50 / 6%);
-  transition:
-    transform var(--uc-transition) var(--uc-ease-spring),
-    box-shadow var(--uc-transition) var(--uc-ease-out),
-    border-color var(--uc-transition);
-}
-
-.uniform-configurator .cfg-hero__chip:hover {
-  transform: translateY(-2px);
-  border-color: rgb(201 162 39 / 20%);
-  box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 90%),
-    0 6px 20px rgb(19 33 50 / 10%);
-}
-
-.uniform-configurator .cfg-steps-nav {
-  animation-delay: 0.15s;
-  width: min(100%, var(--uc-hero-max));
-  margin: 0 auto clamp(2.2rem, 4vw, 3.2rem);
-}
-
-.uniform-configurator .cfg-steps-nav--muted {
-  opacity: 0.35;
-}
-
-.uniform-configurator .steps-track {
-  --uc-progress: 16.666%;
-
-  position: relative;
-  display: flex;
-  gap: 0.5rem;
-  overflow-x: auto;
-  padding: 0.6rem;
-  border: 1px solid var(--uc-border-soft);
-  border-radius: 999px;
-  background: rgb(255 255 255 / 88%);
-  box-shadow:
-    0 20px 48px rgb(45 35 20 / 9%),
-    inset 0 1px 0 rgb(255 255 255 / 90%);
-  scrollbar-width: none;
-}
-
-.uniform-configurator .steps-track::-webkit-scrollbar {
-  display: none;
-}
-
-.uniform-configurator .steps-track::before,
-.uniform-configurator .steps-track::after {
-  content: '';
-  position: absolute;
-  left: 1.8rem;
-  top: 50%;
-  height: 4px;
-  border-radius: 999px;
-  transform: translateY(-50%);
-  pointer-events: none;
-}
-
-.uniform-configurator .steps-track::before {
-  right: 1.8rem;
-  background: linear-gradient(90deg, rgb(19 33 50 / 8%), rgb(19 33 50 / 2%));
-}
-
-.uniform-configurator .steps-track::after {
-  width: max(0px, calc(var(--uc-progress) - 3.6rem));
-  background: linear-gradient(90deg, var(--uc-scarlet), var(--uc-gold));
-  box-shadow: 0 0 20px rgb(201 162 39 / 25%);
-  transition: width 0.4s var(--uc-ease-out);
-}
-
-.uniform-configurator .step-btn {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex: 1 1 0;
-  align-items: center;
-  justify-content: center;
-  gap: 0.85rem;
-  min-width: 0;
-  min-height: 4.4rem;
-  padding: 0.9rem 1.2rem;
+/*
+ * The masthead closes on a full-bleed specification strip: a change of paper
+ * tone flush to the rule that separates the masthead from the step band, not
+ * three floating pills. Negative margins carry it out through the hero gutter,
+ * so the strip must stay the last child of .cfg-hero.
+ */
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-hero__highlights {
+  background: var(--ucfg-paper-deep);
   border: 0;
-  border-radius: 999px;
-  background: transparent;
-  color: var(--uc-ink-muted);
-  cursor: pointer;
-  transition:
-    transform var(--uc-transition) var(--uc-ease-spring),
-    background var(--uc-transition) var(--uc-ease-out),
-    box-shadow var(--uc-transition) var(--uc-ease-out),
-    color var(--uc-transition);
-}
-
-.uniform-configurator .step-btn:hover {
-  background: rgb(19 33 50 / 5%);
-  color: var(--uc-ink);
-}
-
-.uniform-configurator .step-btn__num {
-  display: inline-flex;
-  width: 2rem;
-  height: 2rem;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: rgb(19 33 50 / 6%);
-  font: var(--type-details-caption-2-font);
-  color: inherit;
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 80%);
-  font-family: var(--uc-font-tactical);
-  transition: all var(--uc-transition) var(--uc-ease-out);
-}
-
-.uniform-configurator .step-btn__label {
-  display: none;
-  font: var(--type-details-caption-1-font);
-  color: inherit;
-  letter-spacing: 0.03em;
-  font-family: var(--uc-font-condensed);
-}
-
-.uniform-configurator .step-btn.active {
-  background: linear-gradient(135deg, var(--uc-scarlet), #dd3a45);
-  color: #fff;
-  box-shadow: var(--uc-shadow-button);
-}
-
-.uniform-configurator .step-btn.active:hover {
-  box-shadow: var(--uc-shadow-button-hover);
-}
-
-.uniform-configurator .step-btn.active .step-btn__num {
-  background: rgb(255 255 255 / 22%);
-  color: #fff;
-}
-
-.uniform-configurator .step-btn.completed:not(.active) {
-  background: linear-gradient(180deg, rgb(255 255 255 / 98%), rgb(250 244 232 / 96%));
-  color: var(--uc-ink);
-  box-shadow: inset 0 0 0 1px rgb(201 162 39 / 20%);
-}
-
-.uniform-configurator .step-btn.completed .step-btn__num {
-  background: linear-gradient(135deg, var(--uc-gold), var(--uc-gold-light));
-  color: var(--uc-ink);
-}
-
-.uniform-configurator .cfg-layout {
+  border-top: 1px solid var(--ucfg-ink);
   display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacing-medium);
-  align-items: start;
-}
-
-.uniform-configurator .cfg-layout > * {
-  min-width: 0;
-}
-
-.uniform-configurator .cfg-preview,
-.uniform-configurator .cfg-section,
-.uniform-configurator .order-summary,
-.uniform-configurator .cfg-success {
-  isolation: isolate;
-  position: relative;
-  overflow: hidden;
-  border: 1px solid var(--uc-border);
-  border-radius: 2.8rem;
-  background:
-    linear-gradient(175deg, rgb(255 255 255 / 98%) 0%, rgb(249 244 237 / 98%) 100%);
-  backdrop-filter: blur(20px);
-  box-shadow:
-    var(--uc-shadow-card),
-    inset 0 1px 0 rgb(255 255 255 / 85%);
-  transition: box-shadow var(--uc-transition) var(--uc-ease-out);
-}
-
-.uniform-configurator .cfg-preview:hover {
-  box-shadow:
-    var(--uc-shadow-card-hover),
-    inset 0 1px 0 rgb(255 255 255 / 85%);
-}
-
-.uniform-configurator .cfg-preview::before,
-.uniform-configurator .cfg-section::after,
-.uniform-configurator .order-summary::after,
-.uniform-configurator .cfg-success::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 70% 50% at 100% 0%, var(--uc-gold-wash), transparent 32%),
-    linear-gradient(140deg, rgb(255 255 255 / 50%) 0%, transparent 40%);
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.72;
-}
-
-.uniform-configurator .cfg-preview > *,
-.uniform-configurator .cfg-section > *,
-.uniform-configurator .order-summary > *,
-.uniform-configurator .cfg-success > * {
-  position: relative;
-  z-index: 1;
-}
-
-.uniform-configurator .cfg-preview {
-  animation-delay: 0.2s;
-  position: static;
-}
-
-.uniform-configurator .cfg-preview__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--spacing-small);
-  padding: 1.7rem 1.9rem 1.3rem;
-  border-bottom: 1px solid rgb(19 33 50 / 10%);
-}
-
-.uniform-configurator .cfg-preview__header h3,
-.uniform-configurator .price-label,
-.uniform-configurator .field__label,
-.uniform-configurator .measure-field__label,
-.uniform-configurator .summary-total-row .label,
-.uniform-configurator .reg-notice__text strong {
-  margin: 0;
-  font: var(--type-details-overline-font);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  font-family: var(--uc-font-tactical);
-}
-
-.uniform-configurator .cfg-preview__header h3,
-.uniform-configurator .price-label,
-.uniform-configurator .field__label,
-.uniform-configurator .measure-field__label,
-.uniform-configurator .summary-total-row .label {
-  color: var(--uc-ink-soft);
-}
-
-.uniform-configurator .cfg-preview__badge,
-.uniform-configurator .cfg-static-chip,
-.uniform-configurator .cfg-panel__step {
-  border: 1px solid rgb(201 162 39 / 28%);
-  background: linear-gradient(135deg, rgb(255 255 255 / 82%), rgb(201 162 39 / 12%));
-  color: var(--uc-gold);
-}
-
-.uniform-configurator .cfg-preview__figure {
-  position: relative;
-  display: flex;
-  min-height: 22rem;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem 1.8rem 2.4rem;
-}
-
-.uniform-configurator .cfg-preview__figure::before,
-.uniform-configurator .cfg-preview__figure::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.uniform-configurator .cfg-preview__figure::before {
-  background:
-    radial-gradient(circle at 50% 24%, rgb(255 255 255 / 92%), transparent 34%),
-    radial-gradient(circle at 50% 68%, rgb(201 162 39 / 12%), transparent 52%);
-}
-
-.uniform-configurator .cfg-preview__figure::after {
-  inset: 1.4rem;
-  border-radius: 2.8rem;
-  background:
-    linear-gradient(rgb(19 33 50 / 5%) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(19 33 50 / 4%) 1px, transparent 1px);
-  background-size: 42px 42px;
-  opacity: 0.35;
-}
-
-.uniform-configurator .uniform-svg {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  max-width: 220px;
-  height: auto;
-  filter: drop-shadow(0 18px 32px rgb(10 12 16 / 12%));
-}
-
-.uniform-configurator .svg-coat,
-.uniform-configurator .svg-trouser,
-.uniform-configurator .svg-cover {
-  fill: #173b84;
-}
-
-.uniform-configurator .svg-shirt {
-  fill: #f4f0e9;
-}
-
-.uniform-configurator .svg-skin {
-  fill: #d8a877;
-}
-
-.uniform-configurator .svg-gold-trim,
-.uniform-configurator .svg-rank-pip,
-.uniform-configurator .svg-rank-bar,
-.uniform-configurator .svg-medal,
-.uniform-configurator .svg-cover-peak {
-  fill: var(--uc-gold);
-}
-
-.uniform-configurator .svg-belt,
-.uniform-configurator .svg-shoes {
-  fill: #111;
-}
-
-.uniform-configurator .rank-label-svg {
-  font: 700 10px/1 var(--font-display, var(--type-display-font-family));
-  fill: var(--uc-gold);
-}
-
-.uniform-configurator .cfg-preview__price {
-  padding: 1.5rem 1.9rem 1.8rem;
-  border-top: 1px solid rgb(19 33 50 / 10%);
-  background: rgb(255 255 255 / 38%);
-}
-
-.uniform-configurator .price-total {
-  margin: 0;
-  font: var(--type-display-2-font);
-  letter-spacing: var(--type-display-2-letter-spacing);
-  color: var(--uc-ink);
-  font-family: var(--uc-font-display);
-}
-
-.uniform-configurator .price-breakdown,
-.uniform-configurator .order-summary__items {
-  display: flex;
-  flex-direction: column;
-  gap: 0.55rem;
-  margin-top: var(--spacing-small);
-}
-
-.uniform-configurator .price-row,
-.uniform-configurator .summary-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--spacing-small);
-}
-
-.uniform-configurator .price-row {
-  font: var(--type-body-2-default-font);
-  color: var(--uc-ink-soft);
-}
-
-.uniform-configurator .price-row strong,
-.uniform-configurator .summary-item__price {
-  color: var(--uc-ink);
-  font-weight: 700;
-}
-
-.uniform-configurator .cfg-panel__meta {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 0.9rem;
-}
-
-.uniform-configurator .cfg-panel__kicker {
-  font: var(--type-details-overline-font);
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--uc-ink-muted);
-  font-family: var(--uc-font-tactical);
-}
-
-.uniform-configurator .cfg-panel__title {
-  margin: 0 0 0.8rem;
-  font: normal normal 700 clamp(3rem, 4vw, 4.2rem)/0.96 var(--uc-font-display);
-  letter-spacing: -0.04em;
-  color: var(--uc-ink);
-}
-
-.uniform-configurator .cfg-panel__sub,
-.uniform-configurator .cfg-inline-copy,
-.uniform-configurator .toggle-info__sub,
-.uniform-configurator .summary-item__detail,
-.uniform-configurator .field__hint {
-  margin: 0;
-  font: var(--type-body-2-default-font);
-  color: var(--uc-ink-soft);
-}
-
-.uniform-configurator .cfg-panel__sub {
-  max-width: 62rem;
-  margin-bottom: 2.4rem;
-}
-
-.uniform-configurator .cfg-inline-copy {
-  margin-bottom: var(--spacing-medium);
-}
-
-.uniform-configurator .cfg-panel {
-  display: none;
-}
-
-.uniform-configurator .cfg-panel:not([hidden]) {
-  display: block;
-}
-
-.uniform-configurator .cfg-panel.active {
-  display: block;
-  animation: panel-in 0.4s var(--uc-ease-out) both;
-}
-
-.uniform-configurator .cfg-form-area {
-  animation-delay: 0.25s;
-  display: block;
-  width: 100%;
-  max-width: none;
-  margin: 0;
-  padding: 0;
-  min-width: 0;
-  position: relative;
-  z-index: 1;
-}
-
-body.columns .uniform-configurator .cfg-form-area {
-  display: block;
-  width: 100%;
-  max-width: none;
-  margin: 0;
-  padding: 0;
   gap: 0;
-}
-
-.uniform-configurator .cfg-form-area > .cfg-panel {
-  width: 100%;
-  max-width: none;
-  min-width: 0;
-}
-
-.uniform-configurator .cfg-section {
-  margin-bottom: clamp(1.3rem, 1.8vw, 1.7rem);
-  padding: clamp(2rem, 2.4vw, 2.7rem);
-}
-
-.uniform-configurator .cfg-section::before {
-  content: '';
-  position: absolute;
-  inset: 0 0 auto;
-  height: 4px;
-  background: linear-gradient(90deg, var(--uc-scarlet) 0%, var(--uc-gold) 100%);
-  opacity: 0.92;
-}
-
-.uniform-configurator .cfg-section__title {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin: 0 0 1.2rem;
-  font: var(--type-headline-2-strong-font);
-  color: var(--uc-ink);
-  text-transform: none;
-  letter-spacing: 0;
-  font-family: var(--uc-font-condensed);
-}
-
-.uniform-configurator .cfg-section__icon {
-  display: inline-flex;
-  width: 3rem;
-  height: 3rem;
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgb(201 162 39 / 26%);
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at 30% 30%, rgb(255 255 255 / 85%), transparent 48%),
-    linear-gradient(135deg, rgb(193 18 31 / 12%), rgb(201 162 39 / 24%));
-  color: var(--uc-scarlet);
-  font: var(--type-details-overline-font);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  font-family: var(--uc-font-tactical);
-}
-
-.uniform-configurator .field-grid,
-.uniform-configurator .measure-grid,
-.uniform-configurator .rank-grid,
-.uniform-configurator .card-selector {
-  display: grid;
-  gap: 1.2rem;
-}
-
-.uniform-configurator .field-grid {
-  grid-template-columns: 1fr;
-}
-
-.uniform-configurator .field-grid--2,
-.uniform-configurator .card-selector--split {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.uniform-configurator .field-grid--3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: clamp(10px, 1.4vw, 18px) calc(-1 * var(--ucfg-gutter)) calc(-1 * var(--ucfg-hero-pad-end));
+  width: calc(100% + (2 * var(--ucfg-gutter)));
 }
 
-.uniform-configurator .field,
-.uniform-configurator .measure-field {
-  display: flex;
-  flex-direction: column;
-  gap: 0.65rem;
-}
-
-.uniform-configurator .field--full {
-  margin-bottom: var(--spacing-medium);
-}
-
-.uniform-configurator .field select,
-.uniform-configurator .field input,
-.uniform-configurator .field textarea,
-.uniform-configurator .measure-field input {
-  width: 100%;
-  border: 1.5px solid var(--uc-border);
-  border-radius: 1.6rem;
-  background:
-    linear-gradient(175deg, rgb(255 254 250 / 98%) 0%, rgb(246 240 232 / 98%) 100%);
-  color: var(--uc-ink);
-  font: var(--type-body-2-default-font);
-  outline: 0;
-  box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 90%),
-    0 1px 3px rgb(19 33 50 / 3%);
-  transition:
-    background var(--uc-transition) var(--uc-ease-out),
-    border-color var(--uc-transition),
-    box-shadow var(--uc-transition) var(--uc-ease-out);
-}
-
-.uniform-configurator .field select,
-.uniform-configurator .field input,
-.uniform-configurator .measure-field input {
-  min-height: 5rem;
-  padding: 1.15rem 1.4rem;
-}
-
-.uniform-configurator .field select {
-  padding-right: 3.8rem;
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%236f8091' stroke-width='1.75'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 1.3rem center;
-}
-
-.uniform-configurator .field textarea {
-  min-height: 12rem;
-  padding: 1.2rem 1.4rem;
-  resize: vertical;
-}
-
-.uniform-configurator .field select:hover,
-.uniform-configurator .field input:hover,
-.uniform-configurator .field textarea:hover,
-.uniform-configurator .measure-field input:hover {
-  border-color: rgb(193 18 31 / 22%);
-  background: linear-gradient(180deg, rgb(255 255 255 / 98%), rgb(247 240 232 / 96%));
-}
-
-.uniform-configurator .field select:focus,
-.uniform-configurator .field input:focus,
-.uniform-configurator .field textarea:focus,
-.uniform-configurator .measure-field input:focus {
-  border-color: rgb(193 18 31 / 38%);
-  background: #fff;
-  box-shadow: var(--uc-shadow-focus);
-}
-
-.uniform-configurator .field__note {
-  border: 1px solid rgb(201 162 39 / 24%);
-  border-radius: 1.2rem;
-  background: rgb(201 162 39 / 9%);
-  padding: 0.55rem 0.9rem;
-  font: var(--type-details-caption-2-font);
-  color: #8c6f14;
-}
-
-.uniform-configurator .field__error {
-  margin: 0;
-  font: var(--type-details-caption-2-font);
-  color: #b42318;
-}
-
-.uniform-configurator .field--invalid .field__label,
-.uniform-configurator .field--invalid .measure-field__label {
-  color: #8a2618;
-}
-
-.uniform-configurator .field--invalid select,
-.uniform-configurator .field--invalid input,
-.uniform-configurator .field--invalid textarea,
-.uniform-configurator .field--invalid .measure-field__input-wrap input {
-  border-color: rgb(180 35 24 / 28%);
-  background: linear-gradient(180deg, rgb(255 249 248 / 96%), rgb(255 243 240 / 94%));
-}
-
-.uniform-configurator .measure-grid {
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-}
-
-.uniform-configurator .measure-field__input-wrap {
-  position: relative;
-}
-
-.uniform-configurator .measure-field__unit {
-  position: absolute;
-  top: 50%;
-  right: 1.2rem;
-  transform: translateY(-50%);
-  font: var(--type-details-caption-2-font);
-  color: var(--uc-ink-muted);
-}
-
-.uniform-configurator .rank-grid {
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-}
-
-.uniform-configurator .card-selector {
-  grid-template-columns: repeat(auto-fit, minmax(126px, 1fr));
-}
-
-.uniform-configurator .card-selector--medals {
-  grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
-}
-
-.uniform-configurator .card-opt,
-.uniform-configurator .rank-card {
-  position: relative;
-  display: block;
-  padding: 1.4rem 1rem;
-  border: 1.5px solid var(--uc-border);
-  border-radius: 2rem;
-  background:
-    linear-gradient(175deg, rgb(255 254 250 / 98%) 0%, rgb(246 240 230 / 98%) 100%);
-  cursor: pointer;
-  text-align: center;
-  box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 88%),
-    0 2px 8px rgb(19 33 50 / 4%);
-  transition:
-    transform var(--uc-transition) var(--uc-ease-spring),
-    background var(--uc-transition) var(--uc-ease-out),
-    border-color var(--uc-transition),
-    box-shadow var(--uc-transition) var(--uc-ease-out);
-}
-
-.uniform-configurator .card-opt:hover,
-.uniform-configurator .rank-card:hover {
-  transform: translateY(-4px);
-  border-color: rgb(193 18 31 / 22%);
-  box-shadow:
-    var(--uc-shadow-card-hover),
-    inset 0 1px 0 rgb(255 255 255 / 88%);
-}
-
-.uniform-configurator .card-opt.selected,
-.uniform-configurator .rank-card.selected {
-  border-color: rgb(193 18 31 / 44%);
-  background:
-    linear-gradient(175deg, rgb(255 252 250 / 99%) 0%, rgb(255 242 243 / 96%) 100%);
-  box-shadow:
-    0 0 0 1px rgb(193 18 31 / 16%),
-    var(--uc-shadow-card);
-}
-
-.uniform-configurator .rank-card.selected {
-  border-color: rgb(201 162 39 / 44%);
-  background:
-    linear-gradient(175deg, rgb(255 253 248 / 99%) 0%, rgb(252 245 228 / 96%) 100%);
-  box-shadow:
-    0 0 0 1px rgb(201 162 39 / 20%),
-    var(--uc-shadow-card);
-}
-
-.uniform-configurator .card-opt input,
-.uniform-configurator .rank-card input {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.uniform-configurator .card-opt__icon,
-.uniform-configurator .rank-card__insignia {
-  display: flex;
-  min-height: 3.2rem;
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-hero__chip {
   align-items: center;
-  justify-content: center;
-  gap: 0.3rem;
-  margin-bottom: 0.9rem;
-}
-
-.uniform-configurator .card-opt__icon {
-  font-size: 2rem;
-}
-
-.uniform-configurator .card-opt__icon--metric {
-  min-width: 4rem;
-  min-height: 3.2rem;
-  margin-inline: auto;
-  border: 1px solid rgb(201 162 39 / 24%);
-  border-radius: 1.6rem;
-  background:
-    radial-gradient(circle at top left, rgb(255 255 255 / 82%), transparent 52%),
-    linear-gradient(135deg, rgb(19 33 50 / 4%), rgb(201 162 39 / 20%));
-  font: 700 1.35rem/1 var(--uc-font-display);
-  letter-spacing: 0.08em;
-  color: var(--uc-gold);
-}
-
-.uniform-configurator .pip {
-  width: 0.9rem;
-  height: 0.9rem;
-  border-radius: 50%;
-  background: var(--uc-gold);
-}
-
-.uniform-configurator .bar {
-  width: 2rem;
-  height: 0.4rem;
-  border-radius: 999px;
-  background: var(--uc-gold);
-}
-
-.uniform-configurator .star-insignia {
-  color: var(--uc-gold);
-  font-size: 1.8rem;
-  letter-spacing: 0.05em;
-}
-
-.uniform-configurator .card-opt__name,
-.uniform-configurator .rank-card__title,
-.uniform-configurator .toggle-info__title,
-.uniform-configurator .summary-item__name,
-.uniform-configurator .order-summary__header h3 {
-  margin: 0;
-  font: var(--type-headline-2-strong-font);
-  color: var(--uc-ink);
-  font-family: var(--uc-font-condensed);
-}
-
-.uniform-configurator .card-opt__price,
-.uniform-configurator .toggle-info__price {
-  margin-top: 0.35rem;
-  font: var(--type-details-caption-1-font);
-  color: var(--uc-scarlet);
-}
-
-.uniform-configurator .rank-card__abbr {
-  margin-top: 0.2rem;
-  font: var(--type-details-caption-2-font);
-  color: var(--uc-ink-muted);
-}
-
-.uniform-configurator .toggle-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 1.2rem;
-  margin-top: 0.9rem;
-  padding: 1.25rem 1.3rem;
-  border: 1px solid var(--uc-border);
-  border-radius: 2.2rem;
-  background:
-    linear-gradient(180deg, rgb(255 253 248 / 94%), rgb(246 239 230 / 96%));
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 84%);
-}
-
-.uniform-configurator .toggle-row--locked {
-  align-items: start;
-}
-
-.uniform-configurator .toggle-switch {
-  position: relative;
-  display: inline-block;
-  flex-shrink: 0;
-  width: 4.4rem;
-  height: 2.4rem;
-}
-
-.uniform-configurator .toggle-switch input {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-}
-
-.uniform-configurator .toggle-track {
-  position: absolute;
-  inset: 0;
-  border-radius: 999px;
-  background: rgb(19 33 50 / 15%);
-  cursor: pointer;
-  box-shadow: inset 0 1px 2px rgb(19 33 50 / 10%);
-  transition: background var(--transition-fast);
-}
-
-.uniform-configurator .toggle-track::after {
-  content: '';
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 1.8rem;
-  height: 1.8rem;
-  border-radius: 50%;
-  background: linear-gradient(180deg, #fff, #f4efe7);
-  box-shadow: 0 3px 10px rgb(0 0 0 / 18%);
-  transition: transform var(--transition-fast) var(--ease-spring);
-}
-
-.uniform-configurator .toggle-switch input:checked + .toggle-track {
-  background: linear-gradient(135deg, var(--uc-scarlet), #df3b45);
-}
-
-.uniform-configurator .toggle-switch input:checked + .toggle-track::after {
-  transform: translateX(2rem);
-}
-
-.uniform-configurator .shipping-section {
-  display: none;
-  margin-top: var(--spacing-small);
-  padding-top: var(--spacing-small);
-  border-top: 1px solid rgb(19 33 50 / 10%);
-}
-
-.uniform-configurator .shipping-section.visible {
-  display: block;
-}
-
-.uniform-configurator .cfg-actions {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--spacing-small);
-  padding-top: var(--spacing-medium);
-}
-
-.uniform-configurator .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--spacing-xsmall);
-  min-height: 5rem;
-  padding: 1.15rem 2.2rem;
+  background: none;
   border: 0;
-  border-radius: 999px;
-  font: var(--type-button-2-font);
-  letter-spacing: var(--type-button-2-letter-spacing);
-  text-transform: uppercase;
-  cursor: pointer;
-  font-family: var(--uc-font-condensed);
-  transition:
-    transform var(--uc-transition) var(--uc-ease-spring),
-    box-shadow var(--uc-transition) var(--uc-ease-out),
-    background var(--uc-transition) var(--uc-ease-out),
-    color var(--uc-transition),
-    border-color var(--uc-transition);
+  border-left: 1px solid var(--ucfg-rule);
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--ucfg-olive);
+  display: flex;
+  font-size: 10.5px;
+  gap: 10px;
+  justify-content: flex-start;
+  letter-spacing: 0.16em;
+  min-height: 52px;
+  padding: 14px clamp(14px, 1.4vw, 22px);
+  width: auto;
 }
 
-.uniform-configurator .btn:disabled {
-  cursor: not-allowed;
+/* Drawn service marker: a small olive diamond opening each specification. */
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-hero__chip::before {
+  background: var(--ucfg-olive);
+  content: '';
+  flex-shrink: 0;
+  height: 6px;
+  rotate: 45deg;
+  width: 6px;
+}
+
+/* Outer cells hold the masthead gutter so the strip aligns with the title. */
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-hero__chip:first-child {
+  border-left: 0;
+  padding-left: var(--ucfg-gutter);
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-hero__chip:last-child {
+  padding-right: var(--ucfg-gutter);
+}
+
+/* ---------------------------------------------------------------- *
+ * 6. Step rail — an ink band across the sheet
+ * ---------------------------------------------------------------- */
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-steps-nav {
+  animation: ucfg-reveal 560ms 80ms var(--ucfg-ease) backwards;
+  background: var(--ucfg-ink);
+  border-bottom: 1px solid var(--ucfg-ink);
+  color: var(--ucfg-paper);
+  margin: 0;
+  max-width: none;
+  transition: opacity var(--ucfg-t-ui) ease-out;
+  width: 100%;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-steps-nav--muted {
   opacity: 0.7;
 }
 
-.uniform-configurator .btn-primary {
-  color: #fff;
-  background: linear-gradient(135deg, var(--uc-scarlet) 0%, #dd3943 100%);
-  box-shadow: var(--uc-shadow-button);
-}
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .steps-track {
+  --uc-progress: 16.666%;
 
-.uniform-configurator .btn-primary:hover:not(:disabled),
-.uniform-configurator .btn-gold:hover:not(:disabled),
-.uniform-configurator .btn-secondary:hover:not(:disabled) {
-  transform: translateY(-3px);
-}
-
-.uniform-configurator .btn-primary:hover:not(:disabled) {
-  box-shadow: var(--uc-shadow-button-hover);
-}
-
-.uniform-configurator .btn-secondary {
-  color: var(--uc-ink);
-  background: linear-gradient(180deg, rgb(255 254 252 / 98%) 0%, rgb(244 238 229 / 96%) 100%);
-  border: 1px solid var(--uc-border);
-  box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 88%),
-    0 2px 8px rgb(19 33 50 / 4%);
-}
-
-.uniform-configurator .btn-secondary:hover:not(:disabled) {
-  border-color: rgb(19 33 50 / 18%);
-  box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 88%),
-    0 6px 20px rgb(19 33 50 / 10%);
-}
-
-.uniform-configurator .btn-gold {
-  color: var(--uc-ink);
-  background: linear-gradient(135deg, var(--uc-gold) 0%, var(--uc-gold-light) 100%);
-  box-shadow: var(--uc-shadow-gold);
-}
-
-.uniform-configurator .btn-gold:hover:not(:disabled) {
-  box-shadow:
-    0 20px 44px rgb(201 162 39 / 32%),
-    0 8px 20px rgb(201 162 39 / 20%);
-}
-
-.uniform-configurator .order-summary {
-  margin-bottom: var(--spacing-medium);
-}
-
-.uniform-configurator .order-summary__header {
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  padding: 0 var(--ucfg-gutter);
   position: relative;
-  padding: 2rem 2.4rem 1.4rem;
-  border-bottom: 1px solid rgb(19 33 50 / 10%);
-  background: rgb(255 255 255 / 42%);
+  scrollbar-width: none;
 }
 
-.uniform-configurator .order-summary__header::before {
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .steps-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* Progress is a measured rule along the foot of the band, never a glow. */
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .steps-track::before {
+  background: var(--ucfg-rule-light);
+  border-radius: 0;
+  box-shadow: none;
   content: '';
+  height: 2px;
+  inset: auto 0 0;
   position: absolute;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .steps-track::after {
+  background: var(--ucfg-scarlet);
+  border-radius: 0;
+  box-shadow: none;
+  content: '';
+  height: 2px;
+  inset: auto auto 0 0;
+  position: absolute;
+  transition: width var(--ucfg-t-ui) ease-out;
+  width: var(--uc-progress);
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .step-btn {
+  align-items: center;
+  background: none;
+  border: 0;
+  border-left: 1px solid var(--ucfg-rule-light);
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--ucfg-paper-soft);
+  cursor: pointer;
+  display: flex;
+  flex: 1 1 0;
+  gap: 10px;
+  justify-content: center;
+  min-height: 62px;
+  min-width: 0;
+  padding: 12px clamp(10px, 1.1vw, 16px);
+  position: relative;
+  text-align: left;
+  transition:
+    background var(--ucfg-t-hover) ease-out,
+    color var(--ucfg-t-hover) ease-out;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .step-btn:first-child {
+  border-left: 0;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .step-btn:hover {
+  background: rgb(238 233 221 / 8%);
+  color: var(--ucfg-paper);
+  transform: none;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .step-btn:focus-visible {
+  outline: 2px solid var(--ucfg-paper);
+  outline-offset: -4px;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .step-btn__num {
+  align-items: center;
+  background: none;
+  border: 1px solid var(--ucfg-rule-light);
+  border-radius: 0;
+  box-shadow: none;
+  color: inherit;
+  display: inline-flex;
+  flex-shrink: 0;
+  font-size: 11px;
+  height: 28px;
+  justify-content: center;
+  letter-spacing: 0.06em;
+  transition:
+    background var(--ucfg-t-hover) ease-out,
+    border-color var(--ucfg-t-hover) ease-out,
+    color var(--ucfg-t-hover) ease-out;
+  width: 28px;
+}
+
+/*
+ * On narrow screens the rail cannot carry six names, so it carries one: the
+ * current step is named in full and the rest are numbered. Inactive names are
+ * clipped, never `display: none`, so every button keeps a real accessible name
+ * instead of a bare digit.
+ */
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .step-btn__label {
+  clip-path: inset(50%);
+  color: inherit;
+  font-size: 10.5px;
+  height: 1px;
+  letter-spacing: 0.14em;
+  min-width: 0;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .step-btn.active .step-btn__label {
+  clip-path: none;
+  height: auto;
+  overflow: hidden;
+  position: static;
+  text-overflow: ellipsis;
+  width: auto;
+}
+
+/* Completed: outlined stamp in full paper — shape and weight, no colour alone. */
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .step-btn.completed:not(.active) {
+  background: none;
+  box-shadow: none;
+  color: var(--ucfg-paper);
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .step-btn.completed:not(.active) .step-btn__num {
+  background: none;
+  border-color: var(--ucfg-paper-soft);
+  color: var(--ucfg-paper);
+}
+
+/* Current: scarlet head rule, scarlet stamp, full paper label. */
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .step-btn.active {
+  background: none;
+  box-shadow: none;
+  color: var(--ucfg-paper);
+  flex-grow: 2.6;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .step-btn.active::before {
+  background: var(--ucfg-scarlet);
+  content: '';
+  height: 3px;
   inset: 0 0 auto;
-  height: 4px;
-  background: linear-gradient(90deg, var(--uc-scarlet), var(--uc-gold));
+  position: absolute;
 }
 
-.uniform-configurator .order-summary__header p {
-  margin: 0.45rem 0 0;
-  font: var(--type-body-2-default-font);
-  color: var(--uc-ink-soft);
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .step-btn.active .step-btn__num {
+  background: var(--ucfg-scarlet);
+  border-color: var(--ucfg-scarlet);
+  color: #fff;
 }
 
-.uniform-configurator .order-summary__items {
-  padding: 0 2.4rem 1rem;
+/* ---------------------------------------------------------------- *
+ * 7. Working area
+ * ---------------------------------------------------------------- */
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-layout {
+  align-items: flex-start;
+  gap: var(--uc-layout-gap-mobile);
+  padding: clamp(24px, 3.2vw, 44px) var(--ucfg-gutter) clamp(40px, 5vw, 72px);
 }
 
-.uniform-configurator .summary-item {
-  padding: 1.1rem 0;
-  border-bottom: 1px solid rgb(19 33 50 / 10%);
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-layout > * {
+  min-width: 0;
 }
 
-.uniform-configurator .summary-item:last-child {
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-form-area {
+  animation: ucfg-reveal 560ms 160ms var(--ucfg-ease) backwards;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  position: relative;
+}
+
+/* ---------------------------------------------------------------- *
+ * 8. Preview column — a specification plate
+ * ---------------------------------------------------------------- */
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-preview {
+  animation: ucfg-reveal 560ms 120ms var(--ucfg-ease) backwards;
+  background: var(--ucfg-paper);
+  border: 1px solid var(--ucfg-ink);
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+  transition: none;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-preview::before,
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-preview::after {
+  content: none;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-preview__header {
+  align-items: center;
+  background: var(--ucfg-paper-deep);
+  border-bottom: 1px solid var(--ucfg-ink);
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  padding: 13px clamp(14px, 1.4vw, 20px);
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-preview__header h3 {
+  color: var(--ucfg-ink);
+  font-family: var(--ucfg-data);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-preview__figure {
+  align-items: center;
+  background:
+    linear-gradient(rgb(16 19 15 / 5%) 1px, transparent 1px) 0 0 / 24px 24px,
+    linear-gradient(90deg, rgb(16 19 15 / 5%) 1px, transparent 1px) 0 0 / 24px 24px,
+    var(--ucfg-field);
+  display: flex;
+  justify-content: center;
+  padding: clamp(20px, 2.2vw, 28px) 18px;
+  position: relative;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-preview__figure::before,
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-preview__figure::after {
+  content: none;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .uniform-svg {
+  filter: none;
+  height: auto;
+  max-width: 210px;
+  position: relative;
+  width: 100%;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .uniform-svg rect {
+  rx: 0;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator :is(
+  .svg-coat,
+  .svg-trouser,
+  .svg-cover,
+  .svg-belt,
+  .svg-shoes
+) {
+  fill: var(--ucfg-ink);
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .svg-shirt {
+  fill: var(--ucfg-field);
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .svg-skin {
+  fill: var(--ucfg-paper-deep);
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator :is(
+  .svg-gold-trim,
+  .svg-rank-pip,
+  .svg-rank-bar,
+  .svg-medal,
+  .svg-cover-peak
+) {
+  fill: var(--ucfg-olive);
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .rank-label-svg {
+  fill: var(--ucfg-olive);
+  font-family: var(--ucfg-data);
+  font-size: 11px;
+  font-variant-emoji: text;
+  font-weight: 700;
+}
+
+/*
+ * The figure carries literal presentation attributes from the block's inline
+ * SVG. CSS outranks them, so the plate is retoned here rather than in the JS.
+ */
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .uniform-svg [fill='#c9a84c'] {
+  fill: var(--ucfg-olive);
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .uniform-svg [fill='#0e1410'] {
+  fill: var(--ucfg-ink);
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .uniform-svg :is([fill='#d4a574'], [fill='#8b7355']) {
+  fill: var(--ucfg-paper-deep);
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .uniform-svg [stroke='#c9a84c'] {
+  stroke: var(--ucfg-olive);
+}
+
+/* Blood stripes are the one scarlet element on the plate. */
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .uniform-svg line[y2='388'] {
+  stroke: var(--ucfg-scarlet);
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-preview__price {
+  background: var(--ucfg-paper-deep);
+  border-top: 1px solid var(--ucfg-ink);
+  padding: 16px clamp(14px, 1.4vw, 20px) 20px;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .price-label {
+  color: var(--ucfg-olive);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .price-total {
+  color: var(--ucfg-ink);
+  font-size: clamp(38px, 3.6vw, 48px);
+  letter-spacing: -0.035em;
+  line-height: 0.9;
+  margin-top: 6px;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .price-breakdown {
+  display: grid;
+  gap: 0;
+  margin-top: 14px;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .price-row {
+  align-items: baseline;
+  border-top: 1px solid var(--ucfg-rule);
+  color: var(--ucfg-ink-soft);
+  display: flex;
+  font-family: var(--ucfg-body);
+  font-size: 13.5px;
+  gap: 12px;
+  justify-content: space-between;
+  line-height: 1.4;
+  padding: 7px 0;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .price-row strong {
+  color: var(--ucfg-ink);
+  flex-shrink: 0;
+  font-family: var(--ucfg-data);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+/* ---------------------------------------------------------------- *
+ * 9. Panels
+ * ---------------------------------------------------------------- */
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-panel {
+  display: none;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-panel:not([hidden]) {
+  animation: ucfg-panel-in var(--ucfg-t-ui) var(--ucfg-ease) backwards;
+  display: block;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-panel__meta {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-panel__step {
+  align-items: center;
+  background: var(--ucfg-ink);
+  border: 1px solid var(--ucfg-ink);
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--ucfg-paper);
+  display: inline-flex;
+  font-size: 10px;
+  justify-content: center;
+  letter-spacing: 0.18em;
+  min-height: 24px;
+  padding: 4px 10px;
+  width: auto;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-panel__kicker {
+  color: var(--ucfg-olive);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-panel__title {
+  color: var(--ucfg-ink);
+  font-size: clamp(34px, 4vw, 58px);
+  letter-spacing: -0.035em;
+  line-height: 0.86;
+  margin-bottom: 12px;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-panel__sub {
+  border-bottom: 1px solid var(--ucfg-rule);
+  font-size: 16px;
+  max-width: 66ch;
+  padding-bottom: clamp(18px, 2vw, 26px);
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-inline-copy {
+  margin-bottom: 18px;
+  max-width: 66ch;
+}
+
+/* ---------------------------------------------------------------- *
+ * 10. Sections — inventory sheets
+ * ---------------------------------------------------------------- */
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-section {
+  background: var(--ucfg-paper);
+  border: 1px solid var(--ucfg-rule-strong);
+  border-radius: 0;
+  box-shadow: none;
+  margin-top: clamp(28px, 3.2vw, 48px);
+  overflow: visible;
+  padding: var(--ucfg-sheet-pad);
+  position: relative;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-section::before,
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-section::after {
+  content: none;
+}
+
+/*
+ * Each section is an inventory sheet, so it opens on a ruled header band in the
+ * second paper tone. Negative margins carry the band out to the section's
+ * padding edge, which is why .cfg-section owns a single padding token.
+ */
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-section__title {
+  align-items: center;
+  background: var(--ucfg-paper-deep);
+  border-bottom: 1px solid var(--ucfg-ink);
+  color: var(--ucfg-ink);
+  display: flex;
+  font-size: clamp(20px, 1.8vw, 25px);
+  gap: 12px;
+  letter-spacing: -0.015em;
+  line-height: 1;
+  margin: calc(-1 * var(--ucfg-sheet-pad)) calc(-1 * var(--ucfg-sheet-pad)) clamp(18px, 2vw, 24px);
+  padding: 14px var(--ucfg-sheet-pad);
+}
+
+/* Square data stamp: the section's two-letter file mark. */
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-section__icon {
+  align-items: center;
+  background: var(--ucfg-paper);
+  border: 1px solid var(--ucfg-ink);
+  border-radius: 0;
+  color: var(--ucfg-ink);
+  display: inline-flex;
+  flex-shrink: 0;
+  font-size: 11px;
+  height: 30px;
+  justify-content: center;
+  letter-spacing: 0.08em;
+  width: 30px;
+}
+
+/* ---------------------------------------------------------------- *
+ * 11. Fields
+ * ---------------------------------------------------------------- */
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator :is(.field-grid, .measure-grid) {
+  display: grid;
+  gap: clamp(14px, 1.4vw, 20px);
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .field-grid {
+  grid-template-columns: 1fr;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .field-grid--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .field-grid--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .measure-grid {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator :is(.field, .measure-field) {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .field--full {
+  border-top: 1px solid var(--ucfg-rule);
+  margin-top: clamp(28px, 3.2vw, 48px);
+  padding-top: clamp(20px, 2.2vw, 28px);
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator :is(.field__label, .measure-field__label) {
+  color: var(--ucfg-ink);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  line-height: 1.3;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .field__hint {
+  font-size: 13.5px;
+  margin-top: -2px;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator :is(
+  .field select,
+  .field input,
+  .field textarea,
+  .measure-field input
+) {
+  backdrop-filter: none;
+  background: var(--ucfg-field);
+  border: 1px solid var(--ucfg-rule-strong);
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--ucfg-ink);
+  font-family: var(--ucfg-body);
+  font-size: 16px;
+  line-height: 1.4;
+  outline: 0;
+  transition:
+    background-color var(--ucfg-t-hover) ease-out,
+    border-color var(--ucfg-t-hover) ease-out;
+  width: 100%;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator :is(
+  .field select,
+  .field input,
+  .measure-field input
+) {
+  min-height: 46px;
+  padding: 10px 14px;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .field select {
+  appearance: none;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2310130f' stroke-width='2'%3E%3Cpath d='M5 8l7 7 7-7'/%3E%3C/svg%3E")
+      no-repeat right 14px center,
+    var(--ucfg-field);
+  padding-right: 42px;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .field textarea {
+  min-height: 128px;
+  padding: 12px 14px;
+  resize: vertical;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator :is(
+  .field select,
+  .field input,
+  .field textarea,
+  .measure-field input
+):hover {
+  background-color: var(--ucfg-field-live);
+  border-color: var(--ucfg-ink);
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator :is(
+  .field select,
+  .field input,
+  .field textarea,
+  .measure-field input
+):focus-visible {
+  background-color: var(--ucfg-field-live);
+  border-color: var(--ucfg-ink);
+  box-shadow: none;
+  outline: 2px solid var(--ucfg-scarlet);
+  outline-offset: 2px;
+}
+
+/* Spec note beside a control: an olive rule and a plain sentence. */
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .field__note {
+  background: none;
+  border: 0;
+  border-left: 2px solid var(--ucfg-olive);
+  border-radius: 0;
+  color: var(--ucfg-ink-soft);
+  font-family: var(--ucfg-body);
+  font-size: 13px;
+  line-height: 1.45;
+  padding: 2px 0 2px 10px;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .field__error {
+  border-left: 2px solid var(--ucfg-scarlet);
+  color: var(--ucfg-scarlet);
+  font-family: var(--ucfg-body);
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 0;
+  padding: 2px 0 2px 10px;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .field__error[hidden] {
+  display: none;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .field--invalid :is(.field__label, .measure-field__label) {
+  color: var(--ucfg-scarlet);
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .field--invalid :is(select, input, textarea) {
+  background-color: var(--ucfg-field-live);
+  border-color: var(--ucfg-scarlet);
+  border-width: 2px;
+}
+
+/* Hover and focus must not quietly retire the scarlet compliance border. */
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .field--invalid :is(select, input, textarea):hover,
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .field--invalid :is(select, input, textarea):focus-visible {
+  border-color: var(--ucfg-scarlet);
+}
+
+/*
+ * The rank step marks its whole grid, since the control is a set of cards and
+ * not a single input. The outline is always read with the message beneath it.
+ */
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .rank-grid.field--invalid {
+  outline: 2px solid var(--ucfg-scarlet);
+  outline-offset: 8px;
+}
+
+/* Measurements read as a specification table: value, then unit column. */
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .measure-field__input-wrap {
+  position: relative;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .measure-field__input-wrap input {
+  appearance: textfield;
+  padding-right: 60px;
+}
+
+/*
+ * The unit column occupies the right edge of the control, so the native number
+ * spinner is removed rather than left to sit underneath it.
+ */
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .measure-field__input-wrap input::-webkit-outer-spin-button,
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .measure-field__input-wrap input::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .measure-field__unit {
+  align-items: center;
+  border-left: 1px solid var(--ucfg-rule);
+  bottom: 1px;
+  color: var(--ucfg-olive);
+  display: flex;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  padding-left: 10px;
+  pointer-events: none;
+  position: absolute;
+  right: 12px;
+  top: 1px;
+}
+
+/* ---------------------------------------------------------------- *
+ * 12. Choice cards
+ * ---------------------------------------------------------------- */
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator :is(.rank-grid, .card-selector) {
+  display: grid;
+  gap: 10px;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .rank-grid {
+  grid-template-columns: repeat(auto-fit, minmax(148px, 1fr));
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .card-selector {
+  grid-template-columns: repeat(auto-fit, minmax(148px, 1fr));
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .card-selector--split {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .card-selector--medals {
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator :is(.card-opt, .rank-card) {
+  background: var(--ucfg-paper);
+  border: 1px solid var(--ucfg-rule);
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--ucfg-ink);
+  cursor: pointer;
+  display: block;
+  min-height: 124px;
+  padding: 14px 14px 44px;
+  position: relative;
+  text-align: left;
+  transition:
+    background var(--ucfg-t-hover) ease-out,
+    border-color var(--ucfg-t-hover) ease-out,
+    color var(--ucfg-t-hover) ease-out;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator :is(.card-opt, .rank-card):hover {
+  background: var(--ucfg-ink-wash);
+  border-color: var(--ucfg-ink);
+  box-shadow: none;
+  transform: none;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator :is(.card-opt, .rank-card):has(input:focus-visible) {
+  outline: 2px solid var(--ucfg-scarlet);
+  outline-offset: 2px;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator :is(.card-opt, .rank-card) input {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator :is(.card-opt__icon, .rank-card__insignia) {
+  align-items: center;
+  display: flex;
+  gap: 5px;
+  justify-content: flex-start;
+  margin-bottom: 12px;
+  min-height: 34px;
+}
+
+/* Square data stamp for buckle monograms and medal counts. */
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .card-opt__icon--metric {
+  align-items: center;
+  background: none;
+  border: 1px solid var(--ucfg-rule-strong);
+  border-radius: 0;
+  color: var(--ucfg-ink);
+  display: inline-flex;
+  font-family: var(--ucfg-data);
+  font-size: 13px;
+  font-weight: 700;
+  height: 34px;
+  justify-content: center;
+  letter-spacing: 0.08em;
+  margin-inline: 0;
+  min-width: 34px;
+}
+
+/* Drawn insignia marks: diamond pips, ruled bars. */
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .pip {
+  background: var(--ucfg-olive);
+  border-radius: 0;
+  height: 9px;
+  rotate: 45deg;
+  width: 9px;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .bar {
+  background: var(--ucfg-olive);
+  border-radius: 0;
+  height: 3px;
+  width: 20px;
+}
+
+/*
+ * A general officer's device is a star, so the block emits one per grade. It is
+ * pinned to text presentation and inked in olive so it can never resolve to a
+ * colour emoji glyph on any platform.
+ */
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .star-insignia {
+  color: var(--ucfg-olive);
+  font-family: var(--ucfg-data);
+  font-size: 15px;
+  font-variant-emoji: text;
+  letter-spacing: 0.12em;
+  line-height: 1;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator :is(.card-opt__name, .rank-card__title) {
+  color: inherit;
+  display: block;
+  font-size: 18px;
+  letter-spacing: -0.015em;
+  line-height: 1.05;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator :is(.card-opt__price, .rank-card__abbr) {
+  color: var(--ucfg-olive);
+  display: block;
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  margin-top: 6px;
+}
+
+/*
+ * Every card closes on a ruled state footer, so the space is spoken for whether
+ * the card is chosen or not and the grid keeps one baseline. The footer states
+ * the state in words; fill and the scarlet head rule confirm it.
+ */
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator :is(.card-opt, .rank-card)::after {
+  align-items: center;
+  border-top: 1px solid var(--ucfg-rule);
+  bottom: 0;
+  color: var(--ucfg-ink-soft);
+  content: 'Select';
+  display: flex;
+  font-family: var(--ucfg-data);
+  font-size: 10px;
+  font-weight: 700;
+  height: 32px;
+  inset-inline: 0;
+  letter-spacing: 0.18em;
+  padding: 0 14px;
+  position: absolute;
+  text-transform: uppercase;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator :is(.card-opt, .rank-card):hover::after {
+  border-top-color: var(--ucfg-ink);
+  color: var(--ucfg-ink);
+}
+
+/* Selected: ink fill, paper text, scarlet head rule, and a written label. */
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator :is(.card-opt, .rank-card).selected {
+  background: var(--ucfg-ink);
+  border-color: var(--ucfg-ink);
+  box-shadow: none;
+  color: var(--ucfg-paper);
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator :is(.card-opt, .rank-card).selected::before {
+  background: var(--ucfg-scarlet);
+  content: '';
+  height: 3px;
+  inset: 0 0 auto;
+  position: absolute;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator :is(.card-opt, .rank-card).selected::after,
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator :is(.card-opt, .rank-card).selected:hover::after {
+  border-top-color: var(--ucfg-paper-quiet);
+  color: var(--ucfg-paper);
+  content: 'Selected';
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator :is(.card-opt, .rank-card).selected :is(.card-opt__price, .rank-card__abbr) {
+  color: var(--ucfg-paper-soft);
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator :is(.card-opt, .rank-card).selected .card-opt__icon--metric {
+  border-color: var(--ucfg-paper-quiet);
+  color: var(--ucfg-paper);
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator :is(.card-opt, .rank-card).selected :is(.pip, .bar) {
+  background: var(--ucfg-paper);
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .rank-card.selected .star-insignia {
+  color: var(--ucfg-paper);
+}
+
+/* ---------------------------------------------------------------- *
+ * 13. Toggle rows
+ * ---------------------------------------------------------------- */
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .toggle-row {
+  align-items: center;
+  background: var(--ucfg-field);
+  border: 1px solid var(--ucfg-rule);
+  border-radius: 0;
+  box-shadow: none;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  margin-top: 12px;
+  padding: 14px 16px;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .toggle-row--locked {
+  align-items: start;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .toggle-info__title {
+  color: var(--ucfg-ink);
+  font-size: 19px;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .toggle-info__sub {
+  font-size: 14px;
+  margin-top: 5px;
+  max-width: 62ch;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .toggle-info__price {
+  color: var(--ucfg-ink);
+  font-family: var(--ucfg-data);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  margin-top: 8px;
+  text-transform: uppercase;
+}
+
+/* Square two-state switch: position carries the state, fill confirms it. */
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .toggle-switch {
+  align-items: center;
+  display: inline-flex;
+  flex-shrink: 0;
+  height: 44px;
+  position: relative;
+  width: 48px;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .toggle-switch input {
+  cursor: pointer;
+  height: 100%;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .toggle-track {
+  background: var(--ucfg-paper);
+  border: 1px solid var(--ucfg-rule-strong);
+  border-radius: 0;
+  box-shadow: none;
+  cursor: pointer;
+  inset: 9px 0;
+  position: absolute;
+  transition:
+    background var(--ucfg-t-hover) ease-out,
+    border-color var(--ucfg-t-hover) ease-out;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .toggle-track::after {
+  background: var(--ucfg-ink-quiet);
+  border-radius: 0;
+  box-shadow: none;
+  content: '';
+  height: 18px;
+  left: 3px;
+  position: absolute;
+  top: 3px;
+  transition: transform var(--ucfg-t-hover) ease-out;
+  width: 18px;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .toggle-switch input:checked + .toggle-track {
+  background: var(--ucfg-ink);
+  border-color: var(--ucfg-ink);
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .toggle-switch input:checked + .toggle-track::after {
+  background: var(--ucfg-paper);
+  transform: translateX(22px);
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .toggle-switch input:focus-visible + .toggle-track {
+  outline: 2px solid var(--ucfg-scarlet);
+  outline-offset: 2px;
+}
+
+/* Locked rows carry an olive service stamp instead of a control. */
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-static-chip {
+  align-items: center;
+  background: none;
+  border: 1px solid var(--ucfg-olive);
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--ucfg-olive);
+  display: inline-flex;
+  font-size: 10px;
+  justify-content: center;
+  letter-spacing: 0.18em;
+  min-height: 26px;
+  padding: 5px 10px;
+  width: auto;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-preview__badge {
+  align-items: center;
+  background: none;
+  border: 1px solid var(--ucfg-rule-strong);
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--ucfg-ink);
+  display: inline-flex;
+  font-size: 10px;
+  justify-content: center;
+  letter-spacing: 0.16em;
+  min-height: 24px;
+  padding: 4px 9px;
+  text-align: center;
+  width: auto;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .shipping-section {
+  border-top: 1px solid var(--ucfg-rule);
+  display: none;
+  margin-top: 18px;
+  padding-top: 18px;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .shipping-section.visible {
+  display: block;
+}
+
+/* ---------------------------------------------------------------- *
+ * 14. Regulation notices
+ * ---------------------------------------------------------------- */
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .reg-notice {
+  align-items: start;
+  background: var(--ucfg-paper-deep);
+  border: 1px solid var(--ucfg-rule);
+  border-left: 3px solid var(--ucfg-olive);
+  border-radius: 0;
+  box-shadow: none;
+  display: grid;
+  gap: 14px;
+  grid-template-columns: auto minmax(0, 1fr);
+  margin-top: clamp(20px, 2.2vw, 28px);
+  padding: 16px 18px;
+}
+
+/* Drawn service marker — decorative; the label carries the meaning. */
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .reg-notice__icon {
+  background: none;
+  border: 1px solid var(--ucfg-ink);
+  border-radius: 0;
+  box-shadow: none;
+  display: block;
+  flex-shrink: 0;
+  height: 20px;
+  margin-top: 3px;
+  position: relative;
+  rotate: 45deg;
+  width: 20px;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .reg-notice__icon::before {
+  background: var(--ucfg-olive);
+  border: 0;
+  content: '';
+  inset: 5px;
+  position: absolute;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .reg-notice__text {
+  font-size: 14.5px;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .reg-notice__text strong {
+  color: var(--ucfg-olive);
+  display: block;
+  font-family: var(--ucfg-data);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+/* ---------------------------------------------------------------- *
+ * 15. Order summary
+ * ---------------------------------------------------------------- */
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .order-summary {
+  background: var(--ucfg-paper);
+  border: 1px solid var(--ucfg-ink);
+  border-radius: 0;
+  box-shadow: none;
+  margin-top: clamp(28px, 3.2vw, 48px);
+  overflow: visible;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .order-summary::before,
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .order-summary::after {
+  content: none;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .order-summary__header {
+  background: var(--ucfg-paper-deep);
+  border-bottom: 1px solid var(--ucfg-ink);
+  padding: clamp(16px, 1.8vw, 22px) clamp(16px, 1.8vw, 24px);
+  position: relative;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .order-summary__header::before {
+  content: none;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .order-summary__header h3 {
+  color: var(--ucfg-ink);
+  font-family: var(--ucfg-display);
+  font-size: clamp(24px, 2.4vw, 32px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .order-summary__header p {
+  color: var(--ucfg-ink-soft);
+  font-family: var(--ucfg-body);
+  font-size: 14px;
+  line-height: 1.55;
+  margin: 6px 0 0;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .order-summary__items {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0 clamp(16px, 1.8vw, 24px);
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .summary-item {
+  align-items: baseline;
+  border-bottom: 1px solid var(--ucfg-rule);
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  padding: 13px 0;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .summary-item:last-child {
   border-bottom: 0;
 }
 
-.uniform-configurator .summary-total-row {
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .summary-item__name {
+  color: var(--ucfg-ink);
+  font-size: 18px;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .summary-item__detail {
+  font-size: 13.5px;
+  margin-top: 3px;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .summary-item__price {
+  color: var(--ucfg-ink);
+  flex-shrink: 0;
+  font-family: var(--ucfg-data);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+/* The sheet closes on an ink footer: total stated once, in full. */
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .summary-total-row {
+  align-items: center;
+  background: var(--ucfg-ink);
+  border-top: 1px solid var(--ucfg-ink);
+  color: var(--ucfg-paper);
   display: flex;
-  align-items: center;
+  gap: 16px;
   justify-content: space-between;
-  gap: 1.2rem;
-  padding: 1.8rem 2.4rem 2rem;
-  border-top: 1px solid rgb(19 33 50 / 10%);
-  background: rgb(201 162 39 / 8%);
+  padding: clamp(16px, 1.8vw, 22px) clamp(16px, 1.8vw, 24px);
 }
 
-.uniform-configurator .summary-total-row .amount {
-  font: var(--type-display-2-font);
-  color: var(--uc-ink);
-  font-family: var(--uc-font-display);
-}
-
-.uniform-configurator .reg-notice {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: 1rem;
-  align-items: start;
-  margin-top: var(--spacing-small);
-  border: 1px solid rgb(201 162 39 / 24%);
-  border-radius: 2rem;
-  padding: 1.4rem 1.6rem;
-  background:
-    linear-gradient(180deg, rgb(255 252 245 / 96%), rgb(249 241 222 / 94%));
-}
-
-.uniform-configurator .reg-notice__icon {
-  display: inline-flex;
-  width: 2.4rem;
-  height: 2.4rem;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--uc-scarlet), var(--uc-gold));
-  color: #fff;
-  font: var(--type-details-overline-font);
-}
-
-.uniform-configurator .reg-notice__text {
-  font: var(--type-body-2-default-font);
-  color: var(--uc-ink-soft);
-}
-
-.uniform-configurator .reg-notice__text strong {
-  display: block;
-  margin-bottom: 0.25rem;
-  color: #8c6f14;
-}
-
-.uniform-configurator .cfg-submit-error {
-  margin: 0 0 var(--spacing-small);
-  font: var(--type-body-2-default-font);
-  color: #8a2618;
-}
-
-.uniform-configurator .cfg-fatal-error {
-  margin-bottom: var(--spacing-medium);
-  border: 1px solid rgb(138 38 24 / 18%);
-  border-radius: 2.2rem;
-  padding: 1.6rem;
-  background:
-    linear-gradient(180deg, rgb(255 250 249 / 96%), rgb(255 241 238 / 94%));
-  color: #7a2013;
-}
-
-.uniform-configurator .cfg-fatal-error strong {
-  display: block;
-  margin-bottom: 0.6rem;
-  font: var(--type-details-overline-font);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.uniform-configurator .cfg-fatal-error p {
-  margin: 0 0 0.8rem;
-  font: var(--type-body-2-default-font);
-}
-
-.uniform-configurator .cfg-fatal-error ul {
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .summary-total-row .label {
+  color: var(--ucfg-paper-soft);
+  font-family: var(--ucfg-data);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
   margin: 0;
-  padding-left: 1.8rem;
-  font: var(--type-body-2-default-font);
+  text-transform: uppercase;
 }
 
-.uniform-configurator .cfg-success {
-  padding: var(--spacing-xlarge) var(--spacing-medium);
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .summary-total-row .amount {
+  color: var(--ucfg-paper);
+  font-family: var(--ucfg-display);
+  font-size: clamp(30px, 3vw, 40px);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 0.9;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* ---------------------------------------------------------------- *
+ * 16. Actions and buttons
+ * ---------------------------------------------------------------- */
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-actions {
+  align-items: center;
+  border-top: 1px solid var(--ucfg-rule);
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  margin-top: clamp(32px, 3.6vw, 56px);
+  padding-top: clamp(20px, 2.2vw, 28px);
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .btn {
+  align-items: center;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 0;
+  box-shadow: none;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 11.5px;
+  gap: 10px;
+  justify-content: center;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  min-height: 48px;
+  padding: 0 26px;
+  text-align: center;
+  transition:
+    background var(--ucfg-t-hover) ease-out,
+    border-color var(--ucfg-t-hover) ease-out,
+    color var(--ucfg-t-hover) ease-out;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .btn:disabled {
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: 0.45;
+  transform: none;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator :is(.btn-primary, .btn-gold) {
+  background: var(--ucfg-scarlet);
+  border-color: var(--ucfg-scarlet);
+  color: #fff;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator :is(.btn-primary, .btn-gold):hover:not(:disabled) {
+  background: var(--ucfg-ink);
+  border-color: var(--ucfg-ink);
+  box-shadow: none;
+  color: var(--ucfg-paper);
+  transform: none;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator :is(.btn-primary, .btn-gold):focus-visible {
+  outline: 2px solid var(--ucfg-ink);
+  outline-offset: 3px;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .btn-secondary {
+  background: none;
+  border-color: var(--ucfg-ink);
+  color: var(--ucfg-ink);
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .btn-secondary:hover:not(:disabled) {
+  background: var(--ucfg-ink);
+  border-color: var(--ucfg-ink);
+  box-shadow: none;
+  color: var(--ucfg-paper);
+  transform: none;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .btn-secondary:focus-visible {
+  outline: 2px solid var(--ucfg-scarlet);
+  outline-offset: 3px;
+}
+
+/* ---------------------------------------------------------------- *
+ * 17. Attention states
+ * ---------------------------------------------------------------- */
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-submit-error {
+  border-left: 3px solid var(--ucfg-scarlet);
+  color: var(--ucfg-scarlet);
+  font-family: var(--ucfg-body);
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 1.5;
+  margin: clamp(18px, 2vw, 24px) 0 0;
+  padding: 4px 0 4px 12px;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-fatal-error {
+  background: var(--ucfg-paper);
+  border: 1px solid var(--ucfg-scarlet);
+  border-left-width: 3px;
+  border-radius: 0;
+  color: var(--ucfg-ink);
+  margin-bottom: clamp(20px, 2.2vw, 28px);
+  padding: 16px 18px;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-fatal-error strong {
+  color: var(--ucfg-scarlet);
+  display: block;
+  font-family: var(--ucfg-data);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-fatal-error :is(p, ul) {
+  color: var(--ucfg-ink-soft);
+  font-family: var(--ucfg-body);
+  font-size: 14.5px;
+  line-height: 1.55;
+  margin: 0 0 8px;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-fatal-error ul {
+  margin-bottom: 0;
+  padding-left: 20px;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator :is(.cfg-fatal-error, .cfg-submit-error, .cfg-success)[hidden] {
+  display: none;
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .uniform-configurator-block-message {
+  background: var(--ucfg-paper);
+  border: 1px solid var(--ucfg-rule);
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--ucfg-ink-soft);
+  font-family: var(--ucfg-body);
+  font-size: 15px;
+  line-height: 1.6;
+  margin: clamp(20px, 3vw, 44px) auto;
+  max-width: 1480px;
+  padding: clamp(18px, 2vw, 26px);
+  width: calc(100% - clamp(24px, 6vw, 96px));
+}
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .uniform-configurator-block-message[data-type='error'] {
+  background: var(--ucfg-paper);
+  border-color: var(--ucfg-scarlet);
+  border-left-width: 3px;
+  color: var(--ucfg-ink);
+}
+
+/* ---------------------------------------------------------------- *
+ * 18. Success sheet
+ * ---------------------------------------------------------------- */
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-success {
+  background: var(--ucfg-paper);
+  border: 1px solid var(--ucfg-ink);
+  border-radius: 0;
+  border-top: 3px solid var(--ucfg-scarlet);
+  box-shadow: none;
+  overflow: visible;
+  padding: clamp(36px, 5vw, 64px) clamp(20px, 3vw, 40px);
   text-align: center;
 }
 
-.uniform-configurator .success-icon {
-  display: flex;
-  width: 8rem;
-  height: 8rem;
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-success::before,
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-success::after {
+  content: none;
+}
+
+/* Confirmation mark drawn from two rules, never a checkmark character. */
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .success-icon {
   align-items: center;
+  background: none;
+  border: 1px solid var(--ucfg-ink);
+  border-radius: 0;
+  box-shadow: none;
+  display: flex;
+  height: 56px;
   justify-content: center;
-  margin: 0 auto var(--spacing-medium);
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--uc-scarlet), var(--uc-gold));
-  color: #fff;
-  font: var(--type-display-3-font);
-  box-shadow: var(--uc-shadow-button);
+  margin: 0 auto clamp(20px, 2.4vw, 28px);
+  position: relative;
+  width: 56px;
 }
 
-.uniform-configurator .success-title {
-  margin: 0 0 var(--spacing-small);
-  font: var(--type-display-2-font);
-  color: var(--uc-ink);
-  font-family: var(--uc-font-display);
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .success-icon::after {
+  border-bottom: 2px solid var(--ucfg-ink);
+  border-right: 2px solid var(--ucfg-ink);
+  content: '';
+  height: 22px;
+  rotate: 45deg;
+  translate: 0 -2px;
+  width: 11px;
 }
 
-.uniform-configurator .success-sub {
-  max-width: 48rem;
-  margin: 0 auto var(--spacing-medium);
-  font: var(--type-body-1-default-font);
-  color: var(--uc-ink-soft);
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .success-title {
+  color: var(--ucfg-ink);
+  font-size: clamp(34px, 4vw, 56px);
+  letter-spacing: -0.035em;
+  line-height: 0.86;
+  margin-bottom: 14px;
 }
 
-.uniform-configurator .price-pulse {
-  animation: price-pulse 0.35s var(--uc-ease-spring);
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .success-sub {
+  font-size: 16px;
+  margin: 0 auto clamp(24px, 2.6vw, 32px);
+  max-width: 56ch;
 }
 
-@keyframes fade-up {
+/* ---------------------------------------------------------------- *
+ * 19. Motion
+ * ---------------------------------------------------------------- */
+
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .price-pulse {
+  animation: ucfg-total-change var(--ucfg-t-ui) ease-out;
+}
+
+@keyframes ucfg-reveal {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(12px);
   }
 
   to {
@@ -1378,10 +1801,10 @@ body.columns .uniform-configurator .cfg-form-area {
   }
 }
 
-@keyframes panel-in {
+@keyframes ucfg-panel-in {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(8px);
   }
 
   to {
@@ -1390,269 +1813,110 @@ body.columns .uniform-configurator .cfg-form-area {
   }
 }
 
-@keyframes price-pulse {
+@keyframes ucfg-total-change {
   0% {
-    transform: scale(1);
+    color: var(--ucfg-ink);
   }
 
-  50% {
-    transform: scale(1.03);
-    color: var(--uc-scarlet);
+  40% {
+    color: var(--ucfg-scarlet);
   }
 
   100% {
-    transform: scale(1);
+    color: var(--ucfg-ink);
   }
 }
 
-@container (min-width: 680px) {
-  .uniform-configurator .step-btn__label {
-    display: inline;
+/* ---------------------------------------------------------------- *
+ * 20. Responsive
+ * ---------------------------------------------------------------- */
+
+/* Wide enough for all six names: the rail becomes a full tab strip. */
+@media (min-width: 1000px) {
+  .uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .step-btn {
+    justify-content: flex-start;
+  }
+
+  .uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .step-btn__label {
+    clip-path: none;
+    height: auto;
+    position: static;
+    text-overflow: ellipsis;
+    width: auto;
+  }
+
+  .uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .step-btn.active {
+    flex-grow: 1;
   }
 }
 
-@container (min-width: 1100px) {
-  .uniform-configurator .cfg-layout {
-    grid-template-columns: 340px minmax(0, 1fr);
-    gap: var(--spacing-big);
+@media (max-width: 900px) {
+  .uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .field-grid--3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .uniform-configurator .cfg-preview {
-    position: sticky;
-    top: 2.4rem;
+  .uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-hero__highlights {
+    grid-template-columns: minmax(0, 1fr);
   }
 
-  .uniform-configurator .cfg-preview__figure {
-    min-height: 29rem;
+  .uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-hero__chip {
+    border-left: 0;
+    border-top: 1px solid var(--ucfg-rule);
+    min-height: 46px;
+    padding: 11px var(--ucfg-gutter);
+  }
+
+  .uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-hero__chip:first-child {
+    border-top: 0;
+  }
+
+  .uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .step-btn {
+    min-height: 56px;
+    padding-inline: 8px;
   }
 }
 
-@container (max-width: 699px) {
-  .uniform-configurator > .uniform-configurator__shell {
-    padding: 1.25rem;
-    border-radius: 2.8rem;
+@media (max-width: 640px) {
+  .uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator > .uniform-configurator__shell {
+    width: calc(100% - 20px);
   }
 
-  .uniform-configurator > .uniform-configurator__shell::after {
-    inset: 10px;
+  .uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator :is(
+    .field-grid--2,
+    .field-grid--3,
+    .card-selector--split
+  ) {
+    grid-template-columns: minmax(0, 1fr);
   }
 
-  .uniform-configurator .cfg-hero {
-    gap: 0.9rem;
-    margin-bottom: 1.8rem;
-    padding: 2rem 1.1rem 1.6rem;
-    border-radius: 2.4rem;
+  .uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .toggle-row {
+    gap: 12px;
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: start;
   }
 
-  .uniform-configurator .cfg-hero__eyebrow {
-    padding-inline: 1rem;
-    letter-spacing: 0.16em;
-  }
-
-  .uniform-configurator .cfg-hero__eyebrow::before,
-  .uniform-configurator .cfg-hero__eyebrow::after {
-    width: 1.5rem;
-  }
-
-  .uniform-configurator .cfg-hero__title {
-    max-width: 10ch;
-    font-size: clamp(3.4rem, 14vw, 5rem);
-  }
-
-  .uniform-configurator .cfg-hero__sub {
-    max-width: 34rem;
-  }
-
-  .uniform-configurator .cfg-hero__highlights {
-    gap: 0.75rem;
-  }
-
-  .uniform-configurator .cfg-steps-nav {
-    margin-bottom: 2rem;
-  }
-
-  .uniform-configurator .steps-track {
-    scroll-snap-type: x proximity;
-  }
-
-  .uniform-configurator .steps-track::before,
-  .uniform-configurator .steps-track::after {
-    display: none;
-  }
-
-  .uniform-configurator .step-btn {
-    flex: 0 0 auto;
-    min-width: max-content;
-    scroll-snap-align: start;
-  }
-
-  .uniform-configurator .cfg-panel__meta {
-    flex-wrap: wrap;
-    gap: 0.75rem;
-  }
-
-  .uniform-configurator .cfg-section {
-    padding: 1.8rem;
-    border-radius: 2.4rem;
-  }
-
-  .uniform-configurator .field-grid--2,
-  .uniform-configurator .field-grid--3,
-  .uniform-configurator .card-selector--split {
-    grid-template-columns: 1fr;
-  }
-
-  .uniform-configurator .toggle-row,
-  .uniform-configurator .summary-item,
-  .uniform-configurator .summary-total-row {
-    gap: 0.9rem;
-  }
-
-  .uniform-configurator .cfg-actions {
-    flex-direction: column;
+  .uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .cfg-actions {
     align-items: stretch;
+    flex-direction: column-reverse;
   }
 
-  .uniform-configurator .btn {
+  .uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .btn {
     width: 100%;
   }
-}
 
-@supports not (container-type: inline-size) {
-  @media (min-width: 680px) {
-    .uniform-configurator .step-btn__label {
-      display: inline;
-    }
-  }
-
-  @media (min-width: 1100px) {
-    .uniform-configurator .cfg-layout {
-      grid-template-columns: 340px minmax(0, 1fr);
-      gap: var(--spacing-big);
-    }
-
-    .uniform-configurator .cfg-preview {
-      position: sticky;
-      top: 2.4rem;
-    }
-
-    .uniform-configurator .cfg-preview__figure {
-      min-height: 29rem;
-    }
-  }
-
-  @media (max-width: 699px) {
-    .uniform-configurator > .uniform-configurator__shell {
-      padding: 1.25rem;
-      border-radius: 2.8rem;
-    }
-
-    .uniform-configurator > .uniform-configurator__shell::after {
-      inset: 10px;
-    }
-
-    .uniform-configurator .cfg-hero {
-      gap: 0.9rem;
-      margin-bottom: 1.8rem;
-      padding: 2rem 1.1rem 1.6rem;
-      border-radius: 2.4rem;
-    }
-
-    .uniform-configurator .cfg-hero__eyebrow {
-      padding-inline: 1rem;
-      letter-spacing: 0.16em;
-    }
-
-    .uniform-configurator .cfg-hero__eyebrow::before,
-    .uniform-configurator .cfg-hero__eyebrow::after {
-      width: 1.5rem;
-    }
-
-    .uniform-configurator .cfg-hero__title {
-      max-width: 10ch;
-      font-size: clamp(3.4rem, 14vw, 5rem);
-    }
-
-    .uniform-configurator .cfg-hero__sub {
-      max-width: 34rem;
-    }
-
-    .uniform-configurator .cfg-hero__highlights {
-      gap: 0.75rem;
-    }
-
-    .uniform-configurator .cfg-steps-nav {
-      margin-bottom: 2rem;
-    }
-
-    .uniform-configurator .steps-track {
-      scroll-snap-type: x proximity;
-    }
-
-    .uniform-configurator .steps-track::before,
-    .uniform-configurator .steps-track::after {
-      display: none;
-    }
-
-    .uniform-configurator .step-btn {
-      flex: 0 0 auto;
-      min-width: max-content;
-      scroll-snap-align: start;
-    }
-
-    .uniform-configurator .cfg-panel__meta {
-      flex-wrap: wrap;
-      gap: 0.75rem;
-    }
-
-    .uniform-configurator .cfg-section {
-      padding: 1.8rem;
-      border-radius: 2.4rem;
-    }
-
-    .uniform-configurator .field-grid--2,
-    .uniform-configurator .field-grid--3,
-    .uniform-configurator .card-selector--split {
-      grid-template-columns: 1fr;
-    }
-
-    .uniform-configurator .toggle-row,
-    .uniform-configurator .summary-item,
-    .uniform-configurator .summary-total-row {
-      gap: 0.9rem;
-    }
-
-    .uniform-configurator .cfg-actions {
-      flex-direction: column;
-      align-items: stretch;
-    }
-
-    .uniform-configurator .btn {
-      width: 100%;
-    }
+  .uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .summary-item {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .uniform-configurator .cfg-hero,
-  .uniform-configurator .cfg-steps-nav,
-  .uniform-configurator .cfg-preview,
-  .uniform-configurator .cfg-form-area,
-  .uniform-configurator .cfg-panel.active,
-  .uniform-configurator .price-pulse {
-    animation: none;
-  }
-
-  .uniform-configurator .btn,
-  .uniform-configurator .card-opt,
-  .uniform-configurator .rank-card,
-  .uniform-configurator .step-btn,
-  .uniform-configurator .toggle-track,
-  .uniform-configurator .toggle-track::after,
-  .uniform-configurator .field select,
-  .uniform-configurator .field input,
-  .uniform-configurator .field textarea,
-  .uniform-configurator .measure-field input {
-    transition: none;
+  .uniform-configurator *,
+  .uniform-configurator *::before,
+  .uniform-configurator *::after {
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }

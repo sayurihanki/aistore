@@ -6,6 +6,19 @@ import {
   getRows,
 } from '../../scripts/mcx-block-utils.js';
 
+/*
+ * The first tile spans two columns and three rows, and the themes stretch its
+ * image full-bleed across that whole panel, so it needs a hero-sized rendition.
+ * Every other tile only ever shows the image as a small badge, so those stay
+ * icon-sized to keep the grid light.
+ */
+const HERO_RENDITIONS = [
+  { media: '(min-width: 1000px)', width: '1600' },
+  { media: '(min-width: 600px)', width: '1200' },
+  { width: '800' },
+];
+const ICON_RENDITIONS = [{ width: '240' }];
+
 export default function decorate(block) {
   const config = {};
   const grid = document.createElement('div');
@@ -24,9 +37,14 @@ export default function decorate(block) {
     link.style.setProperty('--cat-delay', String(index % 4));
     link.className = `cat-tile reveal reveal-delay-${(index % 4) + 1}`;
 
+    const isHero = grid.childElementCount === 0;
     const icon = document.createElement('div');
     icon.className = 'cat-emoji';
-    const iconPicture = createPictureFromCell(iconCell, false, [{ width: '120' }]);
+    const iconPicture = createPictureFromCell(
+      iconCell,
+      isHero,
+      isHero ? HERO_RENDITIONS : ICON_RENDITIONS,
+    );
     if (iconPicture) {
       iconPicture.className = 'cat-emoji-art';
       icon.append(iconPicture);

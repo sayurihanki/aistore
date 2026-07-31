@@ -322,9 +322,10 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce
 }
 
 .commerce-returns-list .order-empty-list .dropin-card__content {
-  display: grid;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
   gap: 16px;
-  justify-items: start;
   padding: clamp(32px, 4vw, 56px) clamp(24px, 3vw, 40px);
   text-align: left;
 }
@@ -353,13 +354,37 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce
   width: 44px;
 }
 
+/*
+ * Rule-led kicker, matching the orders and saved-items sheets. The dropin's
+ * EmptyList renders only an icon and a message, so the section label is drawn
+ * here. Decorative — the message carries the meaning.
+ */
+.commerce-returns-list .order-empty-list .dropin-card__content::after {
+  border-bottom: 1px solid var(--rl-rule);
+  color: var(--rl-scarlet);
+  content: 'Returns';
+  display: block;
+  font-family: var(--rl-data);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  line-height: 1.3;
+  order: -1;
+  padding-bottom: 14px;
+  text-transform: uppercase;
+  width: 100%;
+}
+
 .commerce-returns-list .order-empty-list .dropin-illustrated-message__message {
-  color: var(--rl-ink-soft);
-  font-family: var(--rl-body);
-  font-size: 17px;
-  line-height: 1.6;
+  color: var(--rl-ink);
+  font-family: var(--rl-display);
+  font-size: clamp(28px, 3vw, 38px);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 0.92;
   margin: 0;
-  max-width: 52ch;
+  max-width: 18ch;
+  text-transform: uppercase;
 }
 
 .commerce-returns-list .dropin-pagination {

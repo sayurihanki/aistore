@@ -20,23 +20,31 @@
         {
           "component": "text",
           "valueType": "string",
+          "name": "category-id",
+          "label": "Category ID",
+          "description": "Optional Commerce category ID for page identity. When URL Path is blank, child category paths are included in the product listing.",
+          "value": "19"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
           "name": "urlPath",
           "label": "URL Path",
-          "value": "apparel-footwear"
+          "value": "retail"
         },
         {
           "component": "text",
           "valueType": "string",
           "name": "eyebrow",
           "label": "Eyebrow",
-          "value": "Apparel & Footwear"
+          "value": "Retail"
         },
         {
           "component": "text",
           "valueType": "string",
           "name": "title",
           "label": "Title",
-          "value": "GEAR UP.\\nDRESS RIGHT."
+          "value": "Retail"
         },
         {
           "component": "text",

@@ -1,0 +1,22 @@
+{
+  "definitions": [
+    {
+      "title": "Scroll Story",
+      "id": "scroll-story",
+      "plugins": {
+        "da": {
+          "name": "scroll-story",
+          "rows": 3,
+          "columns": 5
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "scroll-story",
+      "fields": []
+    }
+  ],
+  "filters": []
+}

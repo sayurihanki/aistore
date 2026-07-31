@@ -117,8 +117,10 @@
 | `mcx-footer` | `content` | `general` | 1 | 1 |
 | `mcx-header` | `content` | `general` | 1 | 2 |
 | `mcx-hero` | `content` | `general` | 1 | 1 |
+| `mcx-hero-newcomer` | `content` | `general` | 1 | 1 |
 | `mcx-newsletter` | `content` | `general` | 1 | 1 |
 | `mcx-product-cards` | `content` | `general` | 1 | 1 |
+| `mcx-promo-popup` | `content` | `general` | 1 | 1 |
 | `mcx-promo-strip` | `content` | `general` | 1 | 1 |
 | `mcx-ticker` | `content` | `general` | 1 | 1 |
 | `medal-rack-configurator` | `content` | `general` | 1 | 2 |
@@ -137,6 +139,7 @@
 | `quiz-router` | `interactive-content` | `engagement` | 1 | 1 |
 | `quiz-router-mccs` | `interactive-content` | `engagement` | 1 | 1 |
 | `quote` | `content` | `general` | 1 | 1 |
+| `scroll-story` | `content` | `general` | 1 | 1 |
 | `search` | `shell` | `navigation-and-layout` | 1 | 1 |
 | `search-bar` | `shell` | `navigation-and-layout` | 1 | 1 |
 | `store-locator` | `content` | `general` | 1 | 1 |

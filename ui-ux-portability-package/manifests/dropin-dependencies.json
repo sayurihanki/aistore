@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-16T05:45:11.397Z",
+  "generatedAt": "2026-07-31T07:37:30.133Z",
   "summary": {
     "totalPackages": 17,
     "undeclaredPackages": []
@@ -71,7 +71,7 @@
       "package": "@dropins/storefront-cart",
       "version": "~3.0.0",
       "source": "declared",
-      "importCount": 40,
+      "importCount": 41,
       "importSpecifiers": [
         "@dropins/storefront-cart/api.js",
         "@dropins/storefront-cart/containers/CartSummaryList.js",
@@ -376,13 +376,15 @@
       "package": "@dropins/storefront-recommendations",
       "version": "~3.0.0",
       "source": "declared",
-      "importCount": 4,
+      "importCount": 6,
       "importSpecifiers": [
         "@dropins/storefront-recommendations/api.js",
         "@dropins/storefront-recommendations/containers/ProductList.js",
         "@dropins/storefront-recommendations/render.js"
       ],
       "importedBy": [
+        "blocks/commerce-cart/commerce-cart.js",
+        "blocks/commerce-checkout-success/commerce-checkout-success.js",
         "blocks/product-recommendations/product-recommendations.js",
         "scripts/initializers/recommendations.js"
       ]
@@ -413,7 +415,7 @@
       "package": "@dropins/storefront-wishlist",
       "version": "~3.0.0",
       "source": "declared",
-      "importCount": 16,
+      "importCount": 18,
       "importSpecifiers": [
         "@dropins/storefront-wishlist/api.js",
         "@dropins/storefront-wishlist/containers/Wishlist.js",
@@ -423,6 +425,7 @@
       ],
       "importedBy": [
         "blocks/commerce-cart/commerce-cart.js",
+        "blocks/commerce-checkout-success/commerce-checkout-success.js",
         "blocks/commerce-wishlist/commerce-wishlist.js",
         "blocks/live-block/dashboard-core.js",
         "blocks/mcx-category-page/mcx-category-page.js",
@@ -436,7 +439,7 @@
       "package": "@dropins/tools",
       "version": "~1.6.0",
       "source": "declared",
-      "importCount": 169,
+      "importCount": 171,
       "importSpecifiers": [
         "@dropins/tools/components.js",
         "@dropins/tools/event-bus.js",

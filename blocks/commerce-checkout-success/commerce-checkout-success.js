@@ -487,7 +487,7 @@ function createRecommendationCard(item, recommendationUnit, index, labels) {
 
   const eyebrow = document.createElement('p');
   eyebrow.className = 'order-confirmation-recommendation__eyebrow';
-  eyebrow.textContent = recommendationUnit?.title || 'Recommended for you';
+  eyebrow.textContent = recommendationUnit?.title || 'MCX Selection';
 
   const title = document.createElement('a');
   title.className = 'order-confirmation-recommendation__title';
@@ -742,7 +742,10 @@ function renderFulfillmentStrip(container, orderData) {
 
     const dot = document.createElement('span');
     dot.className = 'order-confirmation-fulfillment__dot';
-    dot.textContent = index < model.currentIndex ? '✓' : String(index + 1);
+    // Completed steps are marked by the CSS-drawn check, not a text glyph.
+    const isComplete = index < model.currentIndex;
+    dot.textContent = isComplete ? '' : String(index + 1);
+    if (isComplete) dot.setAttribute('aria-hidden', 'true');
 
     const label = document.createElement('p');
     label.className = 'order-confirmation-fulfillment__step-label';

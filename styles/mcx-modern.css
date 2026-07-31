@@ -166,7 +166,7 @@ body:is(.mcx.mcx, .mcx-preview.mcx-preview) :is(main, header) .mcx-announcement-
 body:is(.mcx.mcx, .mcx-preview.mcx-preview) :is(main, header) .mcx-announcement-bar .ann-item {
   color: rgb(255 255 255 / 90%);
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.16em;
   white-space: nowrap;
@@ -248,9 +248,9 @@ body:is(.mcx.mcx, .mcx-preview.mcx-preview) header .mcx-header .logo-mcx {
 body:is(.mcx.mcx, .mcx-preview.mcx-preview) header .mcx-header .logo-tagline {
   color: var(--gold);
   font-family: var(--font-mono);
-  font-size: 7px;
+  font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.14em;
   margin-top: 5px;
 }
 
@@ -260,7 +260,7 @@ body:is(.mcx.mcx, .mcx-preview.mcx-preview) header .mcx-header .hdr-search input
   border-radius: 0;
   box-shadow: none;
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: 16px;
   height: 42px;
 }
 
@@ -275,7 +275,7 @@ body:is(.mcx.mcx, .mcx-preview.mcx-preview) header .mcx-header .search-shortcut 
   border: 1px solid var(--mcx-header-line);
   border-radius: 0;
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 11px;
 }
 
 body:is(.mcx.mcx, .mcx-preview.mcx-preview) header .mcx-header .hdr-actions {
@@ -286,8 +286,8 @@ body:is(.mcx.mcx, .mcx-preview.mcx-preview) header .mcx-header .hdr-act {
   border-color: transparent;
   border-radius: 0;
   font-family: var(--font-ui);
-  font-size: 10px;
-  letter-spacing: 0.13em;
+  font-size: 13px;
+  letter-spacing: 0.1em;
   min-height: 42px;
   padding-inline: 12px;
 }
@@ -329,8 +329,8 @@ body:is(.mcx.mcx, .mcx-preview.mcx-preview) header .mcx-header .store-switcher-t
 
 body:is(.mcx.mcx, .mcx-preview.mcx-preview) header .mcx-header .store-switcher-toggle-label {
   font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.16em;
+  font-size: 13px;
+  letter-spacing: 0.1em;
 }
 
 body:is(.mcx.mcx, .mcx-preview.mcx-preview) header .mcx-header .hdr-signin {
@@ -382,10 +382,10 @@ body:is(.mcx.mcx, .mcx-preview.mcx-preview) header .mcx-header .nav-inner {
 
 body:is(.mcx.mcx, .mcx-preview.mcx-preview) header .mcx-header .nav-link {
   font-family: var(--font-ui);
-  font-size: 10px;
-  letter-spacing: 0.16em;
+  font-size: clamp(12px, 1.05vw, 14px);
+  letter-spacing: 0.06em;
   min-height: 44px;
-  padding-inline: clamp(10px, 1.2vw, 18px);
+  padding-inline: clamp(8px, 1vw, 16px);
 }
 
 body:is(.mcx.mcx, .mcx-preview.mcx-preview) header .mcx-header .nav-link::before {
@@ -400,8 +400,8 @@ body:is(.mcx.mcx, .mcx-preview.mcx-preview) header .mcx-header .nav-hot {
   clip-path: none;
   color: #0b0e0b;
   font-family: var(--font-ui);
-  font-size: 10px;
-  letter-spacing: 0.14em;
+  font-size: clamp(12px, 1.05vw, 14px);
+  letter-spacing: 0.06em;
   margin-left: 10px;
   min-height: 28px;
   padding: 0 16px;

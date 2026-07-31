@@ -183,6 +183,7 @@ export function normalizeTabs(tabs = []) {
 export function parseCategoryPageConfig(rows = []) {
   const config = {
     urlPath: '',
+    categoryId: '',
     eyebrow: '',
     title: '',
     description: '',
@@ -212,6 +213,11 @@ export function parseCategoryPageConfig(rows = []) {
 
     if (key === 'urlpath') {
       config.urlPath = value.replace(/^\/+|\/+$/g, '');
+      return;
+    }
+
+    if (key === 'category-id') {
+      config.categoryId = value;
       return;
     }
 
@@ -359,13 +365,21 @@ export function getParamsFromFilter(filters = []) {
     .join(';');
 }
 
-export function getBaseCategoryFilters(urlPath, activeTab) {
+export function getBaseCategoryFilters(urlPath, activeTab, categoryPaths = []) {
   const filters = [];
+  const normalizedPaths = [...new Set(categoryPaths
+    .map((path) => String(path || '').replace(/^\/+|\/+$/g, ''))
+    .filter(Boolean))];
 
   if (urlPath) {
     filters.push({
       attribute: 'categoryPath',
       eq: String(urlPath).replace(/^\/+|\/+$/g, ''),
+    });
+  } else if (normalizedPaths.length) {
+    filters.push({
+      attribute: 'categoryPath',
+      in: normalizedPaths,
     });
   }
 
@@ -383,7 +397,11 @@ export function getBaseCategoryFilters(urlPath, activeTab) {
 }
 
 export function getVisibleFilters(filters = [], options = {}) {
-  const internalFilters = getBaseCategoryFilters(options.urlPath, options.activeTab);
+  const internalFilters = getBaseCategoryFilters(
+    options.urlPath,
+    options.activeTab,
+    options.categoryPaths,
+  );
   return filters.filter((filter) => (
     !internalFilters.some((candidate) => filtersMatch(filter, candidate))
   ));

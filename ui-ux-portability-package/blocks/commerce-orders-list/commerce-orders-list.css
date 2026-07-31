@@ -1,34 +1,533 @@
-.commerce-orders-list-wrapper .account-orders-list-header,
-.commerce-orders-list-wrapper .dropin-header-container {
-    margin-bottom: var(--spacing-small);
+/*
+ * MCX / Issue Ledger — Order history
+ *
+ * The order list reads as a ledger: a ruled header, one row per order, rules
+ * instead of shadows, square corners, and a drawn status marker paired with the
+ * status text. Shared component grammar comes from
+ * styles/mcx-commerce-ledger.css; this file owns the markup emitted by the
+ * @dropins/storefront-account OrdersList container.
+ *
+ * Two selector strengths are used on purpose:
+ *
+ *   .commerce-orders-list …
+ *       the default, for class names nothing else in the codebase styles.
+ *
+ *   body:is(.mcx.mcx.mcx, .mcx-preview…) main .block.commerce-orders-list.commerce-orders-list …
+ *       used where a competing rule already exists. In particular
+ *       styles/mcx-commerce-ledger.css frames every `[class*='account-'][class*='card']`
+ *       element as a bordered paper card — which catches not only the order card
+ *       but its content wrapper, its product-name paragraphs, its quantity spans
+ *       and its tracking links, boxing each of them. Those are stripped below.
+ */
+
+/* stylelint-disable no-descending-specificity */
+
+.commerce-orders-list {
+  --ol-paper: var(--ledger-paper, #eee9dd);
+  --ol-paper-deep: var(--ledger-paper-deep, #d8d1c2);
+  --ol-field: #f8f4eb;
+  --ol-ink: var(--ledger-ink, #10130f);
+  --ol-scarlet: var(--ledger-scarlet, #c51f2a);
+  --ol-olive: var(--ledger-olive, #565c48);
+  --ol-rule: var(--ledger-rule, rgb(16 19 15 / 24%));
+  --ol-ink-soft: rgb(16 19 15 / 72%);
+  --ol-ink-quiet: rgb(16 19 15 / 52%);
+  --ol-display: var(--ledger-display, "Barlow Condensed", "Arial Narrow", sans-serif);
+  --ol-body: var(--ledger-body, "Barlow", system-ui, sans-serif);
+  --ol-data: var(--ledger-data, "Rajdhani", "Barlow Condensed", monospace);
+  --ol-t-hover: 180ms;
+
+  color: var(--ol-ink);
 }
 
-.commerce-orders-list-wrapper .dropin-header-container__title {
-    font: var(--type-headline-2-strong-font);
-    letter-spacing: normal;
+/* ---------------------------------------------------------------- *
+ * 1. Shell and inherited-frame strip
+ * ---------------------------------------------------------------- */
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-orders-list.commerce-orders-list {
+  backdrop-filter: none;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
 }
 
-.commerce-orders-list-wrapper .dropin-divider {
-    opacity: 0.45;
+/*
+ * Every one of these is caught by an inherited card frame — the shared
+ * `[class*='account-'][class*='card']` rule, or `[class*="dropin-card"]` in
+ * styles/storefront-reference.css. Rows carry their own rules, so the nested
+ * wrappers, paragraphs and links must stay bare.
+ */
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-orders-list.commerce-orders-list :is(
+  .dropin-card__content,
+  .account-orders-list-card__content,
+  .account-orders-list-card__content--product-name,
+  .account-orders-list-card__content--quantity,
+  .account-orders-list-card__content--track_number,
+  .account-orders-list-card__content--return_number,
+  .account-orders-list-card__images,
+  .account-orders-list-card__actions,
+  .account-orders-list-action__card-wrapper,
+  .account-orders-list-action--minifiedView .dropin-card
+) {
+  backdrop-filter: none;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
 }
 
-.commerce-orders-list-wrapper .account-orders-list-card,
-.commerce-orders-list-wrapper .account-empty-list .dropin-card,
-.commerce-orders-list-wrapper .account-orders-list-action--minifiedView .dropin-card {
-    border: 1px solid var(--glass-border-subtle);
-    border-radius: calc(var(--shape-border-radius-2) + 2px);
-    background: var(--glass-bg-strong);
-    backdrop-filter: var(--glass-blur-xs) var(--glass-saturate);
-    box-shadow: 0 6px 18px rgb(0 0 0 / 7%);
-    transition: transform var(--transition-fast) var(--ease-out), box-shadow var(--transition-fast) var(--ease-out);
+/* ---------------------------------------------------------------- *
+ * 2. List header
+ * ---------------------------------------------------------------- */
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-orders-list.commerce-orders-list .dropin-header-container {
+  backdrop-filter: none;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  border-top: 4px solid var(--ol-scarlet);
+  box-shadow: none;
+  margin-bottom: 0;
+  padding-top: 18px;
 }
 
-.commerce-orders-list-wrapper .account-orders-list-action--minifiedView:hover .dropin-card,
-.commerce-orders-list-wrapper .account-orders-list-card:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 12px 24px rgb(0 0 0 / 10%);
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-orders-list.commerce-orders-list .dropin-header-container__title {
+  color: var(--ol-ink);
+  font-family: var(--ol-display);
+  font-size: clamp(34px, 4.4vw, 56px);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 0.86;
+  margin: 0;
+  text-transform: uppercase;
 }
 
-.commerce-orders-list-wrapper .account-orders-list-action__card-wrapper > p {
-    font: var(--type-body-1-strong-font);
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-orders-list.commerce-orders-list .dropin-divider {
+  background: var(--ol-ink);
+  border: 0;
+  height: 1px;
+  margin: clamp(14px, 2vw, 20px) 0 0;
+  opacity: 1;
+}
+
+/* ---------------------------------------------------------------- *
+ * 3. Date filter
+ * ---------------------------------------------------------------- */
+
+.commerce-orders-list .account-orders-list__date-select {
+  align-items: center;
+  border-bottom: 1px solid var(--ol-rule);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  padding: 16px 0;
+}
+
+.commerce-orders-list .account-orders-list__date-select > span {
+  color: var(--ol-olive);
+  font-family: var(--ol-data);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.commerce-orders-list :is(.dropin-picker__select, .dropin-picker__button, select) {
+  background: var(--ol-field);
+  border: 1px solid rgb(16 19 15 / 42%);
+  border-radius: 0;
+  color: var(--ol-ink);
+  font-family: var(--ol-data);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  min-height: 44px;
+}
+
+/* ---------------------------------------------------------------- *
+ * 4. Ledger rows
+ * ---------------------------------------------------------------- */
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-orders-list.commerce-orders-list .account-orders-list-card {
+  backdrop-filter: none;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  border-top: 1px solid var(--ol-rule);
+  box-shadow: none;
+  padding: 0;
+  transition: background var(--ol-t-hover) ease-out;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-orders-list.commerce-orders-list .account-orders-list-card:is(:hover, :focus-within) {
+  background: rgb(16 19 15 / 3%);
+  box-shadow: none;
+  transform: none;
+}
+
+.commerce-orders-list .account-orders-list-card .dropin-card__content {
+  align-items: start;
+  display: grid;
+  gap: clamp(16px, 2vw, 32px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, auto) auto;
+  padding: clamp(20px, 2.4vw, 28px) 0;
+}
+
+.commerce-orders-list .account-orders-list-card__content {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.commerce-orders-list .account-orders-list-card__content p {
+  color: var(--ol-ink-soft);
+  font-family: var(--ol-body);
+  font-size: 15px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/*
+ * Status line: a drawn diamond marker plus the status text. The marker is an
+ * empty pseudo-element, so the text alone carries the meaning.
+ */
+.commerce-orders-list .account-orders-list-card__content > div:first-child {
+  align-items: center;
+  color: var(--ol-ink);
+  display: flex;
+  font-family: var(--ol-data);
+  font-size: 11px;
+  font-weight: 700;
+  gap: 10px;
+  letter-spacing: 0.18em;
+  line-height: 1.3;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+/*
+ * Service-oriented data, so the marker is olive. Scarlet is reserved for the
+ * header rule and the page's real actions — a mark repeated on every row would
+ * spend it on nothing.
+ */
+.commerce-orders-list .account-orders-list-card__content > div:first-child::before {
+  background: var(--ol-olive);
+  content: '';
+  flex-shrink: 0;
+  height: 9px;
+  rotate: 45deg;
+  width: 9px;
+}
+
+.commerce-orders-list .account-orders-list-card__content .dropin-price {
+  color: var(--ol-ink);
+  font-family: var(--ol-display);
+  font-size: clamp(24px, 2.4vw, 30px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+}
+
+/*
+ * The dropin renders each product name as a <p> inside .…__content, so the
+ * element is matched here too — the generic paragraph rule above is (0,2,1) and
+ * would otherwise take the display face, size, colour and line-height off this
+ * rule while leaving its uppercase and negative tracking behind.
+ */
+.commerce-orders-list .account-orders-list-card__content p.account-orders-list-card__content--product-name {
+  color: var(--ol-ink);
+  font-family: var(--ol-display);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.commerce-orders-list .account-orders-list-card__content--quantity {
+  color: var(--ol-olive);
+  font-family: var(--ol-data);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.commerce-orders-list :is(
+  .account-orders-list-card__content--track_number,
+  .account-orders-list-card__content--return_number
+) {
+  color: var(--ol-ink);
+  font-family: var(--ol-data);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--ol-t-hover) ease-out;
+}
+
+.commerce-orders-list :is(
+  .account-orders-list-card__content--track_number,
+  .account-orders-list-card__content--return_number
+):is(:hover, :focus-visible) {
+  color: var(--ol-scarlet);
+}
+
+/* Thumbnails */
+
+.commerce-orders-list .account-orders-list-card__images,
+.commerce-orders-list .account-orders-list-card__images :is(
+  .dropin-content-grid__content,
+  .dropin-content-grid__dynamic-columns-content
+) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-width: 0;
+}
+
+.commerce-orders-list .account-orders-list-card__images img {
+  background: var(--ol-field);
+  border: 1px solid var(--ol-rule);
+  border-radius: 0;
+  box-shadow: none;
+  height: auto;
+  max-width: 72px;
+  mix-blend-mode: multiply;
+  object-fit: contain;
+}
+
+/* Row action */
+
+.commerce-orders-list .account-orders-list-card__actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.commerce-orders-list .account-orders-list-card__actions .account-orders-list-action {
+  align-items: center;
+  border: 1px solid var(--ol-rule);
+  border-radius: 0;
+  color: var(--ol-ink);
+  display: inline-flex;
+  gap: 10px;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0 14px;
+  text-decoration: none;
+  transition:
+    background var(--ol-t-hover) ease-out,
+    border-color var(--ol-t-hover) ease-out,
+    color var(--ol-t-hover) ease-out;
+}
+
+/*
+ * The dropin ships this control as a bare chevron carrying only an aria-label,
+ * so the verb is drawn in. The aria-label still names the row, so the drawn text
+ * is not announced twice.
+ */
+.commerce-orders-list .account-orders-list-card__actions .account-orders-list-action::before {
+  content: 'View order';
+  font-family: var(--ol-data);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* The stock chevron is set at 32px — sized down to sit with a 10px label. */
+.commerce-orders-list .account-orders-list-card__actions .account-orders-list-action svg {
+  flex-shrink: 0;
+  height: 16px;
+  width: 16px;
+}
+
+.commerce-orders-list .account-orders-list-card__actions .account-orders-list-action:is(:hover, :focus-visible) {
+  background: var(--ol-ink);
+  border-color: var(--ol-ink);
+  color: var(--ol-paper);
+}
+
+/* ---------------------------------------------------------------- *
+ * 5. "View all orders" action (minified view)
+ * ---------------------------------------------------------------- */
+
+.commerce-orders-list .account-orders-list-action--minifiedView {
+  border-top: 1px solid var(--ol-ink);
+  display: block;
+  text-decoration: none;
+}
+
+.commerce-orders-list .account-orders-list-action--minifiedView .dropin-card__content {
+  padding: 0;
+}
+
+.commerce-orders-list .account-orders-list-action__card-wrapper {
+  align-items: center;
+  color: var(--ol-ink);
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  min-height: 48px;
+  transition: color var(--ol-t-hover) ease-out;
+}
+
+.commerce-orders-list .account-orders-list-action__card-wrapper > p {
+  color: inherit;
+  font-family: var(--ol-data);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.commerce-orders-list .account-orders-list-action--minifiedView:is(:hover, :focus-visible) .account-orders-list-action__card-wrapper {
+  color: var(--ol-scarlet);
+}
+
+/* ---------------------------------------------------------------- *
+ * 6. Empty state and pagination
+ * ---------------------------------------------------------------- */
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-orders-list.commerce-orders-list .account-empty-list .dropin-card {
+  backdrop-filter: none;
+  background: var(--ol-paper);
+  border: 1px solid var(--ol-rule);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.commerce-orders-list .account-empty-list .dropin-card__content {
+  display: grid;
+  gap: 16px;
+  justify-items: start;
+  padding: clamp(32px, 4vw, 56px) clamp(24px, 3vw, 40px);
+  text-align: left;
+}
+
+.commerce-orders-list .account-empty-list .dropin-illustrated-message__icon {
+  display: none;
+}
+
+/*
+ * Drawn mark: an empty inventory slot, a square rule crossed by a scarlet
+ * diagonal. Decorative — the message beside it carries the meaning, and an
+ * empty pseudo-element is not announced by assistive technology.
+ */
+.commerce-orders-list .account-empty-list .dropin-card__content::before {
+  background: linear-gradient(
+    135deg,
+    transparent calc(50% - 1px),
+    var(--ol-scarlet) calc(50% - 1px),
+    var(--ol-scarlet) calc(50% + 1px),
+    transparent calc(50% + 1px)
+  );
+  border: 1px solid var(--ol-ink);
+  content: '';
+  display: block;
+  height: 44px;
+  width: 44px;
+}
+
+.commerce-orders-list .account-empty-list .dropin-illustrated-message__message {
+  color: var(--ol-ink-soft);
+  font-family: var(--ol-body);
+  font-size: 17px;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 52ch;
+}
+
+.commerce-orders-list .dropin-pagination {
+  border-top: 1px solid var(--ol-ink);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 0;
+  padding-top: 20px;
+}
+
+.commerce-orders-list :is(
+  .dropin-pagination_list-item,
+  .dropin-pagination-arrow
+) {
+  align-items: center;
+  border: 1px solid var(--ol-rule);
+  border-radius: 0;
+  color: var(--ol-ink);
+  display: inline-flex;
+  font-family: var(--ol-data);
+  font-size: 13px;
+  font-weight: 700;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+  transition:
+    background var(--ol-t-hover) ease-out,
+    border-color var(--ol-t-hover) ease-out,
+    color var(--ol-t-hover) ease-out;
+}
+
+.commerce-orders-list .dropin-pagination_list-item--active {
+  background: var(--ol-ink);
+  border-color: var(--ol-ink);
+  color: var(--ol-paper);
+}
+
+.commerce-orders-list :is(
+  .dropin-pagination_list-item,
+  .dropin-pagination-arrow
+):is(:hover, :focus-visible) {
+  border-color: var(--ol-scarlet);
+  color: var(--ol-scarlet);
+}
+
+.commerce-orders-list .dropin-pagination_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------------------------------------------------------------- *
+ * 7. Responsive
+ * ---------------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .commerce-orders-list .account-orders-list-card .dropin-card__content {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .commerce-orders-list .account-orders-list-card__images {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 560px) {
+  .commerce-orders-list .account-orders-list-card .dropin-card__content {
+    gap: 16px;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .commerce-orders-list .account-orders-list-card__actions {
+    justify-content: flex-start;
+  }
+}
+
+/* ---------------------------------------------------------------- *
+ * 8. Reduced motion
+ * ---------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .commerce-orders-list *,
+  .commerce-orders-list *::before,
+  .commerce-orders-list *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

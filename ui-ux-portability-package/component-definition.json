@@ -265,7 +265,7 @@
           "plugins": {
             "da": {
               "name": "promo-strip",
-              "rows": 5,
+              "rows": 6,
               "columns": 2
             }
           }
@@ -407,12 +407,23 @@
           }
         },
         {
+          "title": "MCX Hero Newcomer",
+          "id": "mcx-hero-newcomer",
+          "plugins": {
+            "da": {
+              "name": "mcx-hero-newcomer",
+              "rows": 50,
+              "columns": 2
+            }
+          }
+        },
+        {
           "title": "MCX Hero",
           "id": "mcx-hero",
           "plugins": {
             "da": {
               "name": "mcx-hero",
-              "rows": 18,
+              "rows": 20,
               "columns": 2
             }
           }
@@ -436,6 +447,17 @@
               "name": "mcx-product-cards",
               "rows": 14,
               "columns": 4
+            }
+          }
+        },
+        {
+          "title": "MCX Promo Popup",
+          "id": "mcx-promo-popup",
+          "plugins": {
+            "da": {
+              "name": "mcx-promo-popup",
+              "rows": 24,
+              "columns": 2
             }
           }
         },
@@ -1012,6 +1034,16 @@
               "name": "product-highlights",
               "rows": 4,
               "columns": 2
+            }
+          }
+        },
+        {
+          "title": "Product List Page",
+          "id": "product-list-page",
+          "model": "product-list-page",
+          "plugins": {
+            "da": {
+              "type": "key-value-block"
             }
           }
         },

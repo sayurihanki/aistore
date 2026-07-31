@@ -3,6 +3,10 @@ import {
   getRows,
 } from '../../scripts/mcx-block-utils.js';
 
+function cleanAnnouncementCopy(value) {
+  return value.replace(/^[\p{Extended_Pictographic}\u2600-\u27bf]\uFE0F?\s*/u, '');
+}
+
 export default function decorate(block) {
   const rows = getRows(block);
   let dismissible = true;
@@ -28,7 +32,7 @@ export default function decorate(block) {
   items.forEach((item, index) => {
     const node = document.createElement('span');
     node.className = 'ann-item';
-    node.textContent = item;
+    node.textContent = cleanAnnouncementCopy(item);
     inner.append(node);
 
     if (index < items.length - 1) {
@@ -46,7 +50,6 @@ export default function decorate(block) {
     close.className = 'ann-close';
     close.type = 'button';
     close.setAttribute('aria-label', 'Close announcement bar');
-    close.textContent = '✕';
     close.addEventListener('click', () => {
       const section = block.closest('.section');
       if (section) section.remove();

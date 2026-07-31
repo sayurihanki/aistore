@@ -38,6 +38,14 @@
               "value": "auto-immersive"
             }
           ]
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "experience-data-source",
+          "label": "Experience Data Source",
+          "description": "Optional repo-relative or da.live JSON path for breadcrumb, promo, shipping, and review overrides.",
+          "value": ""
         }
       ]
     }
