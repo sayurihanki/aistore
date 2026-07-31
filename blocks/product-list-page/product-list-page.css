@@ -252,13 +252,6 @@ main .product-list-page {
   min-width: min(320px, 100%);
 }
 
-.block.product-list-page .search__sort-label {
-  color: var(--gs-text-muted);
-  font: var(--type-details-overline-font);
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-}
-
 .block.product-list-page .search__product-sort {
   max-width: 320px;
   width: 100%;

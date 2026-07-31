@@ -177,8 +177,18 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .section:is(
   color: var(--ledger-ink);
 }
 
+/*
+ * The sort control is a single ruled field. The legacy shell wrapped the
+ * select in its own bordered, padded panel, so the ledger rule was drawn
+ * twice around one control and the label read three times over.
+ */
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.product-list-page .search__product-sort {
+  background: none;
+  border: 0;
+  padding: 0;
+}
+
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
-  .block.product-list-page .search__product-sort,
   .block.product-list-page .search__pagination,
   .block.product-list-page .search__facets,
   .block.product-list-page .dropin-in-line-alert
@@ -855,8 +865,7 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.product-
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.product-list-page :is(
   .search__hero-count,
   .search__hero-inline-count,
-  .search__toolbar-summary,
-  .search__sort-label
+  .search__toolbar-summary
 ) {
   color: rgb(16 19 15 / 56%);
   font-family: var(--ledger-data);
