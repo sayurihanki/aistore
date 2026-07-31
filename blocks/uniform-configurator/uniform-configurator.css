@@ -986,6 +986,12 @@ body.columns main > .section > div.uniform-configurator-wrapper {
   border-width: 2px;
 }
 
+/* Hover and focus must not quietly retire the scarlet compliance border. */
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .field--invalid :is(select, input, textarea):hover,
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .field--invalid :is(select, input, textarea):focus-visible {
+  border-color: var(--ucfg-scarlet);
+}
+
 /*
  * The rank step marks its whole grid, since the control is a set of cards and
  * not a single input. The outline is always read with the message beneath it.
