@@ -143,6 +143,7 @@ body:is(.mcx, .mcx-preview) h6 {
 
 body:is(.mcx, .mcx-preview) ::-webkit-scrollbar {
   width: 4px;
+  height: 4px;
 }
 
 body:is(.mcx, .mcx-preview) ::-webkit-scrollbar-track {
