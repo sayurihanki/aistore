@@ -3,9 +3,9 @@
   "configurations": [
     {
       "name": "aem-dev",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "start"],
-      "port": 3000
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["aem", "up", "--html-folder", ".da", "--no-open", "--port", "3001"],
+      "port": 3001
     }
   ]
 }
