@@ -1,96 +1,253 @@
-.commerce-account-sidebar-wrapper .commerce-account-sidebar {
-    border: 1px solid var(--glass-border-subtle);
-    border-radius: calc(var(--shape-border-radius-2) + 4px);
-    background: var(--glass-bg-strong);
-    backdrop-filter: var(--glass-blur-sm) var(--glass-saturate);
-    box-shadow: var(--shadow-glass);
-    overflow: hidden;
+/*
+ * MCX / Issue Ledger — Account sidebar
+ *
+ * The fragment-driven twin of commerce-account-nav, and it has to read as the
+ * same index: one paper sheet, 1px rules between entries, Rajdhani label over
+ * a Barlow sub-label, and a current entry filled in ink with a scarlet marker
+ * bar so selection never rests on colour alone.
+ *
+ * Class names come from blocks/commerce-account-sidebar/commerce-account-sidebar.js,
+ * which keeps the block element and appends the item anchors to it.
+ *
+ * The repeated class names buy specificity over two shared layers in
+ * styles/mcx-commerce-ledger.css: the legacy shell reset, which strips
+ * .block.commerce-account-sidebar down to nothing, and the "Account and
+ * authentication desk" rules, which frame .commerce-account-sidebar-item.
+ */
+
+/* stylelint-disable no-descending-specificity */
+
+.commerce-account-sidebar-wrapper {
+  --sb-paper: var(--ledger-paper, #eee9dd);
+  --sb-paper-deep: var(--ledger-paper-deep, #d8d1c2);
+  --sb-ink: var(--ledger-ink, #10130f);
+  --sb-scarlet: var(--ledger-scarlet, #c51f2a);
+  --sb-olive: var(--ledger-olive, #565c48);
+  --sb-rule: var(--ledger-rule, rgb(16 19 15 / 24%));
+  --sb-ink-soft: rgb(16 19 15 / 68%);
+  --sb-ink-quiet: rgb(16 19 15 / 46%);
+  --sb-paper-soft: rgb(238 233 221 / 72%);
+  --sb-body: var(--ledger-body, "Barlow", system-ui, sans-serif);
+  --sb-data: var(--ledger-data, "Rajdhani", "Barlow Condensed", monospace);
+  --sb-t-hover: 180ms;
 }
 
-.commerce-account-sidebar-wrapper .commerce-account-sidebar .commerce-account-sidebar-item {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-small);
-    padding: var(--spacing-small) var(--spacing-medium);
-    margin: 0;
-    border: 0;
-    border-bottom: 1px solid rgb(0 0 0 / 6%);
-    text-decoration: none;
-    transition: background-color var(--transition-fast) var(--ease-out), transform var(--transition-fast) var(--ease-out);
+/* ---------------------------------------------------------------- *
+ * 1. The sheet
+ * ---------------------------------------------------------------- */
+
+.commerce-account-sidebar-wrapper.commerce-account-sidebar-wrapper .block.commerce-account-sidebar.commerce-account-sidebar.commerce-account-sidebar {
+  backdrop-filter: none;
+  background: var(--sb-paper);
+  border: 1px solid var(--sb-ink);
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--sb-ink);
+  display: block;
+  overflow: visible;
+  padding: 0;
 }
 
-.commerce-account-sidebar-wrapper .commerce-account-sidebar .commerce-account-sidebar-item:last-child {
-    border-bottom: 0;
+/* ---------------------------------------------------------------- *
+ * 2. Entries
+ * ---------------------------------------------------------------- */
+
+.commerce-account-sidebar-wrapper.commerce-account-sidebar-wrapper .block.commerce-account-sidebar.commerce-account-sidebar.commerce-account-sidebar .commerce-account-sidebar-item {
+  align-items: center;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--sb-ink);
+  display: flex;
+  gap: clamp(10px, 1.2vw, 14px);
+  margin: 0;
+  min-height: 56px;
+  padding: 12px clamp(14px, 1.6vw, 18px);
+  position: relative;
+  text-decoration: none;
+  transition:
+    background var(--sb-t-hover) ease-out,
+    color var(--sb-t-hover) ease-out;
 }
 
-.commerce-account-sidebar-wrapper .commerce-account-sidebar .commerce-account-sidebar-item:hover {
-    background: var(--glass-bg);
-    transform: translateX(2px);
+.commerce-account-sidebar-wrapper.commerce-account-sidebar-wrapper .block.commerce-account-sidebar.commerce-account-sidebar.commerce-account-sidebar .commerce-account-sidebar-item + .commerce-account-sidebar-item {
+  border-top: 1px solid var(--sb-rule);
 }
 
-.commerce-account-sidebar-wrapper .commerce-account-sidebar .commerce-account-sidebar-item-active {
-    background: linear-gradient(90deg, rgb(46 190 122 / 10%) 0%, rgb(46 190 122 / 3%) 100%);
+/* Drawn selection bar — decorative; the inked row carries the state. */
+.commerce-account-sidebar-wrapper.commerce-account-sidebar-wrapper .block.commerce-account-sidebar.commerce-account-sidebar.commerce-account-sidebar .commerce-account-sidebar-item::before {
+  background: none;
+  content: '';
+  inset: 0 auto 0 0;
+  position: absolute;
+  transition: width var(--sb-t-hover) ease-out;
+  width: 0;
 }
 
-.commerce-account-sidebar-wrapper .commerce-account-sidebar .commerce-account-sidebar-item-active::before {
-    content: "";
-    position: absolute;
-    inset: 0 auto 0 0;
-    width: 3px;
-    background: var(--main-color-accent);
+.commerce-account-sidebar-wrapper.commerce-account-sidebar-wrapper .block.commerce-account-sidebar.commerce-account-sidebar.commerce-account-sidebar .commerce-account-sidebar-item:hover,
+.commerce-account-sidebar-wrapper.commerce-account-sidebar-wrapper .block.commerce-account-sidebar.commerce-account-sidebar.commerce-account-sidebar .commerce-account-sidebar-item:focus-visible {
+  background: var(--sb-paper-deep);
+  color: var(--sb-ink);
+  text-decoration: none;
+  transform: none;
 }
 
-.commerce-account-sidebar-item-icon {
-    flex: 0 0 auto;
-    color: var(--main-color-accent);
+.commerce-account-sidebar-wrapper.commerce-account-sidebar-wrapper .block.commerce-account-sidebar.commerce-account-sidebar.commerce-account-sidebar .commerce-account-sidebar-item:hover::before,
+.commerce-account-sidebar-wrapper.commerce-account-sidebar-wrapper .block.commerce-account-sidebar.commerce-account-sidebar.commerce-account-sidebar .commerce-account-sidebar-item:focus-visible::before {
+  background: var(--sb-ink);
+  width: 3px;
 }
 
-.commerce-account-sidebar-item-icon > div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.commerce-account-sidebar-wrapper.commerce-account-sidebar-wrapper .block.commerce-account-sidebar.commerce-account-sidebar.commerce-account-sidebar .commerce-account-sidebar-item:focus-visible {
+  outline: 2px solid var(--sb-scarlet);
+  outline-offset: -3px;
 }
 
-.commerce-account-sidebar-item-content {
-    flex: 1 1 auto;
-    min-width: 0;
+.commerce-account-sidebar-wrapper.commerce-account-sidebar-wrapper .block.commerce-account-sidebar.commerce-account-sidebar.commerce-account-sidebar .commerce-account-sidebar-item-active,
+.commerce-account-sidebar-wrapper.commerce-account-sidebar-wrapper .block.commerce-account-sidebar.commerce-account-sidebar.commerce-account-sidebar .commerce-account-sidebar-item-active:hover,
+.commerce-account-sidebar-wrapper.commerce-account-sidebar-wrapper .block.commerce-account-sidebar.commerce-account-sidebar.commerce-account-sidebar .commerce-account-sidebar-item-active:focus-visible {
+  background: var(--sb-ink);
+  color: var(--sb-paper);
 }
 
-.commerce-account-sidebar-item-title {
-    font: var(--type-body-1-strong-font);
-    margin: 0 0 2px;
-    border: none;
-    text-decoration: none;
-    color: var(--color-neutral-900);
+.commerce-account-sidebar-wrapper.commerce-account-sidebar-wrapper .block.commerce-account-sidebar.commerce-account-sidebar.commerce-account-sidebar .commerce-account-sidebar-item-active::before,
+.commerce-account-sidebar-wrapper.commerce-account-sidebar-wrapper .block.commerce-account-sidebar.commerce-account-sidebar.commerce-account-sidebar .commerce-account-sidebar-item-active:hover::before {
+  background: var(--sb-scarlet);
+  width: 4px;
 }
 
-.commerce-account-sidebar-item-subtitle {
-    font: var(--type-body-2-default-font);
-    margin: 0;
-    text-decoration: none;
-    color: var(--color-neutral-700);
+.commerce-account-sidebar-wrapper.commerce-account-sidebar-wrapper .block.commerce-account-sidebar.commerce-account-sidebar.commerce-account-sidebar .commerce-account-sidebar-item-active + .commerce-account-sidebar-item {
+  border-top-color: var(--sb-ink);
 }
 
-.commerce-account-sidebar-item-arrow {
-    flex: 0 0 auto;
-    margin-left: var(--spacing-xsmall);
-    color: var(--color-neutral-600);
-    transition: transform var(--transition-fast) var(--ease-out);
+/* ---------------------------------------------------------------- *
+ * 3. Entry contents
+ * ---------------------------------------------------------------- */
+
+.commerce-account-sidebar-wrapper.commerce-account-sidebar-wrapper .block.commerce-account-sidebar.commerce-account-sidebar.commerce-account-sidebar .commerce-account-sidebar-item-icon {
+  color: var(--sb-olive);
+  flex: 0 0 auto;
+  height: 22px;
+  width: 22px;
 }
 
-.commerce-account-sidebar-wrapper .commerce-account-sidebar .commerce-account-sidebar-item:hover .commerce-account-sidebar-item-arrow {
-    transform: translateX(2px);
+.commerce-account-sidebar-wrapper.commerce-account-sidebar-wrapper .block.commerce-account-sidebar.commerce-account-sidebar.commerce-account-sidebar .commerce-account-sidebar-item-icon > div {
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
-.commerce-account-sidebar-item-arrow > div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.commerce-account-sidebar-wrapper.commerce-account-sidebar-wrapper .block.commerce-account-sidebar.commerce-account-sidebar.commerce-account-sidebar .commerce-account-sidebar-item-icon svg {
+  height: 20px;
+  width: 20px;
+}
+
+.commerce-account-sidebar-wrapper.commerce-account-sidebar-wrapper .block.commerce-account-sidebar.commerce-account-sidebar.commerce-account-sidebar .commerce-account-sidebar-item-content {
+  display: grid;
+  flex: 1 1 auto;
+  gap: 2px;
+  min-width: 0;
+}
+
+.commerce-account-sidebar-wrapper.commerce-account-sidebar-wrapper .block.commerce-account-sidebar.commerce-account-sidebar.commerce-account-sidebar .commerce-account-sidebar-item-title {
+  border: 0;
+  color: inherit;
+  font-family: var(--sb-data);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.15;
+  margin: 0;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.commerce-account-sidebar-wrapper.commerce-account-sidebar-wrapper .block.commerce-account-sidebar.commerce-account-sidebar.commerce-account-sidebar .commerce-account-sidebar-item-subtitle {
+  color: var(--sb-ink-soft);
+  font-family: var(--sb-body);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.35;
+  margin: 0;
+  text-decoration: none;
+  text-transform: none;
+}
+
+.commerce-account-sidebar-wrapper.commerce-account-sidebar-wrapper .block.commerce-account-sidebar.commerce-account-sidebar.commerce-account-sidebar .commerce-account-sidebar-item-arrow {
+  color: var(--sb-ink-quiet);
+  flex: 0 0 auto;
+  height: 18px;
+  margin-left: 6px;
+  transition: color var(--sb-t-hover) ease-out;
+  width: 18px;
+}
+
+.commerce-account-sidebar-wrapper.commerce-account-sidebar-wrapper .block.commerce-account-sidebar.commerce-account-sidebar.commerce-account-sidebar .commerce-account-sidebar-item-arrow > div {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.commerce-account-sidebar-wrapper.commerce-account-sidebar-wrapper .block.commerce-account-sidebar.commerce-account-sidebar.commerce-account-sidebar .commerce-account-sidebar-item-arrow svg {
+  height: 16px;
+  width: 16px;
+}
+
+/*
+ * Matches the nav twin: the row label stays ink on hover and on keyboard focus.
+ * Scarlet on paper-deep is 3.83:1 and this title is 13px normal-size text, so
+ * it needs 4.5:1. The paper-deep fill, the 3px ink marker bar, and the scarlet
+ * arrow carry the interaction instead.
+ */
+.commerce-account-sidebar-wrapper.commerce-account-sidebar-wrapper .block.commerce-account-sidebar.commerce-account-sidebar.commerce-account-sidebar .commerce-account-sidebar-item:hover .commerce-account-sidebar-item-arrow,
+.commerce-account-sidebar-wrapper.commerce-account-sidebar-wrapper .block.commerce-account-sidebar.commerce-account-sidebar.commerce-account-sidebar .commerce-account-sidebar-item:focus-visible .commerce-account-sidebar-item-arrow {
+  color: var(--sb-scarlet);
+  transform: none;
+}
+
+.commerce-account-sidebar-wrapper.commerce-account-sidebar-wrapper .block.commerce-account-sidebar.commerce-account-sidebar.commerce-account-sidebar .commerce-account-sidebar-item-active .commerce-account-sidebar-item-title {
+  color: var(--sb-paper);
+}
+
+.commerce-account-sidebar-wrapper.commerce-account-sidebar-wrapper .block.commerce-account-sidebar.commerce-account-sidebar.commerce-account-sidebar .commerce-account-sidebar-item-active .commerce-account-sidebar-item-subtitle {
+  color: var(--sb-paper-soft);
+}
+
+.commerce-account-sidebar-wrapper.commerce-account-sidebar-wrapper .block.commerce-account-sidebar.commerce-account-sidebar.commerce-account-sidebar .commerce-account-sidebar-item-active .commerce-account-sidebar-item-icon,
+.commerce-account-sidebar-wrapper.commerce-account-sidebar-wrapper .block.commerce-account-sidebar.commerce-account-sidebar.commerce-account-sidebar .commerce-account-sidebar-item-active .commerce-account-sidebar-item-arrow {
+  color: var(--sb-paper);
+}
+
+/* ---------------------------------------------------------------- *
+ * 4. Responsive
+ * ---------------------------------------------------------------- */
+
+@media (min-width: 900px) {
+  .commerce-account-sidebar-wrapper {
+    position: sticky;
+    top: calc(var(--nav-height, 72px) + 16px);
+  }
 }
 
 @media (max-width: 899px) {
-    .commerce-account-sidebar-wrapper .commerce-account-sidebar {
-        margin-bottom: var(--spacing-small);
-    }
+  .commerce-account-sidebar-wrapper.commerce-account-sidebar-wrapper .block.commerce-account-sidebar.commerce-account-sidebar.commerce-account-sidebar {
+    margin-bottom: 16px;
+  }
+
+  .commerce-account-sidebar-wrapper.commerce-account-sidebar-wrapper .block.commerce-account-sidebar.commerce-account-sidebar.commerce-account-sidebar .commerce-account-sidebar-item {
+    min-height: 52px;
+    padding: 10px 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .commerce-account-sidebar-wrapper .commerce-account-sidebar,
+  .commerce-account-sidebar-wrapper .commerce-account-sidebar *,
+  .commerce-account-sidebar-wrapper .commerce-account-sidebar *::before,
+  .commerce-account-sidebar-wrapper .commerce-account-sidebar *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

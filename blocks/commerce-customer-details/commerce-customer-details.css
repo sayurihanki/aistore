@@ -1,6 +1,201 @@
-/* .commerce-customer-details {
-} */
+/*
+ * MCX / Issue Ledger — Order customer details
+ *
+ * One framed paper sheet holding a specification table: Rajdhani uppercase
+ * field labels, Barlow values, ink rules between fields, square corners, no
+ * shadow. Shared component grammar comes from styles/mcx-commerce-ledger.css;
+ * this file owns the markup emitted by the @dropins/storefront-order
+ * CustomerDetails container.
+ *
+ * Two selector strengths are used on purpose:
+ *
+ *   .commerce-customer-details …
+ *       the default, for class names nothing else in the codebase styles.
+ *
+ *   body:is(.mcx.mcx.mcx, .mcx-preview…) main .block.commerce-customer-details.commerce-customer-details …
+ *       used where a competing rule already exists — the shared dropin card
+ *       grammar, and the account-column "glass" panel in styles/styles.css that
+ *       re-applies a navy gradient, a radius, a blur and a drop shadow to
+ *       `.commerce-customer-details-wrapper > *`.
+ */
+
+/* stylelint-disable no-descending-specificity */
 
 .commerce-customer-details {
-    margin-bottom: var(--spacing-small);
+  --cd-paper: var(--ledger-paper, #eee9dd);
+  --cd-paper-deep: var(--ledger-paper-deep, #d8d1c2);
+  --cd-ink: var(--ledger-ink, #10130f);
+  --cd-scarlet: var(--ledger-scarlet, #c51f2a);
+  --cd-olive: var(--ledger-olive, #565c48);
+  --cd-rule: var(--ledger-rule, rgb(16 19 15 / 24%));
+  --cd-ink-soft: rgb(16 19 15 / 72%);
+  --cd-display: var(--ledger-display, "Barlow Condensed", "Arial Narrow", sans-serif);
+  --cd-body: var(--ledger-body, "Barlow", system-ui, sans-serif);
+  --cd-data: var(--ledger-data, "Rajdhani", "Barlow Condensed", monospace);
+
+  color: var(--cd-ink);
+  margin-bottom: 24px;
+}
+
+/* ---------------------------------------------------------------- *
+ * 1. Shell and sheet
+ * ---------------------------------------------------------------- */
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-customer-details.commerce-customer-details {
+  backdrop-filter: none;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+  padding: 0;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-customer-details.commerce-customer-details .order-customer-details-content {
+  backdrop-filter: none;
+  background: var(--cd-paper);
+  border: 1px solid var(--cd-ink);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-customer-details.commerce-customer-details :is(
+  .dropin-card__content,
+  .dropin-header-container
+) {
+  backdrop-filter: none;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.commerce-customer-details .order-customer-details-content .dropin-card__content {
+  padding: clamp(20px, 2.4vw, 32px);
+}
+
+/* ---------------------------------------------------------------- *
+ * 2. Sheet header
+ * ---------------------------------------------------------------- */
+
+.commerce-customer-details .dropin-header-container {
+  margin-bottom: clamp(16px, 2vw, 24px);
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-customer-details.commerce-customer-details .dropin-header-container__title {
+  color: var(--cd-ink);
+  font-family: var(--cd-display);
+  font-size: clamp(24px, 2.8vw, 36px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 0.9;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-customer-details.commerce-customer-details .dropin-divider {
+  background: var(--cd-ink);
+  border: 0;
+  height: 1px;
+  margin: 14px 0 0;
+  opacity: 1;
+}
+
+/* ---------------------------------------------------------------- *
+ * 3. Specification table
+ * ---------------------------------------------------------------- */
+
+.commerce-customer-details .order-customer-details-content__container {
+  border-top: 1px solid var(--cd-rule);
+  display: grid;
+  gap: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+}
+
+.commerce-customer-details .order-customer-details-content__container > * {
+  align-content: start;
+  border-bottom: 1px solid var(--cd-rule);
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+  padding: 18px clamp(14px, 1.6vw, 22px);
+}
+
+.commerce-customer-details .order-customer-details-content__container > :nth-child(odd) {
+  border-right: 1px solid var(--cd-rule);
+  padding-left: 0;
+}
+
+.commerce-customer-details .order-customer-details-content__container > :nth-child(even) {
+  padding-right: 0;
+}
+
+.commerce-customer-details .order-customer-details-content__container > :is(
+  .order-customer-details-content__container-billing_address--fullwidth,
+  .order-customer-details-content__container-payment_methods--fullwidth,
+  .order-customer-details-content__container-return-information
+) {
+  border-right: 0;
+  grid-column: 1 / -1;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.commerce-customer-details .order-customer-details-content__container-title {
+  color: var(--cd-olive);
+  font-family: var(--cd-data);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.commerce-customer-details .order-customer-details-content__container-description,
+.commerce-customer-details .order-customer-details-content__container > * p {
+  color: var(--cd-ink);
+  font-family: var(--cd-body);
+  font-size: 16px;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.commerce-customer-details .order-customer-details-content__container a {
+  color: var(--cd-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.commerce-customer-details .order-customer-details-content__container a:is(:hover, :focus-visible) {
+  color: var(--cd-scarlet);
+}
+
+.commerce-customer-details .order-customer-details-content__container-payment_methods--icon {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+}
+
+.commerce-customer-details .order-customer-details-content__container img {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* ---------------------------------------------------------------- *
+ * 4. Responsive
+ * ---------------------------------------------------------------- */
+
+@media (max-width: 700px) {
+  .commerce-customer-details .order-customer-details-content__container {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .commerce-customer-details .order-customer-details-content__container > *,
+  .commerce-customer-details .order-customer-details-content__container > :nth-child(odd),
+  .commerce-customer-details .order-customer-details-content__container > :nth-child(even) {
+    border-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
 }

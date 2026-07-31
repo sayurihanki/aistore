@@ -1020,6 +1020,24 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-product-ca
   border-color: var(--ledger-paper);
 }
 
+/*
+ * Scarlet on ink sits near 2:1, so on this band the kicker is set in paper and
+ * the scarlet accent moves to a drawn marker rule beside it.
+ */
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-product-cards-container .sec-label {
+  align-items: center;
+  color: var(--ledger-paper);
+  display: flex;
+  gap: 10px;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-product-cards-container .sec-label::before {
+  background: var(--ledger-scarlet);
+  content: '';
+  height: 2px;
+  width: 22px;
+}
+
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-product-cards .prod-grid {
   display: grid;
   gap: 2px;

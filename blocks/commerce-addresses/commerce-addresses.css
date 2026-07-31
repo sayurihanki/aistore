@@ -1,48 +1,457 @@
-.commerce-addresses-wrapper .account-addresses-header,
-.commerce-addresses-wrapper .dropin-header-container {
-    margin-bottom: var(--spacing-small);
+/*
+ * MCX / Issue Ledger — Address book
+ *
+ * Addresses are inventory sheets: paper, one 1px rule, square corners, a data
+ * label first, the address second, and the edit/remove actions anchored at the
+ * bottom. Shared component grammar comes from styles/mcx-commerce-ledger.css;
+ * this file owns the markup emitted by the @dropins/storefront-account
+ * Addresses container.
+ *
+ * Two selector strengths are used on purpose:
+ *
+ *   .commerce-addresses …
+ *       the default, for class names nothing else in the codebase styles.
+ *
+ *   body:is(.mcx.mcx.mcx, .mcx-preview…) main .block.commerce-addresses.commerce-addresses …
+ *       used where a competing rule already exists. styles/mcx-commerce-ledger.css
+ *       frames every `[class*='account-'][class*='card']` element as a bordered
+ *       paper card, which catches the address card *and* its action row, its
+ *       description block and its label row, boxing each of them.
+ */
+
+/* stylelint-disable no-descending-specificity */
+
+.commerce-addresses {
+  --ad-paper: var(--ledger-paper, #eee9dd);
+  --ad-paper-deep: var(--ledger-paper-deep, #d8d1c2);
+  --ad-field: #f8f4eb;
+  --ad-ink: var(--ledger-ink, #10130f);
+  --ad-scarlet: var(--ledger-scarlet, #c51f2a);
+  --ad-olive: var(--ledger-olive, #565c48);
+  --ad-rule: var(--ledger-rule, rgb(16 19 15 / 24%));
+  --ad-ink-soft: rgb(16 19 15 / 72%);
+  --ad-ink-quiet: rgb(16 19 15 / 52%);
+  --ad-display: var(--ledger-display, "Barlow Condensed", "Arial Narrow", sans-serif);
+  --ad-body: var(--ledger-body, "Barlow", system-ui, sans-serif);
+  --ad-data: var(--ledger-data, "Rajdhani", "Barlow Condensed", monospace);
+  --ad-t-hover: 180ms;
+
+  color: var(--ad-ink);
 }
 
-.commerce-addresses-wrapper .dropin-header-container__title {
-    font: var(--type-headline-2-strong-font);
-    letter-spacing: normal;
+/* ---------------------------------------------------------------- *
+ * 1. Shell and inherited-frame strip
+ * ---------------------------------------------------------------- */
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-addresses.commerce-addresses {
+  backdrop-filter: none;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
 }
 
-.commerce-addresses-wrapper .dropin-divider {
-    opacity: 0.45;
+/* The sheet supplies the frame; its inner regions stay bare. */
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-addresses.commerce-addresses :is(
+  .dropin-card__content,
+  .account-address-card__description,
+  .account-address-card__labels
+) {
+  backdrop-filter: none;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
 }
 
-.commerce-addresses-wrapper .account-address-card,
-.commerce-addresses-wrapper .account-actions-address,
-.commerce-addresses-wrapper .account-empty-list .dropin-card {
-    border: 1px solid var(--glass-border-subtle);
-    border-radius: calc(var(--shape-border-radius-2) + 2px);
-    background: var(--glass-bg-strong);
-    backdrop-filter: var(--glass-blur-xs) var(--glass-saturate);
-    box-shadow: 0 6px 18px rgb(0 0 0 / 7%);
+/* ---------------------------------------------------------------- *
+ * 2. Section header
+ * ---------------------------------------------------------------- */
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-addresses.commerce-addresses .dropin-header-container {
+  backdrop-filter: none;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  border-top: 4px solid var(--ad-scarlet);
+  box-shadow: none;
+  margin-bottom: 0;
+  padding-top: 18px;
 }
 
-.commerce-addresses-wrapper .account-address-card .dropin-card__content {
-    padding: var(--spacing-medium);
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-addresses.commerce-addresses .dropin-header-container__title {
+  color: var(--ad-ink);
+  font-family: var(--ad-display);
+  font-size: clamp(34px, 4.4vw, 56px);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 0.86;
+  margin: 0;
+  text-transform: uppercase;
 }
 
-.commerce-addresses-wrapper .account-address-card__description p:nth-child(1),
-.commerce-addresses-wrapper .account-address-card__description p:nth-child(2) {
-    color: var(--color-neutral-900);
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-addresses.commerce-addresses .dropin-divider {
+  background: var(--ad-ink);
+  border: 0;
+  height: 1px;
+  margin: clamp(14px, 2vw, 20px) 0 0;
+  opacity: 1;
 }
 
-.commerce-addresses-wrapper .account-actions-address {
-    min-height: 76px;
-    height: auto;
-    transition: transform var(--transition-fast) var(--ease-out), box-shadow var(--transition-fast) var(--ease-out);
+/* ---------------------------------------------------------------- *
+ * 3. Address sheets
+ * ---------------------------------------------------------------- */
+
+.commerce-addresses .account-addresses-wrapper {
+  display: grid;
+  gap: clamp(12px, 1.4vw, 18px);
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  padding-top: clamp(24px, 3vw, 32px);
 }
 
-.commerce-addresses-wrapper .account-actions-address:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 12px 24px rgb(0 0 0 / 10%);
+.commerce-addresses .account-addresses__footer {
+  grid-column: 1 / -1;
 }
 
-.commerce-addresses-wrapper .account-actions-address__title {
-    font: var(--type-body-1-strong-font);
-    letter-spacing: normal;
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-addresses.commerce-addresses .account-address-card {
+  backdrop-filter: none;
+  background: var(--ad-paper);
+  border: 1px solid var(--ad-rule);
+  border-radius: 0;
+  box-shadow: none;
+  transition: border-color var(--ad-t-hover) ease-out;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-addresses.commerce-addresses .account-address-card:is(:hover, :focus-within) {
+  border-color: var(--ad-ink);
+  box-shadow: none;
+  transform: none;
+}
+
+/* Reordered so the sheet reads label, address, action — DOM order is action first. */
+.commerce-addresses .account-address-card .dropin-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  height: 100%;
+  padding: clamp(20px, 2.4vw, 28px);
+}
+
+.commerce-addresses .account-address-card__labels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  order: 1;
+}
+
+.commerce-addresses .account-address-card__labels:not(:empty) {
+  margin-bottom: 16px;
+}
+
+.commerce-addresses .account-address-card__labels :is(
+  .dropin-tag-container,
+  .dropin-tag-container__label
+) {
+  background: none;
+  border-radius: 0;
+  color: var(--ad-olive);
+  font-family: var(--ad-data);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.commerce-addresses .account-address-card__labels .dropin-tag-container {
+  align-items: center;
+  border: 1px solid var(--ad-olive);
+  display: inline-flex;
+  padding: 4px 9px;
+}
+
+.commerce-addresses .account-address-card__description {
+  color: var(--ad-ink);
+  font-family: var(--ad-body);
+  font-size: 16px;
+  line-height: 1.55;
+  order: 2;
+}
+
+.commerce-addresses .account-address-card__description p {
+  color: var(--ad-ink-soft);
+  margin: 0;
+}
+
+/* First two lines are the recipient — set them as the sheet title. */
+.commerce-addresses .account-address-card__description p:first-child {
+  color: var(--ad-ink);
+  font-family: var(--ad-display);
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-addresses.commerce-addresses .account-address-card__action {
+  align-items: center;
+  backdrop-filter: none;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  border-top: 1px solid var(--ad-rule);
+  box-shadow: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin-top: auto;
+  order: 3;
+  padding-top: 14px;
+}
+
+.commerce-addresses .account-address-card__action .dropin-button {
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--ad-ink);
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--ad-ink);
+  display: inline-flex;
+  font-family: var(--ad-data);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  min-height: 44px;
+  padding: 0;
+  text-transform: uppercase;
+  transition:
+    border-color var(--ad-t-hover) ease-out,
+    color var(--ad-t-hover) ease-out;
+}
+
+.commerce-addresses .account-address-card__action .dropin-button:is(:hover, :focus-visible) {
+  background: none;
+  border-color: var(--ad-scarlet);
+  color: var(--ad-scarlet);
+}
+
+/* ---------------------------------------------------------------- *
+ * 4. Add / view-all action
+ * ---------------------------------------------------------------- */
+
+.commerce-addresses .account-actions-address {
+  align-items: center;
+  backdrop-filter: none;
+  background: var(--ad-paper-deep);
+  border: 1px solid var(--ad-ink);
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--ad-ink);
+  cursor: pointer;
+  display: flex;
+  gap: 14px;
+  justify-content: space-between;
+  min-height: 76px;
+  padding: 16px clamp(20px, 2.4vw, 28px);
+  text-align: left;
+  transition:
+    background var(--ad-t-hover) ease-out,
+    color var(--ad-t-hover) ease-out;
+  width: 100%;
+}
+
+.commerce-addresses .account-actions-address:is(:hover, :focus-visible, :focus-within) {
+  background: var(--ad-ink);
+  box-shadow: none;
+  color: var(--ad-paper);
+  transform: none;
+}
+
+.commerce-addresses .account-actions-address svg {
+  color: inherit;
+  flex-shrink: 0;
+  height: 24px;
+  width: 24px;
+}
+
+.commerce-addresses .account-actions-address__title {
+  color: inherit;
+  font-family: var(--ad-data);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* ---------------------------------------------------------------- *
+ * 5. Address form
+ * ---------------------------------------------------------------- */
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-addresses.commerce-addresses .account-address-form-wrapper {
+  background: var(--ad-paper);
+  border: 1px solid var(--ad-ink);
+  border-radius: 0;
+  box-shadow: none;
+  padding: clamp(20px, 2.4vw, 32px);
+}
+
+.commerce-addresses .account-address-form-wrapper__title {
+  color: var(--ad-ink);
+  font-family: var(--ad-display);
+  font-size: clamp(24px, 2.6vw, 34px);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 0.92;
+  margin: 0 0 20px;
+  text-transform: uppercase;
+}
+
+.commerce-addresses .dropin-field__label {
+  color: var(--ad-olive);
+  font-family: var(--ad-data);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.commerce-addresses :is(input, select, textarea, .dropin-input, .dropin-picker__select) {
+  background: var(--ad-field);
+  border: 1px solid rgb(16 19 15 / 42%);
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--ad-ink);
+  font-family: var(--ad-body);
+  min-height: 44px;
+}
+
+.commerce-addresses input::placeholder,
+.commerce-addresses textarea::placeholder {
+  color: var(--ad-ink-quiet);
+}
+
+.commerce-addresses .dropin-field__hint--error {
+  color: var(--ad-scarlet);
+  font-family: var(--ad-body);
+  font-size: 13px;
+}
+
+.commerce-addresses :is(
+  .account-address-modal__buttons,
+  .account-addresses-form__footer__wrapper
+) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-addresses.commerce-addresses :is(
+  .dropin-button--primary,
+  .dropin-button--secondary
+) {
+  border-radius: 0;
+  box-shadow: none;
+  clip-path: none;
+  font-family: var(--ad-data);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  min-height: 48px;
+  padding: 0 24px;
+  text-transform: uppercase;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-addresses.commerce-addresses .account-address-form-wrapper .dropin-button--primary {
+  background: var(--ad-scarlet);
+  border: 1px solid var(--ad-scarlet);
+  color: #fff;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-addresses.commerce-addresses .account-address-form-wrapper .dropin-button--primary:is(:hover, :focus-visible) {
+  background: var(--ad-ink);
+  border-color: var(--ad-ink);
+  color: var(--ad-paper);
+}
+
+/* ---------------------------------------------------------------- *
+ * 6. Modal and empty state
+ * ---------------------------------------------------------------- */
+
+.commerce-addresses .account-address-modal--overlay {
+  backdrop-filter: none;
+  background: rgb(16 19 15 / 72%);
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-addresses.commerce-addresses .account-empty-list .dropin-card {
+  backdrop-filter: none;
+  background: var(--ad-paper);
+  border: 1px solid var(--ad-rule);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.commerce-addresses .account-empty-list .dropin-card__content {
+  display: grid;
+  gap: 16px;
+  justify-items: start;
+  padding: clamp(32px, 4vw, 56px) clamp(24px, 3vw, 40px);
+  text-align: left;
+}
+
+.commerce-addresses .account-empty-list .dropin-illustrated-message__icon {
+  display: none;
+}
+
+/*
+ * Drawn mark: an empty inventory slot, a square rule crossed by a scarlet
+ * diagonal. Decorative — the message beside it carries the meaning, and an
+ * empty pseudo-element is not announced by assistive technology.
+ */
+.commerce-addresses .account-empty-list .dropin-card__content::before {
+  background: linear-gradient(
+    135deg,
+    transparent calc(50% - 1px),
+    var(--ad-scarlet) calc(50% - 1px),
+    var(--ad-scarlet) calc(50% + 1px),
+    transparent calc(50% + 1px)
+  );
+  border: 1px solid var(--ad-ink);
+  content: '';
+  display: block;
+  height: 44px;
+  width: 44px;
+}
+
+.commerce-addresses .account-empty-list .dropin-illustrated-message__message {
+  color: var(--ad-ink-soft);
+  font-family: var(--ad-body);
+  font-size: 17px;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 52ch;
+}
+
+/* ---------------------------------------------------------------- *
+ * 7. Responsive
+ * ---------------------------------------------------------------- */
+
+@media (max-width: 560px) {
+  .commerce-addresses .account-addresses-wrapper {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ---------------------------------------------------------------- *
+ * 8. Reduced motion
+ * ---------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .commerce-addresses *,
+  .commerce-addresses *::before,
+  .commerce-addresses *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

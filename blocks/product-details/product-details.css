@@ -100,11 +100,11 @@
 
 .product-details__gallery-wishlist :is(button, a) {
   align-items: center;
-  backdrop-filter: blur(10px);
-  background: rgb(13 21 32 / 78%);
-  border: 1px solid rgb(255 255 255 / 10%);
-  border-radius: 50%;
-  color: var(--text-dim);
+  backdrop-filter: none;
+  background: var(--ledger-paper, #eee9dd);
+  border: 1px solid var(--ledger-ink, #10130f);
+  border-radius: 0;
+  color: var(--ledger-ink, #10130f);
   display: inline-flex;
   height: 48px;
   justify-content: center;
@@ -121,8 +121,7 @@
 .product-details__gallery-wishlist :is(button, a)[aria-pressed='true'] {
   background: rgb(193 18 31 / 14%);
   border-color: rgb(193 18 31 / 28%);
-  color: var(--scarlet);
-  transform: translateY(-1px);
+  color: var(--ledger-scarlet, #c51f2a);
 }
 
 .product-details__gallery-wishlist .dropin-icon {
@@ -144,25 +143,27 @@
   display: none;
 }
 
+/* Badges are stamped inventory labels: square, ruled, set in the data face. */
 .product-details__gallery-badge {
-  border-radius: var(--r-sm);
-  font-family: var(--font-mono);
+  border-radius: 0;
+  font-family: var(--ledger-data, var(--font-mono));
   font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.12em;
-  padding: 5px 12px;
+  letter-spacing: 0.16em;
+  padding: 6px 12px;
   text-transform: uppercase;
 }
 
 .product-details__gallery-badge--exclusive {
-  backdrop-filter: blur(8px);
-  background: rgb(13 21 32 / 88%);
-  border: 1px solid var(--rim);
-  color: var(--text-body);
+  backdrop-filter: none;
+  background: var(--ledger-ink, #10130f);
+  border: 1px solid var(--ledger-ink, #10130f);
+  color: var(--ledger-paper, #eee9dd);
 }
 
 .product-details__gallery-badge--sale {
-  background: var(--scarlet);
+  background: var(--ledger-scarlet, #c51f2a);
+  border: 1px solid var(--ledger-scarlet, #c51f2a);
   color: #fff;
 }
 
@@ -172,11 +173,9 @@
 
 .product-details__gallery .pdp-carousel__wrapper,
 .product-details__gallery .pdp-gallery-grid {
-  background:
-    radial-gradient(circle at top right, rgb(201 162 39 / 12%) 0%, transparent 34%),
-    linear-gradient(180deg, #faf7f2 0%, #ece6dd 100%);
-  border: 1px solid var(--rim);
-  border-radius: var(--r-xl);
+  background: #f8f4eb;
+  border: 1px solid var(--ledger-rule, rgb(16 19 15 / 24%));
+  border-radius: 0;
   min-height: 0;
   overflow: hidden;
 }
@@ -215,30 +214,28 @@
 }
 
 .product-details__gallery .pdp-carousel__thumbnail__span {
-  background: linear-gradient(180deg, #faf7f2, #ece6dd);
-  border-radius: var(--r-lg);
+  background: #f8f4eb;
+  border-radius: 0;
   box-shadow: inset 0 0 0 2px transparent;
   overflow: hidden;
 }
 
 .product-details__gallery .pdp-carousel__thumbnail__span:hover {
-  box-shadow: inset 0 0 0 2px rgb(255 255 255 / 14%);
+  box-shadow: inset 0 0 0 2px var(--ledger-rule, rgb(16 19 15 / 24%));
 }
 
 .product-details__gallery .pdp-carousel__thumbnail__container input[type='radio']:checked ~ .pdp-carousel__thumbnail__span,
 .product-details__gallery .pdp-carousel__thumbnail--selected {
-  box-shadow:
-    inset 0 0 0 2px var(--scarlet),
-    0 0 12px rgb(193 18 31 / 22%);
+  box-shadow: inset 0 0 0 2px var(--ledger-scarlet, #c51f2a);
 }
 
 .product-details__gallery .pdp-carousel__button {
   align-items: center;
-  backdrop-filter: blur(10px);
-  background: rgb(13 21 32 / 72%);
-  border: 1px solid var(--rim);
-  border-radius: 50%;
-  color: var(--text-bright);
+  backdrop-filter: none;
+  background: var(--ledger-paper, #eee9dd);
+  border: 1px solid var(--ledger-ink, #10130f);
+  border-radius: 0;
+  color: var(--ledger-ink, #10130f);
   display: inline-flex;
   height: 42px;
   justify-content: center;
@@ -269,8 +266,7 @@
 }
 
 .product-details__info-brand::before {
-  background: var(--scarlet);
-  box-shadow: 0 0 6px var(--scarlet);
+  background: var(--ledger-scarlet, #c51f2a);
   content: '';
   height: 2px;
   width: 14px;
@@ -585,8 +581,8 @@
 
 .product-details .color-swatch__container input:checked + .color-swatch__span,
 .product-details .color-swatch__container input:checked ~ .color-swatch__span {
-  border-color: var(--gold);
-  box-shadow: 0 0 0 2px var(--void), 0 0 10px var(--gold-border);
+  border-color: var(--ledger-ink, #10130f);
+  box-shadow: 0 0 0 2px var(--ledger-paper, #eee9dd), 0 0 0 3px var(--ledger-ink, #10130f);
 }
 
 .product-details .text-swatch__label,
@@ -749,17 +745,15 @@
 }
 
 .product-details__stock-dot {
-  background: var(--teal);
-  border-radius: 50%;
-  box-shadow: 0 0 8px var(--teal);
+  background: var(--ledger-olive, #565c48);
+  border-radius: 0;
   height: 6px;
   width: 6px;
 }
 
 .product-details__stock-tag.is-out-of-stock .product-details__stock-dot {
   animation: none;
-  background: var(--scarlet);
-  box-shadow: 0 0 8px var(--scarlet);
+  background: var(--ledger-scarlet, #c51f2a);
 }
 
 .product-details__buttons {
@@ -776,10 +770,9 @@
 .product-details__buttons__add-to-cart .dropin-button,
 .product-details__sticky-atc-button {
   align-items: center;
-  background: var(--scarlet);
-  border: 0;
-  border-radius: var(--r-sm);
-  box-shadow: 0 0 32px rgb(193 18 31 / 25%);
+  background: var(--ledger-scarlet, #c51f2a);
+  border: 1px solid var(--ledger-scarlet, #c51f2a);
+  border-radius: 0;
   color: #fff;
   cursor: pointer;
   display: inline-flex;
@@ -826,9 +819,8 @@
 .product-details__buttons__add-to-cart .dropin-button:focus-visible,
 .product-details__sticky-atc-button:hover,
 .product-details__sticky-atc-button:focus-visible {
-  background: var(--scarlet-bright);
-  box-shadow: 0 0 44px rgb(193 18 31 / 40%);
-  transform: translateY(-2px);
+  background: #a91720;
+  border-color: #a91720;
 }
 
 .product-details__buttons__add-to-cart .dropin-button:hover::after,
@@ -1232,9 +1224,9 @@
 
 .product-details__sticky-atc {
   align-items: center;
-  backdrop-filter: blur(16px);
-  background: rgb(13 21 32 / 95%);
-  border-top: 1px solid var(--rim);
+  backdrop-filter: none;
+  background: var(--ledger-paper, #eee9dd);
+  border-top: 1px solid var(--ledger-ink, #10130f);
   bottom: 0;
   display: none;
   gap: 12px;
@@ -1275,8 +1267,8 @@
 }
 
 .product-details .pdp-overlay {
-  backdrop-filter: blur(16px);
-  background: rgb(3 5 7 / 92%);
+  backdrop-filter: none;
+  background: rgb(16 19 15 / 88%);
   padding: 24px;
 }
 
@@ -1287,10 +1279,10 @@
 
 .product-details .pdp-overlay__close-button {
   align-items: center;
-  background: rgb(13 21 32 / 78%);
-  border: 1px solid rgb(255 255 255 / 10%);
-  border-radius: 50%;
-  color: var(--text-bright);
+  background: var(--ledger-paper, #eee9dd);
+  border: 1px solid var(--ledger-ink, #10130f);
+  border-radius: 0;
+  color: var(--ledger-ink, #10130f);
   display: inline-flex;
   height: 44px;
   justify-content: center;

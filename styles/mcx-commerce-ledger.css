@@ -22,6 +22,10 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) .dropin-design {
   --gs-gold-light: var(--ledger-olive);
   --gold: var(--ledger-olive);
   --gold-lt: var(--ledger-olive);
+
+  /* The ledger has no gold and no teal; olive carries service and status. */
+  --teal: var(--ledger-olive);
+  --teal-dim: rgb(86 92 72 / 12%);
   --ink: var(--ledger-ink);
   --surface-1: var(--ledger-paper);
   --surface-2: #e6e0d4;
@@ -69,7 +73,422 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) .dropin-design {
   --auth-field-bg: #f8f4eb;
   --auth-field-border: rgb(16 19 15 / 38%);
 
+  /*
+   * The glass layer has no place in the ledger: surfaces are paper, and depth
+   * is expressed by a rule or a change of paper tone, never by blur or shadow.
+   */
+  --glass-bg: var(--ledger-paper);
+  --glass-bg-hover: var(--ledger-paper-deep);
+  --glass-bg-strong: var(--ledger-paper-deep);
+  --glass-border: var(--ledger-rule);
+  --glass-border-subtle: var(--ledger-rule);
+
+  /* Valid no-ops, so every `backdrop-filter: var(--glass-blur-*)` goes flat. */
+  --glass-blur: blur(0);
+  --glass-blur-sm: blur(0);
+  --glass-blur-xs: blur(0);
+  --glass-saturate: saturate(100%);
+  --shadow-glass: none;
+  --shadow-glass-hover: none;
+  --shadow-button-hover: none;
+  --shadow-focus: 0 0 0 2px var(--ledger-scarlet);
+
+  /*
+   * Default radius is 0. --gs-r-pill survives for the handful of count and
+   * status chips where the shape itself carries the meaning.
+   */
+  --gs-r-sm: 0;
+  --gs-r-md: 0;
+  --gs-r-lg: 0;
+  --gs-r-xl: 0;
+
   color-scheme: light;
+}
+
+/*
+ * Legacy shell reset
+ *
+ * storefront-reference.css frames every commerce block as a floating dark
+ * "glass" panel — a navy gradient written as literal rgb() values, a 22px
+ * radius, and a drop shadow. Literal colors are unreachable by the token
+ * overrides above, so ink text landed on a navy panel and the page read as
+ * unreadable. The Issue Ledger has no floating panels: pages are paper, and
+ * structure comes from rules and spacing. Strip the shell here, once, for
+ * every commerce surface rather than per block.
+ */
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
+  .block.product-details,
+  .block.product-list-page,
+  .block.product-recommendations,
+  .block.commerce-cart,
+  .block.commerce-checkout,
+  .block.commerce-checkout-success,
+  .block.commerce-wishlist,
+  .block.commerce-login,
+  .block.commerce-create-account,
+  .block.commerce-create-password,
+  .block.commerce-forgot-password,
+  .block.commerce-confirm-account,
+  .block.commerce-account-header,
+  .block.commerce-account-hub,
+  .block.commerce-account-nav,
+  .block.commerce-account-sidebar,
+  .block.commerce-addresses,
+  .block.commerce-customer-company,
+  .block.commerce-customer-details,
+  .block.commerce-customer-information,
+  .block.commerce-orders-list,
+  .block.commerce-order-header,
+  .block.commerce-order-product-list,
+  .block.commerce-order-cost-summary,
+  .block.commerce-order-status,
+  .block.commerce-search-order,
+  .block.commerce-shipping-status,
+  .block.commerce-return-header,
+  .block.commerce-returns-list,
+  .block.commerce-create-return,
+  .block.commerce-order-returns,
+  .block.commerce-b2b-requisition-list,
+  .block.commerce-b2b-requisition-list-view,
+  .block.commerce-company-profile,
+  .block.commerce-company-structure,
+  .block.commerce-company-users,
+  .block.commerce-company-credit,
+  .block.commerce-company-roles-permissions
+) {
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+}
+
+/* The same dark glass, applied to authored section variants. */
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .section:is(
+  .light,
+  .highlight,
+  .glass,
+  .dark-glass
+) {
+  background: var(--ledger-paper);
+  border-bottom: 1px solid var(--ledger-rule);
+  border-top: 1px solid var(--ledger-rule);
+  color: var(--ledger-ink);
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
+  .block.product-list-page .search__product-sort,
+  .block.product-list-page .search__pagination,
+  .block.product-list-page .search__facets,
+  .block.product-list-page .dropin-in-line-alert
+) {
+  background: var(--ledger-paper);
+  border: 1px solid var(--ledger-rule);
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--ledger-ink);
+}
+
+/* Product index tiles are inventory sheets: a rule, a crop, and no lift. */
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
+  .block.product-list-page .dropin-product-item-card,
+  .block.product-list-page .product-discovery-product-actions__requisition-list-names .dropin-card
+) {
+  background: var(--ledger-paper);
+  border: 1px solid var(--ledger-rule);
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--ledger-ink);
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.product-list-page .dropin-product-item-card__image-container {
+  border-bottom: 1px solid var(--ledger-rule);
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.product-list-page .product-discovery-product-image-fallback {
+  background: var(--ledger-paper-deep);
+  color: rgb(16 19 15 / 62%);
+  font-family: var(--ledger-display);
+}
+
+/*
+ * Badges name a real distinction, so they read as stamped labels: square,
+ * ruled, and set in the data face.
+ */
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.product-list-page :is(
+  .product-discovery-product-badge--accent,
+  .product-discovery-product-badge--muted
+) {
+  border-radius: 0;
+  font-family: var(--ledger-data);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.product-list-page .product-discovery-product-badge--accent {
+  background: var(--ledger-olive);
+  border: 1px solid var(--ledger-olive);
+  color: var(--ledger-paper);
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.product-list-page .product-discovery-product-badge--muted {
+  background: var(--ledger-paper-deep);
+  border: 1px solid var(--ledger-rule);
+  color: var(--ledger-ink);
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.product-list-page .product-discovery-product-price-pill {
+  background: transparent;
+  border: 1px solid var(--ledger-scarlet);
+  border-radius: 0;
+  color: var(--ledger-scarlet);
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.product-list-page .product-discovery-product-swatch {
+  box-shadow: 0 0 0 1px var(--ledger-rule);
+}
+
+/* Save and list controls: square ink-on-paper targets, no blurred pill. */
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.product-list-page :is(
+  .product-discovery-product-actions__wishlist-toggle,
+  .product-discovery-product-actions__requisition-list-names
+) :is(button, a) {
+  backdrop-filter: none;
+  background: var(--ledger-paper);
+  border: 1px solid var(--ledger-rule);
+  border-radius: 0;
+  color: var(--ledger-ink);
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.product-list-page :is(
+  .product-discovery-product-actions__wishlist-toggle,
+  .product-discovery-product-actions__requisition-list-names
+) :is(button, a):is(:hover, :focus-visible) {
+  background: var(--ledger-paper-deep);
+  border-color: var(--ledger-ink);
+}
+
+/*
+ * Pagination is a page register: square cells, ink for the page you are on,
+ * and the number itself carried in paper so it stays legible on the fill.
+ */
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
+  .dropin-pagination_list-item,
+  .dropin-pagination-arrow
+),
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .dropin-pagination_list-item :is(button, a) {
+  border-radius: 0;
+  min-height: 44px;
+  min-width: 44px;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .dropin-pagination-arrow {
+  border: 1px solid var(--ledger-rule);
+  color: var(--ledger-ink);
+  min-height: 44px;
+  min-width: 44px;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .dropin-pagination_list-item--active {
+  background: var(--ledger-ink);
+  border-radius: 0;
+  color: var(--ledger-paper);
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .dropin-pagination_list-item--active :is(button, a) {
+  color: var(--ledger-paper);
+}
+
+/*
+ * Authentication desk. The legacy sign-in surfaces carried a near-black shell,
+ * a blueprint grid overlay, a scarlet-to-gold pill, a glowing gradient submit,
+ * and a dark-red alert — all of which predate the ledger.
+ */
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
+  .block.commerce-login,
+  .block.commerce-create-account,
+  .block.commerce-create-password,
+  .block.commerce-forgot-password,
+  .block.commerce-confirm-account
+) {
+  box-shadow: none;
+  text-shadow: none;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
+  .block.commerce-login,
+  .block.commerce-create-account,
+  .block.commerce-create-password,
+  .block.commerce-forgot-password,
+  .block.commerce-confirm-account
+)::before {
+  content: none;
+}
+
+/* The rule that opens the sheet: scarlet, square, and the full ledger weight. */
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
+  .block.commerce-login,
+  .block.commerce-create-account,
+  .block.commerce-create-password,
+  .block.commerce-forgot-password,
+  .block.commerce-confirm-account
+)::after {
+  background: var(--ledger-scarlet);
+  border-radius: 0;
+  height: 4px;
+  left: 0;
+  top: 0;
+  width: clamp(88px, 18vw, 120px);
+}
+
+/* The sign-in sheet is paper with a rule, not a white slab. */
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
+  .auth-sign-in-form,
+  .auth-sign-up-form,
+  .auth-reset-password-form,
+  .auth-update-password-form,
+  .auth-email-confirmation-form,
+  .auth-success-notification-form
+) {
+  background: var(--ledger-paper);
+  border: 1px solid var(--ledger-ink);
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--ledger-ink);
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
+  .block.commerce-login,
+  .block.commerce-create-account,
+  .block.commerce-create-password,
+  .block.commerce-forgot-password,
+  .block.commerce-confirm-account
+) .dropin-header-container__title {
+  text-shadow: none;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
+  .block.commerce-login,
+  .block.commerce-create-account,
+  .block.commerce-create-password,
+  .block.commerce-forgot-password,
+  .block.commerce-confirm-account
+) :is(
+  .auth-sign-in-form__button--submit,
+  .auth-sign-up-form-buttons .dropin-button--primary,
+  .auth-reset-password-form__button,
+  .auth-update-password-form__button
+) {
+  background: var(--ledger-scarlet);
+  border: 1px solid var(--ledger-scarlet);
+  border-radius: 0;
+  box-shadow: none;
+  color: #fff;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
+  .block.commerce-login,
+  .block.commerce-create-account,
+  .block.commerce-create-password,
+  .block.commerce-forgot-password,
+  .block.commerce-confirm-account
+) :is(
+  .auth-sign-in-form__button--submit,
+  .auth-sign-up-form-buttons .dropin-button--primary,
+  .auth-reset-password-form__button,
+  .auth-update-password-form__button
+):is(:hover, :focus-visible) {
+  background: #a91720;
+  border-color: #a91720;
+}
+
+/*
+ * Form labels. The dropin floating label was written paper-on-navy, so on a
+ * paper canvas it became paper-on-paper — invisible. Labels are always
+ * readable, in the data face, and the placeholder never carries the label's job.
+ */
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
+  .dropin-input__label--floating,
+  .dropin-picker__floatingLabel,
+  .dropin-textarea__label--floating
+) {
+  background: transparent;
+  color: rgb(16 19 15 / 72%);
+  font-family: var(--ledger-body);
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
+  .dropin-field__label,
+  .dropin-input-label-container,
+  .dropin-design label
+) {
+  color: var(--ledger-ink);
+  font-family: var(--ledger-data);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
+  .dropin-input,
+  .dropin-textarea,
+  .dropin-picker__select,
+  .dropin-design :is(input, select, textarea)
+) {
+  background: #f8f4eb;
+  border: 1px solid rgb(16 19 15 / 42%);
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--ledger-ink);
+  min-height: 44px;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
+  .dropin-input,
+  .dropin-textarea,
+  .dropin-picker__select,
+  .dropin-design :is(input, select, textarea)
+)::placeholder {
+  color: rgb(16 19 15 / 56%);
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
+  .dropin-input,
+  .dropin-textarea,
+  .dropin-picker__select,
+  .dropin-design :is(input, select, textarea)
+):focus-visible {
+  border-color: var(--ledger-scarlet);
+  box-shadow: 0 0 0 2px var(--ledger-scarlet);
+  outline: none;
+}
+
+/* Validation speaks plainly and is never signalled by color alone. */
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .dropin-field__message {
+  color: var(--ledger-scarlet);
+  font-family: var(--ledger-body);
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .dropin-field__hint {
+  color: rgb(16 19 15 / 62%);
+  font-family: var(--ledger-body);
+}
+
+/* An alert is a stamped notice: scarlet rule, ink copy, paper ground. */
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
+  .block.commerce-login,
+  .block.commerce-create-account,
+  .block.commerce-create-password,
+  .block.commerce-forgot-password,
+  .block.commerce-confirm-account
+) .dropin-in-line-alert {
+  background: var(--ledger-paper);
+  border: 1px solid var(--ledger-scarlet);
+  border-left-width: 4px;
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--ledger-ink);
 }
 
 /* Shared editorial grammar */
@@ -86,11 +505,17 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
   text-transform: uppercase;
 }
 
+/*
+ * Paper is the default page ground. Sections that deliberately run as an ink
+ * band in mcx-issue-ledger.css are excluded — this rule outranks them, and
+ * repainting their ground left their paper-coloured headings on paper.
+ */
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main > .section:not(
   .mcx-hero-container,
   .mcx-ticker-container,
   .mcx-benefits-container,
   .mcx-category-page-container,
+  .mcx-product-cards-container,
   .form-mccs-preferences-next-container
 ) {
   background: var(--ledger-paper);
@@ -109,7 +534,6 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main > :is(
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
   .dropin-card,
   .dropin-modal__content,
-  .dropin-header-container,
   .account-address-form-wrapper,
   .cart-order-summary,
   .cart-cart-summary-list
@@ -119,6 +543,20 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
   border-radius: 0;
   box-shadow: none;
   color: var(--ledger-ink);
+}
+
+/*
+ * A section header is a rule, not a box. Boxing the title made every heading
+ * read like an empty input.
+ */
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .dropin-header-container {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--ledger-ink);
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--ledger-ink);
+  padding-bottom: 16px;
 }
 
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(

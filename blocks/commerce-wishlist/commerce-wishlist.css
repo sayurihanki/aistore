@@ -1,20 +1,733 @@
-.dropin-in-line-alert {
-    margin-top: var(--spacing-small);
+/*
+ * MCX / Issue Ledger — Saved items (wishlist)
+ *
+ * The wishlist is a saved-items ledger: paper canvas, ink rules, square
+ * corners, one scarlet action. Shared component grammar (cards, buttons,
+ * inputs, focus rings) comes from styles/mcx-commerce-ledger.css; this file
+ * owns the wishlist layout and the markup emitted by the
+ * @dropins/storefront-wishlist Wishlist container.
+ *
+ * Two selector strengths are used on purpose:
+ *
+ *   .commerce-wishlist …
+ *       the default. Nothing else in the codebase styles these class names,
+ *       and this file loads after mcx-package.css.
+ *
+ *   body:is(.mcx.mcx.mcx, .mcx-preview…) main .commerce-wishlist …
+ *       used only where a competing rule already exists — the shared dropin
+ *       grammar in styles/mcx-commerce-ledger.css, and the legacy account-column
+ *       "glass" panels in styles/styles.css that re-apply a navy gradient,
+ *       a radius, a blur and a drop shadow to .wishlist-product-item,
+ *       .wishlist-wishlist__content--empty and the empty-state card.
+ */
+
+/* stylelint-disable no-descending-specificity */
+
+/* ---------------------------------------------------------------- *
+ * 1. Page frame and legacy shell strip
+ * ---------------------------------------------------------------- */
+
+/* Standalone /wishlist page. The account-column layout keeps its own shell. */
+body:not(.columns) main > .section:has(.commerce-wishlist-wrapper) > div {
+  max-width: 1520px;
+  padding: clamp(32px, 4vw, 64px) clamp(20px, 5vw, 80px) clamp(64px, 8vw, 120px);
 }
 
+/*
+ * Strip the legacy block shell so the wishlist sits directly on the page.
+ * styles/styles.css re-frames `.commerce-wishlist-wrapper > *` as a dark glass
+ * panel inside the account column, which is why this carries the long prefix.
+ */
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-wishlist.commerce-wishlist {
+  backdrop-filter: none;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+  padding: 0;
+}
+
+/*
+ * styles/storefront-reference.css frames every `[class*="dropin-card"]` element
+ * — including nested `.dropin-card__content` — with a gradient, a radius and a
+ * drop shadow. Sheets here carry their own single rule instead.
+ */
+.commerce-wishlist [class*='dropin-card'] {
+  backdrop-filter: none;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.commerce-wishlist {
+  --wl-paper: var(--ledger-paper, #eee9dd);
+  --wl-paper-deep: var(--ledger-paper-deep, #d8d1c2);
+  --wl-field: #f8f4eb;
+  --wl-ink: var(--ledger-ink, #10130f);
+  --wl-scarlet: var(--ledger-scarlet, #c51f2a);
+  --wl-olive: var(--ledger-olive, #565c48);
+  --wl-silver: var(--ledger-silver, #bbc4c0);
+  --wl-rule: var(--ledger-rule, rgb(16 19 15 / 24%));
+  --wl-ink-soft: rgb(16 19 15 / 72%);
+  --wl-ink-quiet: rgb(16 19 15 / 52%);
+  --wl-display: var(--ledger-display, "Barlow Condensed", "Arial Narrow", sans-serif);
+  --wl-body: var(--ledger-body, "Barlow", system-ui, sans-serif);
+  --wl-data: var(--ledger-data, "Rajdhani", "Barlow Condensed", monospace);
+  --wl-t-hover: 180ms;
+  --wl-t-ui: 320ms;
+  --wl-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  color: var(--wl-ink);
+}
+
+.commerce-wishlist .wishlist-wishlist {
+  display: grid;
+  gap: 0;
+}
+
+/* ---------------------------------------------------------------- *
+ * 2. Section header
+ * ---------------------------------------------------------------- */
+
+.commerce-wishlist .wishlist-wishlist__heading {
+  border-bottom: 1px solid var(--wl-ink);
+  border-top: 4px solid var(--wl-scarlet);
+  margin: 0 0 clamp(24px, 3vw, 40px);
+  padding: 18px 0 clamp(16px, 2vw, 22px);
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .commerce-wishlist .wishlist-wishlist__heading-text {
+  align-items: baseline;
+  color: var(--wl-ink);
+  display: flex;
+  flex-wrap: wrap;
+  font-family: var(--wl-display);
+  font-size: clamp(44px, 6vw, 84px);
+  font-weight: 600;
+  gap: 0 20px;
+  letter-spacing: -0.04em;
+  line-height: 0.82;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.commerce-wishlist .wishlist-wishlist__heading-count {
+  color: var(--wl-olive);
+  font-family: var(--wl-data);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+/* ---------------------------------------------------------------- *
+ * 3. Action alert
+ * ---------------------------------------------------------------- */
+
+.commerce-wishlist .wishlist-wishlist__alert {
+  margin-bottom: clamp(16px, 2vw, 24px);
+}
+
+.commerce-wishlist .wishlist-wishlist__alert .dropin-in-line-alert {
+  background: var(--wl-paper);
+  border: 1px solid var(--wl-ink);
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--wl-ink);
+}
+
+.commerce-wishlist .wishlist-wishlist__alert :is(
+  .dropin-in-line-alert__heading,
+  .dropin-in-line-alert__content
+) {
+  color: var(--wl-ink);
+  font-family: var(--wl-body);
+}
+
+.commerce-wishlist .wishlist-wishlist__alert button {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* ---------------------------------------------------------------- *
+ * 4. Empty state — one framed sheet of calm paper
+ * ---------------------------------------------------------------- */
+
+/* Long prefix: outranks the account-column glass panel in styles/styles.css. */
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .commerce-wishlist.commerce-wishlist .wishlist-wishlist__content--empty {
+  backdrop-filter: none;
+  background: var(--wl-paper);
+  border: 1px solid var(--wl-ink);
+  border-radius: 0;
+  border-top: 4px solid var(--wl-scarlet);
+  box-shadow: none;
+  overflow: visible;
+}
+
+.commerce-wishlist .wishlist-wishlist__content--empty {
+  max-width: 940px;
+  padding: 0;
+}
+
+.commerce-wishlist .wishlist-wishlist__content--empty > div {
+  display: grid;
+  gap: 0;
+}
+
+.commerce-wishlist .wishlist-empty-wishlist {
+  min-width: 0;
+}
+
+/* The illustrated message keeps no frame of its own — the sheet supplies it. */
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .commerce-wishlist.commerce-wishlist .wishlist-empty-wishlist__wrapper .dropin-card {
+  backdrop-filter: none;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.commerce-wishlist .wishlist-empty-wishlist__wrapper .dropin-card__content {
+  align-content: start;
+  display: grid;
+  gap: 0;
+  justify-items: start;
+  padding: clamp(28px, 4vw, 44px) clamp(24px, 4vw, 56px) clamp(36px, 5vw, 60px);
+  text-align: left;
+}
+
+/* Rule-led section label. */
+.commerce-wishlist .wishlist-empty-wishlist__wrapper .dropin-card__content::before {
+  border-bottom: 1px solid var(--wl-rule);
+  color: var(--wl-scarlet);
+  content: 'Saved items';
+  display: block;
+  font-family: var(--wl-data);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  line-height: 1.3;
+  margin-bottom: clamp(28px, 4vw, 44px);
+  padding-bottom: 14px;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+/* The stock heart illustration is replaced by a drawn mark below. */
+.commerce-wishlist :is(
+  .wishlist-empty-wishlist__icon,
+  .dropin-illustrated-message__icon
+) {
+  display: none;
+}
+
+/*
+ * Drawn mark: an empty inventory slot — a square rule crossed by a scarlet
+ * diagonal. Decorative only; the heading beside it carries the meaning, and an
+ * empty pseudo-element is not announced by assistive technology.
+ */
+.commerce-wishlist .wishlist-empty-wishlist .dropin-illustrated-message__heading::before {
+  background: linear-gradient(
+    135deg,
+    transparent calc(50% - 1px),
+    var(--wl-scarlet) calc(50% - 1px),
+    var(--wl-scarlet) calc(50% + 1px),
+    transparent calc(50% + 1px)
+  );
+  border: 1px solid var(--wl-ink);
+  content: '';
+  display: block;
+  height: 52px;
+  margin-bottom: 24px;
+  width: 52px;
+}
+
+.commerce-wishlist .wishlist-empty-wishlist .dropin-illustrated-message__heading {
+  font-size: clamp(34px, 4.4vw, 56px);
+  line-height: 0.86;
+  margin: 0;
+}
+
+.commerce-wishlist .wishlist-empty-wishlist .dropin-illustrated-message__message {
+  color: var(--wl-ink-soft);
+  font-family: var(--wl-body);
+  font-size: 17px;
+  line-height: 1.6;
+  margin: 18px 0 0;
+  max-width: 46ch;
+}
+
+.commerce-wishlist .wishlist-empty-wishlist .dropin-illustrated-message__action {
+  margin-top: clamp(24px, 3vw, 32px);
+}
+
+/*
+ * The illustrated message merges its slot class onto the node it was given, so
+ * the action element is the button itself rather than a wrapper. Both shapes
+ * are matched.
+ */
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .commerce-wishlist :is(
+  .dropin-illustrated-message__action.dropin-button,
+  .dropin-illustrated-message__action .dropin-button
+) {
+  align-items: center;
+  background: var(--wl-scarlet);
+  border: 1px solid var(--wl-scarlet);
+  border-radius: 0;
+  box-shadow: none;
+  clip-path: none;
+  color: #fff;
+  display: inline-flex;
+  font-family: var(--wl-data);
+  font-size: 11px;
+  font-weight: 700;
+  justify-content: center;
+  letter-spacing: 0.14em;
+  min-height: 48px;
+  padding: 0 28px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    background var(--wl-t-hover) ease-out,
+    border-color var(--wl-t-hover) ease-out,
+    color var(--wl-t-hover) ease-out;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .commerce-wishlist :is(
+  .dropin-illustrated-message__action.dropin-button,
+  .dropin-illustrated-message__action .dropin-button
+):is(:hover, :focus-visible) {
+  background: var(--wl-ink);
+  border-color: var(--wl-ink);
+  color: var(--wl-paper);
+}
+
+/* ---------------------------------------------------------------- *
+ * 5. Sign-in note — quiet ink on paper, full contrast
+ * ---------------------------------------------------------------- */
+
+.commerce-wishlist .wishlist-login__sign-in {
+  align-items: center;
+  border-top: 1px solid var(--wl-rule);
+  color: var(--wl-ink);
+  display: flex;
+  flex-wrap: wrap;
+  font-family: var(--wl-body);
+  font-size: 16px;
+  gap: 0 8px;
+  line-height: 1.6;
+  min-height: 44px;
+  padding: 14px clamp(24px, 4vw, 56px) 18px;
+}
+
+.commerce-wishlist .wishlist-login__link {
+  align-items: center;
+  border-bottom: 1px solid var(--wl-ink);
+  color: var(--wl-ink);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: var(--wl-body);
+  font-size: 16px;
+  font-weight: 600;
+  min-height: 44px;
+  text-decoration: none;
+  transition:
+    border-color var(--wl-t-hover) ease-out,
+    color var(--wl-t-hover) ease-out;
+}
+
+.commerce-wishlist .wishlist-login__link:is(:hover, :focus-visible) {
+  border-color: var(--wl-scarlet);
+  color: var(--wl-scarlet);
+}
+
+/* ---------------------------------------------------------------- *
+ * 6. Saved items — inventory sheets
+ * ---------------------------------------------------------------- */
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .commerce-wishlist .wishlist-wishlist__content {
+  overflow: visible;
+}
+
+.commerce-wishlist .wishlist-wishlist__content:not(.wishlist-wishlist__content--empty) {
+  animation: wishlist-ledger-reveal 500ms var(--wl-ease) both;
+  display: grid;
+  gap: clamp(12px, 1.4vw, 18px);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes wishlist-ledger-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+/* Long prefix: the account-column glass panel targets .wishlist-product-item. */
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .commerce-wishlist.commerce-wishlist .wishlist-product-item {
+  backdrop-filter: none;
+  background: var(--wl-paper);
+  border: 1px solid var(--wl-rule);
+  border-radius: 0;
+  box-shadow: none;
+  transition: border-color var(--wl-t-hover) ease-out;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .commerce-wishlist.commerce-wishlist .wishlist-product-item:is(:hover, :focus-within) {
+  border-color: var(--wl-ink);
+  box-shadow: none;
+  transform: none;
+}
+
+.commerce-wishlist .wishlist-product-item {
+  display: grid;
+  min-width: 0;
+  padding: 0;
+}
+
+.commerce-wishlist .wishlist-product-item__content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 0;
+  position: relative;
+}
+
+/* Media crop */
+
+.commerce-wishlist .wishlist-product-item-image {
+  aspect-ratio: 1 / 1;
+  background: var(--wl-field);
+  border-bottom: 1px solid var(--wl-rule);
+  display: block;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.commerce-wishlist .wishlist-product-item-image .image-carousel,
+.commerce-wishlist .wishlist-product-item-image .image-carousel > div {
+  height: 100%;
+  max-width: none;
+  width: 100%;
+}
+
+.commerce-wishlist .wishlist-product-item-image img {
+  border-radius: 0;
+  display: block;
+  height: 100%;
+  mix-blend-mode: multiply;
+  object-fit: contain;
+  padding: 18px;
+  width: 100%;
+}
+
+/* Frame switcher: square ledger ticks, not dots. */
+.commerce-wishlist .wishlist-product-item-image .image-switcher-area {
+  bottom: 10px;
+  display: flex;
+  gap: 8px;
+  left: 10px;
+  position: absolute;
+  z-index: 1;
+}
+
+.commerce-wishlist .image-switcher {
+  background: none;
+  border: 1px solid var(--wl-ink);
+  border-radius: 0;
+  cursor: pointer;
+  display: block;
+  height: 12px;
+  position: relative;
+  width: 12px;
+}
+
+.commerce-wishlist .image-switcher-active {
+  background: var(--wl-scarlet);
+  border-color: var(--wl-ink);
+}
+
+/* Extends the hit area to 44px without changing the drawn tick. */
+.commerce-wishlist .image-switcher::after {
+  content: '';
+  inset: -16px;
+  position: absolute;
+}
+
+/* Remove control */
+
+.commerce-wishlist .wishlist-product-item-button__remove {
+  background: var(--wl-paper);
+  border: 1px solid var(--wl-rule);
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--wl-ink);
+  height: 44px;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition:
+    border-color var(--wl-t-hover) ease-out,
+    color var(--wl-t-hover) ease-out;
+  width: 44px;
+  z-index: 2;
+}
+
+.commerce-wishlist .wishlist-product-item-button__remove:is(:hover, :focus-visible) {
+  background: var(--wl-paper);
+  border-color: var(--wl-scarlet);
+  color: var(--wl-scarlet);
+}
+
+/* Data label, title, price */
+
+.commerce-wishlist .wishlist-product-item__title {
+  display: block;
+  min-width: 0;
+  padding: clamp(18px, 2vw, 24px) clamp(18px, 2vw, 24px) 0;
+}
+
+.commerce-wishlist .wishlist-product-item__title::before {
+  border-bottom: 1px solid var(--wl-rule);
+  color: var(--wl-olive);
+  content: 'Saved item';
+  display: block;
+  font-family: var(--wl-data);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  line-height: 1.3;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.commerce-wishlist .wishlist-product-item-name {
+  color: var(--wl-ink);
+  display: block;
+  font-family: var(--wl-display);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color var(--wl-t-hover) ease-out;
+}
+
+.commerce-wishlist .wishlist-product-item-name:is(:hover, :focus-visible) {
+  color: var(--wl-scarlet);
+}
+
+.commerce-wishlist .wishlist-product-item-price {
+  color: var(--wl-ink);
+  display: inline-block;
+  font-family: var(--wl-display);
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  margin-top: 14px;
+}
+
+.commerce-wishlist :is(
+  .wishlist-product-item-price.strikethrough,
+  .wishlist-product-item-price.dropin-price--strikethrough
+) {
+  color: var(--wl-ink-quiet);
+  font-family: var(--wl-body);
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: line-through;
+}
+
+.commerce-wishlist .wishlist-product-item-discounted-price {
+  color: var(--wl-scarlet);
+  display: inline-block;
+  font-family: var(--wl-display);
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  margin-left: 10px;
+  margin-top: 14px;
+  text-decoration: none;
+}
+
+/* Selected options */
+
+.commerce-wishlist .wishlist-product-item-options {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  padding: 14px clamp(18px, 2vw, 24px) 0;
+}
+
+.commerce-wishlist .wishlist-product-item-option {
+  color: var(--wl-ink-soft);
+  font-family: var(--wl-body);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.commerce-wishlist .wishlist-product-item-option__attribute {
+  color: var(--wl-olive);
+  font-family: var(--wl-data);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* Single action, anchored at the bottom of the sheet */
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .commerce-wishlist .wishlist-product-item__content > .dropin-button {
+  align-items: center;
+  background: var(--wl-scarlet);
+  border: 1px solid var(--wl-scarlet);
+  border-radius: 0;
+  box-shadow: none;
+  clip-path: none;
+  color: #fff;
+  display: flex;
+  font-family: var(--wl-data);
+  font-size: 11px;
+  font-weight: 700;
+  gap: 10px;
+  justify-content: center;
+  letter-spacing: 0.14em;
+  margin: auto clamp(18px, 2vw, 24px) clamp(18px, 2vw, 24px);
+  min-height: 48px;
+  padding: 0 18px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    background var(--wl-t-hover) ease-out,
+    border-color var(--wl-t-hover) ease-out,
+    color var(--wl-t-hover) ease-out;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .commerce-wishlist .wishlist-product-item__content > .dropin-button:is(:hover, :focus-visible) {
+  background: var(--wl-ink);
+  border-color: var(--wl-ink);
+  color: var(--wl-paper);
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .commerce-wishlist .wishlist-product-item__content > .dropin-button[disabled] {
+  background: none;
+  border-color: var(--wl-rule);
+  color: var(--wl-ink-quiet);
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+.commerce-wishlist .wishlist-product-item__content > .dropin-button::before,
+.commerce-wishlist .wishlist-product-item__content > .dropin-button::after {
+  content: none;
+}
+
+/* ---------------------------------------------------------------- *
+ * 7. Loading skeleton
+ * ---------------------------------------------------------------- */
+
+.commerce-wishlist .dropin-skeleton {
+  display: grid;
+  gap: clamp(12px, 1.4vw, 18px);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.commerce-wishlist :is(.dropin-skeleton, .dropin-skeleton *) {
+  border-radius: 0;
+}
+
+/* ---------------------------------------------------------------- *
+ * 8. Sign-in modal
+ * ---------------------------------------------------------------- */
+
 #signin-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgb(0 0 0 / 50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
+  align-items: center;
+  background-color: rgb(16 19 15 / 72%);
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  padding: clamp(16px, 4vw, 48px);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+#signin-form {
+  background: var(--ledger-paper, #eee9dd);
+  border: 1px solid var(--ledger-ink, #10130f);
+  border-radius: 0;
+  box-shadow: none;
+  max-height: 100%;
+  max-width: 100%;
+  overflow-y: auto;
+  width: 800px;
+}
+
+/* ---------------------------------------------------------------- *
+ * 9. Responsive
+ * ---------------------------------------------------------------- */
+
+@media (max-width: 1240px) {
+  .commerce-wishlist .wishlist-wishlist__content:not(.wishlist-wishlist__content--empty),
+  .commerce-wishlist .dropin-skeleton {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .commerce-wishlist .wishlist-wishlist__content:not(.wishlist-wishlist__content--empty),
+  .commerce-wishlist .dropin-skeleton {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  body:not(.columns) main > .section:has(.commerce-wishlist-wrapper) > div {
+    padding: 24px 18px 64px;
   }
 
-  #signin-form {
-    width: 800px;
+  .commerce-wishlist .wishlist-wishlist__content:not(.wishlist-wishlist__content--empty),
+  .commerce-wishlist .dropin-skeleton {
+    grid-template-columns: minmax(0, 1fr);
   }
+
+  .commerce-wishlist .wishlist-login__sign-in {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
+}
+
+/* ---------------------------------------------------------------- *
+ * 10. Reduced motion
+ * ---------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .commerce-wishlist *,
+  .commerce-wishlist *::before,
+  .commerce-wishlist *::after {
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,12 +1,135 @@
+/*
+ * MCX / Issue Ledger — Order header
+ *
+ * The masthead of an order or return page: a quiet back action, a scarlet top
+ * rule, the order number set as an editorial heading, and an ink rule closing
+ * the band. Shared component grammar comes from styles/mcx-commerce-ledger.css;
+ * this file owns the markup emitted by blocks/commerce-order-header/commerce-order-header.js.
+ *
+ * Two selector strengths are used on purpose:
+ *
+ *   .commerce-order-header …
+ *       the default, for class names nothing else in the codebase styles.
+ *
+ *   body:is(.mcx.mcx.mcx, .mcx-preview…) main .block.commerce-order-header.commerce-order-header …
+ *       used where a competing rule already exists — the shared dropin header
+ *       grammar, and the account-column overrides in styles/styles.css that
+ *       reset `.dropin-header-container__title` and fade `.dropin-divider`.
+ */
+
+/* stylelint-disable no-descending-specificity */
+
+/* Existing page-spacing hooks, kept as-is on the ledger spacing rhythm. */
 body:not(.columns) main div.commerce-order-header-wrapper {
-    margin-top: var(--spacing-large);
+  margin-top: clamp(48px, 6vw, 72px);
 }
 
 body.columns main > .section > div.commerce-order-header-wrapper {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
-.orders-list-link {
-    display: inline-block;
-    margin-bottom: var(--spacing-medium);
+.commerce-order-header {
+  --oh-paper: var(--ledger-paper, #eee9dd);
+  --oh-ink: var(--ledger-ink, #10130f);
+  --oh-scarlet: var(--ledger-scarlet, #c51f2a);
+  --oh-olive: var(--ledger-olive, #565c48);
+  --oh-rule: var(--ledger-rule, rgb(16 19 15 / 24%));
+  --oh-display: var(--ledger-display, "Barlow Condensed", "Arial Narrow", sans-serif);
+  --oh-body: var(--ledger-body, "Barlow", system-ui, sans-serif);
+  --oh-data: var(--ledger-data, "Rajdhani", "Barlow Condensed", monospace);
+  --oh-t-hover: 180ms;
+
+  color: var(--oh-ink);
+  display: grid;
+  gap: 0;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-order-header.commerce-order-header {
+  backdrop-filter: none;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-order-header.commerce-order-header .dropin-header-container {
+  backdrop-filter: none;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  border-top: 4px solid var(--oh-scarlet);
+  box-shadow: none;
+  margin: 0;
+  padding-top: 18px;
+}
+
+/* ---------------------------------------------------------------- *
+ * 1. Back action — a quiet underlined text link
+ * ---------------------------------------------------------------- */
+
+.commerce-order-header .orders-list-link {
+  align-items: center;
+  border-bottom: 1px solid var(--oh-ink);
+  color: var(--oh-ink);
+  display: inline-flex;
+  font-family: var(--oh-data);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  margin-bottom: 20px;
+  min-height: 44px;
+  place-self: start;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    border-color var(--oh-t-hover) ease-out,
+    color var(--oh-t-hover) ease-out;
+}
+
+.commerce-order-header .orders-list-link:is(:hover, :focus-visible) {
+  border-color: var(--oh-scarlet);
+  color: var(--oh-scarlet);
+}
+
+/* ---------------------------------------------------------------- *
+ * 2. Masthead
+ * ---------------------------------------------------------------- */
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-order-header.commerce-order-header .dropin-header-container__title {
+  color: var(--oh-ink);
+  font-family: var(--oh-display);
+  font-size: clamp(38px, 5vw, 72px);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 0.84;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-order-header.commerce-order-header .dropin-divider {
+  background: var(--oh-ink);
+  border: 0;
+  height: 1px;
+  margin: clamp(14px, 2vw, 20px) 0 0;
+  opacity: 1;
+}
+
+.commerce-order-header .dropin-header-container__actions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ---------------------------------------------------------------- *
+ * 3. Reduced motion
+ * ---------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .commerce-order-header *,
+  .commerce-order-header *::before,
+  .commerce-order-header *::after {
+    transition-duration: 0.01ms !important;
+  }
 }

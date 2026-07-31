@@ -1,264 +1,415 @@
-body.columns main > .section > div.commerce-account-header-wrapper {
-    margin-bottom: 0;
+/*
+ * MCX / Issue Ledger — Account header
+ *
+ * The cover of the personnel file. A ruled record strip across the top, then
+ * the member lockup set oversized in Barlow Condensed, then the account
+ * figures as square data stamps on deep paper. Paper and ink carry the page;
+ * scarlet is spent only on the "My account" kicker, the sign-in action, and a
+ * sync fault.
+ *
+ * Class names come from blocks/commerce-account-header/commerce-account-header.js.
+ * The doubled class names buy specificity over the shared "Account and
+ * authentication desk" rules in styles/mcx-commerce-ledger.css, which already
+ * frame .commerce-account-header-shell and its avatar, badge, and stat parts.
+ */
+
+/* stylelint-disable no-descending-specificity */
+
+.commerce-account-header-wrapper {
+  --hdr-paper: var(--ledger-paper, #eee9dd);
+  --hdr-paper-deep: var(--ledger-paper-deep, #d8d1c2);
+  --hdr-ink: var(--ledger-ink, #10130f);
+  --hdr-scarlet: var(--ledger-scarlet, #c51f2a);
+  --hdr-olive: var(--ledger-olive, #565c48);
+  --hdr-rule: var(--ledger-rule, rgb(16 19 15 / 24%));
+  --hdr-ink-soft: rgb(16 19 15 / 68%);
+  --hdr-display: var(--ledger-display, "Barlow Condensed", "Arial Narrow", sans-serif);
+  --hdr-body: var(--ledger-body, "Barlow", system-ui, sans-serif);
+  --hdr-data: var(--ledger-data, "Rajdhani", "Barlow Condensed", monospace);
+  --hdr-t-hover: 180ms;
 }
 
-.commerce-account-header-wrapper .commerce-account-header-shell {
-    position: relative;
-    display: grid;
-    gap: var(--spacing-small);
-    padding: clamp(18px, 2.4vw, 28px);
-    border: 1px solid var(--glass-border-subtle);
-    border-radius: calc(var(--shape-border-radius-2) + 10px);
-    background:
-        radial-gradient(circle at top right, rgb(201 162 39 / 14%), transparent 28%),
-        linear-gradient(135deg, rgb(11 19 29 / 96%) 0%, rgb(15 26 39 / 96%) 48%, rgb(20 34 49 / 96%) 100%);
-    box-shadow: var(--shadow-glass);
-    overflow: hidden;
+/*
+ * The cover is its own framed sheet now, so it needs a deliberate gap before
+ * whatever module follows it in the column instead of the previous 0.
+ */
+body.columns main > .section > div.commerce-account-header-wrapper.commerce-account-header-wrapper {
+  margin-bottom: clamp(16px, 2vw, 24px);
 }
 
-.commerce-account-header-wrapper .commerce-account-header-shell::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-        linear-gradient(120deg, rgb(193 18 31 / 8%) 0%, transparent 35%),
-        linear-gradient(180deg, rgb(255 255 255 / 4%) 0%, transparent 38%);
-    pointer-events: none;
+/* ---------------------------------------------------------------- *
+ * 1. The cover sheet
+ * ---------------------------------------------------------------- */
+
+/*
+ * No entry animation here: the block re-renders the shell on every staged data
+ * refresh, so a reveal would replay two or three times per page load.
+ */
+.commerce-account-header-wrapper.commerce-account-header-wrapper .block.commerce-account-header.commerce-account-header .commerce-account-header-shell {
+  backdrop-filter: none;
+  background: var(--hdr-paper);
+  border: 1px solid var(--hdr-ink);
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--hdr-ink);
+  display: block;
+  gap: 0;
+  overflow: visible;
+  padding: 0;
+  position: relative;
 }
 
-.commerce-account-header-wrapper .commerce-account-header-shell > * {
-    position: relative;
-    z-index: 1;
+/* Issue mark: a short scarlet rule seated on the top edge. */
+.commerce-account-header-wrapper.commerce-account-header-wrapper .block.commerce-account-header.commerce-account-header .commerce-account-header-shell::before {
+  background: var(--hdr-scarlet);
+  content: '';
+  height: 4px;
+  inset: 0 auto auto 0;
+  opacity: 1;
+  pointer-events: none;
+  position: absolute;
+  width: clamp(72px, 16%, 168px);
 }
 
-.commerce-account-header-wrapper .commerce-account-header-shell__topbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--spacing-small);
+.commerce-account-header-wrapper.commerce-account-header-wrapper .block.commerce-account-header.commerce-account-header .commerce-account-header-shell > * {
+  position: relative;
+  z-index: 1;
 }
 
-.commerce-account-header-wrapper .commerce-account-header-shell__eyebrow {
-    color: var(--color-neutral-700);
-    font: var(--type-details-overline-font);
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
+/* ---------------------------------------------------------------- *
+ * 2. Record strip
+ * ---------------------------------------------------------------- */
+
+.commerce-account-header-wrapper.commerce-account-header-wrapper .block.commerce-account-header.commerce-account-header .commerce-account-header-shell__topbar {
+  align-items: center;
+  border-bottom: 1px solid var(--hdr-rule);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  justify-content: space-between;
+  min-height: 46px;
+  padding: 8px clamp(20px, 2.6vw, 36px);
 }
 
-.commerce-account-header-wrapper .commerce-account-header-shell__badge {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 30px;
-    padding: 4px 12px;
-    border: 1px solid rgb(201 162 39 / 24%);
-    border-radius: 999px;
-    background: rgb(201 162 39 / 10%);
-    color: var(--gold-light);
-    font: var(--type-details-overline-font);
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
+.commerce-account-header-wrapper.commerce-account-header-wrapper .block.commerce-account-header.commerce-account-header .commerce-account-header-shell__eyebrow {
+  color: var(--hdr-olive);
+  font-family: var(--hdr-data);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  line-height: 1.3;
+  text-transform: uppercase;
 }
 
-.commerce-account-header-wrapper .commerce-account-header-shell__badge--error {
-    border-color: rgb(255 123 132 / 34%);
-    background: rgb(193 18 31 / 12%);
-    color: var(--color-alert-500);
+/* Status stamp: square, ruled, with a drawn marker beside the word. */
+.commerce-account-header-wrapper.commerce-account-header-wrapper .block.commerce-account-header.commerce-account-header .commerce-account-header-shell__badge {
+  align-items: center;
+  background: var(--hdr-paper-deep);
+  border: 1px solid var(--hdr-ink);
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--hdr-ink);
+  display: inline-flex;
+  font-family: var(--hdr-data);
+  font-size: 10px;
+  font-weight: 700;
+  gap: 8px;
+  letter-spacing: 0.18em;
+  min-height: 28px;
+  padding: 0 12px;
+  text-transform: uppercase;
 }
 
-.commerce-account-header-wrapper .commerce-account-header-shell__content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--spacing-medium);
+.commerce-account-header-wrapper.commerce-account-header-wrapper .block.commerce-account-header.commerce-account-header .commerce-account-header-shell__badge::before {
+  background: var(--hdr-olive);
+  content: '';
+  height: 7px;
+  width: 7px;
 }
 
-.commerce-account-header-wrapper .commerce-account-header-shell__identity {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-small);
-    min-width: 0;
+.commerce-account-header-wrapper.commerce-account-header-wrapper .block.commerce-account-header.commerce-account-header .commerce-account-header-shell__badge--error {
+  background: var(--hdr-paper);
+  border-color: var(--hdr-scarlet);
+  color: var(--hdr-scarlet);
 }
 
-.commerce-account-header-wrapper .commerce-account-header-shell__avatar {
-    position: relative;
+.commerce-account-header-wrapper.commerce-account-header-wrapper .block.commerce-account-header.commerce-account-header .commerce-account-header-shell__badge--error::before {
+  background: var(--hdr-scarlet);
+}
+
+/* ---------------------------------------------------------------- *
+ * 3. Member lockup
+ * ---------------------------------------------------------------- */
+
+.commerce-account-header-wrapper.commerce-account-header-wrapper .block.commerce-account-header.commerce-account-header .commerce-account-header-shell__content {
+  align-items: end;
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(24px, 3vw, 48px);
+  justify-content: space-between;
+  padding: clamp(26px, 3.4vw, 44px) clamp(20px, 2.6vw, 36px) clamp(24px, 3vw, 36px);
+}
+
+.commerce-account-header-wrapper.commerce-account-header-wrapper .block.commerce-account-header.commerce-account-header .commerce-account-header-shell__identity {
+  align-items: flex-start;
+  display: flex;
+  gap: clamp(16px, 1.8vw, 24px);
+  min-width: 0;
+}
+
+/* Initials set as a stamped square, double-ruled like a franked mark. */
+.commerce-account-header-wrapper.commerce-account-header-wrapper .block.commerce-account-header.commerce-account-header .commerce-account-header-shell__avatar {
+  align-items: center;
+  background: var(--hdr-paper-deep);
+  border: 1px solid var(--hdr-ink);
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--hdr-ink);
+  display: inline-flex;
+  flex: 0 0 auto;
+  font-family: var(--hdr-display);
+  font-size: 30px;
+  font-weight: 700;
+  height: 68px;
+  justify-content: center;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  position: relative;
+  width: 68px;
+}
+
+.commerce-account-header-wrapper.commerce-account-header-wrapper .block.commerce-account-header.commerce-account-header .commerce-account-header-shell__avatar::after {
+  border: 1px solid var(--hdr-rule);
+  border-radius: 0;
+  content: '';
+  inset: 5px;
+  position: absolute;
+}
+
+.commerce-account-header-wrapper.commerce-account-header-wrapper .block.commerce-account-header.commerce-account-header .commerce-account-header-shell__copy {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+
+.commerce-account-header-wrapper.commerce-account-header-wrapper .block.commerce-account-header.commerce-account-header .commerce-account-header-shell__title {
+  align-items: center;
+  color: var(--hdr-scarlet);
+  display: inline-flex;
+  font-family: var(--hdr-data);
+  font-size: 11px;
+  font-weight: 700;
+  gap: 12px;
+  letter-spacing: 0.2em;
+  line-height: 1.2;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.commerce-account-header-wrapper.commerce-account-header-wrapper .block.commerce-account-header.commerce-account-header .commerce-account-header-shell__title::before {
+  background: var(--hdr-scarlet);
+  content: '';
+  flex-shrink: 0;
+  height: 2px;
+  width: 28px;
+}
+
+.commerce-account-header-wrapper.commerce-account-header-wrapper .block.commerce-account-header.commerce-account-header .commerce-account-header-shell__name {
+  color: var(--hdr-ink);
+  font-family: var(--hdr-display);
+  font-size: clamp(40px, 5.4vw, 76px);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 0.82;
+  margin: 0;
+  overflow-wrap: break-word;
+  text-transform: uppercase;
+}
+
+.commerce-account-header-wrapper.commerce-account-header-wrapper .block.commerce-account-header.commerce-account-header .commerce-account-header-shell__subtitle {
+  color: var(--hdr-ink-soft);
+  font-family: var(--hdr-body);
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 52ch;
+  text-transform: none;
+}
+
+/* ---------------------------------------------------------------- *
+ * 4. Account figures
+ * ---------------------------------------------------------------- */
+
+.commerce-account-header-wrapper.commerce-account-header-wrapper .block.commerce-account-header.commerce-account-header .commerce-account-header-shell__stats {
+  display: grid;
+  flex: 1 1 340px;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
+  max-width: 680px;
+}
+
+.commerce-account-header-wrapper.commerce-account-header-wrapper .block.commerce-account-header.commerce-account-header .commerce-account-header-shell__stat {
+  backdrop-filter: none;
+  background: var(--hdr-paper-deep);
+  border: 1px solid var(--hdr-ink);
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--hdr-ink);
+  display: grid;
+  gap: 8px;
+  padding: 14px 16px 16px;
+}
+
+.commerce-account-header-wrapper.commerce-account-header-wrapper .block.commerce-account-header.commerce-account-header .commerce-account-header-shell__stat--gold {
+  border-top: 3px solid var(--hdr-olive);
+}
+
+.commerce-account-header-wrapper.commerce-account-header-wrapper .block.commerce-account-header.commerce-account-header .commerce-account-header-shell__stat-label {
+  color: var(--hdr-olive);
+  font-family: var(--hdr-data);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.commerce-account-header-wrapper.commerce-account-header-wrapper .block.commerce-account-header.commerce-account-header .commerce-account-header-shell__stat-value {
+  color: var(--hdr-ink);
+  font-family: var(--hdr-display);
+  font-size: clamp(24px, 2.4vw, 32px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+
+/* ---------------------------------------------------------------- *
+ * 5. Guest action and fault notice
+ * ---------------------------------------------------------------- */
+
+.commerce-account-header-wrapper.commerce-account-header-wrapper .block.commerce-account-header.commerce-account-header .commerce-account-header-shell__cta {
+  align-items: center;
+  background: var(--hdr-scarlet);
+  border: 1px solid var(--hdr-scarlet);
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--hdr-paper);
+  display: inline-flex;
+  filter: none;
+  font-family: var(--hdr-data);
+  font-size: 11px;
+  font-weight: 700;
+  justify-content: center;
+  justify-self: start;
+  letter-spacing: 0.14em;
+  margin-top: 6px;
+  min-height: 48px;
+  padding: 0 28px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    background var(--hdr-t-hover) ease-out,
+    border-color var(--hdr-t-hover) ease-out;
+}
+
+.commerce-account-header-wrapper.commerce-account-header-wrapper .block.commerce-account-header.commerce-account-header .commerce-account-header-shell__cta:hover,
+.commerce-account-header-wrapper.commerce-account-header-wrapper .block.commerce-account-header.commerce-account-header .commerce-account-header-shell__cta:focus-visible {
+  background: var(--hdr-ink);
+  border-color: var(--hdr-ink);
+  box-shadow: none;
+  color: var(--hdr-paper);
+  filter: none;
+  text-decoration: none;
+  transform: none;
+}
+
+.commerce-account-header-wrapper.commerce-account-header-wrapper .block.commerce-account-header.commerce-account-header .commerce-account-header-shell__error {
+  border-top: 1px solid var(--hdr-scarlet);
+  color: var(--hdr-scarlet);
+  flex-basis: 100%;
+  font-family: var(--hdr-body);
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 1.5;
+  margin: 0;
+  padding-top: 14px;
+  text-transform: none;
+}
+
+.commerce-account-header-wrapper.commerce-account-header-wrapper .block.commerce-account-header.commerce-account-header .commerce-account-header-shell--guest .commerce-account-header-shell__content {
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.commerce-account-header-wrapper.commerce-account-header-wrapper .block.commerce-account-header.commerce-account-header .commerce-account-header-shell--guest .commerce-account-header-shell__copy {
+  max-width: 62ch;
+}
+
+/*
+ * A signed-out cover carries no member name, so the title stops being a kicker
+ * and becomes the headline itself.
+ */
+.commerce-account-header-wrapper.commerce-account-header-wrapper .block.commerce-account-header.commerce-account-header .commerce-account-header-shell--guest .commerce-account-header-shell__title {
+  color: var(--hdr-ink);
+  display: block;
+  font-family: var(--hdr-display);
+  font-size: clamp(40px, 5.4vw, 76px);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 0.82;
+}
+
+.commerce-account-header-wrapper.commerce-account-header-wrapper .block.commerce-account-header.commerce-account-header .commerce-account-header-shell--guest .commerce-account-header-shell__title::before {
+  content: none;
+}
+
+/* ---------------------------------------------------------------- *
+ * 6. Responsive
+ * ---------------------------------------------------------------- */
+
+@media (max-width: 1100px) {
+  .commerce-account-header-wrapper.commerce-account-header-wrapper .block.commerce-account-header.commerce-account-header .commerce-account-header-shell__content {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  /* The lockup stacks here, so the figures must not flex along the new axis. */
+  .commerce-account-header-wrapper.commerce-account-header-wrapper .block.commerce-account-header.commerce-account-header .commerce-account-header-shell__stats {
     flex: 0 0 auto;
-    width: 64px;
-    height: 64px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid rgb(255 255 255 / 16%);
-    border-radius: 50%;
-    background:
-        linear-gradient(135deg, rgb(123 12 28 / 96%) 0%, rgb(193 18 31 / 92%) 100%);
-    box-shadow: 0 12px 28px rgb(193 18 31 / 22%);
-    color: var(--color-neutral-900);
-    font: var(--type-headline-2-strong-font);
-    letter-spacing: 0.04em;
-}
-
-.commerce-account-header-wrapper .commerce-account-header-shell__avatar::after {
-    content: '';
-    position: absolute;
-    inset: -5px;
-    border: 1px solid rgb(193 18 31 / 28%);
-    border-radius: inherit;
-}
-
-.commerce-account-header-wrapper .commerce-account-header-shell__copy {
-    min-width: 0;
-}
-
-.commerce-account-header-wrapper .commerce-account-header-shell__title {
-    margin: 0;
-    color: var(--gold-light);
-    font: var(--type-details-overline-font);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-}
-
-.commerce-account-header-wrapper .commerce-account-header-shell__name {
-    margin: 6px 0 0;
-    color: var(--color-neutral-900);
-    font: var(--type-headline-1-font);
-    letter-spacing: 0.02em;
-    text-transform: none;
-}
-
-.commerce-account-header-wrapper .commerce-account-header-shell__subtitle {
-    margin: 6px 0 0;
-    color: var(--color-neutral-700);
-    font: var(--type-body-2-default-font);
-    letter-spacing: normal;
-    text-transform: none;
-}
-
-.commerce-account-header-wrapper .commerce-account-header-shell__stats {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(120px, 1fr));
-    gap: var(--spacing-xsmall);
-    min-width: min(360px, 100%);
-}
-
-.commerce-account-header-wrapper .commerce-account-header-shell__stat {
-    display: grid;
-    gap: 6px;
-    padding: 14px 16px;
-    border: 1px solid rgb(255 255 255 / 7%);
-    border-radius: calc(var(--shape-border-radius-2) + 2px);
-    background: rgb(8 15 23 / 82%);
-    backdrop-filter: var(--glass-blur-xs) var(--glass-saturate);
-}
-
-.commerce-account-header-wrapper .commerce-account-header-shell__stat--primary {
-    border-color: rgb(193 18 31 / 18%);
-    box-shadow: inset 0 1px 0 rgb(255 255 255 / 4%);
-}
-
-.commerce-account-header-wrapper .commerce-account-header-shell__stat--gold {
-    border-color: rgb(201 162 39 / 22%);
-}
-
-.commerce-account-header-wrapper .commerce-account-header-shell__stat-label {
-    color: var(--color-neutral-700);
-    font: var(--type-details-caption-2-font);
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-}
-
-.commerce-account-header-wrapper .commerce-account-header-shell__stat-value {
-    color: var(--color-neutral-900);
-    font: var(--type-headline-2-strong-font);
-    letter-spacing: 0.03em;
-}
-
-.commerce-account-header-wrapper .commerce-account-header-shell__stat--gold .commerce-account-header-shell__stat-value {
-    color: var(--gold-light);
-}
-
-.commerce-account-header-wrapper .commerce-account-header-shell__cta {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: var(--spacing-small);
-    padding: 10px 16px;
-    border: 1px solid rgb(193 18 31 / 28%);
-    border-radius: var(--shape-border-radius-3);
-    background: linear-gradient(135deg, var(--gs-scarlet), var(--gs-scarlet-dark));
-    box-shadow: var(--shadow-button);
-    color: #fff;
-    font: var(--type-button-2-font);
-    letter-spacing: 0.12em;
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: transform var(--transition-fast) var(--ease-spring),
-        box-shadow var(--transition-fast) var(--ease-out),
-        filter var(--transition-fast) var(--ease-out);
-}
-
-.commerce-account-header-wrapper .commerce-account-header-shell__cta:hover,
-.commerce-account-header-wrapper .commerce-account-header-shell__cta:focus-visible {
-    color: #fff;
-    text-decoration: none;
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-button-hover);
-    filter: brightness(1.05);
-}
-
-.commerce-account-header-wrapper .commerce-account-header-shell__error {
-    margin: 0;
-    color: var(--color-alert-500);
-    font: var(--type-details-caption-2-font);
-    letter-spacing: normal;
-    text-transform: none;
-}
-
-.commerce-account-header-wrapper .commerce-account-header-shell--guest .commerce-account-header-shell__content {
-    justify-content: flex-start;
-}
-
-.commerce-account-header-wrapper .commerce-account-header-shell--guest .commerce-account-header-shell__copy {
-    max-width: 560px;
-}
-
-@media (max-width: 899px) {
-    .commerce-account-header-wrapper .commerce-account-header-shell__content {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .commerce-account-header-wrapper .commerce-account-header-shell__stats {
-        width: 100%;
-        min-width: 0;
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    }
+    max-width: none;
+    width: 100%;
+  }
 }
 
 @media (max-width: 599px) {
-    .commerce-account-header-wrapper .commerce-account-header-shell {
-        padding: var(--spacing-small);
-    }
+  .commerce-account-header-wrapper.commerce-account-header-wrapper .block.commerce-account-header.commerce-account-header .commerce-account-header-shell__identity {
+    flex-direction: column;
+  }
 
-    .commerce-account-header-wrapper .commerce-account-header-shell__topbar {
-        flex-wrap: wrap;
-    }
+  .commerce-account-header-wrapper.commerce-account-header-wrapper .block.commerce-account-header.commerce-account-header .commerce-account-header-shell__avatar {
+    font-size: 26px;
+    height: 56px;
+    width: 56px;
+  }
 
-    .commerce-account-header-wrapper .commerce-account-header-shell__identity {
-        align-items: flex-start;
-    }
+  .commerce-account-header-wrapper.commerce-account-header-wrapper .block.commerce-account-header.commerce-account-header .commerce-account-header-shell__stats {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
 
-    .commerce-account-header-wrapper .commerce-account-header-shell__avatar {
-        width: 56px;
-        height: 56px;
-    }
+  .commerce-account-header-wrapper.commerce-account-header-wrapper .block.commerce-account-header.commerce-account-header .commerce-account-header-shell__cta {
+    width: 100%;
+  }
+}
 
-    .commerce-account-header-wrapper .commerce-account-header-shell__name {
-        font: var(--type-headline-2-strong-font);
-        letter-spacing: 0.04em;
-    }
-
-    .commerce-account-header-wrapper .commerce-account-header-shell__stats {
-        grid-template-columns: 1fr;
-    }
+@media (prefers-reduced-motion: reduce) {
+  .commerce-account-header-wrapper .commerce-account-header-shell,
+  .commerce-account-header-wrapper .commerce-account-header-shell *,
+  .commerce-account-header-wrapper .commerce-account-header-shell *::before,
+  .commerce-account-header-wrapper .commerce-account-header-shell *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

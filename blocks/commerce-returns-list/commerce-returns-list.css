@@ -1,1 +1,422 @@
-/* stylelint-disable no-empty-source */
+/*
+ * MCX / Issue Ledger — Returns
+ *
+ * Returns are read the same way as orders: a ruled header, one row per return,
+ * a drawn status marker paired with the status text, rules instead of shadows,
+ * square corners. Shared component grammar comes from
+ * styles/mcx-commerce-ledger.css; this file owns the markup emitted by the
+ * @dropins/storefront-order ReturnsList container.
+ *
+ * Two selector strengths are used on purpose:
+ *
+ *   .commerce-returns-list …
+ *       the default, for class names nothing else in the codebase styles.
+ *
+ *   body:is(.mcx.mcx.mcx, .mcx-preview…) main .block.commerce-returns-list.commerce-returns-list …
+ *       used where a competing rule already exists — the shared dropin card
+ *       grammar, and the account-column "glass" panels in styles/styles.css that
+ *       re-apply a navy gradient, a radius, a blur and a drop shadow to the
+ *       block shell and to .order-returns-list-content__card.
+ */
+
+/* stylelint-disable no-descending-specificity */
+
+.commerce-returns-list {
+  --rl-paper: var(--ledger-paper, #eee9dd);
+  --rl-paper-deep: var(--ledger-paper-deep, #d8d1c2);
+  --rl-field: #f8f4eb;
+  --rl-ink: var(--ledger-ink, #10130f);
+  --rl-scarlet: var(--ledger-scarlet, #c51f2a);
+  --rl-olive: var(--ledger-olive, #565c48);
+  --rl-rule: var(--ledger-rule, rgb(16 19 15 / 24%));
+  --rl-ink-soft: rgb(16 19 15 / 72%);
+  --rl-ink-quiet: rgb(16 19 15 / 52%);
+  --rl-display: var(--ledger-display, "Barlow Condensed", "Arial Narrow", sans-serif);
+  --rl-body: var(--ledger-body, "Barlow", system-ui, sans-serif);
+  --rl-data: var(--ledger-data, "Rajdhani", "Barlow Condensed", monospace);
+  --rl-t-hover: 180ms;
+
+  color: var(--rl-ink);
+}
+
+/* ---------------------------------------------------------------- *
+ * 1. Shell and inherited-frame strip
+ * ---------------------------------------------------------------- */
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-returns-list.commerce-returns-list {
+  backdrop-filter: none;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+  padding: 0;
+}
+
+/* Rows carry their own rules, so the nested card wrappers stay bare. */
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-returns-list.commerce-returns-list :is(
+  .dropin-card__content,
+  .order-returns-list-content__cards-grid,
+  .order-returns-list-content__descriptions,
+  .order-returns-list-content__images
+) {
+  backdrop-filter: none;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* ---------------------------------------------------------------- *
+ * 2. List header
+ * ---------------------------------------------------------------- */
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-returns-list.commerce-returns-list .dropin-header-container {
+  backdrop-filter: none;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  border-top: 4px solid var(--rl-scarlet);
+  box-shadow: none;
+  margin-bottom: 0;
+  padding-top: 18px;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-returns-list.commerce-returns-list .dropin-header-container__title {
+  color: var(--rl-ink);
+  font-family: var(--rl-display);
+  font-size: clamp(34px, 4.4vw, 56px);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 0.86;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-returns-list.commerce-returns-list .dropin-divider {
+  background: var(--rl-ink);
+  border: 0;
+  height: 1px;
+  margin: clamp(14px, 2vw, 20px) 0 0;
+  opacity: 1;
+}
+
+/* ---------------------------------------------------------------- *
+ * 3. Ledger rows
+ * ---------------------------------------------------------------- */
+
+.commerce-returns-list .order-returns-list-content {
+  display: grid;
+  gap: 0;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-returns-list.commerce-returns-list .order-returns-list-content__cards-list {
+  backdrop-filter: none;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  border-top: 1px solid var(--rl-rule);
+  box-shadow: none;
+  padding: 0;
+  transition: background var(--rl-t-hover) ease-out;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-returns-list.commerce-returns-list .order-returns-list-content__cards-list:is(:hover, :focus-within) {
+  background: rgb(16 19 15 / 3%);
+  box-shadow: none;
+  transform: none;
+}
+
+.commerce-returns-list .order-returns-list-content__cards-grid {
+  align-items: start;
+  display: grid;
+  gap: clamp(16px, 2vw, 32px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, auto) 44px;
+  padding: clamp(20px, 2.4vw, 28px) 0;
+}
+
+.commerce-returns-list .order-returns-list-content__descriptions {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.commerce-returns-list .order-returns-list-content__descriptions p {
+  color: var(--rl-ink-soft);
+  font-family: var(--rl-body);
+  font-size: 15px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.commerce-returns-list .order-returns-list-content__descriptions a {
+  color: var(--rl-ink);
+  font-family: var(--rl-data);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--rl-t-hover) ease-out;
+}
+
+.commerce-returns-list .order-returns-list-content__descriptions a:is(:hover, :focus-visible) {
+  color: var(--rl-scarlet);
+}
+
+/*
+ * Status line: a drawn diamond marker plus the status text. The marker is an
+ * empty pseudo-element, so the text alone carries the meaning.
+ */
+.commerce-returns-list .order-returns-list-content__return-status {
+  align-items: center;
+  color: var(--rl-ink);
+  display: flex;
+  font-family: var(--rl-data);
+  font-size: 11px;
+  font-weight: 700;
+  gap: 10px;
+  letter-spacing: 0.18em;
+  line-height: 1.3;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.commerce-returns-list .order-returns-list-content__return-status::before {
+  background: var(--rl-scarlet);
+  content: '';
+  flex-shrink: 0;
+  height: 9px;
+  rotate: 45deg;
+  width: 9px;
+}
+
+/* Thumbnails */
+
+.commerce-returns-list .order-returns-list-content__images,
+.commerce-returns-list .order-returns-list-content__images :is(
+  .dropin-content-grid__content,
+  .dropin-content-grid__dynamic-columns-content
+) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-width: 0;
+}
+
+.commerce-returns-list .order-returns-list-content__images img {
+  background: var(--rl-field);
+  border: 1px solid var(--rl-rule);
+  border-radius: 0;
+  box-shadow: none;
+  height: auto;
+  max-width: 72px;
+  mix-blend-mode: multiply;
+  object-fit: contain;
+}
+
+/* Row action */
+
+.commerce-returns-list .order-returns-list-content__cards-grid > .order-returns-list-content__actions {
+  align-items: center;
+  border: 1px solid var(--rl-rule);
+  border-radius: 0;
+  color: var(--rl-ink);
+  display: inline-flex;
+  height: 44px;
+  justify-content: center;
+  justify-self: end;
+  min-height: 44px;
+  min-width: 44px;
+  text-decoration: none;
+  transition:
+    background var(--rl-t-hover) ease-out,
+    border-color var(--rl-t-hover) ease-out,
+    color var(--rl-t-hover) ease-out;
+  width: 44px;
+}
+
+.commerce-returns-list .order-returns-list-content__cards-grid > .order-returns-list-content__actions:is(:hover, :focus-visible) {
+  background: var(--rl-ink);
+  border-color: var(--rl-ink);
+  color: var(--rl-paper);
+}
+
+/* ---------------------------------------------------------------- *
+ * 4. "View all" action (minified view)
+ * ---------------------------------------------------------------- */
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-returns-list.commerce-returns-list .order-returns-list-content__card {
+  backdrop-filter: none;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  border-top: 1px solid var(--rl-ink);
+  box-shadow: none;
+}
+
+.commerce-returns-list .order-returns-list-content__card-wrapper {
+  align-items: center;
+  color: var(--rl-ink);
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  min-height: 48px;
+  transition: color var(--rl-t-hover) ease-out;
+}
+
+.commerce-returns-list .order-returns-list-content__card-wrapper > p {
+  color: inherit;
+  font-family: var(--rl-data);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.commerce-returns-list a.order-returns-list-content__actions:is(:hover, :focus-visible) .order-returns-list-content__card-wrapper {
+  color: var(--rl-scarlet);
+}
+
+/* ---------------------------------------------------------------- *
+ * 5. Empty state and pagination
+ * ---------------------------------------------------------------- */
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-returns-list.commerce-returns-list .order-empty-list .dropin-card {
+  backdrop-filter: none;
+  background: var(--rl-paper);
+  border: 1px solid var(--rl-rule);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.commerce-returns-list .order-empty-list .dropin-card__content {
+  display: grid;
+  gap: 16px;
+  justify-items: start;
+  padding: clamp(32px, 4vw, 56px) clamp(24px, 3vw, 40px);
+  text-align: left;
+}
+
+.commerce-returns-list .order-empty-list .dropin-illustrated-message__icon {
+  display: none;
+}
+
+/*
+ * Drawn mark: an empty inventory slot, a square rule crossed by a scarlet
+ * diagonal. Decorative — the message beside it carries the meaning, and an
+ * empty pseudo-element is not announced by assistive technology.
+ */
+.commerce-returns-list .order-empty-list .dropin-card__content::before {
+  background: linear-gradient(
+    135deg,
+    transparent calc(50% - 1px),
+    var(--rl-scarlet) calc(50% - 1px),
+    var(--rl-scarlet) calc(50% + 1px),
+    transparent calc(50% + 1px)
+  );
+  border: 1px solid var(--rl-ink);
+  content: '';
+  display: block;
+  height: 44px;
+  width: 44px;
+}
+
+.commerce-returns-list .order-empty-list .dropin-illustrated-message__message {
+  color: var(--rl-ink-soft);
+  font-family: var(--rl-body);
+  font-size: 17px;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 52ch;
+}
+
+.commerce-returns-list .dropin-pagination {
+  border-top: 1px solid var(--rl-ink);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 20px;
+}
+
+.commerce-returns-list .dropin-pagination_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.commerce-returns-list :is(
+  .dropin-pagination_list-item,
+  .dropin-pagination-arrow
+) {
+  align-items: center;
+  border: 1px solid var(--rl-rule);
+  border-radius: 0;
+  color: var(--rl-ink);
+  display: inline-flex;
+  font-family: var(--rl-data);
+  font-size: 13px;
+  font-weight: 700;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+  transition:
+    background var(--rl-t-hover) ease-out,
+    border-color var(--rl-t-hover) ease-out,
+    color var(--rl-t-hover) ease-out;
+}
+
+.commerce-returns-list .dropin-pagination_list-item--active {
+  background: var(--rl-ink);
+  border-color: var(--rl-ink);
+  color: var(--rl-paper);
+}
+
+.commerce-returns-list :is(
+  .dropin-pagination_list-item,
+  .dropin-pagination-arrow
+):is(:hover, :focus-visible) {
+  border-color: var(--rl-scarlet);
+  color: var(--rl-scarlet);
+}
+
+/* ---------------------------------------------------------------- *
+ * 6. Responsive
+ * ---------------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .commerce-returns-list .order-returns-list-content__cards-grid {
+    grid-template-columns: minmax(0, 1fr) 44px;
+  }
+
+  .commerce-returns-list .order-returns-list-content__images {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 560px) {
+  .commerce-returns-list .order-returns-list-content__cards-grid {
+    gap: 16px;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .commerce-returns-list .order-returns-list-content__cards-grid > .order-returns-list-content__actions {
+    justify-self: start;
+  }
+}
+
+/* ---------------------------------------------------------------- *
+ * 7. Reduced motion
+ * ---------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .commerce-returns-list *,
+  .commerce-returns-list *::before,
+  .commerce-returns-list *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
