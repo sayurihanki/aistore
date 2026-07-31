@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uniform Configurator — Issue Ledger check</title>
+    <link rel="stylesheet" href="/styles/mcx-fonts.css">
+    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="/styles/storefront-reference.css">
+    <link rel="stylesheet" href="/styles/mcx-package.css">
+    <link rel="stylesheet" href="/blocks/uniform-configurator/uniform-configurator.css">
+    <script type="importmap">
+      {
+        "imports": {
+          "@dropins/storefront-cart/": "/scripts/__dropins__/storefront-cart/",
+          "@dropins/storefront-pdp/": "/scripts/__dropins__/storefront-pdp/",
+          "@dropins/tools/": "/scripts/__dropins__/tools/"
+        }
+      }
+    </script>
+    <script type="module">
+      window.addEventListener('error', (e) => { window.__err = String(e.message); });
+      import decorate from '/blocks/uniform-configurator/uniform-configurator.js';
+
+      window.addEventListener('DOMContentLoaded', async () => {
+        const block = document.querySelector('.uniform-configurator');
+        await decorate(block);
+        window.__ready = true;
+      });
+    </script>
+  </head>
+  <body class="mcx appear">
+    <main>
+      <div class="section uniform-configurator-container appear">
+        <div class="uniform-configurator-wrapper">
+          <div class="uniform-configurator block" data-block-name="uniform-configurator">
+            <div>
+              <div>eyebrow</div>
+              <div>Marine Corps Uniform Division</div>
+            </div>
+            <div>
+              <div>title</div>
+              <div>Officer Dress Blues\nPackage Builder</div>
+            </div>
+            <div>
+              <div>subtitle</div>
+              <div>Configure your complete male officer blue dress uniform to USMC regulation standards with real-time pricing and a live visual preview.</div>
+            </div>
+            <div>
+              <div>data-source</div>
+              <div>/data/configurators/marine-officer-dress-blues.json</div>
+            </div>
+            <div>
+              <div>submit-url</div>
+              <div><a href="https://example.com/api/uniform-leads">https://example.com/api/uniform-leads</a></div>
+            </div>
+            <div>
+              <div>success-title</div>
+              <div>Order Submitted</div>
+            </div>
+            <div>
+              <div>success-message</div>
+              <div>Your Blue Dress Package is now in production. Our veteran uniform team will review your specifications and reach out within 24 hours to confirm details.</div>
+            </div>
+            <div>
+              <div>analytics-id</div>
+              <div>marine-officer-dress-blues</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
