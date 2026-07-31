@@ -729,6 +729,415 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero .h-do
   background: var(--ledger-scarlet);
 }
 
+/*
+ * Newcomer brief hero
+ *
+ * The block ships a dark command-surface treatment. On paper that reads as a
+ * milky wash with white-on-white type, so the ledger repaints the whole hero:
+ * paper ground, ink type, one scarlet accent, and hairlines in place of the
+ * glass panels, glow rings, and neon scan chrome.
+ */
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .hero {
+  --nc-col: min(58%, 720px);
+
+  background: var(--ledger-paper);
+  border-bottom: 1px solid var(--ledger-ink);
+
+  /*
+   * This hero carries more stacked rows than the split-cover hero, so it grows
+   * past the viewport rather than clipping the stat ledger off the bottom.
+   */
+  height: auto;
+  min-height: max(700px, calc(100svh - 138px));
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .hero-canvas {
+  background: var(--ledger-paper);
+}
+
+/* Graph-paper ground: the ledger keeps the grid, at a whisper. */
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .hero-grid {
+  background-image:
+    linear-gradient(rgb(16 19 15 / 100%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(16 19 15 / 100%) 1px, transparent 1px);
+  background-size: 96px 96px;
+  mask-image: linear-gradient(115deg, #000 0%, transparent 62%);
+  opacity: 0.06;
+}
+
+/* Neon chrome has no place on paper. */
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer :is(.hero-scan, .glow-ring, .particles) {
+  display: none;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .hero-vline {
+  background: var(--ledger-rule);
+  left: clamp(20px, 2.6vw, 40px);
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .hero-vline::after {
+  animation: none;
+  background: var(--ledger-scarlet);
+  border-radius: 0;
+  box-shadow: none;
+  height: 5px;
+  left: -2px;
+  top: 22%;
+  width: 5px;
+}
+
+/* Corner ticks become register marks. */
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .corner::before,
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .corner::after {
+  background: var(--ledger-ink);
+}
+
+/* Dateline */
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .hero-rank {
+  align-items: flex-end;
+  color: rgb(16 19 15 / 52%);
+  font-family: var(--ledger-data);
+  font-size: 9px;
+  font-weight: 700;
+  gap: 0;
+  letter-spacing: 0.14em;
+  right: clamp(24px, 4vw, 68px);
+  top: 30px;
+  width: clamp(240px, 26vw, 340px);
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .hero-rank span {
+  border: 0;
+  border-bottom: 1px solid var(--ledger-rule);
+  min-width: 0;
+  padding: 6px 0;
+  text-align: right;
+  width: 100%;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .hero-rank span:first-child {
+  border-top: 2px solid var(--ledger-ink);
+  color: var(--ledger-ink);
+}
+
+/* Intel column: ruled entries, not glass cards. */
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .intel {
+  gap: 0;
+  justify-content: flex-start;
+
+  /* Clears the three-row dateline stacked above it. */
+  padding: 172px 0 56px;
+  right: clamp(24px, 4vw, 68px);
+  width: clamp(240px, 26vw, 340px);
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .ip {
+  animation-name: mcx-ledger-newcomer-panel-in;
+  backdrop-filter: none;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--ledger-rule);
+  border-radius: 0;
+  padding: 16px 0 14px;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .ip-tag {
+  color: var(--ledger-scarlet);
+  font-family: var(--ledger-data);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  margin-bottom: 8px;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .ip-dot {
+  animation: none;
+  background: var(--ledger-scarlet);
+  border-radius: 0;
+  height: 5px;
+  width: 5px;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .ip-val {
+  color: var(--ledger-ink);
+  font-family: var(--ledger-display);
+  font-size: 34px;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .ip-sub {
+  color: rgb(16 19 15 / 56%);
+  font-family: var(--ledger-body);
+  font-size: 11.5px;
+  letter-spacing: 0;
+  line-height: 1.45;
+  margin-top: 6px;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .ip-bar {
+  background: rgb(16 19 15 / 14%);
+  border-radius: 0;
+  margin-top: 12px;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .ip-bar-fill {
+  background: var(--ledger-scarlet);
+  border-radius: 0;
+}
+
+/* Content column */
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .hero-content {
+  justify-content: center;
+  max-width: 1600px;
+  padding: clamp(56px, 6vw, 96px) clamp(24px, 4vw, 68px) clamp(40px, 4vw, 64px) clamp(56px, 6vw, 104px);
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .hero-eyebrow {
+  border-bottom: 1px solid var(--ledger-rule);
+  margin-bottom: 26px;
+  max-width: var(--nc-col);
+  padding-bottom: 14px;
+  width: 100%;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .eyebrow-pip span {
+  background: var(--ledger-scarlet);
+  box-shadow: none;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .hero-eyebrow-txt {
+  color: var(--ledger-scarlet);
+  font-family: var(--ledger-data);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .hero-h1 {
+  color: var(--ledger-ink);
+  font-family: var(--ledger-display);
+  font-size: clamp(72px, 8.8vw, 148px);
+  font-weight: 600;
+  letter-spacing: -0.05em;
+  line-height: 0.74;
+  margin-bottom: 30px;
+  max-width: var(--nc-col);
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .hero-h1 .l1 {
+  color: var(--ledger-ink);
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .hero-h1 .l2 {
+  color: var(--ledger-scarlet);
+}
+
+/*
+ * The third line is a ruled subhead, not a third display line. At display size
+ * it wrapped past the block's `overflow: hidden` reveal mask and lost a word.
+ */
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .hero-h1 .l3 {
+  border-top: 1px solid var(--ledger-rule);
+  color: rgb(16 19 15 / 58%);
+  font-family: var(--ledger-data);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  line-height: 1.2;
+  margin-top: 26px;
+  max-width: 34ch;
+  padding-top: 16px;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .hero-desc {
+  color: rgb(16 19 15 / 70%);
+  font-family: var(--ledger-body);
+  font-size: 13.5px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  max-width: 46ch;
+}
+
+/* Quick links */
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .quick-links {
+  gap: 10px;
+  margin-bottom: 30px;
+  max-width: var(--nc-col);
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .ql {
+  backdrop-filter: none;
+  background: transparent;
+  border: 1px solid rgb(16 19 15 / 30%);
+  border-radius: 0;
+  gap: 10px;
+  min-height: 46px;
+  padding: 0 16px;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .ql:hover,
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .ql:focus-visible {
+  background: var(--ledger-ink);
+  border-color: var(--ledger-ink);
+  transform: none;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .ql-icon {
+  background: transparent;
+  border-radius: 0;
+  height: 16px;
+  width: 16px;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .ql-icon.red {
+  color: var(--ledger-scarlet);
+}
+
+/* The ledger has no gold or teal; olive carries the secondary tones. */
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .ql-icon.gold,
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .ql-icon.teal {
+  color: var(--ledger-olive);
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .ql-icon svg {
+  height: 16px;
+  width: 16px;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .ql-label {
+  color: var(--ledger-ink);
+  font-family: var(--ledger-data);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .ql-arrow {
+  color: rgb(16 19 15 / 42%);
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .ql:hover :is(.ql-label, .ql-arrow, .ql-icon),
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .ql:focus-visible :is(.ql-label, .ql-arrow, .ql-icon) {
+  color: var(--ledger-paper);
+}
+
+/* Calls to action */
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .hero-ctas {
+  gap: 0;
+  margin-bottom: 40px;
+  max-width: min(var(--nc-col), 520px);
+  width: 100%;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .btn {
+  flex: 1;
+  font-family: var(--ledger-data);
+  font-size: 10px;
+  justify-content: space-between;
+  letter-spacing: 0.16em;
+  min-height: 52px;
+  padding: 0 20px;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .btn-p {
+  background: var(--ledger-ink);
+  border-radius: 0;
+  box-shadow: none;
+  clip-path: none;
+  color: var(--ledger-paper);
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .btn-shine {
+  display: none;
+}
+
+/* The block dims the arrow, which disappears against the ink primary button. */
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .btn .btn-arrow {
+  color: currentcolor;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .btn-s {
+  border: 1px solid var(--ledger-ink);
+  border-left: 0;
+  border-radius: 0;
+  color: var(--ledger-ink);
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .btn-p:hover,
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .btn-p:focus-visible,
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .btn-s:hover,
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .btn-s:focus-visible {
+  background: var(--ledger-scarlet);
+  border-color: var(--ledger-scarlet);
+  box-shadow: none;
+  color: #fff;
+  transform: none;
+}
+
+/* Stat ledger */
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .stats-row {
+  border-block: 1px solid var(--ledger-rule);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: var(--nc-col);
+  padding-block: 14px;
+  width: 100%;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .stat {
+  border-right: 1px solid var(--ledger-rule);
+  padding: 0 16px;
+  width: auto;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .stat:first-child {
+  padding-left: 0;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .stat:last-child {
+  border-right: 0;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .stat-val {
+  color: var(--ledger-ink);
+  font-family: var(--ledger-display);
+  font-size: clamp(26px, 2.6vw, 42px);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .stat-lbl {
+  color: rgb(16 19 15 / 48%);
+  font-family: var(--ledger-data);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  margin-top: 6px;
+}
+
+/* The block's own panel keyframe settles at 0.75 opacity, which greys out ink. */
+@keyframes mcx-ledger-newcomer-panel-in {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 /* Service ledger */
 
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-ticker .ticker-wrap {
@@ -1552,6 +1961,26 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) footer .mcx-footer .
     font-size: clamp(74px, 11vw, 118px);
   }
 
+  /*
+   * The block drops the intel column below 1100px. The dateline is the head of
+   * that same column, so it goes with it rather than floating over the widened
+   * content measure.
+   */
+  body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .hero-rank {
+    display: none;
+  }
+
+  body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .hero {
+    --nc-col: min(100%, 760px);
+
+    height: auto;
+    min-height: 700px;
+  }
+
+  body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .hero-content {
+    padding-left: clamp(34px, 5vw, 68px);
+  }
+
   body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-product-cards .prod-card:first-child .prod-img-zone {
     height: 620px;
   }
@@ -1564,6 +1993,46 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) footer .mcx-footer .
 @media (max-width: 760px) {
   body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) .sec {
     padding: 76px 16px;
+  }
+
+  body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .hero {
+    min-height: 0;
+  }
+
+  body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .hero-content {
+    padding: 52px 20px 44px;
+  }
+
+  body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .hero-h1 {
+    font-size: clamp(60px, 17vw, 92px);
+  }
+
+  body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .hero-h1 .l3 {
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    margin-top: 20px;
+    padding-top: 14px;
+  }
+
+  body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .quick-links .ql {
+    flex: 1 1 calc(50% - 5px);
+  }
+
+  body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .hero-ctas {
+    max-width: none;
+  }
+
+  body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .stats-row {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 18px;
+  }
+
+  body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .stat:nth-child(2n) {
+    border-right: 0;
+  }
+
+  body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-hero-newcomer .stat:nth-child(2n + 1) {
+    padding-left: 0;
   }
 
   body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) .sec-head {
