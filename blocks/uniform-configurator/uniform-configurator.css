@@ -58,7 +58,14 @@ body.columns main > .section > div.uniform-configurator-wrapper {
   --ucfg-paper: var(--ledger-paper, #eee9dd);
   --ucfg-paper-deep: var(--ledger-paper-deep, #d8d1c2);
   --ucfg-field: #f8f4eb;
-  --ucfg-field-live: #fff;
+
+  /*
+   * The live field is the resting fill lifted, not a cold white: pure #fff is
+   * the one value on this surface that is not printed paper, and it lands on
+   * every control the user touches. Mixing toward paper keeps the hover and
+   * focus fill inside the palette while still reading brighter than resting.
+   */
+  --ucfg-field-live: color-mix(in srgb, #fff 70%, var(--ucfg-paper));
   --ucfg-ink: var(--ledger-ink, #10130f);
   --ucfg-scarlet: var(--ledger-scarlet, #c51f2a);
   --ucfg-olive: var(--ledger-olive, #565c48);
@@ -508,7 +515,7 @@ body.columns main > .section > div.uniform-configurator-wrapper {
 .uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .step-btn.active .step-btn__num {
   background: var(--ucfg-scarlet);
   border-color: var(--ucfg-scarlet);
-  color: #fff;
+  color: var(--ucfg-paper);
 }
 
 /* ---------------------------------------------------------------- *
@@ -634,7 +641,6 @@ body.columns main > .section > div.uniform-configurator-wrapper {
   fill: var(--ucfg-olive);
   font-family: var(--ucfg-data);
   font-size: 11px;
-  font-variant-emoji: text;
   font-weight: 700;
 }
 
@@ -910,12 +916,36 @@ body.columns main > .section > div.uniform-configurator-wrapper {
   padding: 10px 14px;
 }
 
+/*
+ * The select mark is two ruled diagonals drawn from a token, not an inline SVG.
+ * A data URI cannot read a custom property or currentColor, so the previous
+ * chevron carried a second, hand-typed copy of --ledger-ink that would drift the
+ * moment the token was retuned, and it stayed ink inside .field--invalid while
+ * every other mark on the control turned scarlet. --ucfg-chevron is the one
+ * handle: the invalid rule below reassigns it and both arms follow.
+ */
 .uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .field select {
+  --ucfg-chevron: var(--ucfg-ink);
+
   appearance: none;
-  background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2310130f' stroke-width='2'%3E%3Cpath d='M5 8l7 7 7-7'/%3E%3C/svg%3E")
-      no-repeat right 14px center,
-    var(--ucfg-field);
+  background-image:
+    linear-gradient(
+      45deg,
+      transparent calc(50% - 0.75px),
+      var(--ucfg-chevron) calc(50% - 0.75px),
+      var(--ucfg-chevron) calc(50% + 0.75px),
+      transparent calc(50% + 0.75px)
+    ),
+    linear-gradient(
+      135deg,
+      transparent calc(50% - 0.75px),
+      var(--ucfg-chevron) calc(50% - 0.75px),
+      var(--ucfg-chevron) calc(50% + 0.75px),
+      transparent calc(50% + 0.75px)
+    );
+  background-position: right 21px center, right 16px center;
+  background-repeat: no-repeat;
+  background-size: 5px 5px;
   padding-right: 42px;
 }
 
@@ -981,6 +1011,8 @@ body.columns main > .section > div.uniform-configurator-wrapper {
 }
 
 .uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .field--invalid :is(select, input, textarea) {
+  --ucfg-chevron: var(--ucfg-scarlet);
+
   background-color: var(--ucfg-field-live);
   border-color: var(--ucfg-scarlet);
   border-width: 2px;
@@ -1141,15 +1173,31 @@ body.columns main > .section > div.uniform-configurator-wrapper {
 }
 
 /*
- * A general officer's device is a star, so the block emits one per grade. It is
- * pinned to text presentation and inked in olive so it can never resolve to a
- * colour emoji glyph on any platform.
+ * A general officer's device is a star, and it is drawn like the pip and the
+ * bar rather than typed: neither Rajdhani nor Barlow Condensed covers U+2605, so
+ * a literal star character falls through to whatever symbol face the platform
+ * happens to carry, at a weight and optical size unrelated to the rest of the
+ * mark set. Clipped from a box it inherits the olive and the selected-state
+ * paper inversion with the other insignia.
+ */
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .star {
+  background: var(--ucfg-olive);
+  border-radius: 0;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  height: 13px;
+  width: 13px;
+}
+
+/*
+ * Legacy text star. The block still emits `<span class="star-insignia">★</span>`
+ * from renderRankGlyph; this keeps that glyph inked in olive until the JS emits
+ * `<span class="star"></span>`, at which point this rule and the selected-state
+ * override below can be deleted.
  */
 .uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .star-insignia {
   color: var(--ucfg-olive);
   font-family: var(--ucfg-data);
   font-size: 15px;
-  font-variant-emoji: text;
   letter-spacing: 0.12em;
   line-height: 1;
 }
@@ -1230,7 +1278,7 @@ body.columns main > .section > div.uniform-configurator-wrapper {
   color: var(--ucfg-paper);
 }
 
-.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator :is(.card-opt, .rank-card).selected :is(.pip, .bar) {
+.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator :is(.card-opt, .rank-card).selected :is(.pip, .bar, .star) {
   background: var(--ucfg-paper);
 }
 
@@ -1612,7 +1660,7 @@ body.columns main > .section > div.uniform-configurator-wrapper {
 .uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator :is(.btn-primary, .btn-gold) {
   background: var(--ucfg-scarlet);
   border-color: var(--ucfg-scarlet);
-  color: #fff;
+  color: var(--ucfg-paper);
 }
 
 .uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator :is(.btn-primary, .btn-gold):hover:not(:disabled) {
