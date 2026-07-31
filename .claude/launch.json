@@ -1,1 +1,0 @@
-{"version":"0.0.1","configurations":[{"name":"mpp","runtimeExecutable":"python3","runtimeArgs":["-m","http.server","8899"],"port":8899},{"name":"aem","runtimeExecutable":"npm","runtimeArgs":["start"],"port":3000}]}
