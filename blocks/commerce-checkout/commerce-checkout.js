@@ -471,11 +471,14 @@ function renderProgress(container, checkoutData, activeStage, onNavigate) {
     const item = createElement('li', 'checkout-progress__item');
     item.dataset.state = step.state;
 
+    // A completed step is marked by the CSS-drawn check in the badge, so it
+    // carries no text; the adjacent "Complete" label states the state instead.
     const badge = createElement(
       'span',
       'checkout-progress__badge',
-      step.state === 'done' ? '✓' : `${index}`,
+      step.state === 'done' ? '' : `${index}`,
     );
+    if (step.state === 'done') badge.setAttribute('aria-hidden', 'true');
 
     let control;
     if (step.href) {

@@ -394,7 +394,7 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
   border: 1px solid var(--ledger-scarlet);
   border-radius: 0;
   box-shadow: none;
-  color: #fff;
+  color: var(--ledger-paper);
 }
 
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
@@ -447,7 +447,7 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
   .dropin-design :is(input, select, textarea)
 ) {
   background: #f8f4eb;
-  border: 1px solid rgb(16 19 15 / 42%);
+  border: 1px solid rgb(16 19 15 / 52%);
   border-radius: 0;
   box-shadow: none;
   color: var(--ledger-ink);
@@ -600,7 +600,7 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
 ):is(:hover, :focus-visible) {
   background: var(--ledger-scarlet);
   border-color: var(--ledger-scarlet);
-  color: #fff;
+  color: var(--ledger-paper);
 }
 
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
@@ -621,7 +621,7 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
   .dropin-select
 ) {
   background: #f8f4eb;
-  border: 1px solid rgb(16 19 15 / 42%);
+  border: 1px solid rgb(16 19 15 / 52%);
   border-radius: 0;
   box-shadow: none;
   color: var(--ledger-ink);
@@ -746,7 +746,7 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-category-p
   background: var(--ledger-scarlet);
   border-color: var(--ledger-scarlet);
   box-shadow: none;
-  color: #fff;
+  color: var(--ledger-paper);
 }
 
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .mcx-category-page .shop-wrap {
@@ -1007,7 +1007,7 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .product-detail
   background: var(--ledger-scarlet);
   border: 0;
   border-radius: 0;
-  color: #fff;
+  color: var(--ledger-paper);
 }
 
 /* Commit actions — add to cart, checkout — are the storefront's scarlet moment. */
@@ -1018,7 +1018,7 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .commerce-cart 
   border: 1px solid var(--ledger-scarlet);
   border-radius: 0;
   box-shadow: none;
-  color: #fff;
+  color: var(--ledger-paper);
 }
 
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .commerce-cart .cart__wrapper .dropin-button--primary:is(:hover, :focus-visible) {
@@ -1129,7 +1129,7 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
   border: 1px solid var(--ledger-scarlet);
   border-radius: 0;
   box-shadow: none;
-  color: #fff;
+  color: var(--ledger-paper);
 }
 
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .checkout__progress-shell {
@@ -1457,7 +1457,7 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .form-mccs-pref
   border: 1px solid var(--ledger-scarlet);
   border-radius: 0;
   box-shadow: none;
-  color: #fff;
+  color: var(--ledger-paper);
 }
 
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .form-mccs-preferences-next .mpn-button--secondary {
@@ -1732,7 +1732,7 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) :is(.mpp-copy, .mpp-
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) .mpp-btn-primary {
   background: var(--ledger-scarlet);
   border-color: var(--ledger-scarlet);
-  color: #fff;
+  color: var(--ledger-paper);
 }
 
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) .mpp-btn-secondary,
@@ -1763,7 +1763,7 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .uniform-config
   --uc-surface-strong: #f8f4eb;
   --uc-surface-muted: var(--ledger-paper-deep);
   --uc-border: var(--ledger-rule);
-  --uc-border-strong: rgb(16 19 15 / 42%);
+  --uc-border-strong: rgb(16 19 15 / 52%);
   --uc-border-soft: var(--ledger-rule);
   --uc-shadow-shell: none;
   --uc-shadow-card: none;
@@ -1865,7 +1865,7 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .uniform-config
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .uniform-configurator :is(.btn-primary, .btn-gold) {
   background: var(--ledger-scarlet);
   border-color: var(--ledger-scarlet);
-  color: #fff;
+  color: var(--ledger-paper);
 }
 
 /* Regulation rack builder */
@@ -1963,14 +1963,14 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .ez-rack-builder-mockup__button--scarlet {
   background: var(--ledger-scarlet);
   border-color: var(--ledger-scarlet);
-  color: #fff;
+  color: var(--ledger-paper);
 }
 
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .ez-rack-builder-mockup__button--gold,
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .ez-rack-builder-mockup__button--next {
   background: var(--ledger-olive);
   border-color: var(--ledger-olive);
-  color: #fff;
+  color: var(--ledger-paper);
 }
 
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .ez-rack-builder-mockup__demo-bar {
