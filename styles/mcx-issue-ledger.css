@@ -131,8 +131,8 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) header .mcx-header .
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) header .mcx-header .logo-tagline {
   color: var(--ledger-scarlet);
   font-family: var(--ledger-data);
-  font-size: 7px;
-  letter-spacing: 0.2em;
+  font-size: 10px;
+  letter-spacing: 0.14em;
 }
 
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) header .mcx-header .hdr-search input {
@@ -214,10 +214,10 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) header .mcx-header .
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) header .mcx-header .nav-link {
   color: var(--ledger-ink);
   font-family: var(--ledger-data);
-  font-size: 9px;
-  letter-spacing: 0.16em;
+  font-size: clamp(12px, 1.05vw, 14px);
+  letter-spacing: 0.06em;
   min-height: 42px;
-  padding-inline: clamp(10px, 1.25vw, 20px);
+  padding-inline: clamp(8px, 1vw, 16px);
 }
 
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) header .mcx-header .nav-link::before {
@@ -265,9 +265,9 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) header .mcx-header .
   border-bottom-color: var(--ledger-rule);
   color: var(--ledger-olive);
   font-family: var(--ledger-data);
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.16em;
   margin-bottom: 12px;
   padding-bottom: 10px;
 }
@@ -279,7 +279,7 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) header .mcx-header .
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) header .mcx-header .mega-col li a {
   color: rgb(16 19 15 / 78%);
   font-family: var(--ledger-body);
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   line-height: 1.35;
   padding: 4px 0;
@@ -304,9 +304,9 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) header .mcx-header .
   border-radius: 0;
   color: var(--ledger-scarlet);
   font-family: var(--ledger-data);
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
   min-height: 38px;
   padding: 8px 16px;
 }
@@ -327,7 +327,7 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) header .mcx-header .
   border-radius: 0;
   color: rgb(16 19 15 / 52%);
   font-family: var(--ledger-data);
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.16em;
   padding: 4px 8px;
@@ -513,9 +513,9 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) header .mcx-header .
   border-radius: 0;
   color: var(--ledger-paper);
   font-family: var(--ledger-data);
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.12em;
   min-height: 44px;
 }
 
@@ -538,8 +538,8 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) :is(main, header) .m
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) :is(main, header) .mcx-announcement-bar .ann-item {
   color: var(--ledger-paper);
   font-family: var(--ledger-data);
-  font-size: 9px;
-  letter-spacing: 0.15em;
+  font-size: 13px;
+  letter-spacing: 0.1em;
 }
 
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) :is(main, header) .mcx-announcement-bar .ann-item:nth-of-type(n + 3),
