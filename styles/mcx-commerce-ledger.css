@@ -563,13 +563,21 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .product-detail
   color: #fff;
 }
 
+/* Commit actions — add to cart, checkout — are the storefront's scarlet moment. */
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .product-details__buttons .dropin-button--primary,
-body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .product-details__sticky-atc-button {
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .product-details__sticky-atc-button,
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .commerce-cart .cart__wrapper .dropin-button--primary {
   background: var(--ledger-scarlet);
   border: 1px solid var(--ledger-scarlet);
   border-radius: 0;
   box-shadow: none;
   color: #fff;
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .commerce-cart .cart__wrapper .dropin-button--primary:is(:hover, :focus-visible) {
+  background: var(--ledger-ink);
+  border-color: var(--ledger-ink);
+  color: var(--ledger-paper);
 }
 
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .product-details__accordion-header {
@@ -599,13 +607,16 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main:has(.commerce-c
   max-width: none;
 }
 
+/*
+ * Cart-specific surfaces live in blocks/commerce-cart/commerce-cart.css so the
+ * cart page has a single owner. Only the shared checkout/confirmation grammar
+ * remains here.
+ */
+
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
-  .cart__journey,
   .checkout__hero,
   .order-confirmation__hero,
   .order-confirmation__mission,
-  .cart__trust-panel,
-  .cart__savings-banner,
   .checkout__review-commit
 ) {
   background: var(--ledger-paper);
@@ -616,7 +627,6 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
 }
 
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
-  .cart__journey,
   .checkout__hero,
   .order-confirmation__hero
 )::after {
@@ -627,28 +637,22 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
 }
 
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
-  .cart__journey-eyebrow,
   .checkout__hero-eyebrow,
   .order-confirmation__hero-kicker,
   .order-confirmation-section__eyebrow,
-  .checkout__review-commit-eyebrow,
-  .cart__trust-kicker
+  .checkout__review-commit-eyebrow
 ) {
   color: var(--ledger-scarlet);
   font-family: var(--ledger-data);
 }
 
-body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
-  .cart__journey-eyebrow,
-  .checkout__hero-eyebrow
-)::before,
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .checkout__hero-eyebrow::before,
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .checkout__hero-line {
   background: var(--ledger-scarlet);
   box-shadow: none;
 }
 
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
-  .cart__journey-title,
   .checkout__hero-title,
   .order-confirmation__header .order-header__title,
   .order-confirmation-footer__title,
@@ -662,12 +666,7 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
   text-transform: uppercase;
 }
 
-body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .cart__journey-title span {
-  color: var(--ledger-scarlet);
-}
-
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
-  .cart__journey-body,
   .checkout__hero-copy,
   .order-confirmation-footer__description,
   .order-confirmation-section__description
@@ -676,7 +675,6 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
 }
 
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
-  .cart__journey-link,
   .checkout__stage-button--next,
   .order-confirmation-action--primary
 ) {
@@ -687,10 +685,7 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
   color: #fff;
 }
 
-body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
-  .cart__progress,
-  .checkout__progress-shell
-) {
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .checkout__progress-shell {
   background: var(--ledger-ink);
   border: 0;
   border-radius: 0;
@@ -698,10 +693,6 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
 }
 
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
-  .cart__wrapper .dropin-card,
-  .cart__wrapper .cart-order-summary,
-  .cart__wrapper .cart-cart-summary-list,
-  .cart__wrapper .cart-gift-options-view,
   .checkout__main .dropin-card,
   .checkout__aside .dropin-card,
   .checkout__main .dropin-header-container,
@@ -714,17 +705,13 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
   box-shadow: none;
 }
 
-body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
-  .cart__right-column,
-  .checkout__aside-shell
-) {
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .checkout__aside-shell {
   background: var(--ledger-paper-deep);
   border: 1px solid var(--ledger-ink);
   border-radius: 0;
 }
 
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
-  .cart__recommendation-card,
   .order-confirmation-recommendation,
   .order-confirmation-metric,
   .order-confirmation-fulfillment__step
@@ -736,10 +723,6 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
 }
 
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
-  .cart__journey-panel,
-  .cart__shipping-progress,
-  .cart__utility,
-  .cart__trust-item,
   .checkout__main-shell,
   .checkout__stage,
   .checkout__review-panel,
@@ -756,9 +739,6 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
 }
 
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
-  .cart__journey-stat-value,
-  .cart__shipping-progress-label,
-  .cart__trust-title,
   .checkout__benefit-title,
   .checkout__review-commit-title,
   .order-confirmation-metric__value
@@ -767,7 +747,6 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
 }
 
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
-  .cart__shipping-progress-fill,
   .checkout-progress__item[data-state='active'] .checkout-progress__badge,
   .order-confirmation-fulfillment__dot
 ) {
@@ -1671,7 +1650,6 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main.error p.error-m
   }
 
   body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main :is(
-    .cart__journey,
     .checkout__hero,
     .order-confirmation__hero
   ) {
