@@ -1,173 +1,324 @@
+/*
+ * MCX / Issue Ledger — Account navigation
+ *
+ * The index of the personnel file. One paper sheet, ruled into groups, every
+ * row a numbered entry: Rajdhani label, Barlow sub-label, 1px rules between
+ * items. No pills, no shadows, no floating panel. The current entry is filled
+ * in ink and carries a scarlet marker bar, so selection never rests on colour
+ * alone.
+ *
+ * Class names come from blocks/commerce-account-nav/commerce-account-nav.js.
+ * That file calls block.replaceWith($nav), so `.block.commerce-account-nav`
+ * does not survive decoration — every selector is anchored on the wrapper.
+ *
+ * The repeated class names buy specificity over the shared "Account and
+ * authentication desk" rules in styles/mcx-commerce-ledger.css, which frame
+ * .commerce-account-nav and .commerce-account-nav__item generically.
+ */
+
+/* stylelint-disable no-descending-specificity */
+
 .commerce-account-nav-wrapper {
-    width: 100%;
+  --nav-paper: var(--ledger-paper, #eee9dd);
+  --nav-paper-deep: var(--ledger-paper-deep, #d8d1c2);
+  --nav-ink: var(--ledger-ink, #10130f);
+  --nav-scarlet: var(--ledger-scarlet, #c51f2a);
+  --nav-olive: var(--ledger-olive, #565c48);
+  --nav-rule: var(--ledger-rule, rgb(16 19 15 / 24%));
+  --nav-ink-soft: rgb(16 19 15 / 68%);
+  --nav-ink-quiet: rgb(16 19 15 / 46%);
+  --nav-paper-soft: rgb(238 233 221 / 72%);
+  --nav-body: var(--ledger-body, "Barlow", system-ui, sans-serif);
+  --nav-data: var(--ledger-data, "Rajdhani", "Barlow Condensed", monospace);
+  --nav-t-hover: 180ms;
+
+  width: 100%;
 }
 
-.commerce-account-nav {
-    display: grid;
-    gap: var(--spacing-xsmall);
+/* ---------------------------------------------------------------- *
+ * 1. The sheet
+ * ---------------------------------------------------------------- */
+
+.commerce-account-nav-wrapper.commerce-account-nav-wrapper .commerce-account-nav.commerce-account-nav.commerce-account-nav.commerce-account-nav {
+  backdrop-filter: none;
+  background: var(--nav-paper);
+  border: 1px solid var(--nav-ink);
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--nav-ink);
+  display: block;
+  gap: 0;
+  overflow: visible;
 }
 
-.commerce-account-nav__group {
-    border: 1px solid var(--glass-border-subtle);
-    border-radius: calc(var(--shape-border-radius-2) + 4px);
-    background: linear-gradient(180deg, rgb(10 16 24 / 94%) 0%, rgb(14 23 34 / 94%) 100%);
-    backdrop-filter: var(--glass-blur-sm) var(--glass-saturate);
-    box-shadow: var(--shadow-glass);
-    overflow: hidden;
+.commerce-account-nav-wrapper.commerce-account-nav-wrapper .commerce-account-nav.commerce-account-nav.commerce-account-nav.commerce-account-nav .commerce-account-nav__group {
+  backdrop-filter: none;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  display: block;
+  overflow: visible;
 }
 
-.commerce-account-nav__group-label {
-    margin: 0;
-    padding: 10px var(--spacing-medium) 8px;
-    color: var(--color-neutral-600);
-    font: var(--type-details-overline-font);
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
+.commerce-account-nav-wrapper.commerce-account-nav-wrapper .commerce-account-nav.commerce-account-nav.commerce-account-nav.commerce-account-nav .commerce-account-nav__group + .commerce-account-nav__group {
+  border-top: 1px solid var(--nav-ink);
 }
 
-.commerce-account-nav__group-items {
-    display: flex;
-    flex-direction: column;
+/* Group headings read as ledger dividers, not as navigation targets. */
+.commerce-account-nav-wrapper.commerce-account-nav-wrapper .commerce-account-nav.commerce-account-nav.commerce-account-nav.commerce-account-nav .commerce-account-nav__group-label {
+  background: var(--nav-paper-deep);
+  border-bottom: 1px solid var(--nav-rule);
+  color: var(--nav-olive);
+  font-family: var(--nav-data);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  line-height: 1.2;
+  margin: 0;
+  padding: 11px clamp(14px, 1.6vw, 18px);
+  text-transform: uppercase;
 }
 
-.commerce-account-nav__item {
-    position: relative;
-    display: grid;
-    align-items: center;
-    gap: 0 var(--spacing-small);
-    grid-template-areas:
-        'title chevron'
-        'description chevron';
-    grid-template-columns: minmax(0, 1fr) auto;
-    padding: var(--spacing-small) var(--spacing-medium);
-    color: inherit;
-    text-decoration: none;
-    transition: transform var(--transition-fast) var(--ease-out),
-        background-color var(--transition-fast) var(--ease-out),
-        border-color var(--transition-fast) var(--ease-out);
+.commerce-account-nav-wrapper.commerce-account-nav-wrapper .commerce-account-nav.commerce-account-nav.commerce-account-nav.commerce-account-nav .commerce-account-nav__group-items {
+  display: flex;
+  flex-direction: column;
 }
 
-.commerce-account-nav__item + .commerce-account-nav__item {
-    border-top: 1px solid rgb(255 255 255 / 5%);
+/* ---------------------------------------------------------------- *
+ * 2. Entries
+ * ---------------------------------------------------------------- */
+
+.commerce-account-nav-wrapper.commerce-account-nav-wrapper .commerce-account-nav.commerce-account-nav.commerce-account-nav.commerce-account-nav .commerce-account-nav__item {
+  align-items: center;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--nav-ink);
+  display: grid;
+  gap: 2px clamp(10px, 1.2vw, 14px);
+  grid-template-areas:
+    'title chevron'
+    'description chevron';
+  grid-template-columns: minmax(0, 1fr) auto;
+  min-height: 56px;
+  padding: 12px clamp(14px, 1.6vw, 18px);
+  position: relative;
+  text-decoration: none;
+  transition:
+    background var(--nav-t-hover) ease-out,
+    color var(--nav-t-hover) ease-out;
 }
 
-.commerce-account-nav__item::before {
-    content: '';
-    position: absolute;
-    inset: 0 auto 0 0;
-    width: 0;
-    transition: width var(--transition-fast) var(--ease-out);
+.commerce-account-nav-wrapper.commerce-account-nav-wrapper .commerce-account-nav.commerce-account-nav.commerce-account-nav.commerce-account-nav .commerce-account-nav__item + .commerce-account-nav__item {
+  border-top: 1px solid var(--nav-rule);
 }
 
-.commerce-account-nav__item--has-icon {
-    grid-template-areas:
-        'icon title chevron'
-        'icon description chevron';
-    grid-template-columns: auto minmax(0, 1fr) auto;
+.commerce-account-nav-wrapper.commerce-account-nav-wrapper .commerce-account-nav.commerce-account-nav.commerce-account-nav.commerce-account-nav .commerce-account-nav__item--has-icon {
+  grid-template-areas:
+    'icon title chevron'
+    'icon description chevron';
+  grid-template-columns: auto minmax(0, 1fr) auto;
 }
 
-.commerce-account-nav__item:hover,
-.commerce-account-nav__item:focus-visible {
-    background: rgb(255 255 255 / 3%);
-    color: inherit;
-    text-decoration: none !important;
-    transform: translateX(2px);
+/* Drawn selection bar — decorative; aria-current carries the meaning. */
+.commerce-account-nav-wrapper.commerce-account-nav-wrapper .commerce-account-nav.commerce-account-nav.commerce-account-nav.commerce-account-nav .commerce-account-nav__item::before {
+  background: none;
+  content: '';
+  inset: 0 auto 0 0;
+  position: absolute;
+  transition: width var(--nav-t-hover) ease-out;
+  width: 0;
 }
 
-.commerce-account-nav__item--active {
-    background: linear-gradient(90deg, rgb(193 18 31 / 14%) 0%, rgb(193 18 31 / 4%) 100%);
+.commerce-account-nav-wrapper.commerce-account-nav-wrapper .commerce-account-nav.commerce-account-nav.commerce-account-nav.commerce-account-nav .commerce-account-nav__item:hover,
+.commerce-account-nav-wrapper.commerce-account-nav-wrapper .commerce-account-nav.commerce-account-nav.commerce-account-nav.commerce-account-nav .commerce-account-nav__item:focus-visible {
+  background: var(--nav-paper-deep);
+  color: var(--nav-ink);
+  text-decoration: none;
+  transform: none;
 }
 
-.commerce-account-nav__item--active::before {
-    width: 3px;
-    background: var(--main-color-accent);
+.commerce-account-nav-wrapper.commerce-account-nav-wrapper .commerce-account-nav.commerce-account-nav.commerce-account-nav.commerce-account-nav .commerce-account-nav__item:hover::before,
+.commerce-account-nav-wrapper.commerce-account-nav-wrapper .commerce-account-nav.commerce-account-nav.commerce-account-nav.commerce-account-nav .commerce-account-nav__item:focus-visible::before {
+  background: var(--nav-ink);
+  width: 3px;
 }
 
-.commerce-account-nav__item__icon,
-.commerce-account-nav__item__chevron {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+.commerce-account-nav-wrapper.commerce-account-nav-wrapper .commerce-account-nav.commerce-account-nav.commerce-account-nav.commerce-account-nav .commerce-account-nav__item:focus-visible {
+  outline: 2px solid var(--nav-scarlet);
+  outline-offset: -3px;
 }
 
-.commerce-account-nav__item__icon {
-    grid-area: icon;
-    color: var(--gold-light);
-    opacity: 0.92;
+/* Current entry: ink fill plus a scarlet marker bar, never colour alone. */
+.commerce-account-nav-wrapper.commerce-account-nav-wrapper .commerce-account-nav.commerce-account-nav.commerce-account-nav.commerce-account-nav .commerce-account-nav__item--active,
+.commerce-account-nav-wrapper.commerce-account-nav-wrapper .commerce-account-nav.commerce-account-nav.commerce-account-nav.commerce-account-nav .commerce-account-nav__item--active:hover,
+.commerce-account-nav-wrapper.commerce-account-nav-wrapper .commerce-account-nav.commerce-account-nav.commerce-account-nav.commerce-account-nav .commerce-account-nav__item--active:focus-visible {
+  background: var(--nav-ink);
+  color: var(--nav-paper);
 }
 
-.commerce-account-nav__item__title {
-    grid-area: title;
-    min-width: 0;
-    color: var(--color-neutral-900);
-    font: var(--type-body-1-strong-font);
-    line-height: 1.15;
+.commerce-account-nav-wrapper.commerce-account-nav-wrapper .commerce-account-nav.commerce-account-nav.commerce-account-nav.commerce-account-nav .commerce-account-nav__item--active::before,
+.commerce-account-nav-wrapper.commerce-account-nav-wrapper .commerce-account-nav.commerce-account-nav.commerce-account-nav.commerce-account-nav .commerce-account-nav__item--active:hover::before {
+  background: var(--nav-scarlet);
+  width: 4px;
 }
 
-.commerce-account-nav__item__description {
-    grid-area: description;
-    min-width: 0;
-    color: var(--color-neutral-700);
-    font: var(--type-details-caption-2-font);
-    letter-spacing: 0.02em;
-    line-height: 1.25;
-    text-decoration: none;
+/* ---------------------------------------------------------------- *
+ * 3. Entry contents
+ * ---------------------------------------------------------------- */
+
+.commerce-account-nav-wrapper.commerce-account-nav-wrapper .commerce-account-nav.commerce-account-nav.commerce-account-nav.commerce-account-nav .commerce-account-nav__item__icon,
+.commerce-account-nav-wrapper.commerce-account-nav-wrapper .commerce-account-nav.commerce-account-nav.commerce-account-nav.commerce-account-nav .commerce-account-nav__item__chevron {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
 }
 
-.commerce-account-nav__item__chevron {
-    grid-area: chevron;
-    padding-left: var(--spacing-xsmall);
-    color: var(--color-neutral-600);
-    transition: transform var(--transition-fast) var(--ease-out),
-        color var(--transition-fast) var(--ease-out),
-        opacity var(--transition-fast) var(--ease-out);
+.commerce-account-nav-wrapper.commerce-account-nav-wrapper .commerce-account-nav.commerce-account-nav.commerce-account-nav.commerce-account-nav .commerce-account-nav__item__icon {
+  color: var(--nav-olive);
+  grid-area: icon;
+  height: 22px;
+  opacity: 1;
+  width: 22px;
 }
 
-.commerce-account-nav__item--active .commerce-account-nav__item__chevron,
-.commerce-account-nav__item:hover .commerce-account-nav__item__chevron,
-.commerce-account-nav__item:focus-visible .commerce-account-nav__item__chevron {
-    color: var(--main-color-accent);
-    opacity: 1;
-    transform: translateX(2px);
+.commerce-account-nav-wrapper.commerce-account-nav-wrapper .commerce-account-nav.commerce-account-nav.commerce-account-nav.commerce-account-nav .commerce-account-nav__item__icon svg {
+  height: 20px;
+  width: 20px;
 }
+
+.commerce-account-nav-wrapper.commerce-account-nav-wrapper .commerce-account-nav.commerce-account-nav.commerce-account-nav.commerce-account-nav .commerce-account-nav__item__title {
+  color: inherit;
+  font-family: var(--nav-data);
+  font-size: 13px;
+  font-weight: 700;
+  grid-area: title;
+  letter-spacing: 0.14em;
+  line-height: 1.15;
+  min-width: 0;
+  text-transform: uppercase;
+}
+
+.commerce-account-nav-wrapper.commerce-account-nav-wrapper .commerce-account-nav.commerce-account-nav.commerce-account-nav.commerce-account-nav .commerce-account-nav__item__description {
+  color: var(--nav-ink-soft);
+  font-family: var(--nav-body);
+  font-size: 13px;
+  font-weight: 400;
+  grid-area: description;
+  letter-spacing: 0;
+  line-height: 1.35;
+  min-width: 0;
+  text-decoration: none;
+  text-transform: none;
+}
+
+.commerce-account-nav-wrapper.commerce-account-nav-wrapper .commerce-account-nav.commerce-account-nav.commerce-account-nav.commerce-account-nav .commerce-account-nav__item__chevron {
+  color: var(--nav-ink-quiet);
+  grid-area: chevron;
+  height: 18px;
+  padding-left: 6px;
+  transition: color var(--nav-t-hover) ease-out;
+  width: 24px;
+}
+
+.commerce-account-nav-wrapper.commerce-account-nav-wrapper .commerce-account-nav.commerce-account-nav.commerce-account-nav.commerce-account-nav .commerce-account-nav__item__chevron svg {
+  height: 16px;
+  width: 16px;
+}
+
+/*
+ * The row label stays ink on hover and on keyboard focus. Scarlet on
+ * paper-deep is 3.83:1, and this title is 13px — normal-size text, so it needs
+ * 4.5:1. The hover state is already carried by the paper-deep fill, the 3px ink
+ * marker bar, and the scarlet chevron, which is a graphical mark and clears the
+ * 3:1 it is held to.
+ */
+.commerce-account-nav-wrapper.commerce-account-nav-wrapper .commerce-account-nav.commerce-account-nav.commerce-account-nav.commerce-account-nav .commerce-account-nav__item:hover .commerce-account-nav__item__chevron,
+.commerce-account-nav-wrapper.commerce-account-nav-wrapper .commerce-account-nav.commerce-account-nav.commerce-account-nav.commerce-account-nav .commerce-account-nav__item:focus-visible .commerce-account-nav__item__chevron {
+  color: var(--nav-scarlet);
+  opacity: 1;
+  transform: none;
+}
+
+.commerce-account-nav-wrapper.commerce-account-nav-wrapper .commerce-account-nav.commerce-account-nav.commerce-account-nav.commerce-account-nav .commerce-account-nav__item--active .commerce-account-nav__item__title {
+  color: var(--nav-paper);
+}
+
+.commerce-account-nav-wrapper.commerce-account-nav-wrapper .commerce-account-nav.commerce-account-nav.commerce-account-nav.commerce-account-nav .commerce-account-nav__item--active .commerce-account-nav__item__description {
+  color: var(--nav-paper-soft);
+}
+
+.commerce-account-nav-wrapper.commerce-account-nav-wrapper .commerce-account-nav.commerce-account-nav.commerce-account-nav.commerce-account-nav .commerce-account-nav__item--active .commerce-account-nav__item__icon,
+.commerce-account-nav-wrapper.commerce-account-nav-wrapper .commerce-account-nav.commerce-account-nav.commerce-account-nav.commerce-account-nav .commerce-account-nav__item--active .commerce-account-nav__item__chevron {
+  color: var(--nav-paper);
+}
+
+/* The rule that closes an inked entry belongs to the entry, not the gap. */
+.commerce-account-nav-wrapper.commerce-account-nav-wrapper .commerce-account-nav.commerce-account-nav.commerce-account-nav.commerce-account-nav .commerce-account-nav__item--active + .commerce-account-nav__item {
+  border-top-color: var(--nav-ink);
+}
+
+/* ---------------------------------------------------------------- *
+ * 4. Responsive
+ * ---------------------------------------------------------------- */
 
 @media (min-width: 900px) {
-    .commerce-account-nav-wrapper {
-        position: sticky;
-        top: calc(var(--nav-height) + var(--spacing-small));
-    }
+  .commerce-account-nav-wrapper {
+    position: sticky;
+    top: calc(var(--nav-height, 72px) + 16px);
+  }
 }
 
 @media (max-width: 899px) {
-    .commerce-account-nav {
-        display: flex;
-        overflow-x: auto;
-        gap: var(--spacing-small);
-        padding-bottom: 2px;
-        scrollbar-width: none;
-    }
+  /*
+   * The account shell sets align-items: flex-start on the column flex in
+   * styles/styles.css, so this section is sized to its own content. Without an
+   * explicit cap the horizontal index below stretches the section to the width
+   * of all its groups and pushes the whole page sideways.
+   */
+  body.columns main > .section.commerce-account-nav-container {
+    max-width: 100%;
+  }
 
-    .commerce-account-nav::-webkit-scrollbar {
-        display: none;
-    }
+  .commerce-account-nav-wrapper.commerce-account-nav-wrapper .commerce-account-nav.commerce-account-nav.commerce-account-nav.commerce-account-nav {
+    align-items: flex-start;
+    background: none;
+    border: 0;
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+  }
 
-    .commerce-account-nav__group {
-        min-width: min(320px, 88vw);
-    }
+  .commerce-account-nav-wrapper.commerce-account-nav-wrapper .commerce-account-nav.commerce-account-nav.commerce-account-nav.commerce-account-nav::-webkit-scrollbar {
+    display: none;
+  }
 
-    .commerce-account-nav__group-label {
-        display: none;
-    }
+  /*
+   * Each group becomes its own sheet on the rail, so a short group is short
+   * instead of leaving a void inside one tall frame.
+   */
+  .commerce-account-nav-wrapper.commerce-account-nav-wrapper .commerce-account-nav.commerce-account-nav.commerce-account-nav.commerce-account-nav .commerce-account-nav__group {
+    background: var(--nav-paper);
+    border: 1px solid var(--nav-ink);
+    flex: 0 0 auto;
+    min-width: min(300px, 84vw);
+  }
 
-    .commerce-account-nav__item {
-        padding: 14px var(--spacing-small);
-    }
+  .commerce-account-nav-wrapper.commerce-account-nav-wrapper .commerce-account-nav.commerce-account-nav.commerce-account-nav.commerce-account-nav .commerce-account-nav__item {
+    min-height: 52px;
+    padding: 10px 14px;
+  }
+}
 
-    .commerce-account-nav__item__title {
-        font: var(--type-body-2-strong-font);
-    }
-
-    .commerce-account-nav__item__description {
-        font: var(--type-details-caption-2-font);
-    }
+@media (prefers-reduced-motion: reduce) {
+  .commerce-account-nav-wrapper .commerce-account-nav *,
+  .commerce-account-nav-wrapper .commerce-account-nav *::before,
+  .commerce-account-nav-wrapper .commerce-account-nav *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

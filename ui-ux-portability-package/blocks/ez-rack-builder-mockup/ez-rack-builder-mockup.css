@@ -394,8 +394,41 @@
   height: 6.4rem;
   margin: 0 auto 1.6rem;
   border-radius: 50%;
-  font-size: 2.6rem;
-  font-weight: 700;
+  position: relative;
+}
+
+.ez-rack-builder-mockup__welcome-card-icon::before,
+.ez-rack-builder-mockup__welcome-card-icon::after {
+  background: currentcolor;
+  content: '';
+  position: absolute;
+}
+
+.ez-rack-builder-mockup__welcome-card-icon.is-green::before {
+  box-shadow: 0 8px 0 currentcolor, 0 -8px 0 currentcolor;
+  height: 2px;
+  width: 2.6rem;
+}
+
+.ez-rack-builder-mockup__welcome-card-icon.is-green::after {
+  height: 2.6rem;
+  opacity: 0.25;
+  width: 2px;
+}
+
+.ez-rack-builder-mockup__welcome-card-icon.is-blue::before {
+  border: 2px solid currentcolor;
+  border-radius: 50%;
+  box-sizing: border-box;
+  height: 2.6rem;
+  width: 2.6rem;
+}
+
+.ez-rack-builder-mockup__welcome-card-icon.is-blue::after {
+  border-left: 2px solid currentcolor;
+  height: 1.1rem;
+  top: 2rem;
+  transform: rotate(35deg);
 }
 
 .ez-rack-builder-mockup__welcome-card-icon.is-green {
@@ -846,6 +879,7 @@
   padding: 1.2rem;
   border-radius: var(--ezrbm-radius-md);
   background: transparent;
+  position: relative;
   text-align: center;
 }
 
@@ -854,7 +888,7 @@
 }
 
 .ez-rack-builder-mockup__award-item.is-in-rack::after {
-  content: '✓';
+  content: '';
   position: absolute;
   top: 0.6rem;
   right: 0.6rem;
@@ -865,8 +899,6 @@
   height: 1.8rem;
   border-radius: 50%;
   background: var(--ezrbm-scarlet);
-  color: #fff;
-  font-size: 1rem;
 }
 
 .ez-rack-builder-mockup__ribbon-swatch {
@@ -941,6 +973,12 @@
 }
 
 .ez-rack-builder-mockup__device-icon {
+  align-items: center;
+  display: inline-flex;
+  flex: 0 0 2.4rem;
+  height: 2.4rem;
+  justify-content: center;
+  position: relative;
   width: 2.4rem;
   color: var(--ezrbm-text-bright);
   font-size: 1.8rem;
@@ -957,6 +995,19 @@
 
 .ez-rack-builder-mockup__device-icon.is-bronze {
   color: #b87830;
+}
+
+.ez-rack-builder-mockup__device-icon.is-star::before {
+  background: currentcolor;
+  clip-path: polygon(50% 3%, 61% 35%, 95% 35%, 68% 55%, 79% 89%, 50% 69%, 21% 89%, 32% 55%, 5% 35%, 39% 35%);
+  content: '';
+  height: 1.7rem;
+  width: 1.7rem;
+}
+
+.ez-rack-builder-mockup__device-icon.is-silver.is-star::before {
+  background: transparent;
+  box-shadow: inset 0 0 0 1.5px currentcolor;
 }
 
 .ez-rack-builder-mockup__device-label,
@@ -1165,6 +1216,24 @@
   border-radius: 50%;
   background: var(--ezrbm-scarlet-glow-soft);
   color: var(--ezrbm-scarlet);
+  position: relative;
+}
+
+.ez-rack-builder-mockup__remove-btn::before,
+.ez-rack-builder-mockup__remove-btn::after {
+  background: currentcolor;
+  content: '';
+  height: 1px;
+  position: absolute;
+  width: 10px;
+}
+
+.ez-rack-builder-mockup__remove-btn::before {
+  transform: rotate(45deg);
+}
+
+.ez-rack-builder-mockup__remove-btn::after {
+  transform: rotate(-45deg);
 }
 
 .ez-rack-builder-mockup__remove-btn:hover {

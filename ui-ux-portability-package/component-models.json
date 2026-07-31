@@ -550,6 +550,16 @@
     ]
   },
   {
+    "id": "commerce-account-header",
+    "fields": [
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title"
+      }
+    ]
+  },
+  {
     "id": "commerce-account-hub",
     "fields": [
       {
@@ -608,6 +618,131 @@
     ]
   },
   {
+    "id": "commerce-addresses",
+    "fields": [
+      {
+        "component": "boolean",
+        "name": "minified-view",
+        "label": "Minified View"
+      }
+    ]
+  },
+  {
+    "id": "commerce-cart",
+    "fields": [
+      {
+        "component": "boolean",
+        "name": "hide-heading",
+        "label": "Hide Heading"
+      },
+      {
+        "component": "text",
+        "name": "max-items",
+        "label": "Max Items"
+      },
+      {
+        "component": "text",
+        "name": "hide-attributes",
+        "label": "Hide Attributes"
+      },
+      {
+        "component": "boolean",
+        "name": "enable-item-quantity-update",
+        "label": "Enable Item Quantity Update"
+      },
+      {
+        "component": "boolean",
+        "name": "enable-item-remove",
+        "label": "Enable Item Remove"
+      },
+      {
+        "component": "boolean",
+        "name": "enable-estimate-shipping",
+        "label": "Enable Estimate Shipping"
+      },
+      {
+        "component": "text",
+        "name": "start-shopping-url",
+        "label": "Start Shopping URL"
+      },
+      {
+        "component": "text",
+        "name": "checkout-url",
+        "label": "Checkout URL"
+      },
+      {
+        "component": "boolean",
+        "name": "enable-updating-product",
+        "label": "Enable Updating Product"
+      },
+      {
+        "component": "boolean",
+        "name": "undo-remove-item",
+        "label": "Undo Remove Item"
+      }
+    ]
+  },
+  {
+    "id": "commerce-mini-cart",
+    "fields": [
+      {
+        "component": "text",
+        "name": "start-shopping-url",
+        "label": "Start Shopping URL"
+      },
+      {
+        "component": "text",
+        "name": "cart-url",
+        "label": "Cart URL"
+      },
+      {
+        "component": "text",
+        "name": "checkout-url",
+        "label": "Checkout URL"
+      },
+      {
+        "component": "boolean",
+        "name": "enable-updating-product",
+        "label": "Enable Updating Product"
+      },
+      {
+        "component": "boolean",
+        "name": "undo-remove-item",
+        "label": "Undo Remove Item"
+      }
+    ]
+  },
+  {
+    "id": "commerce-orders-list",
+    "fields": [
+      {
+        "component": "boolean",
+        "name": "minified-view",
+        "label": "Minified View"
+      }
+    ]
+  },
+  {
+    "id": "commerce-returns-list",
+    "fields": [
+      {
+        "component": "boolean",
+        "name": "minified-view",
+        "label": "Minified View"
+      }
+    ]
+  },
+  {
+    "id": "commerce-wishlist",
+    "fields": [
+      {
+        "component": "text",
+        "name": "start-shopping-url",
+        "label": "Start Shopping URL"
+      }
+    ]
+  },
+  {
     "id": "customer-segment-personalization-block",
     "fields": [
       {
@@ -657,6 +792,191 @@
         "valueType": "string",
         "name": "embedUrlText",
         "label": "Embed URL Text"
+      }
+    ]
+  },
+  {
+    "id": "enrichment",
+    "fields": [
+      {
+        "component": "select",
+        "name": "type",
+        "label": "Type",
+        "options": [
+          {
+            "name": "Product",
+            "value": "product"
+          },
+          {
+            "name": "Category",
+            "value": "category"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "name": "position",
+        "label": "Position"
+      }
+    ]
+  },
+  {
+    "id": "ez-rack-builder-mockup",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "eyebrow-text",
+        "label": "Eyebrow Text",
+        "value": "MarineShop · Awards Division"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title",
+        "value": "Welcome to the\nEZ Rack Builder"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "subtitle",
+        "label": "Subtitle",
+        "value": "Assemble your ribbon rack, medal display, or full awards package in minutes. Regulation precedence is applied automatically while you work."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "primary-cta-label",
+        "label": "Primary CTA Label",
+        "value": "Start New Rack"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "secondary-cta-label",
+        "label": "Secondary CTA Label",
+        "value": "Builder Guide"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "review-cta-label",
+        "label": "Review CTA Label",
+        "value": "Save Rack Draft"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "prototype-note",
+        "label": "Builder Note",
+        "value": "This builder keeps your rack draft on this device and does not place an order."
+      }
+    ]
+  },
+  {
+    "id": "ez-rack-builder",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "sku",
+        "label": "SKU",
+        "required": true,
+        "value": "USMC-EZ-RACK"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "schema-url",
+        "label": "Schema URL",
+        "required": true,
+        "value": "/data/configurators/ez-rack-builder-usmc.json"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "eyebrow-text",
+        "label": "Eyebrow Text",
+        "value": "Marine Corps Awards Division"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title",
+        "value": "Luxury EZ Rack Builder"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "subtitle",
+        "label": "Subtitle",
+        "value": "Assemble your regulation-aware ribbon rack in a ceremonial configuration studio."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "primary-cta-label",
+        "label": "Primary CTA Label",
+        "value": "Add configured rack to cart"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "secondary-cta-label",
+        "label": "Secondary CTA Label",
+        "value": "Talk to a specialist"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "secondary-cta-href",
+        "label": "Secondary CTA Href",
+        "value": "/contact"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "theme",
+        "label": "Theme",
+        "value": "scarlet-gold",
+        "options": [
+          {
+            "name": "Scarlet Gold",
+            "value": "scarlet-gold"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "presentation",
+        "label": "Presentation",
+        "value": "rack-immersive",
+        "options": [
+          {
+            "name": "Rack Immersive",
+            "value": "rack-immersive"
+          },
+          {
+            "name": "Default",
+            "value": "default"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "dd214-mode",
+        "label": "DD214 Mode",
+        "value": "smart-stub",
+        "options": [
+          {
+            "name": "Smart Stub",
+            "value": "smart-stub"
+          }
+        ]
       }
     ]
   },
@@ -864,35 +1184,35 @@
         "valueType": "string",
         "name": "eyebrow",
         "label": "Eyebrow",
-        "value": "AI-Powered Style Match"
+        "value": "MCX Guided Gear Edit"
       },
       {
         "component": "text",
         "valueType": "string",
         "name": "title",
         "label": "Title",
-        "value": "FIND YOUR\\nPERFECT\\nGEAR"
+        "value": "THE RIGHT\\nGEAR. NO\\nGUESSWORK."
       },
       {
         "component": "text",
         "valueType": "string",
         "name": "subtitle",
         "label": "Subtitle",
-        "value": "Answer 7 quick questions and we will build a personalized shopping list matched to your life, mission, and style."
+        "value": "A short series of choices gives you a precise edit of field, duty, fitness, and everyday gear."
       },
       {
         "component": "text",
         "valueType": "string",
         "name": "start-cta-label",
         "label": "Start CTA Label",
-        "value": "Start Finding My Style"
+        "value": "Build My Gear Edit"
       },
       {
         "component": "text",
         "valueType": "string",
         "name": "results-cta-label",
         "label": "Results CTA Label",
-        "value": "Shop All Recommendations"
+        "value": "Shop The Edit"
       },
       {
         "component": "text",
@@ -1837,23 +2157,31 @@
       {
         "component": "text",
         "valueType": "string",
+        "name": "category-id",
+        "label": "Category ID",
+        "description": "Optional Commerce category ID for page identity. When URL Path is blank, child category paths are included in the product listing.",
+        "value": "19"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
         "name": "urlPath",
         "label": "URL Path",
-        "value": "apparel-footwear"
+        "value": "retail"
       },
       {
         "component": "text",
         "valueType": "string",
         "name": "eyebrow",
         "label": "Eyebrow",
-        "value": "Apparel & Footwear"
+        "value": "Retail"
       },
       {
         "component": "text",
         "valueType": "string",
         "name": "title",
         "label": "Title",
-        "value": "GEAR UP.\\nDRESS RIGHT."
+        "value": "Retail"
       },
       {
         "component": "text",
@@ -1892,6 +2220,10 @@
     "fields": []
   },
   {
+    "id": "mcx-hero-newcomer",
+    "fields": []
+  },
+  {
     "id": "mcx-hero",
     "fields": []
   },
@@ -1901,6 +2233,10 @@
   },
   {
     "id": "mcx-product-cards",
+    "fields": []
+  },
+  {
+    "id": "mcx-promo-popup",
     "fields": []
   },
   {
@@ -1955,60 +2291,6 @@
         "name": "prototype-note",
         "label": "Prototype Note",
         "value": "Prototype mode only. This configurator previews the experience without adding anything to cart. Use the standard PDP purchase controls on this page for live checkout."
-      }
-    ]
-  },
-  {
-    "id": "ez-rack-builder-mockup",
-    "fields": [
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "eyebrow-text",
-        "label": "Eyebrow Text",
-        "value": "MarineShop · Awards Division"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "title",
-        "label": "Title",
-        "value": "Welcome to the\nEZ Rack Builder"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "subtitle",
-        "label": "Subtitle",
-        "value": "Assemble your ribbon rack, medal display, or full awards package in minutes. Our system automatically applies regulation precedence. Prototype mode keeps everything local to the block."
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "primary-cta-label",
-        "label": "Primary CTA Label",
-        "value": "Start New Rack"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "secondary-cta-label",
-        "label": "Secondary CTA Label",
-        "value": "Prototype Login"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "review-cta-label",
-        "label": "Review CTA Label",
-        "value": "Save Prototype Rack"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "prototype-note",
-        "label": "Prototype Note",
-        "value": "Prototype mode only. This block recreates the full luxury builder experience without connecting to Commerce, cart, or PDP configuration."
       }
     ]
   },
@@ -2628,12 +2910,31 @@
             "value": "auto-immersive"
           }
         ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "experience-data-source",
+        "label": "Experience Data Source",
+        "description": "Optional repo-relative or da.live JSON path for breadcrumb, promo, shipping, and review overrides.",
+        "value": ""
       }
     ]
   },
   {
     "id": "product-highlights",
     "fields": []
+  },
+  {
+    "id": "product-list-page",
+    "fields": [
+      {
+        "component": "text",
+        "name": "urlpath",
+        "label": "URL Path",
+        "description": "URL Path of the category as defined in the catalog (not CMS)"
+      }
+    ]
   },
   {
     "id": "product-recommendations",
@@ -2907,11 +3208,11 @@
     ]
   },
   {
-    "id": "promotional-hero",
+    "id": "promo-strip",
     "fields": []
   },
   {
-    "id": "promo-strip",
+    "id": "promotional-hero",
     "fields": []
   },
   {
@@ -2987,6 +3288,10 @@
         "label": "Attribution"
       }
     ]
+  },
+  {
+    "id": "scroll-story",
+    "fields": []
   },
   {
     "id": "search-bar",

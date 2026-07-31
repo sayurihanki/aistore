@@ -284,9 +284,9 @@ header nav .nav-sections ul > li:empty {
 
   header nav .nav-sections .default-content-wrapper > ul > li > p,
   header nav .nav-sections .default-content-wrapper > ul > li > a {
-    font-size: 1.85rem;
+    font-size: 2.4rem;
     font-weight: 700;
-    line-height: 2.5rem;
+    line-height: 3rem;
     letter-spacing: 0.02em;
     transition:
       color var(--nav-interaction-speed) ease-out,
@@ -722,7 +722,7 @@ header .nav-search-panel .search-bar-result {
 }
 
 header .nav-search-panel .search-bar-result.is-open {
-  max-height: min(62vh, 34rem);
+  max-height: min(68vh, 38rem);
   opacity: 1;
   overflow-y: auto;
   pointer-events: auto;
@@ -1572,7 +1572,7 @@ header nav .minicart-panel a[href*="/cart"] {
   --nav-flyout-bg: linear-gradient(135deg, rgb(21 33 49 / 82%) 0%, rgb(11 18 29 / 76%) 100%);
   --nav-flyout-border: rgb(255 255 255 / 14%);
   --nav-flyout-shadow: 0 30px 72px rgb(0 0 0 / 48%);
-  --nav-live-search-width: 720px;
+  --nav-live-search-width: 760px;
   --nav-live-search-radius: 28px;
   --nav-live-search-bg: linear-gradient(135deg, rgb(21 33 49 / 84%) 0%, rgb(11 18 29 / 78%) 100%);
   --nav-live-search-border: rgb(255 255 255 / 14%);

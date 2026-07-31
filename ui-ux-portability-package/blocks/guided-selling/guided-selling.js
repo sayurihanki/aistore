@@ -56,20 +56,45 @@ function createLink(label, href, className, { arrow = false } = {}) {
   return link;
 }
 
-function createMedia(image, fallbackText, className) {
+function resolveIconName(source, fallback = 'gear') {
+  const raw = typeof source === 'string'
+    ? source
+    : [source?.id, source?.value, source?.label, source?.title, source?.name]
+      .filter(Boolean)
+      .join(' ');
+  const value = raw.toLowerCase();
+
+  if (/(marine|service|duty|uniform|tactical|rank|field|propper)/.test(value)) return 'service';
+  if (/(family|home|gift|household)/.test(value)) return 'home';
+  if (/(athletic|pt|run|fitness|brooks|under armour|performance)/.test(value)) return 'motion';
+  if (/(outdoor|trail|camp|north face|sorel|danner)/.test(value)) return 'terrain';
+  if (/(office|work|travel|sizing|fit|budget|price)/.test(value)) return 'utility';
+  if (/(casual|street|apparel|outerwear|footwear|oakley|bundle|gear)/.test(value)) return 'gear';
+  return fallback;
+}
+
+function createIconMark(source, className, fallback = 'gear') {
+  return createElement(
+    'span',
+    `${className} gs-icon-mark gs-icon-mark--${resolveIconName(source, fallback)}`,
+    { 'aria-hidden': 'true' },
+  );
+}
+
+function createMedia(image, fallbackSource, className) {
   const media = createElement('div', className);
   if (image?.src) {
     const img = createElement('img', 'gs-media-image', {
       src: image.src,
-      alt: image.alt || fallbackText,
+      alt: image.alt || '',
       loading: 'lazy',
     });
     media.append(img);
     return media;
   }
 
-  media.classList.add('is-emoji');
-  media.textContent = image?.emoji || fallbackText;
+  media.classList.add('is-icon');
+  media.append(createIconMark(fallbackSource, 'gs-media-icon'));
   return media;
 }
 
@@ -175,7 +200,7 @@ function buildHeader(runtime) {
 
   const center = createElement('div', 'gs-header-center');
   const title = createElement('div', 'gs-header-title');
-  title.textContent = 'Find Your Perfect Gear';
+  title.textContent = 'Build Your Gear Edit';
   const trackEl = createElement('div', 'gs-progress-track');
   const fill = createElement('div', 'gs-progress-fill');
   trackEl.append(fill);
@@ -212,7 +237,7 @@ function buildIntro(runtime) {
   const subtitle = createElement('p', 'gs-intro-subtitle');
   subtitle.textContent = runtime.config.subtitle;
   const features = createElement('div', 'gs-intro-features');
-  ['Personalized Picks', 'Tax-Free Prices', 'Under 2 Minutes', 'Save 20%+'].forEach((feature) => {
+  ['Duty-Ready Gear', 'Tax-Free Prices', 'Under 2 Minutes', 'Built Around You'].forEach((feature) => {
     const pill = createElement('span', 'gs-feature-pill');
     pill.textContent = feature;
     features.append(pill);
@@ -278,9 +303,7 @@ function buildStep(runtime, step, index) {
       'aria-pressed': 'false',
     });
     const check = createElement('span', 'gs-option-check', { 'aria-hidden': 'true' });
-    check.textContent = '✓';
-    const visual = createElement('div', 'gs-option-visual');
-    visual.textContent = option.icon;
+    const visual = createIconMark(option, 'gs-option-visual');
     const copy = createElement('div', 'gs-option-copy');
     const label = createElement('div', 'gs-option-label');
     label.textContent = option.label;
@@ -289,8 +312,7 @@ function buildStep(runtime, step, index) {
     copy.append(label, copyDescription);
 
     if (step.layout === 'image') {
-      const media = createElement('div', 'gs-option-image-visual');
-      media.textContent = option.icon;
+      const media = createIconMark(option, 'gs-option-image-visual');
       button.append(media);
       const imageBody = createElement('div', 'gs-option-image-body');
       imageBody.append(copy);
@@ -396,14 +418,13 @@ function buildLoading(runtime) {
   });
   const shell = createElement('div', 'gs-loading-shell');
   const ring = createElement('div', 'gs-loading-ring');
-  const title = setMultilineText(createElement('h2', 'gs-loading-title', { tabindex: '-1' }), 'BUILDING YOUR\nSTYLE PROFILE');
+  const title = setMultilineText(createElement('h2', 'gs-loading-title', { tabindex: '-1' }), 'PREPARING YOUR\nGEAR EDIT');
   const subtitle = createElement('p', 'gs-loading-subtitle');
-  subtitle.textContent = 'Analyzing your answers and matching you with the best MCX products.';
+  subtitle.textContent = 'Reviewing your selections against the MCX assortment.';
   const items = createElement('ul', 'gs-loading-items');
   const itemRefs = runtime.dataset.loadingMessages.map((message) => {
     const item = createElement('li', 'gs-loading-item');
     const mark = createElement('span', 'gs-loading-item-mark');
-    mark.textContent = '○';
     const text = createElement('span', 'gs-loading-item-text');
     text.textContent = message;
     item.append(mark, text);
@@ -434,13 +455,13 @@ function buildResults(runtime) {
   const header = createElement('div', 'gs-results-header');
   const headerCopy = createElement('div', 'gs-results-copy');
   const badge = createElement('div', 'gs-results-badge');
-  const title = setMultilineText(createElement('h2', 'gs-results-title', { tabindex: '-1' }), 'YOUR PERFECT\nGEAR LIST\nIS READY');
+  const title = setMultilineText(createElement('h2', 'gs-results-title', { tabindex: '-1' }), 'YOUR GEAR\nEDIT IS\nREADY');
   const description = createElement('p', 'gs-results-description');
   headerCopy.append(badge, title, description);
 
   const profileCard = createElement('aside', 'gs-profile-card');
   const profileLabel = createElement('div', 'gs-profile-label');
-  profileLabel.textContent = 'Your Style Profile';
+  profileLabel.textContent = 'Your Gear Brief';
   const profileAvatar = createElement('div', 'gs-profile-avatar');
   const profileName = createElement('div', 'gs-profile-name');
   const profileSub = createElement('div', 'gs-profile-subtitle');
@@ -453,7 +474,7 @@ function buildResults(runtime) {
   const cardsIntro = createElement('div', 'gs-results-section-intro');
   const cardsLabel = createElement('span', 'gs-results-section-label');
   const cardsTitle = createElement('h3', 'gs-results-section-title');
-  cardsTitle.textContent = 'TOP PICKS';
+  cardsTitle.textContent = 'SELECTED GEAR';
   cardsIntro.append(cardsLabel, cardsTitle);
   const cardsGrid = createElement('div', 'gs-results-grid');
   cardsSection.append(cardsIntro, cardsGrid);
@@ -461,7 +482,7 @@ function buildResults(runtime) {
   const categoriesSection = createElement('section', 'gs-results-section');
   const categoriesIntro = createElement('div', 'gs-results-section-intro');
   const categoriesLabel = createElement('span', 'gs-results-section-label');
-  categoriesLabel.textContent = 'Based on your lifestyle';
+  categoriesLabel.textContent = 'Built around your selections';
   const categoriesTitle = createElement('h3', 'gs-results-section-title');
   categoriesTitle.textContent = 'SHOP BY NEED';
   categoriesIntro.append(categoriesLabel, categoriesTitle);
@@ -471,15 +492,15 @@ function buildResults(runtime) {
   const bundlesSection = createElement('section', 'gs-results-section');
   const bundlesIntro = createElement('div', 'gs-results-section-intro');
   const bundlesLabel = createElement('span', 'gs-results-section-label');
-  bundlesLabel.textContent = 'Save More, Buy Together';
+  bundlesLabel.textContent = 'Purpose-built combinations';
   const bundlesTitle = createElement('h3', 'gs-results-section-title');
-  bundlesTitle.textContent = 'CURATED BUNDLES';
+  bundlesTitle.textContent = 'GEAR SETS';
   bundlesIntro.append(bundlesLabel, bundlesTitle);
   const bundlesGrid = createElement('div', 'gs-bundle-grid');
   bundlesSection.append(bundlesIntro, bundlesGrid);
 
   const actions = createElement('div', 'gs-results-actions');
-  const restart = createButton('Retake Quiz', 'gs-button gs-button-ghost');
+  const restart = createButton('Start Over', 'gs-button gs-button-ghost');
   restart.addEventListener('click', () => {
     runtime.state.answers = sanitizeAnswers(runtime.dataset, {});
     runtime.state.stepIndex = 0;
@@ -498,7 +519,7 @@ function buildResults(runtime) {
   shopAll.addEventListener('click', () => {
     track(runtime, 'guided_selling_results_cta_click');
   });
-  const save = createButton('Save My Profile', 'gs-button gs-button-outline');
+  const save = createButton('Save Gear Brief', 'gs-button gs-button-outline');
   save.addEventListener('click', () => {
     try {
       window.localStorage.setItem(runtime.storageKeys.saved, JSON.stringify({
@@ -507,7 +528,7 @@ function buildResults(runtime) {
         analyticsId: runtime.config.analyticsId,
         experienceId: runtime.dataset.id,
       }));
-      showToast(runtime, 'Profile Saved', 'We saved your guided-selling profile on this device.');
+      showToast(runtime, 'Gear Brief Saved', 'Your selections are saved on this device.');
       track(runtime, 'guided_selling_profile_save');
     } catch {
       showToast(runtime, 'Save Failed', 'Your browser blocked local storage for this experience.');
@@ -569,8 +590,8 @@ function updateHeader(runtime) {
   });
 
   runtime.refs.headerTitle.textContent = runtime.state.screen === 'results'
-    ? 'Your Style Profile'
-    : 'Find Your Perfect Gear';
+    ? 'Your Gear Brief'
+    : 'Build Your Gear Edit';
 }
 
 function updateSelectionLabel(refs, step, selected) {
@@ -666,9 +687,9 @@ function renderCards(runtime, cards) {
 
   cards.forEach((card) => {
     const article = createElement('article', 'gs-card');
-    const visual = createMedia(card.image, card.icon || '🛍️', 'gs-card-media');
+    const visual = createMedia(card.image, card, 'gs-card-media');
     const match = createElement('span', 'gs-card-match');
-    match.textContent = `${card.score}% Match`;
+    match.textContent = 'MCX Selection';
     visual.append(match);
     const body = createElement('div', 'gs-card-body');
     const badge = createElement('div', 'gs-card-badge');
@@ -718,8 +739,7 @@ function renderBands(runtime, bands) {
 
   bands.forEach((band) => {
     const link = createElement('a', 'gs-band', { href: band.href || runtime.config.resultsCtaUrl });
-    const icon = createElement('div', 'gs-band-icon');
-    icon.textContent = band.icon || band.image?.emoji || '🧭';
+    const icon = createIconMark(band, 'gs-band-icon');
     const title = createElement('div', 'gs-band-title');
     title.textContent = band.title;
     const description = createElement('p', 'gs-band-description');
@@ -754,8 +774,7 @@ function renderBundles(runtime, bundles) {
 
   bundles.forEach((bundle) => {
     const link = createElement('a', 'gs-bundle', { href: bundle.href || runtime.config.resultsCtaUrl });
-    const icon = createElement('div', 'gs-bundle-icon');
-    icon.textContent = bundle.icon || bundle.image?.emoji || '🎒';
+    const icon = createIconMark(bundle, 'gs-bundle-icon');
     const body = createElement('div', 'gs-bundle-body');
     const badge = createElement('div', 'gs-bundle-badge');
     badge.textContent = bundle.badge;
@@ -792,12 +811,10 @@ function renderResults(runtime) {
   const profile = getProfileForAnswers(runtime.dataset, runtime.state.answers);
   const tags = getProfileTags(runtime.dataset, runtime.state.answers, 4);
   const topScore = runtime.dataset.results.summaryScore || cards[0]?.score || 90;
-  const totalMatches = runtime.dataset.results.totalMatches || cards.length;
-
-  runtime.refs.results.badge.textContent = `✓ Profile Complete — ${topScore}% Match Score`;
-  runtime.refs.results.description.textContent = `We found ${totalMatches} products that match your profile. Here are the strongest inline recommendations and bundles for this journey.`;
-  runtime.refs.results.cardsLabel.textContent = `Curated For You — ${topScore}% Match`;
-  runtime.refs.results.profileAvatar.textContent = profile.avatar;
+  runtime.refs.results.badge.textContent = 'Selections saved';
+  runtime.refs.results.description.textContent = 'A concise MCX gear edit built from the priorities you selected.';
+  runtime.refs.results.cardsLabel.textContent = 'MCX gear edit';
+  runtime.refs.results.profileAvatar.replaceChildren(createIconMark(profile, 'gs-profile-avatar-icon'));
   runtime.refs.results.profileName.textContent = profile.name;
 
   const lifestyleTag = runtime.state.answers.lifestyle?.[0];
@@ -809,7 +826,7 @@ function renderResults(runtime) {
       allSelected.set(option.value, option);
     });
   });
-  const profileLines = [profile.subtitle];
+  const profileLines = ['A concise gear brief based on the priorities you selected.'];
   const dynamicLine = [lifestyleTag, styleTag, fitTag]
     .map((value) => allSelected.get(value)?.profileTag)
     .filter(Boolean)
@@ -837,9 +854,8 @@ function renderResults(runtime) {
 }
 
 function resetLoading(runtime) {
-  runtime.refs.loadingItems.forEach(({ item, mark }) => {
+  runtime.refs.loadingItems.forEach(({ item }) => {
     item.classList.remove('is-done');
-    mark.textContent = '○';
   });
 }
 
@@ -848,10 +864,9 @@ function runLoadingSequence(runtime) {
   resetLoading(runtime);
 
   const baseDelay = runtime.reduceMotion ? 0 : 450;
-  runtime.refs.loadingItems.forEach(({ item, mark }, index) => {
+  runtime.refs.loadingItems.forEach(({ item }, index) => {
     const timer = window.setTimeout(() => {
       item.classList.add('is-done');
-      mark.textContent = '✓';
     }, baseDelay + (index * (runtime.reduceMotion ? 0 : 350)));
     runtime.loadingTimers.push(timer);
   });
@@ -868,7 +883,7 @@ function runLoadingSequence(runtime) {
 function focusCurrentScreen(runtime, key) {
   const target = runtime.refs.focusTargets[key];
   if (!target || typeof target.focus !== 'function') return;
-  window.requestAnimationFrame(() => target.focus());
+  window.requestAnimationFrame(() => target.focus({ preventScroll: true }));
 }
 
 function setScreen(runtime, screen, stepIndex = runtime.state.stepIndex) {

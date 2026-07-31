@@ -1,0 +1,22 @@
+{
+  "definitions": [
+    {
+      "title": "MCX Promo Popup",
+      "id": "mcx-promo-popup",
+      "plugins": {
+        "da": {
+          "name": "mcx-promo-popup",
+          "rows": 24,
+          "columns": 2
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "mcx-promo-popup",
+      "fields": []
+    }
+  ],
+  "filters": []
+}

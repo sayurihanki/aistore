@@ -10,6 +10,7 @@ The Product Details block provides comprehensive product detail page functionali
 
 - `defaultsku` - Optional default SKU for template or demo usage
 - `presentation` - `default` or `auto-immersive`
+- `experience-data-source` - Optional repo-relative or `da.live` JSON file for shared PDP experience content and per-product overrides
 
 <!-- ### Block Configuration
 
@@ -19,6 +20,46 @@ No block configuration is read via `readBlockConfig()`. The block uses dynamic p
 
 - `itemUid` - Item UID for cart update mode (when present, enables update mode instead of add mode)
 - `optionsUIDs` - Product option UIDs for wishlist context (empty string treated as base product with no options)
+
+### Experience Data Source
+
+The `experience-data-source` file supports two shapes:
+
+- Legacy flat overrides, applied to every product rendered by the block
+- Product-aware mapped overrides with shared defaults and product-specific entries
+
+Mapped source example:
+
+```json
+{
+  "defaults": {
+    "promo": {
+      "code": "DEFAULT20"
+    }
+  },
+  "bySku": {
+    "MCX-USM-HD-BLU-001": {
+      "reviews": {
+        "count": 24
+      }
+    }
+  },
+  "byUrlKey": {
+    "usmc-hoodie-blue": {
+      "stickyName": "USMC Hoodie Blue"
+    }
+  }
+}
+```
+
+Lookup precedence is:
+
+1. Shared MCX built-in defaults
+2. `defaults` from the experience JSON
+3. Exact product match from `bySku`
+4. `byUrlKey` when no SKU match exists
+
+SKU matching is trimmed and uppercased. URL key matching is trimmed and lowercased.
 
 <!-- ### Local Storage
 

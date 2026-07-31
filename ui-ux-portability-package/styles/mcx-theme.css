@@ -318,6 +318,7 @@ body:is(.mcx, .mcx-preview) .t-ico {
   font-size: 14px;
   height: 32px;
   justify-content: center;
+  position: relative;
   width: 32px;
 }
 
@@ -329,6 +330,23 @@ body:is(.mcx, .mcx-preview) .t-ico.green {
 body:is(.mcx, .mcx-preview) .t-ico.red {
   background: var(--scarlet-glow);
   color: var(--scarlet-bright);
+}
+
+body:is(.mcx, .mcx-preview) .t-ico.green::before {
+  border-bottom: 2px solid currentcolor;
+  border-right: 2px solid currentcolor;
+  content: '';
+  height: 10px;
+  transform: rotate(45deg) translate(-1px, -1px);
+  width: 5px;
+}
+
+body:is(.mcx, .mcx-preview) .t-ico.red::before {
+  background: currentcolor;
+  clip-path: polygon(50% 88%, 13% 53%, 11% 29%, 26% 16%, 42% 19%, 50% 31%, 58% 19%, 74% 16%, 89% 29%, 87% 53%);
+  content: '';
+  height: 17px;
+  width: 19px;
 }
 
 body:is(.mcx, .mcx-preview) .t-title {

@@ -4,11 +4,11 @@ const DEVICE_TEXT_LIMIT = 120;
 export const DEFAULT_BLOCK_CONTENT = Object.freeze({
   eyebrowText: 'MarineShop · Awards Division',
   title: 'Welcome to the\nEZ Rack Builder',
-  subtitle: 'Assemble your ribbon rack, medal display, or full awards package in minutes. Our system automatically applies regulation precedence. Prototype mode keeps everything local to the block.',
+  subtitle: 'Assemble your ribbon rack, medal display, or full awards package in minutes. Regulation precedence is applied automatically while you work.',
   primaryCtaLabel: 'Start New Rack',
-  secondaryCtaLabel: 'Prototype Login',
-  reviewCtaLabel: 'Save Prototype Rack',
-  prototypeNote: 'Prototype mode only. This block recreates the full luxury builder experience without connecting to Commerce, cart, or PDP configuration.',
+  secondaryCtaLabel: 'Builder Guide',
+  reviewCtaLabel: 'Save Rack Draft',
+  prototypeNote: 'This builder keeps your rack draft on this device and does not place an order.',
 });
 
 export const PAGE_LABELS = Object.freeze([
@@ -103,14 +103,14 @@ export const RACK_TYPES = Object.freeze([
 ]);
 
 export const DEVICE_DEFINITIONS = Object.freeze([
-  { id: 'bronze', label: '3/16″ Bronze Star', type: 'count', max: 5, symbol: '✦' },
-  { id: 'gold', label: '5/16″ Gold Star', type: 'count', max: 3, symbol: '★' },
-  { id: 'silver', label: '5/16″ Silver Star', type: 'count', max: 3, symbol: '☆' },
-  { id: 'bronzeC', label: 'Bronze C', type: 'toggle', symbol: 'C' },
-  { id: 'goldV', label: 'Gold V', type: 'toggle', symbol: 'V' },
-  { id: 'goldNumerals', label: 'Gold Numerals', type: 'text', symbol: '1' },
-  { id: 'numerals', label: 'Numerals', type: 'text', symbol: '1' },
-  { id: 'note', label: 'Special Instructions', type: 'textarea', symbol: '…' },
+  { id: 'bronze', label: '3/16″ Bronze Star', type: 'count', max: 5 },
+  { id: 'gold', label: '5/16″ Gold Star', type: 'count', max: 3 },
+  { id: 'silver', label: '5/16″ Silver Star', type: 'count', max: 3 },
+  { id: 'bronzeC', label: 'Bronze C', type: 'toggle' },
+  { id: 'goldV', label: 'Gold V', type: 'toggle' },
+  { id: 'goldNumerals', label: 'Gold Numerals', type: 'text' },
+  { id: 'numerals', label: 'Numerals', type: 'text' },
+  { id: 'note', label: 'Special Instructions', type: 'textarea' },
 ]);
 
 export const AWARDS = Object.freeze([

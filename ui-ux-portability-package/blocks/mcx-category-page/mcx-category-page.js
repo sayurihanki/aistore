@@ -213,7 +213,7 @@ function createState(config, labels, initialState) {
       currentPage: initialState.page,
       sort: initialState.sort,
       filter: [
-        ...getBaseCategoryFilters(config.urlPath, activeTab),
+        ...getBaseCategoryFilters(config.urlPath, activeTab, config.categoryPaths),
         ...initialState.filters,
       ],
       pageSize: CATEGORY_PAGE_SIZE,
@@ -357,6 +357,7 @@ function bindSearchEvents(block, refs, state) {
     state.currentResult = payload.result || state.currentResult;
     state.visibleFilters = getVisibleFilters(payload.request?.filter || [], {
       urlPath: state.config.urlPath,
+      categoryPaths: state.config.categoryPaths,
       activeTab: state.activeTab,
     });
 
@@ -385,7 +386,11 @@ async function runSearch(state, nextState) {
     pageSize: CATEGORY_PAGE_SIZE,
     sort: nextState.sort?.length ? nextState.sort : getDefaultSort(),
     filter: [
-      ...getBaseCategoryFilters(state.config.urlPath, activeTab),
+      ...getBaseCategoryFilters(
+        state.config.urlPath,
+        activeTab,
+        state.config.categoryPaths,
+      ),
       ...(nextState.filters || []),
     ],
     context: getSearchContext(),
@@ -742,21 +747,43 @@ function syncUrl(state) {
   }
 }
 
+async function resolveChildCategoryPaths(categoryId) {
+  const commerce = await import('../../scripts/commerce.js');
+  if (typeof commerce.getChildCategoryPaths !== 'function') {
+    console.warn('Category-ID PLP support is not available in the current storefront script.');
+    return [];
+  }
+
+  return commerce.getChildCategoryPaths(categoryId);
+}
+
 export default async function decorate(block) {
   const labels = await fetchPlaceholders();
   const rows = getRows(block);
   const config = parseCategoryPageConfig(rows.map((row) => row.map(cellText)));
 
-  if (!config.urlPath) {
+  if (!config.urlPath && !config.categoryId) {
     block.innerHTML = `
       <div class="mcx-category-page__message mcx-category-page__message--error">
-        Missing required category page configuration: urlPath
+        Missing required category page configuration: urlPath or category-id
       </div>
     `;
     return;
   }
 
-  block.dataset.category = config.urlPath;
+  if (config.categoryId && !config.urlPath) {
+    config.categoryPaths = await resolveChildCategoryPaths(config.categoryId);
+    if (!config.categoryPaths.length) {
+      block.innerHTML = `
+        <div class="mcx-category-page__message mcx-category-page__message--error">
+          No searchable child categories were found for category ID ${escapeHtml(config.categoryId)}
+        </div>
+      `;
+      return;
+    }
+  }
+
+  block.dataset.category = config.categoryId || config.urlPath;
 
   const fragment = buildScaffold(config);
   block.replaceChildren(fragment);

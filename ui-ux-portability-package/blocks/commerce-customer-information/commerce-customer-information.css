@@ -1,21 +1,32 @@
+/*
+ * MCX / Issue Ledger — Account customer information
+ *
+ * These panels are personnel-file sheets: paper, one ink rule, square corners.
+ * The previous treatment used the glass surface tokens plus a lift shadow,
+ * neither of which the ledger has a place for.
+ */
+
 .commerce-customer-information-wrapper .customer-information__title,
 .commerce-customer-information-wrapper .dropin-header-container__title {
-    font: var(--type-headline-2-strong-font);
-    letter-spacing: normal;
+  font-family: var(--ledger-display, "Barlow Condensed", "Arial Narrow", sans-serif);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
 }
 
 .commerce-customer-information-wrapper .account-customer-information-card,
 .commerce-customer-information-wrapper .account-change-password,
 .commerce-customer-information-wrapper .account-edit-customer-information {
-    border: 1px solid var(--glass-border-subtle);
-    border-radius: calc(var(--shape-border-radius-2) + 2px);
-    background: var(--glass-bg-strong);
-    backdrop-filter: var(--glass-blur-xs) var(--glass-saturate);
-    box-shadow: 0 6px 18px rgb(0 0 0 / 7%);
+  backdrop-filter: none;
+  background: var(--ledger-paper, #eee9dd);
+  border: 1px solid var(--ledger-rule, rgb(16 19 15 / 24%));
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--ledger-ink, #10130f);
 }
 
 .commerce-customer-information-wrapper .account-customer-information-card .dropin-card__content,
 .commerce-customer-information-wrapper .account-change-password .dropin-card__content,
 .commerce-customer-information-wrapper .account-edit-customer-information .dropin-card__content {
-    padding: var(--spacing-medium);
+  padding: clamp(24px, 3vw, 32px);
 }

@@ -1,0 +1,22 @@
+{
+  "definitions": [
+    {
+      "title": "MCX Hero Newcomer",
+      "id": "mcx-hero-newcomer",
+      "plugins": {
+        "da": {
+          "name": "mcx-hero-newcomer",
+          "rows": 50,
+          "columns": 2
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "mcx-hero-newcomer",
+      "fields": []
+    }
+  ],
+  "filters": []
+}

@@ -392,9 +392,11 @@ function renderResultInfo(target, payload, config) {
   const inlineCount = phrase
     ? `${totalCount} ${getItemCopy(totalCount)} found`
     : `${totalCount} ${getItemCopy(totalCount)} available`;
+  // The count is already stamped beside the headline; this line says what the
+  // list is, not how long it is, so the number is stated once per region.
   const helper = phrase
-    ? `${totalCount} ${getItemCopy(totalCount)} found across current MCX results`
-    : `${totalCount} ${getItemCopy(totalCount)} available in ${categoryLabel}`;
+    ? 'Matching items in the current MCX catalog.'
+    : `Everything currently stocked in ${categoryLabel}.`;
   const legacySummary = phrase
     ? `${totalCount} results found for "${phrase}".`
     : `${totalCount} results found in ${categoryLabel}.`;
@@ -537,7 +539,6 @@ export default async function decorate(block) {
             </div>
             <div class="search__hero-actions">
               <div class="search__sort-group">
-                <span class="search__sort-label">Sort By</span>
                 <div class="search__product-sort"></div>
               </div>
               <div class="search__view-toggle" role="group" aria-label="Results view">

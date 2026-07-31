@@ -574,6 +574,8 @@ main .section.glass > div::before {
   box-shadow:
     0 1px 0 rgb(255 255 255 / 5%) inset,
     0 18px 40px rgb(0 0 0 / 32%);
+  grid-template-rows: auto 1fr;
+  height: 100%;
   overflow: hidden;
   position: relative;
   transition: border-color var(--gs-t), box-shadow var(--gs-t), transform var(--gs-t);
@@ -592,8 +594,8 @@ main .section.glass > div::before {
   background:
     radial-gradient(circle at top right, rgb(201 162 39 / 18%) 0%, transparent 34%),
     linear-gradient(180deg, #faf7f2 0%, #ece6dd 100%);
+  aspect-ratio: 1 / 1.08;
   border-bottom: 1px solid rgb(9 15 24 / 8%);
-  min-height: 360px;
   overflow: hidden;
   position: relative;
 }
@@ -613,22 +615,21 @@ main .section.glass > div::before {
 }
 
 .block.product-list-page .product-discovery-product-media img {
-  aspect-ratio: 1 / 1.08;
   display: block;
-  object-fit: contain;
-  object-position: center 58%;
-  padding: 18px 18px 0;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
   transition: transform var(--gs-t-slow);
   width: 100%;
 }
 
 .block.product-list-page .dropin-product-item-card:hover .product-discovery-product-media img,
 .block.product-list-page .dropin-product-item-card:focus-within .product-discovery-product-media img {
-  transform: scale(1.04);
+  transform: scale(1.02);
 }
 
 .block.product-list-page .product-discovery-product-media--empty {
-  min-height: 360px;
+  height: 100%;
 }
 
 .block.product-list-page .product-discovery-product-image-fallback {
@@ -641,7 +642,6 @@ main .section.glass > div::before {
   height: 100%;
   justify-content: center;
   letter-spacing: 0.12em;
-  min-height: 360px;
   text-transform: uppercase;
 }
 
@@ -685,6 +685,7 @@ main .section.glass > div::before {
   color: var(--gs-text-primary);
   display: flex;
   flex-direction: column;
+  height: 100%;
   gap: 0;
   min-height: 280px;
   padding: 0 0 22px;
@@ -940,7 +941,7 @@ main .section.glass > div::before {
 }
 
 .block.product-list-page.product-list-page--list .dropin-product-item-card__image-container {
-  min-height: 100%;
+  height: 100%;
 }
 
 .block.product-list-page.product-list-page--list .dropin-product-item-card__content {
@@ -973,12 +974,12 @@ main .section.glass > div::before {
 
 @media (max-width: 767px) {
   .block.product-list-page .dropin-product-item-card__image-container {
-    min-height: 320px;
+    aspect-ratio: 1 / 1.08;
   }
 
   .block.product-list-page .product-discovery-product-media--empty,
   .block.product-list-page .product-discovery-product-image-fallback {
-    min-height: 320px;
+    height: 100%;
   }
 }
 

@@ -95,11 +95,11 @@ body:is(.mcx, .mcx-preview) main .mcx-product-cards .f-hot {
 
 body:is(.mcx, .mcx-preview) main .mcx-product-cards .prod-love {
   align-items: center;
-  backdrop-filter: blur(10px);
-  background: rgb(8 15 27 / 75%);
-  border: 1px solid var(--rim);
-  border-radius: 50%;
-  color: var(--text-dim);
+  backdrop-filter: none;
+  background: var(--ledger-paper, #eee9dd);
+  border: 1px solid var(--ledger-ink, #10130f);
+  border-radius: 0;
+  color: var(--ledger-ink, #10130f);
   cursor: pointer;
   display: flex;
   height: 36px;
