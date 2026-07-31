@@ -1395,14 +1395,14 @@ body.columns main > .section > div.uniform-configurator-wrapper {
 .uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator.uniform-configurator .reg-notice {
   align-items: start;
   background: var(--ucfg-paper-deep);
-  border: 0;
+  border: 1px solid var(--ucfg-rule);
   border-left: 3px solid var(--ucfg-olive);
   border-radius: 0;
   box-shadow: none;
   display: grid;
   gap: 14px;
   grid-template-columns: auto minmax(0, 1fr);
-  margin-top: clamp(18px, 2vw, 24px);
+  margin-top: clamp(20px, 2.2vw, 28px);
   padding: 16px 18px;
 }
 
