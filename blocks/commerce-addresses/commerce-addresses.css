@@ -211,7 +211,14 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce
   padding-top: 14px;
 }
 
-.commerce-addresses .account-address-card__action .dropin-button {
+/*
+ * Both actions are quiet underlined text. The dropin puts
+ * `account-address-card__action--editbutton` on the Edit button itself, so its
+ * class attribute matches the shared `[class*='account-'][class*='card']` frame
+ * in styles/mcx-commerce-ledger.css at (0,5,2) and Edit alone was rendering as a
+ * boxed paper button beside a bare-text Remove. The long prefix outranks it.
+ */
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-addresses.commerce-addresses .account-address-card__action .dropin-button {
   background: none;
   border: 0;
   border-bottom: 1px solid var(--ad-ink);
@@ -231,7 +238,7 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce
     color var(--ad-t-hover) ease-out;
 }
 
-.commerce-addresses .account-address-card__action .dropin-button:is(:hover, :focus-visible) {
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce-addresses.commerce-addresses .account-address-card__action .dropin-button:is(:hover, :focus-visible) {
   background: none;
   border-color: var(--ad-scarlet);
   color: var(--ad-scarlet);

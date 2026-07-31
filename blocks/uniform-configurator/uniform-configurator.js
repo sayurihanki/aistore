@@ -930,7 +930,7 @@ function createShell(runtime) {
 
             <div class="cfg-section">
               <div class="cfg-section__title"><span class="cfg-section__icon">MT</span> Body Measurements</div>
-              <p class="cfg-inline-copy">Measurements are optional in v1, but any values entered must be within the allowed range.</p>
+              <p class="cfg-inline-copy">Measurements are optional. Any value you enter must fall within the allowed range.</p>
               <div class="measure-grid">
                 ${renderMeasurementFields(data, state)}
               </div>

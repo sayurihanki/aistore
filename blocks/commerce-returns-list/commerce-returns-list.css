@@ -131,7 +131,7 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce
   align-items: start;
   display: grid;
   gap: clamp(16px, 2vw, 32px);
-  grid-template-columns: minmax(0, 1fr) minmax(0, auto) 44px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, auto) auto;
   padding: clamp(20px, 2.4vw, 28px) 0;
 }
 
@@ -166,8 +166,12 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce
 /*
  * Status line: a drawn diamond marker plus the status text. The marker is an
  * empty pseudo-element, so the text alone carries the meaning.
+ *
+ * The dropin renders the status as a <p> inside .…__descriptions, so the
+ * element is matched here too — the generic paragraph rule above is (0,2,1) and
+ * would otherwise take colour, face, size, line-height and margin off this rule.
  */
-.commerce-returns-list .order-returns-list-content__return-status {
+.commerce-returns-list .order-returns-list-content__descriptions p.order-returns-list-content__return-status {
   align-items: center;
   color: var(--rl-ink);
   display: flex;
@@ -181,8 +185,13 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce
   text-transform: uppercase;
 }
 
+/*
+ * Service-oriented data, so the marker is olive. Scarlet is reserved for the
+ * header rule and the page's real actions — a mark repeated on every row would
+ * spend it on nothing.
+ */
 .commerce-returns-list .order-returns-list-content__return-status::before {
-  background: var(--rl-scarlet);
+  background: var(--rl-olive);
   content: '';
   flex-shrink: 0;
   height: 9px;
@@ -222,17 +231,39 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce
   border-radius: 0;
   color: var(--rl-ink);
   display: inline-flex;
-  height: 44px;
+  gap: 10px;
   justify-content: center;
   justify-self: end;
   min-height: 44px;
   min-width: 44px;
+  padding: 0 14px;
   text-decoration: none;
   transition:
     background var(--rl-t-hover) ease-out,
     border-color var(--rl-t-hover) ease-out,
     color var(--rl-t-hover) ease-out;
-  width: 44px;
+}
+
+/*
+ * The dropin ships this control as a bare chevron with no text and no
+ * aria-label, so the verb is drawn in. It gives the control a visible label and
+ * supplies the link's accessible name, which the markup does not.
+ */
+.commerce-returns-list .order-returns-list-content__cards-grid > .order-returns-list-content__actions::before {
+  content: 'View return';
+  font-family: var(--rl-data);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* The stock chevron is set at 32px — sized down to sit with a 10px label. */
+.commerce-returns-list .order-returns-list-content__cards-grid > .order-returns-list-content__actions svg {
+  flex-shrink: 0;
+  height: 16px;
+  width: 16px;
 }
 
 .commerce-returns-list .order-returns-list-content__cards-grid > .order-returns-list-content__actions:is(:hover, :focus-visible) {
@@ -389,7 +420,7 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .block.commerce
 
 @media (max-width: 900px) {
   .commerce-returns-list .order-returns-list-content__cards-grid {
-    grid-template-columns: minmax(0, 1fr) 44px;
+    grid-template-columns: minmax(0, 1fr) auto;
   }
 
   .commerce-returns-list .order-returns-list-content__images {

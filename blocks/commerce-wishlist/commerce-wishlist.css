@@ -543,11 +543,16 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .commerce-wishl
   margin-top: 14px;
 }
 
+/*
+ * The compare-at price. The line-through and the drop from 26px to 14px already
+ * mark it as superseded, so the colour holds full readable contrast rather than
+ * fading — --wl-ink-quiet resolves to ~3.6:1 on paper, below the 4.5:1 floor.
+ */
 .commerce-wishlist :is(
   .wishlist-product-item-price.strikethrough,
   .wishlist-product-item-price.dropin-price--strikethrough
 ) {
-  color: var(--wl-ink-quiet);
+  color: var(--wl-ink-soft);
   font-family: var(--wl-body);
   font-size: 14px;
   font-weight: 400;
