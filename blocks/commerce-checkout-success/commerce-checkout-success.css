@@ -51,8 +51,10 @@ main > .section:has(.commerce-checkout-success-wrapper) > div {
   --oc-scarlet: var(--ledger-scarlet, #c51f2a);
   --oc-olive: var(--ledger-olive, #565c48);
   --oc-rule: var(--ledger-rule, rgb(16 19 15 / 24%));
-  --oc-ink-soft: rgb(16 19 15 / 68%);
-  --oc-paper-soft: rgb(238 233 221 / 76%);
+
+  /* Tints are mixed from the tokens so a retuned palette carries through. */
+  --oc-ink-soft: color-mix(in srgb, var(--oc-ink) 68%, transparent);
+  --oc-paper-soft: color-mix(in srgb, var(--oc-paper) 76%, transparent);
   --oc-display: var(--ledger-display, "Barlow Condensed", "Arial Narrow", sans-serif);
   --oc-body: var(--ledger-body, "Barlow", system-ui, sans-serif);
   --oc-data: var(--ledger-data, "Rajdhani", "Barlow Condensed", monospace);
@@ -61,7 +63,14 @@ main > .section:has(.commerce-checkout-success-wrapper) > div {
 
   color: var(--oc-ink);
   display: grid;
-  gap: clamp(18px, 2.2vw, 28px);
+
+  /*
+   * Six editorial regions stack here — masthead, fulfillment ledger, order
+   * detail, recommendations, mission ledger, closing band — so the top-level
+   * gap is section spacing, not card spacing. The three closing sections add a
+   * margin on top of this (see below) to reach the major-section band.
+   */
+  gap: clamp(48px, 6vw, 96px);
   padding-top: 0;
 }
 
@@ -106,7 +115,7 @@ main > .section:has(.commerce-checkout-success-wrapper) > div {
 ) {
   color: var(--oc-ink);
   font-family: var(--oc-display);
-  font-size: clamp(34px, 4.2vw, 58px);
+  font-size: clamp(32px, 3vw, 42px);
   font-weight: 600;
   letter-spacing: -0.04em;
   line-height: 0.84;
@@ -156,6 +165,19 @@ main > .section:has(.commerce-checkout-success-wrapper) > div {
   padding: clamp(24px, 3vw, 40px);
 }
 
+/*
+ * The three closing sections are where the document changes subject, so they
+ * open with the major-section interval: this margin plus the grid gap lands
+ * between 96px and 168px at every width.
+ */
+.order-confirmation :is(
+  .order-confirmation__recommendations,
+  .order-confirmation__mission,
+  .order-confirmation__footer
+) {
+  margin-top: clamp(48px, 5vw, 72px);
+}
+
 /* Hero and mission carry the firmer ink frame; the rest stay quiet rules. */
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .order-confirmation :is(
   .order-confirmation__hero,
@@ -178,7 +200,7 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .order-confirma
 }
 
 .order-confirmation .order-confirmation__block .dropin-card__content {
-  padding: clamp(22px, 2.4vw, 30px);
+  padding: clamp(24px, 2.4vw, 32px);
 }
 
 .order-confirmation .order-confirmation__block :is(
@@ -188,7 +210,7 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .order-confirma
 ) {
   color: var(--oc-ink);
   font-family: var(--oc-display);
-  font-size: clamp(22px, 2.2vw, 28px);
+  font-size: clamp(28px, 2.2vw, 32px);
   font-weight: 600;
   letter-spacing: -0.03em;
   line-height: 0.94;
@@ -329,13 +351,21 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .order-confirma
   margin: 0 0 14px;
 }
 
-/* Metrics read as a specification strip, not four floating tiles. */
+/*
+ * Metrics read as a specification strip, not four floating tiles. The dividers
+ * are 1px gaps in a ruled ground rather than a border on each cell: the strip
+ * carries three or four metrics depending on whether a discount applied, and
+ * inside the hero's copy column four of them wrap to three across at desktop
+ * widths. Ruling the ground means a wrapped row is divided correctly instead of
+ * leaving a stray border butted against the frame.
+ */
 .order-confirmation .order-confirmation__hero-metrics {
+  background: var(--oc-rule);
   border: 1px solid var(--oc-rule);
   display: grid;
-  gap: 0;
+  gap: 1px;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  margin-top: 28px;
+  margin-top: 24px;
 }
 
 .order-confirmation .order-confirmation__hero-metrics[hidden] {
@@ -343,29 +373,20 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .order-confirma
 }
 
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .order-confirmation .order-confirmation-metric {
-  background: none;
+  background: var(--oc-paper);
   border: 0;
-  border-left: 1px solid var(--oc-rule);
-}
-
-body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .order-confirmation .order-confirmation-metric:first-child {
-  border-left: 0;
 }
 
 .order-confirmation .order-confirmation-metric {
   backdrop-filter: none;
+  background: var(--oc-paper);
   border: 0;
-  border-left: 1px solid var(--oc-rule);
   border-radius: 0;
   box-shadow: none;
   display: grid;
   gap: 8px;
   min-width: 0;
-  padding: 16px clamp(14px, 1.4vw, 18px);
-}
-
-.order-confirmation .order-confirmation-metric:first-child {
-  border-left: 0;
+  padding: 16px clamp(16px, 1.4vw, 18px);
 }
 
 .order-confirmation .order-confirmation-metric__label {
@@ -433,7 +454,16 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .order-confirma
 .order-confirmation .order-confirmation-action--primary {
   background: var(--oc-scarlet);
   border: 1px solid var(--oc-scarlet);
-  color: #fff;
+  color: var(--oc-paper);
+}
+
+/*
+ * The shared sheet sets this label to #fff at a specificity block scope cannot
+ * reach. Paper, not white, is the label colour in this palette (4.81:1 on
+ * scarlet); the shared declaration should follow when that file is next opened.
+ */
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .order-confirmation .order-confirmation-action--primary {
+  color: var(--oc-paper);
 }
 
 .order-confirmation .order-confirmation-action--secondary {
@@ -460,7 +490,7 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .order-confirma
 
 .order-confirmation .order-confirmation-fulfillment {
   display: grid;
-  gap: clamp(18px, 2vw, 26px);
+  gap: clamp(16px, 2vw, 24px);
 }
 
 .order-confirmation .order-confirmation-fulfillment__copy {
@@ -579,7 +609,7 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .order-confirma
 
 .order-confirmation .order-confirmation-fulfillment__step.is-current .order-confirmation-fulfillment__dot {
   border-color: var(--oc-scarlet);
-  color: #fff;
+  color: var(--oc-paper);
 }
 
 .order-confirmation .order-confirmation-fulfillment__step-label {
@@ -607,17 +637,18 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .order-confirma
  * 6. Order detail columns
  * ---------------------------------------------------------------- */
 
+/* Inside the detail columns the modules are related, so the tight interval. */
 .order-confirmation .order-confirmation__content {
   align-items: start;
   display: grid;
-  gap: clamp(18px, 2.2vw, 28px);
+  gap: clamp(16px, 2vw, 24px);
   grid-template-columns: minmax(0, 1fr) minmax(320px, 400px);
 }
 
 .order-confirmation .order-confirmation__main,
 .order-confirmation .order-confirmation__aside {
   display: grid;
-  gap: clamp(18px, 2.2vw, 28px);
+  gap: clamp(16px, 2vw, 24px);
   min-width: 0;
 }
 
@@ -835,9 +866,14 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .order-confirma
   transform: none;
 }
 
+/*
+ * Stands in for a missing product image, so it is the only thing in the media
+ * well: olive keeps it at 6.33:1 on the field tint and reads as the category
+ * metadata it is, rather than a smudge inside a crisp inventory sheet.
+ */
 .order-confirmation .order-confirmation-recommendation__placeholder {
   align-items: center;
-  color: rgb(16 19 15 / 32%);
+  color: var(--oc-olive);
   display: flex;
   font-family: var(--oc-display);
   font-size: 38px;
@@ -889,7 +925,7 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .order-confirma
 .order-confirmation .order-confirmation-recommendation__title {
   color: var(--oc-ink);
   font-family: var(--oc-display);
-  font-size: 20px;
+  font-size: 28px;
   font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1;
@@ -1069,7 +1105,6 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .order-confirma
 .order-confirmation .order-confirmation-footer__contact-support-link:hover,
 .order-confirmation .order-confirmation-footer__contact-support-link:focus-visible {
   border-color: var(--oc-scarlet);
-  color: #fff;
 }
 
 /* Ink band: the shared sheet paints this section ink-on-paper, which would be
@@ -1091,7 +1126,7 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .order-confirma
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .order-confirmation .order-confirmation-footer__continue-button .dropin-button {
   background: var(--oc-scarlet);
   border: 1px solid var(--oc-scarlet);
-  color: #fff;
+  color: var(--oc-paper);
   width: 100%;
 }
 
@@ -1196,32 +1231,22 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .order-confirma
     grid-template-columns: minmax(0, 1fr);
   }
 
-  body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .order-confirmation :is(
-    .order-confirmation-metric,
-    .order-confirmation-fulfillment__step
-  ) {
+  /* The metrics strip is ruled by its gaps, so only the steps need restacking. */
+  body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .order-confirmation .order-confirmation-fulfillment__step {
     border-left: 0;
   }
 
-  body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .order-confirmation :is(
-    .order-confirmation-metric,
-    .order-confirmation-fulfillment__step
-  ):nth-child(n + 2) {
+  body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .order-confirmation .order-confirmation-fulfillment__step:nth-child(n + 2) {
     border-top: 1px solid var(--oc-rule);
   }
 
-  .order-confirmation .order-confirmation-metric,
   .order-confirmation .order-confirmation-fulfillment__step {
     border-left: 0;
+    min-height: 0;
   }
 
-  .order-confirmation .order-confirmation-metric:nth-child(n + 2),
   .order-confirmation .order-confirmation-fulfillment__step:nth-child(n + 2) {
     border-top: 1px solid var(--oc-rule);
-  }
-
-  .order-confirmation .order-confirmation-fulfillment__step {
-    min-height: 0;
   }
 
   .order-confirmation .order-confirmation__hero-actions {

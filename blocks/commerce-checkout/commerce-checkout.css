@@ -50,9 +50,18 @@ main > .section:has(.commerce-checkout-wrapper) > div {
   --co-scarlet: var(--ledger-scarlet, #c51f2a);
   --co-olive: var(--ledger-olive, #565c48);
   --co-rule: var(--ledger-rule, rgb(16 19 15 / 24%));
-  --co-rule-strong: rgb(16 19 15 / 44%);
-  --co-ink-soft: rgb(16 19 15 / 68%);
-  --co-ink-quiet: rgb(16 19 15 / 50%);
+
+  /*
+   * Ink tints are mixed from the token, never re-spelled: retuning --ledger-ink
+   * has to carry through. 52% is the lowest alpha that keeps the input rule at
+   * 3:1 on the field tint (3.67:1) — below that the 1px rule stops being the
+   * thing that identifies a field, since the fill itself is only 1.10:1 on
+   * paper. 60% is the lowest alpha that keeps placeholder text at 4.5:1 (4.75:1
+   * on field, 4.59:1 on paper).
+   */
+  --co-rule-strong: color-mix(in srgb, var(--co-ink) 52%, transparent);
+  --co-ink-soft: color-mix(in srgb, var(--co-ink) 68%, transparent);
+  --co-ink-quiet: color-mix(in srgb, var(--co-ink) 60%, transparent);
   --co-display: var(--ledger-display, "Barlow Condensed", "Arial Narrow", sans-serif);
   --co-body: var(--ledger-body, "Barlow", system-ui, sans-serif);
   --co-data: var(--ledger-data, "Rajdhani", "Barlow Condensed", monospace);
@@ -111,7 +120,7 @@ main > .section:has(.commerce-checkout-wrapper) > div {
 ) {
   color: var(--co-ink);
   font-family: var(--co-display);
-  font-size: clamp(20px, 2vw, 26px);
+  font-size: clamp(28px, 2.4vw, 34px);
   font-weight: 600;
   letter-spacing: -0.025em;
   line-height: 1;
@@ -328,7 +337,7 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .commerce-check
 .commerce-checkout a.checkout-progress__link:focus-visible,
 .commerce-checkout button.checkout-progress__link:not([disabled]):hover,
 .commerce-checkout button.checkout-progress__link:not([disabled]):focus-visible {
-  background: rgb(16 19 15 / 5%);
+  background: color-mix(in srgb, var(--co-ink) 5%, transparent);
   color: var(--co-scarlet);
   transform: none;
 }
@@ -430,7 +439,7 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .commerce-check
 .commerce-checkout .checkout-progress__item[data-state="active"] .checkout-progress__badge {
   background: var(--co-scarlet);
   border-color: var(--co-scarlet);
-  color: #fff;
+  color: var(--co-paper);
 }
 
 /*
@@ -625,7 +634,7 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .commerce-check
 ) {
   color: var(--co-ink);
   font-family: var(--co-display);
-  font-size: clamp(24px, 2.4vw, 32px);
+  font-size: clamp(28px, 2.6vw, 38px);
   font-weight: 600;
   letter-spacing: -0.03em;
   line-height: 0.92;
@@ -783,6 +792,36 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .commerce-check
 }
 
 /*
+ * The shared sheet reaches the dropin controls at a higher specificity than
+ * block scope, and it carries a 42% rule and a 56% placeholder — 2.88:1 and
+ * 4.16:1 on the field tint. Both are outranked here so the stage sheet keeps
+ * one legibility floor: a rule that reads as a rule, a hint that reads as text.
+ */
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .commerce-checkout .checkout__wrapper :is(
+  .dropin-input,
+  .dropin-textarea,
+  .dropin-picker__select
+) {
+  border-color: var(--co-rule-strong);
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .commerce-checkout .checkout__wrapper :is(
+  .dropin-input,
+  .dropin-textarea,
+  .dropin-picker__select
+):hover {
+  border-color: var(--co-ink);
+}
+
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .commerce-checkout .checkout__wrapper :is(
+  .dropin-input,
+  .dropin-textarea,
+  .dropin-picker__select
+)::placeholder {
+  color: var(--co-ink-quiet);
+}
+
+/*
  * Labels stay above the field at every moment. The dropin floats its label into
  * the control until the field is filled; here it is pinned to the top of the
  * reserved space so the form never relies on memory.
@@ -935,7 +974,7 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .commerce-check
 .commerce-checkout .checkout__stage-button--next {
   background: var(--co-scarlet);
   border: 1px solid var(--co-scarlet);
-  color: #fff;
+  color: var(--co-paper);
 }
 
 .commerce-checkout .checkout__stage-button--back {
@@ -950,7 +989,17 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .commerce-check
   color: var(--co-paper);
 }
 
-/* The shared sheet owns the scarlet fill; the hover inversion is added here. */
+/*
+ * The shared sheet owns the scarlet fill and sets its label to #fff at a
+ * specificity block scope cannot reach. Paper, not white, is the label colour
+ * in this palette (4.81:1 on scarlet), so it is restored here; the shared
+ * declaration should follow when that file is next opened.
+ */
+body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .commerce-checkout .checkout__stage-button--next {
+  color: var(--co-paper);
+}
+
+/* The hover inversion is added here for the same reason. */
 body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .commerce-checkout .checkout__stage-button--next:is(:hover, :focus-visible) {
   background: var(--co-ink);
   border-color: var(--co-ink);
@@ -1019,7 +1068,7 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .commerce-check
   border: 1px solid var(--co-scarlet);
   border-radius: 0;
   box-shadow: none;
-  color: #fff;
+  color: var(--co-paper);
   min-height: 54px;
   width: 100%;
 }
@@ -1256,7 +1305,7 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .commerce-check
 ) {
   color: var(--co-ink);
   font-family: var(--co-display);
-  font-size: clamp(26px, 2.6vw, 34px);
+  font-size: clamp(28px, 2.6vw, 36px);
   font-weight: 600;
   letter-spacing: -0.03em;
   line-height: 0.9;
@@ -1362,13 +1411,32 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .commerce-check
   text-underline-offset: 3px;
 }
 
+/*
+ * The cart link is a quiet action, and it sits directly above metadata set in
+ * the same face and size — without the rule and the target it reads as another
+ * label. Same grammar as .checkout-review-card__edit.
+ */
 .commerce-checkout .checkout__aside .cart-summary-list__edit {
+  align-items: center;
+  border-bottom: 1px solid var(--co-ink);
   color: var(--co-ink);
+  display: inline-flex;
   font-family: var(--co-data);
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.16em;
+  min-height: 44px;
+  text-decoration: none;
   text-transform: uppercase;
+  transition:
+    border-color var(--co-t-hover) ease-out,
+    color var(--co-t-hover) ease-out;
+}
+
+.commerce-checkout .checkout__aside .cart-summary-list__edit:hover,
+.commerce-checkout .checkout__aside .cart-summary-list__edit:focus-visible {
+  border-color: var(--co-scarlet);
+  color: var(--co-scarlet);
 }
 
 /* The dropin ships a duplicate cart heading; the ledger heading replaces it. */
@@ -1528,7 +1596,7 @@ body:is(.mcx.mcx.mcx, .mcx-preview.mcx-preview.mcx-preview) main .commerce-check
 .commerce-checkout .checkout__loader {
   align-items: center;
   backdrop-filter: none;
-  background: rgb(238 233 221 / 88%);
+  background: color-mix(in srgb, var(--co-paper) 88%, transparent);
   display: flex;
   inset: 0;
   justify-content: center;
