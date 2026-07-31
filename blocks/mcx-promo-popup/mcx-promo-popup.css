@@ -39,14 +39,7 @@ body .mpp-overlay {
   --mpp-ease-spring: var(--ease-spring, cubic-bezier(0.34, 1.56, 0.64, 1));
   --mpp-t-fast: var(--t-fast, 0.18s);
   --mpp-t-mid: var(--t-mid, 0.32s);
-}
 
-body .mpp-overlay,
-body .mpp-overlay * {
-  box-sizing: border-box;
-}
-
-body .mpp-overlay {
   align-items: center;
   backdrop-filter: blur(0);
   background: rgb(3 5 7 / 0%);
@@ -64,6 +57,10 @@ body .mpp-overlay {
     background 0.35s var(--mpp-ease),
     backdrop-filter 0.35s var(--mpp-ease);
   z-index: 10000;
+}
+
+body .mpp-overlay * {
+  box-sizing: border-box;
 }
 
 body .mpp-overlay.is-visible {
