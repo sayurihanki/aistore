@@ -6,16 +6,53 @@ body:is(.mcx, .mcx-preview).mcx-promo-popup-open {
   overflow: hidden;
 }
 
-body:is(.mcx, .mcx-preview) .mpp-overlay,
-body:is(.mcx, .mcx-preview) .mpp-overlay * {
+/*
+ * The overlay is appended to <body>, so it can render in contexts where the
+ * mcx theme tokens are absent (library previews, isolated screenshots). Every
+ * token is re-declared here with a literal fallback so the modal never degrades
+ * to unstyled text on an empty background.
+ */
+body .mpp-overlay {
+  --mpp-scarlet: var(--scarlet, #c1121f);
+  --mpp-scarlet-bright: var(--scarlet-bright, #e63946);
+  --mpp-gold: var(--gold, #c9a227);
+  --mpp-gold-lt: var(--gold-lt, #e3c766);
+  --mpp-gold-dim: var(--gold-dim, rgb(201 162 39 / 10%));
+  --mpp-gold-border: var(--gold-border, rgb(201 162 39 / 34%));
+  --mpp-teal: var(--teal, #34c678);
+  --mpp-void: var(--void, #080c12);
+  --mpp-surface-1: var(--surface-1, #0d1520);
+  --mpp-surface-2: var(--surface-2, #121c29);
+  --mpp-surface-3: var(--surface-3, #1a2637);
+  --mpp-rim: var(--rim, rgb(255 255 255 / 10%));
+  --mpp-text-bright: var(--text-bright, #f5f7fa);
+  --mpp-text-body: var(--text-body, rgb(233 238 245 / 78%));
+  --mpp-text-dim: var(--text-dim, rgb(233 238 245 / 46%));
+  --mpp-font-hero: var(--font-hero, 'Oswald', 'Arial Narrow', sans-serif);
+  --mpp-font-ui: var(--font-ui, 'Oswald', 'Arial Narrow', sans-serif);
+  --mpp-font-body: var(--font-body, system-ui, sans-serif);
+  --mpp-font-mono: var(--font-mono, ui-monospace, 'SFMono-Regular', menlo, monospace);
+  --mpp-r-sm: var(--r-sm, 4px);
+  --mpp-r-md: var(--r-md, 8px);
+  --mpp-r-lg: var(--r-lg, 12px);
+  --mpp-ease: var(--ease, cubic-bezier(0.4, 0, 0.2, 1));
+  --mpp-ease-spring: var(--ease-spring, cubic-bezier(0.34, 1.56, 0.64, 1));
+  --mpp-t-fast: var(--t-fast, 0.18s);
+  --mpp-t-mid: var(--t-mid, 0.32s);
+}
+
+body .mpp-overlay,
+body .mpp-overlay * {
   box-sizing: border-box;
 }
 
-body:is(.mcx, .mcx-preview) .mpp-overlay {
+body .mpp-overlay {
   align-items: center;
   backdrop-filter: blur(0);
   background: rgb(3 5 7 / 0%);
+  color: var(--mpp-text-body);
   display: flex;
+  font-family: var(--mpp-font-body);
   inset: 0;
   justify-content: center;
   opacity: 0;
@@ -23,126 +60,118 @@ body:is(.mcx, .mcx-preview) .mpp-overlay {
   pointer-events: none;
   position: fixed;
   transition:
-    opacity 0.35s var(--ease),
-    background 0.35s var(--ease),
-    backdrop-filter 0.35s var(--ease);
+    opacity 0.35s var(--mpp-ease),
+    background 0.35s var(--mpp-ease),
+    backdrop-filter 0.35s var(--mpp-ease);
   z-index: 10000;
 }
 
-body:is(.mcx, .mcx-preview) .mpp-overlay.is-visible {
+body .mpp-overlay.is-visible {
   backdrop-filter: blur(12px);
-  background: rgb(3 5 7 / 72%);
+  background: rgb(3 5 7 / 74%);
   opacity: 1;
   pointer-events: auto;
 }
 
-body:is(.mcx, .mcx-preview) .mpp-modal {
+body .mpp-overlay :focus-visible {
+  outline: 2px solid var(--mpp-gold-lt);
+  outline-offset: 3px;
+}
+
+body .mpp-modal {
   background:
     radial-gradient(circle at top, rgb(193 18 31 / 12%), transparent 42%),
-    linear-gradient(180deg, rgb(13 21 32 / 98%) 0%, rgb(8 12 18 / 99%) 100%);
-  border: 1px solid var(--rim);
-  border-radius: 28px;
+    linear-gradient(180deg, var(--mpp-surface-1) 0%, var(--mpp-void) 100%);
+  border: 1px solid var(--mpp-rim);
+  border-radius: 20px;
   box-shadow:
     0 40px 100px rgb(0 0 0 / 60%),
     inset 0 0 0 1px rgb(255 255 255 / 4%);
-  max-height: min(90vh, 860px);
+  max-height: min(92vh, 880px);
   overflow: hidden auto;
   position: relative;
   transform: translateY(20px) scale(0.96);
-  transition: transform 0.45s var(--ease-spring);
-  width: min(92vw, 680px);
+  transition: transform 0.45s var(--mpp-ease-spring);
+  width: min(92vw, 660px);
 }
 
-body:is(.mcx, .mcx-preview) .mpp-overlay.is-visible .mpp-modal {
+body .mpp-overlay.is-visible .mpp-modal {
   transform: translateY(0) scale(1);
 }
 
-body:is(.mcx, .mcx-preview) .mpp-modal::before {
-  background-image:
-    linear-gradient(var(--rim) 1px, transparent 1px),
-    linear-gradient(90deg, var(--rim) 1px, transparent 1px);
-  background-size: 60px 60px;
-  border-radius: 28px;
-  content: '';
-  inset: 0;
-  mask-image: radial-gradient(ellipse 80% 60% at 50% 28%, #000, transparent 70%);
-  opacity: 0.12;
-  pointer-events: none;
-  position: absolute;
-}
-
-body:is(.mcx, .mcx-preview) .mpp-modal::after {
-  background: linear-gradient(90deg, var(--scarlet), var(--gold));
-  border-radius: 0 0 2px 2px;
+body .mpp-modal::after {
+  background: linear-gradient(90deg, var(--mpp-scarlet), var(--mpp-gold));
   content: '';
   height: 3px;
-  left: 40px;
+  left: 0;
   position: absolute;
-  right: 40px;
+  right: 0;
   top: 0;
+  z-index: 5;
 }
 
-body:is(.mcx, .mcx-preview) .mpp-close {
+/* Close: sits in its own reserved corner so it never overlaps the badge. */
+body .mpp-close {
   align-items: center;
-  background: rgb(13 21 32 / 70%);
-  border: 1px solid var(--rim);
+  background: rgb(8 12 18 / 72%);
+  border: 1px solid var(--mpp-rim);
   border-radius: 50%;
-  color: var(--text-dim);
+  color: var(--mpp-text-dim);
   display: inline-flex;
   height: 40px;
   justify-content: center;
   position: absolute;
-  right: 16px;
-  top: 16px;
+  right: 14px;
+  top: 18px;
   transition:
-    border-color var(--t-mid) var(--ease),
-    color var(--t-mid) var(--ease),
-    background var(--t-mid) var(--ease),
-    transform var(--t-mid) var(--ease);
+    border-color var(--mpp-t-mid) var(--mpp-ease),
+    color var(--mpp-t-mid) var(--mpp-ease),
+    background var(--mpp-t-mid) var(--mpp-ease),
+    transform var(--mpp-t-mid) var(--mpp-ease);
   width: 40px;
-  z-index: 4;
+  z-index: 6;
 }
 
-body:is(.mcx, .mcx-preview) .mpp-close:hover,
-body:is(.mcx, .mcx-preview) .mpp-close:focus-visible {
-  background: rgb(193 18 31 / 8%);
-  border-color: var(--scarlet);
-  color: var(--scarlet);
+body .mpp-close:hover,
+body .mpp-close:focus-visible {
+  background: rgb(193 18 31 / 12%);
+  border-color: var(--mpp-scarlet);
+  color: var(--mpp-scarlet-bright);
   transform: rotate(90deg);
 }
 
-body:is(.mcx, .mcx-preview) .mpp-close span,
-body:is(.mcx, .mcx-preview) .mpp-close span::after {
+body .mpp-close span,
+body .mpp-close span::after {
   background: currentcolor;
   border-radius: 999px;
   content: '';
   display: block;
   height: 2px;
   position: absolute;
-  width: 16px;
+  width: 15px;
 }
 
-body:is(.mcx, .mcx-preview) .mpp-close span {
+body .mpp-close span {
   transform: rotate(45deg);
 }
 
-body:is(.mcx, .mcx-preview) .mpp-close span::after {
+body .mpp-close span::after {
   transform: rotate(90deg);
 }
 
-body:is(.mcx, .mcx-preview) .mpp-visual {
+body .mpp-visual {
   background:
-    radial-gradient(ellipse 70% 90% at 50% 20%, rgb(193 18 31 / 14%) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 60% at 80% 80%, rgb(201 162 39 / 8%) 0%, transparent 50%),
-    linear-gradient(135deg, var(--surface-1) 0%, var(--void) 50%, var(--surface-2) 100%);
-  min-height: 214px;
+    radial-gradient(ellipse 70% 90% at 30% 20%, rgb(193 18 31 / 18%) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at 85% 85%, rgb(201 162 39 / 10%) 0%, transparent 55%),
+    linear-gradient(135deg, var(--mpp-surface-1) 0%, var(--mpp-void) 55%, var(--mpp-surface-2) 100%);
   overflow: hidden;
+  padding: 30px 32px 26px;
   position: relative;
 }
 
-body:is(.mcx, .mcx-preview) .mpp-scan {
+body .mpp-scan {
   animation: mpp-scan 4s linear infinite;
-  background: linear-gradient(90deg, transparent, rgb(193 18 31 / 30%), transparent);
+  background: linear-gradient(90deg, transparent, rgb(193 18 31 / 32%), transparent);
   height: 1px;
   left: 0;
   position: absolute;
@@ -156,11 +185,11 @@ body:is(.mcx, .mcx-preview) .mpp-scan {
     top: -1px;
   }
 
-  5% {
+  6% {
     opacity: 1;
   }
 
-  95% {
+  94% {
     opacity: 0.2;
   }
 
@@ -170,60 +199,100 @@ body:is(.mcx, .mcx-preview) .mpp-scan {
   }
 }
 
-body:is(.mcx, .mcx-preview) .mpp-corner {
-  height: 32px;
-  opacity: 0.15;
+body .mpp-corner {
+  height: 26px;
+  opacity: 0.35;
   position: absolute;
-  width: 32px;
+  width: 26px;
 }
 
-body:is(.mcx, .mcx-preview) .mpp-corner::before,
-body:is(.mcx, .mcx-preview) .mpp-corner::after {
-  background: var(--scarlet);
+body .mpp-corner::before,
+body .mpp-corner::after {
+  background: var(--mpp-scarlet);
   content: '';
   position: absolute;
 }
 
-body:is(.mcx, .mcx-preview) .mpp-corner::before {
+body .mpp-corner::before {
   height: 1px;
   width: 100%;
 }
 
-body:is(.mcx, .mcx-preview) .mpp-corner::after {
+body .mpp-corner::after {
   height: 100%;
   width: 1px;
 }
 
-body:is(.mcx, .mcx-preview) .mpp-corner-tl {
-  left: 16px;
-  top: 16px;
+body .mpp-corner-tl {
+  left: 14px;
+  top: 14px;
 }
 
-body:is(.mcx, .mcx-preview) .mpp-corner-tr {
-  right: 16px;
-  top: 16px;
+body .mpp-corner-tr {
+  display: none;
 }
 
-body:is(.mcx, .mcx-preview) .mpp-corner-tr::before,
-body:is(.mcx, .mcx-preview) .mpp-corner-tr::after {
-  right: 0;
-}
-
-body:is(.mcx, .mcx-preview) .mpp-badge {
-  animation: mpp-badge-in 0.6s var(--ease-spring) 0.15s both;
+body .mpp-eyebrow {
   align-items: center;
-  background: linear-gradient(135deg, var(--scarlet) 0%, var(--scarlet-bright) 100%);
-  border-radius: 999px;
-  box-shadow: 0 12px 32px rgb(193 18 31 / 32%);
+  color: var(--mpp-scarlet-bright);
+  display: inline-flex;
+  font-family: var(--mpp-font-mono);
+  font-size: 10px;
+  gap: 8px;
+  letter-spacing: 0.32em;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+
+body .mpp-eyebrow::before {
+  background: var(--mpp-scarlet);
+  box-shadow: 0 0 6px var(--mpp-scarlet);
+  content: '';
+  height: 2px;
+  width: 14px;
+}
+
+/* Headline and badge share a baseline row: the badge is the period at the
+   end of the sentence, not a sticker floating over the close button. */
+body .mpp-visual-copy {
+  align-items: flex-end;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+}
+
+body .mpp-heading {
+  color: var(--mpp-text-bright);
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  height: 86px;
+  font-family: var(--mpp-font-hero);
+  font-size: clamp(38px, 7.4vw, 54px);
+  font-weight: 700;
+  letter-spacing: -0.012em;
+  line-height: 0.9;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+body .mpp-heading .accent {
+  color: var(--mpp-gold);
+}
+
+body .mpp-badge {
+  align-items: center;
+  animation: mpp-badge-in 0.6s var(--mpp-ease-spring) 0.15s both;
+  background: linear-gradient(135deg, var(--mpp-scarlet) 0%, var(--mpp-scarlet-bright) 100%);
+  border-radius: var(--mpp-r-md);
+  box-shadow: 0 12px 30px rgb(193 18 31 / 34%);
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 3px;
   justify-content: center;
-  position: absolute;
-  right: 24px;
-  top: 20px;
-  width: 86px;
+  padding: 12px 14px;
+  text-align: center;
 }
 
 @keyframes mpp-badge-in {
@@ -238,180 +307,133 @@ body:is(.mcx, .mcx-preview) .mpp-badge {
   }
 }
 
-body:is(.mcx, .mcx-preview) .mpp-badge-value {
+body .mpp-badge-value {
   color: #fff;
-  font-family: var(--font-hero);
-  font-size: 34px;
+  font-family: var(--mpp-font-hero);
+  font-size: 32px;
   font-weight: 700;
-  letter-spacing: 0.01em;
   line-height: 0.9;
 }
 
-body:is(.mcx, .mcx-preview) .mpp-badge-label {
-  color: rgb(255 255 255 / 82%);
-  font-family: var(--font-mono);
+body .mpp-badge-label {
+  color: rgb(255 255 255 / 84%);
+  font-family: var(--mpp-font-mono);
   font-size: 8px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-}
-
-body:is(.mcx, .mcx-preview) .mpp-visual-copy {
-  background: linear-gradient(0deg, rgb(8 12 18 / 95%) 0%, transparent 100%);
-  bottom: 0;
-  left: 0;
-  padding: 0 36px 24px;
-  position: absolute;
-  right: 0;
-}
-
-body:is(.mcx, .mcx-preview) .mpp-eyebrow {
-  align-items: center;
-  color: var(--scarlet);
-  display: inline-flex;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  gap: 8px;
-  letter-spacing: 0.35em;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-}
-
-body:is(.mcx, .mcx-preview) .mpp-eyebrow::before {
-  background: var(--scarlet);
-  box-shadow: 0 0 6px var(--scarlet);
-  content: '';
-  height: 2px;
-  width: 14px;
-}
-
-body:is(.mcx, .mcx-preview) .mpp-heading {
-  color: var(--text-bright);
-  display: flex;
-  flex-direction: column;
-  font-family: var(--font-hero);
-  font-size: clamp(40px, 8vw, 56px);
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  line-height: 0.88;
-  text-transform: uppercase;
-}
-
-body:is(.mcx, .mcx-preview) .mpp-heading .accent {
-  color: var(--gold);
-}
-
-body:is(.mcx, .mcx-preview) .mpp-body {
-  padding: 28px 36px 32px;
-  position: relative;
-  z-index: 1;
-}
-
-body:is(.mcx, .mcx-preview) .mpp-description {
-  color: var(--text-body);
-  font-size: 14.5px;
-  line-height: 1.8;
-  margin-bottom: 24px;
-  max-width: 540px;
-}
-
-body:is(.mcx, .mcx-preview) .mpp-description strong,
-body:is(.mcx, .mcx-preview) .mpp-fine-print strong {
-  color: var(--text-bright);
-  font-weight: 700;
-}
-
-body:is(.mcx, .mcx-preview) .mpp-description a,
-body:is(.mcx, .mcx-preview) .mpp-fine-print a {
-  border-bottom: 1px solid var(--gold-border);
-  color: var(--gold);
-}
-
-body:is(.mcx, .mcx-preview) .mpp-description a:hover,
-body:is(.mcx, .mcx-preview) .mpp-description a:focus-visible,
-body:is(.mcx, .mcx-preview) .mpp-fine-print a:hover,
-body:is(.mcx, .mcx-preview) .mpp-fine-print a:focus-visible {
-  border-color: var(--gold);
-  color: var(--gold-lt);
-}
-
-body:is(.mcx, .mcx-preview) .mpp-offers {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 28px;
-}
-
-body:is(.mcx, .mcx-preview) .mpp-offer {
-  background: var(--surface-2);
-  border: 1px solid var(--rim);
-  border-radius: var(--r-lg);
-  flex: 1;
-  overflow: hidden;
-  padding: 16px;
-  position: relative;
-  text-align: center;
-  transition: background var(--t-mid) var(--ease), border-color var(--t-mid) var(--ease);
-}
-
-body:is(.mcx, .mcx-preview) .mpp-offer::before {
-  background: var(--scarlet);
-  border-radius: 0 0 1px 1px;
-  content: '';
-  height: 2px;
-  left: 50%;
-  position: absolute;
-  top: 0;
-  transform: translateX(-50%);
-  width: 40px;
-}
-
-body:is(.mcx, .mcx-preview) .mpp-offer:hover {
-  background: rgb(201 162 39 / 4%);
-  border-color: var(--gold-border);
-}
-
-body:is(.mcx, .mcx-preview) .mpp-offer-value {
-  color: var(--text-bright);
-  font-family: var(--font-hero);
-  font-size: 28px;
-  font-weight: 700;
-  line-height: 1;
-  margin-bottom: 4px;
-}
-
-body:is(.mcx, .mcx-preview) .mpp-offer-label {
-  color: var(--text-dim);
-  font-family: var(--font-mono);
-  font-size: 9px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-}
-
-body:is(.mcx, .mcx-preview) .mpp-countdown {
-  align-items: center;
-  background: var(--surface-2);
-  border: 1px solid var(--rim);
-  border-radius: var(--r-lg);
-  display: flex;
-  gap: 16px;
-  margin-bottom: 28px;
-  padding: 16px 20px;
-}
-
-body:is(.mcx, .mcx-preview) .mpp-countdown-label {
-  align-items: center;
-  color: var(--scarlet);
-  display: inline-flex;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  gap: 6px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   white-space: nowrap;
 }
 
-body:is(.mcx, .mcx-preview) .mpp-countdown-dot {
+body .mpp-body {
+  padding: 26px 32px 30px;
+  position: relative;
+  z-index: 1;
+}
+
+body .mpp-description {
+  color: var(--mpp-text-body);
+  font-size: 15px;
+  line-height: 1.65;
+  margin: 0 0 22px;
+  max-width: 52ch;
+}
+
+body .mpp-description strong,
+body .mpp-fine-print strong {
+  color: var(--mpp-text-bright);
+  font-weight: 700;
+}
+
+body .mpp-description a,
+body .mpp-fine-print a {
+  border-bottom: 1px solid var(--mpp-gold-border);
+  color: var(--mpp-gold);
+  text-decoration: none;
+}
+
+body .mpp-description a:hover,
+body .mpp-description a:focus-visible,
+body .mpp-fine-print a:hover,
+body .mpp-fine-print a:focus-visible {
+  border-color: var(--mpp-gold);
+  color: var(--mpp-gold-lt);
+}
+
+/* Three savings that stack — shown as one continuous strip, divided by
+   hairlines, because they add up rather than compete. */
+body .mpp-offers {
+  background: var(--mpp-surface-2);
+  border: 1px solid var(--mpp-rim);
+  border-radius: var(--mpp-r-lg);
+  display: flex;
+  margin-bottom: 14px;
+  overflow: hidden;
+}
+
+body .mpp-offer {
+  flex: 1;
+  padding: 15px 10px;
+  position: relative;
+  text-align: center;
+  transition: background var(--mpp-t-mid) var(--mpp-ease);
+}
+
+body .mpp-offer + .mpp-offer {
+  border-left: 1px solid var(--mpp-rim);
+}
+
+body .mpp-offer:hover {
+  background: rgb(201 162 39 / 6%);
+}
+
+body .mpp-offer-value {
+  color: var(--mpp-text-bright);
+  font-family: var(--mpp-font-hero);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+body .mpp-offer:first-child .mpp-offer-value {
+  color: var(--mpp-gold-lt);
+}
+
+body .mpp-offer-label {
+  color: var(--mpp-text-dim);
+  font-family: var(--mpp-font-mono);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+body .mpp-countdown {
+  align-items: center;
+  background: var(--mpp-surface-2);
+  border: 1px solid var(--mpp-rim);
+  border-radius: var(--mpp-r-lg);
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  margin-bottom: 22px;
+  padding: 12px 18px;
+}
+
+body .mpp-countdown-label {
+  align-items: center;
+  color: var(--mpp-scarlet-bright);
+  display: inline-flex;
+  font-family: var(--mpp-font-mono);
+  font-size: 10px;
+  gap: 7px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+body .mpp-countdown-dot {
   animation: mpp-dot-pulse 1s ease-in-out infinite;
-  background: var(--scarlet);
+  background: currentcolor;
   border-radius: 50%;
   display: inline-block;
   height: 6px;
@@ -425,80 +447,102 @@ body:is(.mcx, .mcx-preview) .mpp-countdown-dot {
   }
 
   50% {
-    opacity: 0.35;
+    opacity: 0.3;
   }
 }
 
-body:is(.mcx, .mcx-preview) .mpp-countdown[data-status='ended'] .mpp-countdown-label {
-  color: var(--gold);
+body .mpp-countdown[data-status='ended'] .mpp-countdown-label {
+  color: var(--mpp-gold);
 }
 
-body:is(.mcx, .mcx-preview) .mpp-countdown[data-status='ended'] .mpp-countdown-dot {
+body .mpp-countdown[data-status='ended'] .mpp-countdown-dot {
   animation: none;
-  background: var(--gold);
 }
 
-body:is(.mcx, .mcx-preview) .mpp-countdown-units {
+body .mpp-countdown-units {
   display: flex;
-  flex: 1;
-  gap: 8px;
-  justify-content: center;
+  gap: 6px;
 }
 
-body:is(.mcx, .mcx-preview) .mpp-countdown-unit {
+body .mpp-countdown-unit {
   text-align: center;
 }
 
-body:is(.mcx, .mcx-preview) .mpp-countdown-num {
-  color: var(--text-bright);
-  font-family: var(--font-hero);
-  font-size: 28px;
+/* Split-flap slats: each pair of digits reads as one plate on a
+   departure board — the object a PCS move actually revolves around. */
+body .mpp-countdown-num {
+  background: linear-gradient(180deg, var(--mpp-surface-3) 0%, var(--mpp-surface-2) 51%, var(--mpp-surface-3) 100%);
+  border: 1px solid var(--mpp-rim);
+  border-radius: var(--mpp-r-sm);
+  color: var(--mpp-text-bright);
+  font-family: var(--mpp-font-mono);
+  font-size: 22px;
+  font-variant-numeric: tabular-nums;
   font-weight: 700;
   line-height: 1;
-  min-width: 36px;
-}
-
-body:is(.mcx, .mcx-preview) .mpp-countdown-sep {
-  align-self: center;
-  color: var(--text-dim);
-  font-family: var(--font-hero);
-  font-size: 24px;
-  line-height: 1;
-  padding-top: 2px;
-}
-
-body:is(.mcx, .mcx-preview) .mpp-countdown-txt {
-  color: var(--text-dim);
-  font-family: var(--font-mono);
-  font-size: 8px;
-  letter-spacing: 0.15em;
-  margin-top: 2px;
-  text-transform: uppercase;
-}
-
-body:is(.mcx, .mcx-preview) .mpp-coupon-row {
-  align-items: center;
-  display: flex;
-  gap: 12px;
-  margin-bottom: 28px;
-}
-
-body:is(.mcx, .mcx-preview) .mpp-coupon-box {
-  align-items: center;
-  background: var(--surface-2);
-  border: 1.5px dashed var(--gold-border);
-  border-radius: var(--r-md);
-  display: flex;
-  flex: 1;
-  min-height: 52px;
-  overflow: hidden;
-  padding: 12px 16px;
+  padding: 8px 9px;
   position: relative;
 }
 
-body:is(.mcx, .mcx-preview) .mpp-coupon-box::before {
-  animation: mpp-shimmer 3s ease-in-out infinite;
-  background: linear-gradient(90deg, transparent, rgb(201 162 39 / 6%), transparent);
+body .mpp-countdown-num::after {
+  background: rgb(0 0 0 / 45%);
+  content: '';
+  height: 1px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 50%;
+}
+
+body .mpp-countdown-sep {
+  align-self: center;
+  color: var(--mpp-text-dim);
+  font-family: var(--mpp-font-mono);
+  font-size: 16px;
+  line-height: 1;
+}
+
+body .mpp-countdown-txt {
+  color: var(--mpp-text-dim);
+  font-family: var(--mpp-font-mono);
+  font-size: 8px;
+  letter-spacing: 0.14em;
+  margin-top: 5px;
+  text-transform: uppercase;
+}
+
+/* Signature: the code is a tear-off voucher stub. The notches and the
+   perforation are the memorable element — everything else stays quiet. */
+body .mpp-coupon-row {
+  display: flex;
+  margin-bottom: 22px;
+}
+
+body .mpp-coupon-box {
+  align-items: center;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgb(201 162 39 / 4%) 0 10px,
+      transparent 10px 20px
+    ),
+    var(--mpp-surface-2);
+  border: 1px solid var(--mpp-gold-border);
+  border-radius: var(--mpp-r-md) 0 0 var(--mpp-r-md);
+  border-right: 0;
+  display: flex;
+  flex: 1;
+  gap: 14px;
+  min-height: 58px;
+  min-width: 0;
+  overflow: hidden;
+  padding: 10px 18px;
+  position: relative;
+}
+
+body .mpp-coupon-box::before {
+  animation: mpp-shimmer 3.4s ease-in-out infinite;
+  background: linear-gradient(90deg, transparent, rgb(201 162 39 / 10%), transparent);
   content: '';
   inset: 0;
   position: absolute;
@@ -514,53 +558,87 @@ body:is(.mcx, .mcx-preview) .mpp-coupon-box::before {
   }
 }
 
-body:is(.mcx, .mcx-preview) .mpp-coupon-code {
-  color: var(--gold-lt);
-  font-family: var(--font-hero);
-  font-size: 22px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+body .mpp-coupon-label {
+  color: var(--mpp-text-dim);
+  flex: 0 0 auto;
+  font-family: var(--mpp-font-mono);
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  line-height: 1.5;
   position: relative;
+  text-transform: uppercase;
   z-index: 1;
 }
 
-body:is(.mcx, .mcx-preview) .mpp-copy {
-  background: var(--surface-3);
-  border: 1px solid var(--rim);
-  border-radius: var(--r-md);
-  color: var(--text-body);
-  font-family: var(--font-ui);
+body .mpp-coupon-code {
+  color: var(--mpp-gold-lt);
+  font-family: var(--mpp-font-hero);
+  font-size: 23px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  overflow: hidden;
+  position: relative;
+  text-overflow: ellipsis;
+  z-index: 1;
+}
+
+body .mpp-copy {
+  background: var(--mpp-surface-3);
+  border: 1px dashed var(--mpp-gold-border);
+  border-radius: 0 var(--mpp-r-md) var(--mpp-r-md) 0;
+  color: var(--mpp-text-body);
+  cursor: pointer;
+  flex: 0 0 auto;
+  font-family: var(--mpp-font-ui);
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.12em;
-  min-height: 48px;
-  padding: 10px 20px;
+  min-height: 58px;
+  padding: 10px 22px;
+  position: relative;
   text-transform: uppercase;
   transition:
-    background var(--t-mid) var(--ease),
-    border-color var(--t-mid) var(--ease),
-    color var(--t-mid) var(--ease);
+    background var(--mpp-t-mid) var(--mpp-ease),
+    color var(--mpp-t-mid) var(--mpp-ease);
   white-space: nowrap;
 }
 
-body:is(.mcx, .mcx-preview) .mpp-copy:hover,
-body:is(.mcx, .mcx-preview) .mpp-copy:focus-visible {
-  background: var(--gold-dim);
-  border-color: var(--gold-border);
-  color: var(--gold);
+/* Punched notches at the perforation line. */
+body .mpp-copy::before,
+body .mpp-copy::after {
+  background: var(--mpp-void);
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 55%);
+  content: '';
+  height: 10px;
+  left: -6px;
+  position: absolute;
+  width: 10px;
 }
 
-body:is(.mcx, .mcx-preview) .mpp-copy[data-copy-state='success'] {
-  border-color: rgb(52 198 120 / 36%);
-  color: var(--teal);
+body .mpp-copy::before {
+  top: -6px;
 }
 
-body:is(.mcx, .mcx-preview) .mpp-copy[data-copy-state='fallback'] {
-  border-color: var(--gold-border);
-  color: var(--gold-lt);
+body .mpp-copy::after {
+  bottom: -6px;
 }
 
-body:is(.mcx, .mcx-preview) .mpp-ctas {
+body .mpp-copy:hover,
+body .mpp-copy:focus-visible {
+  background: var(--mpp-gold-dim);
+  color: var(--mpp-gold-lt);
+}
+
+body .mpp-copy[data-copy-state='success'] {
+  color: var(--mpp-teal);
+}
+
+body .mpp-copy[data-copy-state='fallback'] {
+  color: var(--mpp-gold-lt);
+}
+
+body .mpp-ctas {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
@@ -568,121 +646,169 @@ body:is(.mcx, .mcx-preview) .mpp-ctas {
   margin-bottom: 20px;
 }
 
-body:is(.mcx, .mcx-preview) .mpp-btn {
+body .mpp-btn {
   align-items: center;
   display: inline-flex;
-  font-family: var(--font-ui);
+  font-family: var(--mpp-font-ui);
   font-size: 14px;
   font-weight: 700;
   gap: 10px;
   justify-content: center;
-  letter-spacing: 0.16em;
-  min-height: 52px;
-  overflow: hidden;
+  letter-spacing: 0.14em;
+  min-height: 54px;
   padding: 0 30px;
   position: relative;
   text-decoration: none;
   text-transform: uppercase;
   transition:
-    background var(--t-mid) var(--ease),
-    border-color var(--t-mid) var(--ease),
-    color var(--t-mid) var(--ease),
-    transform var(--t-mid) var(--ease),
-    box-shadow var(--t-mid) var(--ease);
+    background var(--mpp-t-mid) var(--mpp-ease),
+    border-color var(--mpp-t-mid) var(--mpp-ease),
+    color var(--mpp-t-mid) var(--mpp-ease),
+    transform var(--mpp-t-fast) var(--mpp-ease),
+    box-shadow var(--mpp-t-mid) var(--mpp-ease);
 }
 
-body:is(.mcx, .mcx-preview) .mpp-btn-primary {
-  background: var(--scarlet);
-  border-radius: var(--r-sm);
-  box-shadow: var(--shadow-red);
+body .mpp-btn svg {
+  transition: transform var(--mpp-t-mid) var(--mpp-ease);
+}
+
+body .mpp-btn:hover svg,
+body .mpp-btn:focus-visible svg {
+  transform: translateX(4px);
+}
+
+body .mpp-btn-primary {
+  background: var(--mpp-scarlet);
+  border-radius: var(--mpp-r-sm);
+  box-shadow: 0 0 32px rgb(193 18 31 / 26%);
   clip-path: polygon(0 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
   color: #fff;
+  flex: 1 1 auto;
 }
 
-body:is(.mcx, .mcx-preview) .mpp-btn-primary:hover,
-body:is(.mcx, .mcx-preview) .mpp-btn-primary:focus-visible {
-  background: var(--scarlet-bright);
-  box-shadow: 0 0 44px rgb(193 18 31 / 40%);
+body .mpp-btn-primary:hover,
+body .mpp-btn-primary:focus-visible {
+  background: var(--mpp-scarlet-bright);
+  box-shadow: 0 0 44px rgb(193 18 31 / 42%);
   transform: translateY(-2px);
 }
 
-body:is(.mcx, .mcx-preview) .mpp-btn-secondary {
+body .mpp-btn-secondary {
   background: transparent;
-  border: 1px solid var(--rim);
-  border-radius: var(--r-sm);
-  color: var(--text-body);
+  border: 1px solid var(--mpp-rim);
+  border-radius: var(--mpp-r-sm);
+  color: var(--mpp-text-body);
+  flex: 1 1 auto;
 }
 
-body:is(.mcx, .mcx-preview) .mpp-btn-secondary:hover,
-body:is(.mcx, .mcx-preview) .mpp-btn-secondary:focus-visible {
-  background: var(--gold-dim);
-  border-color: var(--gold-border);
-  color: var(--gold);
+body .mpp-btn-secondary:hover,
+body .mpp-btn-secondary:focus-visible {
+  background: var(--mpp-gold-dim);
+  border-color: var(--mpp-gold-border);
+  color: var(--mpp-gold);
 }
 
-body:is(.mcx, .mcx-preview) .mpp-fine-print {
-  border-top: 1px solid var(--rim);
-  color: var(--text-dim);
-  font-family: var(--font-mono);
+body .mpp-fine-print {
+  border-top: 1px solid var(--mpp-rim);
+  color: var(--mpp-text-dim);
+  font-family: var(--mpp-font-mono);
   font-size: 10px;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.05em;
   line-height: 1.7;
-  padding-top: 16px;
+  padding-top: 14px;
 }
 
 @media (max-width: 700px) {
-  body:is(.mcx, .mcx-preview) .mpp-modal {
-    border-radius: 22px;
+  body .mpp-modal {
+    border-radius: 16px;
     width: 96vw;
   }
 
-  body:is(.mcx, .mcx-preview) .mpp-visual {
-    min-height: 180px;
+  body .mpp-visual {
+    padding: 26px 20px 22px;
   }
 
-  body:is(.mcx, .mcx-preview) .mpp-visual-copy {
-    padding: 0 20px 20px;
+  body .mpp-visual-copy {
+    align-items: flex-start;
+    flex-direction: column-reverse;
+    gap: 14px;
   }
 
-  body:is(.mcx, .mcx-preview) .mpp-body {
+  body .mpp-badge {
+    flex-direction: row;
+    gap: 10px;
+    align-items: baseline;
+    padding: 8px 12px;
+  }
+
+  body .mpp-badge-value {
+    font-size: 24px;
+  }
+
+  body .mpp-body {
     padding: 20px 20px 24px;
   }
 
-  body:is(.mcx, .mcx-preview) .mpp-offers,
-  body:is(.mcx, .mcx-preview) .mpp-countdown,
-  body:is(.mcx, .mcx-preview) .mpp-coupon-row,
-  body:is(.mcx, .mcx-preview) .mpp-ctas {
+  body .mpp-countdown {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  body .mpp-countdown-units {
+    justify-content: center;
+  }
+
+  body .mpp-ctas {
     flex-direction: column;
   }
 
-  body:is(.mcx, .mcx-preview) .mpp-countdown {
-    text-align: center;
+  body .mpp-btn {
+    width: 100%;
+  }
+}
+
+/* Very narrow: the stub can't hold two columns, so it stacks and the
+   perforation notches are dropped rather than left floating. */
+@media (max-width: 460px) {
+  body .mpp-coupon-row {
+    flex-direction: column;
   }
 
-  body:is(.mcx, .mcx-preview) .mpp-btn,
-  body:is(.mcx, .mcx-preview) .mpp-copy {
+  body .mpp-coupon-box {
+    border-bottom: 0;
+    border-radius: var(--mpp-r-md) var(--mpp-r-md) 0 0;
+    border-right: 1px solid var(--mpp-gold-border);
+  }
+
+  body .mpp-copy {
+    border-radius: 0 0 var(--mpp-r-md) var(--mpp-r-md);
+    min-height: 50px;
     width: 100%;
   }
 
-  body:is(.mcx, .mcx-preview) .mpp-badge {
-    height: 76px;
-    right: 18px;
-    top: 18px;
-    width: 76px;
+  body .mpp-copy::before,
+  body .mpp-copy::after {
+    display: none;
   }
 
-  body:is(.mcx, .mcx-preview) .mpp-badge-value {
-    font-size: 28px;
+  body .mpp-offers {
+    flex-wrap: wrap;
+  }
+
+  body .mpp-offer {
+    flex: 1 0 33%;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  body:is(.mcx, .mcx-preview) .mpp-overlay,
-  body:is(.mcx, .mcx-preview) .mpp-modal,
-  body:is(.mcx, .mcx-preview) .mpp-scan,
-  body:is(.mcx, .mcx-preview) .mpp-badge,
-  body:is(.mcx, .mcx-preview) .mpp-coupon-box::before,
-  body:is(.mcx, .mcx-preview) .mpp-countdown-dot {
+  body .mpp-overlay,
+  body .mpp-modal,
+  body .mpp-scan,
+  body .mpp-badge,
+  body .mpp-btn,
+  body .mpp-btn svg,
+  body .mpp-coupon-box::before,
+  body .mpp-countdown-dot {
     animation: none !important;
     transition-duration: 0.01ms !important;
   }

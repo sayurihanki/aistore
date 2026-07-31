@@ -306,24 +306,30 @@ function buildOverlay(fields, block, isPreview) {
     <div class="mpp-corner mpp-corner-tr"></div>
   `;
 
-  const badge = document.createElement('div');
-  badge.className = 'mpp-badge';
-  badge.innerHTML = `
-    <span class="mpp-badge-value">${badgeValue}</span>
-    <span class="mpp-badge-label">${badgeLabel}</span>
-  `;
-  visual.append(badge);
-
   const visualCopy = document.createElement('div');
   visualCopy.className = 'mpp-visual-copy';
   visualCopy.innerHTML = `
-    <div class="mpp-eyebrow">${eyebrow}</div>
     <h2 id="${headingId}" class="mpp-heading">
       <span>${headingLineOne}</span>
       <span class="accent">${headingLineTwo}</span>
     </h2>
   `;
-  visual.append(visualCopy);
+
+  if (badgeValue || badgeLabel) {
+    const badge = document.createElement('div');
+    badge.className = 'mpp-badge';
+    badge.innerHTML = `
+      <span class="mpp-badge-value">${badgeValue}</span>
+      <span class="mpp-badge-label">${badgeLabel}</span>
+    `;
+    visualCopy.append(badge);
+  }
+
+  const eyebrowEl = document.createElement('div');
+  eyebrowEl.className = 'mpp-eyebrow';
+  eyebrowEl.textContent = eyebrow;
+
+  visual.append(eyebrowEl, visualCopy);
 
   const body = document.createElement('div');
   body.className = 'mpp-body';
@@ -353,14 +359,22 @@ function buildOverlay(fields, block, isPreview) {
 
   const coupon = document.createElement('div');
   coupon.className = 'mpp-coupon-row';
-  coupon.innerHTML = `
-    <div class="mpp-coupon-box"><span class="mpp-coupon-code">${couponCode}</span></div>
-  `;
+  const couponBox = document.createElement('div');
+  couponBox.className = 'mpp-coupon-box';
+  const couponLabel = document.createElement('span');
+  couponLabel.className = 'mpp-coupon-label';
+  couponLabel.textContent = 'Code';
+  const couponCodeEl = document.createElement('span');
+  couponCodeEl.className = 'mpp-coupon-code';
+  couponCodeEl.textContent = couponCode;
+  couponBox.append(couponLabel, couponCodeEl);
+  coupon.append(couponBox);
 
   const copyButton = document.createElement('button');
   copyButton.className = 'mpp-copy';
   copyButton.type = 'button';
   copyButton.textContent = copyButtonText;
+  copyButton.setAttribute('aria-live', 'polite');
   copyButton.addEventListener('click', () => copyCoupon(couponCode, copyButton, copyButtonText));
   coupon.append(copyButton);
 
